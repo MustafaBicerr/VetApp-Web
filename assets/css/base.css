@@ -1,0 +1,54 @@
+/* Base reset & typography */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+    "SF Pro Text", "Segoe UI", sans-serif;
+  color: #0f172a;
+  background-color: #020617;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+:root {
+  --color-bg: #020617;
+  --color-bg-elevated: #020617;
+  --color-surface: #020617;
+  --color-border-soft: rgba(148, 163, 184, 0.25);
+  --color-text-main: #e5e7eb;
+  --color-text-muted: #94a3b8;
+  --color-primary: #22c55e;
+  --color-primary-soft: rgba(34, 197, 94, 0.16);
+  --color-primary-strong: #16a34a;
+  --color-accent: #38bdf8;
+  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.75);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-pill: 999px;
+  --nav-height: 72px;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title>VetApp – Veteriner Klinik Yönetim Sistemi</title>
+    <meta
+      name="description"
+      content="VetApp, veteriner klinikleri için hasta, randevu, aşı, stok ve finans yönetimini tek ekranda birleştiren modern klinik yönetim sistemidir."
+    />
+    <meta
+      name="keywords"
+      content="vetapp, veteriner yazılımı, veteriner klinik programı, aşı takibi, stok takip, cari hesap, veteriner pos, veteriner kasa programı"
+    />
+
+    <link rel="canonical" href="https://vetapp.com.tr/" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- TODO: favicon ve manifest daha sonra eklenecek -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/layout.css" />
+    <link rel="stylesheet" href="assets/css/components.css" />
+    <link rel="stylesheet" href="assets/css/home.css" />
+  </head>
+  <body>
+    <div id="app-root"></div>
+
+    <!-- Scripts: sıralama önemli (core → shared → features → app) -->
+    <script src="assets/js/core/dom.js"></script>
+    <script src="assets/js/shared/header.js"></script>
+    <script src="assets/js/shared/footer.js"></script>
+    <script src="assets/js/shared/sections.js"></script>
+    <script src="assets/js/features/home/home-hero.js"></script>
+    <script src="assets/js/features/home/home-content.js"></script>
+    <script src="assets/js/features/program/program-view.js"></script>
+    <script src="assets/js/features/guide/guide-view.js"></script>
+    <script src="assets/js/features/gallery/gallery-view.js"></script>
+    <script src="assets/js/features/faq/faq-view.js"></script>
+    <script src="assets/js/features/home/home-init.js"></script>
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
