@@ -17,8 +17,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 30% 50%, rgba(34, 197, 94, 0.05) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 30%, rgba(56, 189, 248, 0.04) 0%, transparent 60%);
+    radial-gradient(ellipse at 30% 50%, rgba(15, 118, 110, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 30%, rgba(29, 78, 216, 0.04) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -82,7 +82,7 @@
 .pg-tab:hover { color: var(--clr-text); border-color: var(--clr-border-med); }
 .pg-tab--active {
   color: var(--clr-primary);
-  border-color: rgba(34, 197, 94, 0.4);
+  border-color: color-mix(in srgb, var(--clr-primary) 38%, transparent);
   background: var(--clr-primary-dim);
 }
 
@@ -131,7 +131,7 @@
 .ss-group-icon--blue   { background: var(--clr-blue-dim); color: var(--clr-blue); }
 .ss-group-icon--purple { background: var(--clr-purple-dim); color: var(--clr-purple); }
 .ss-group-icon--orange { background: var(--clr-orange-dim); color: var(--clr-orange); }
-.ss-group-icon--teal   { background: rgba(20, 184, 166, 0.1); color: var(--clr-teal); }
+.ss-group-icon--teal   { background: var(--clr-teal-dim); color: var(--clr-teal); }
 
 .ss-group-header h2 {
   font-size: var(--text-xl);
@@ -173,7 +173,7 @@
   transition: box-shadow var(--t-med);
 }
 .ss-item:hover .ss-browser-frame {
-  box-shadow: var(--shadow-xl), 0 0 0 1px rgba(34, 197, 94, 0.15);
+  box-shadow: var(--shadow-xl), 0 0 0 1px color-mix(in srgb, var(--clr-primary) 18%, transparent);
 }
 
 .ss-item .ss-browser-frame img {
@@ -242,7 +242,7 @@
 }
 .ss-mobile-item:hover .ss-phone-wrapper {
   transform: translateY(-4px) scale(1.01);
-  box-shadow: var(--shadow-xl), 0 0 0 2px rgba(56, 189, 248, 0.25);
+  box-shadow: var(--shadow-xl), 0 0 0 2px color-mix(in srgb, var(--clr-blue) 22%, transparent);
 }
 
 .ss-phone-wrapper img {
@@ -299,7 +299,7 @@
 .lightbox-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(2, 6, 23, 0.95);
+  background: rgba(15, 23, 42, 0.88);
   backdrop-filter: blur(8px);
   cursor: pointer;
 }
@@ -330,7 +330,7 @@
 .lightbox-caption {
   text-align: center;
   font-size: var(--text-sm);
-  color: var(--clr-text-muted);
+  color: #cbd5e1;
 }
 
 .lightbox-close {
@@ -340,9 +340,9 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--clr-surface);
-  border: 1px solid var(--clr-border-med);
-  color: var(--clr-text);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f1f5f9;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -351,8 +351,8 @@
   transition: all var(--t-fast);
 }
 .lightbox-close:hover {
-  background: var(--clr-surface-2);
-  color: var(--clr-primary);
+  background: rgba(255, 255, 255, 0.14);
+  color: #99f6e4;
 }
 
 /* For mobile screenshots in lightbox */
