@@ -138,7 +138,11 @@
   const sections  = document.querySelectorAll('section[id]');
   const navLinks  = document.querySelectorAll('.nav-link');
 
-  if (sections.length && navLinks.length) {
+  if (
+    sections.length &&
+    navLinks.length &&
+    document.body.classList.contains("site-body--homepage")
+  ) {
     const io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
