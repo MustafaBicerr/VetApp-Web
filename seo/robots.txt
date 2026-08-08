@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vetapp.com.tr/seo/sitemap.xml
+# Canonical sitemap is at site root (not /seo/).
+Sitemap: https://vetapp.com.tr/sitemap.xml
