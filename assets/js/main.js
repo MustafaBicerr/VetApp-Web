@@ -1,161 +1,129 @@
-(function () {
-  'use strict';
+/* ============================================================
+   VetApp — Main JavaScript
+   Nav scroll, mobile drawer, scroll reveal, accordion
+   ============================================================ */
 
-  /* ─────────────────────────────────────
-     1. MOBILE NAV TOGGLE
-  ───────────────────────────────────── */
-  const header     = document.getElementById('header');
-  const navToggle  = document.querySelector('.nav-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
+'use strict';
 
-  if (navToggle && mobileMenu) {
-    navToggle.addEventListener('click', function () {
-      const isOpen = mobileMenu.classList.toggle('is-open');
-      navToggle.setAttribute('aria-expanded', String(isOpen));
-      mobileMenu.setAttribute('aria-hidden', String(!isOpen));
-      navToggle.classList.toggle('is-active', isOpen);
-    });
+// ── Nav scroll glass effect ─────────────────────────────────
+(function initNav() {
+  const nav = document.getElementById('main-nav');
+  if (!nav) return;
 
-    // Close menu on mobile nav link click
-    document.querySelectorAll('.mobile-nav-link').forEach(function (link) {
-      link.addEventListener('click', function () {
-        mobileMenu.classList.remove('is-open');
-        navToggle.setAttribute('aria-expanded', 'false');
-        mobileMenu.setAttribute('aria-hidden', 'true');
-        navToggle.classList.remove('is-active');
-      });
-    });
+  const onScroll = () => {
+    nav.classList.toggle('is-scrolled', window.scrollY > 20);
+  };
 
-    // Close on outside click
-    document.addEventListener('click', function (e) {
-      if (mobileMenu.classList.contains('is-open') &&
-          !header.contains(e.target)) {
-        mobileMenu.classList.remove('is-open');
-        navToggle.setAttribute('aria-expanded', 'false');
-        mobileMenu.setAttribute('aria-hidden', 'true');
-        navToggle.classList.remove('is-active');
-      }
-    });
-  }
-
-  /* ─────────────────────────────────────
-     2. HEADER SCROLL EFFECT
-  ───────────────────────────────────── */
-  if (header) {
-    window.addEventListener('scroll', function () {
-      header.classList.toggle('is-scrolled', window.scrollY > 20);
-    }, { passive: true });
-  }
-
-  /* ─────────────────────────────────────
-     3. IMAGE STACK TABS
-  ───────────────────────────────────── */
-  document.querySelectorAll('[data-stack]').forEach(function (stack) {
-    const tabsContainer = stack.nextElementSibling;
-    if (!tabsContainer || !tabsContainer.classList.contains('img-tabs')) return;
-
-    const images = stack.querySelectorAll('.img-stack__item');
-    const tabs   = tabsContainer.querySelectorAll('.img-tab');
-
-    function switchTo(idx) {
-      images.forEach(function (img, i) {
-        img.classList.toggle('img-stack__item--active', i === idx);
-      });
-      tabs.forEach(function (tab, i) {
-        const active = i === idx;
-        tab.classList.toggle('img-tab--active', active);
-        tab.setAttribute('aria-selected', String(active));
-      });
-    }
-
-    tabs.forEach(function (tab, i) {
-      tab.addEventListener('click', function () { switchTo(i); });
-    });
-  });
-
-  /* ─────────────────────────────────────
-     4. FAQ ACCORDION
-  ───────────────────────────────────── */
-  document.querySelectorAll('.faq-q').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      const isOpen  = btn.getAttribute('aria-expanded') === 'true';
-      const answer  = btn.nextElementSibling;
-
-      // Close all others
-      document.querySelectorAll('.faq-q').forEach(function (b) {
-        b.setAttribute('aria-expanded', 'false');
-        const a = b.nextElementSibling;
-        if (a) a.hidden = true;
-      });
-
-      // Toggle current
-      if (!isOpen) {
-        btn.setAttribute('aria-expanded', 'true');
-        if (answer) answer.hidden = false;
-      }
-    });
-  });
-
-  /* ─────────────────────────────────────
-     5. SMOOTH SCROLL FOR ANCHOR LINKS
-  ───────────────────────────────────── */
-  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-    anchor.addEventListener('click', function (e) {
-      const hash   = anchor.getAttribute('href');
-      if (hash === '#') return;
-      const target = document.querySelector(hash);
-      if (target) {
-        e.preventDefault();
-        const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'), 10) || 72;
-        const top  = target.getBoundingClientRect().top + window.scrollY - navH - 16;
-        window.scrollTo({ top: top, behavior: 'smooth' });
-      }
-    });
-  });
-
-  /* ─────────────────────────────────────
-     6. FADE-UP SCROLL ANIMATIONS
-  ───────────────────────────────────── */
-  if ('IntersectionObserver' in window) {
-    const fadeEls = document.querySelectorAll('.fade-up');
-    if (fadeEls.length) {
-      const observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-      fadeEls.forEach(function (el) { observer.observe(el); });
-    }
-  }
-
-  /* ─────────────────────────────────────
-     7. ACTIVE NAV LINK (scroll spy)
-  ───────────────────────────────────── */
-  const sections  = document.querySelectorAll('section[id]');
-  const navLinks  = document.querySelectorAll('.nav-link');
-
-  if (
-    sections.length &&
-    navLinks.length &&
-    document.body.classList.contains("site-body--homepage")
-  ) {
-    const io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          const id = entry.target.id;
-          navLinks.forEach(function (link) {
-            const href = link.getAttribute('href');
-            link.classList.toggle('nav-link--active', href === '#' + id);
-          });
-        }
-      });
-    }, { rootMargin: '-40% 0px -55% 0px' });
-
-    sections.forEach(function (s) { io.observe(s); });
-  }
-
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 })();
+
+// ── Mobile burger / drawer ──────────────────────────────────
+(function initBurger() {
+  const burger = document.getElementById('nav-burger');
+  const drawer = document.getElementById('nav-drawer');
+  if (!burger || !drawer) return;
+
+  let isOpen = false;
+
+  function toggle() {
+    isOpen = !isOpen;
+    burger.classList.toggle('is-open', isOpen);
+    drawer.classList.toggle('is-open', isOpen);
+    drawer.setAttribute('aria-hidden', String(!isOpen));
+    burger.setAttribute('aria-expanded', String(isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  }
+
+  burger.addEventListener('click', toggle);
+
+  // Close on drawer link click
+  drawer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (isOpen) toggle();
+    });
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && isOpen) toggle();
+  });
+})();
+
+// ── Scroll reveal (IntersectionObserver) ───────────────────
+(function initReveal() {
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  const staggerEls = document.querySelectorAll('[data-stagger]');
+
+  const opts = {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px',
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, opts);
+
+  revealEls.forEach(el => observer.observe(el));
+  staggerEls.forEach(el => observer.observe(el));
+})();
+
+// ── Accordion (FAQ) ─────────────────────────────────────────
+(function initAccordion() {
+  document.querySelectorAll('.accordion__trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('.accordion__item');
+      const isOpen = item.classList.contains('is-open');
+
+      // Close all siblings
+      trigger.closest('.accordion').querySelectorAll('.accordion__item').forEach(i => {
+        i.classList.remove('is-open');
+        i.querySelector('.accordion__trigger').setAttribute('aria-expanded', 'false');
+      });
+
+      // Toggle this one
+      if (!isOpen) {
+        item.classList.add('is-open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+})();
+
+// ── Active nav link ─────────────────────────────────────────
+(function initActiveLink() {
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+
+  document.querySelectorAll('.nav__link, .nav__drawer-link').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href) return;
+
+    const linkPath = href.split('/').pop() || 'index.html';
+    const isActive =
+      linkPath === currentPath ||
+      (currentPath === '' && (linkPath === '' || linkPath === 'index.html')) ||
+      (currentPath === 'index.html' && (linkPath === '' || linkPath === '/'));
+
+    link.classList.toggle('is-active', isActive);
+  });
+})();
+
+// ── Smooth scroll for anchor links ──────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const id = link.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if (!target) return;
+
+    e.preventDefault();
+    const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 68;
+    const top = target.getBoundingClientRect().top + window.scrollY - navH - 16;
+
+    window.scrollTo({ top, behavior: 'smooth' });
+  });
+});

@@ -1,179 +1,155 @@
 <!DOCTYPE html>
-<html lang="tr" prefix="og: https://ogp.me/ns#">
+<html lang="tr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-  <title>VetApp İletişim | Satış, Destek ve Demo Talebi</title>
-  <meta name="description" content="VetApp için iletişim: veteriner yazılımı satış görüşmesi, demo talebi ve genel sorular için form ve doğrudan e-posta bağlantıları." />
-  <meta name="keywords" content="vetapp iletişim, veteriner yazılımı satış, vetapp demo, vetapp destek mail, veteriner klinik yazılımı Türkiye" />
-  <meta name="author" content="VetApp" />
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>İletişim – VetApp Veteriner Klinik Programı</title>
+  <meta name="description" content="VetApp ile iletişime geçin. Sorularınız, destek talepleriniz ve işbirliği için bize ulaşın." />
+  <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://vetapp.com.tr/iletisim.html" />
-
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://vetapp.com.tr/iletisim.html" />
-  <meta property="og:title" content="VetApp İletişim" />
-  <meta property="og:description" content="Demo, satış ve destek için VetApp iletişim kanalları." />
-  <meta property="og:image" content="https://vetapp.com.tr/assets/images/desktop/dashboard-genel-bakis.png" />
-  <meta property="og:locale" content="tr_TR" />
-  <meta property="og:site_name" content="VetApp" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="VetApp İletişim" />
-  <meta name="twitter:description" content="İletişim formu ve e-posta." />
-  <meta name="twitter:image" content="https://vetapp.com.tr/assets/images/desktop/dashboard-genel-bakis.png" />
-
-  <script type="application/ld+json">
-  {"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "VetApp", "url": "https://vetapp.com.tr", "contactPoint": [{"@type": "ContactPoint", "email": "info@vetapp.com.tr", "contactType": "customer support"}]}]}
-  </script>
-
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/tokens.css" />
   <link rel="stylesheet" href="assets/css/base.css" />
   <link rel="stylesheet" href="assets/css/layout.css" />
   <link rel="stylesheet" href="assets/css/components.css" />
-  <link rel="stylesheet" href="assets/css/home.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
   <link rel="stylesheet" href="assets/css/pages.css" />
 </head>
-<body class="site-body">
+<body class="page-body">
 
-  <header class="header" id="header">
-    <div class="header-inner">
-      <a href="index.html" class="logo" aria-label="VetApp Ana Sayfa">
-        <div class="logo-mark">V</div>
-        <div class="logo-text">
-          <span class="logo-name">VETAPP</span>
-          <span class="logo-tagline">Veteriner Klinik Yönetim Sistemi</span>
-        </div>
+  <nav class="nav" id="main-nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="VetApp Ana Sayfa">
+        <img src="assets/images/logos/vetapp-carbon-premium.png" alt="VetApp" width="140" height="36" />
       </a>
-      <nav class="nav" role="navigation" aria-label="Ana navigasyon">
-        <a href="index.html" class="nav-link">Ana Sayfa</a>
-        <a href="ozellikler.html" class="nav-link">Özellikler</a>
-        <a href="screenshots.html" class="nav-link">Görseller</a>
-        <a href="sss.html" class="nav-link">SSS</a>
-        <a href="iletisim.html" class="nav-link nav-link--active" aria-current="page">İletişim</a>
-      </nav>
-      <div class="header-actions">
-        <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Paneli Gör</a>
-        <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Ücretsiz Dene</a>
+      <div class="nav__links">
+        <a href="/" class="nav__link">Ana Sayfa</a>
+        <a href="ozellikler.html" class="nav__link">Özellikler</a>
+        <a href="screenshots.html" class="nav__link">Ekranlar</a>
+        <a href="sss.html" class="nav__link">SSS</a>
+        <a href="iletisim.html" class="nav__link is-active">İletişim</a>
       </div>
-      <button class="nav-toggle" aria-label="Menüyü aç/kapat" aria-expanded="false" aria-controls="mobile-menu">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
+      <div class="nav__actions">
+        <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">Paneli Gör</a>
+        <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--primary btn--sm">Ücretsiz Dene</a>
+      </div>
+      <button class="nav__burger" id="nav-burger" aria-label="Menüyü aç/kapat" aria-expanded="false" aria-controls="nav-drawer">
+        <span class="nav__burger-bar"></span><span class="nav__burger-bar"></span><span class="nav__burger-bar"></span>
       </button>
     </div>
-    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-      <nav class="mobile-nav">
-        <a href="index.html" class="mobile-nav-link">Ana Sayfa</a>
-        <a href="ozellikler.html" class="mobile-nav-link">Özellikler</a>
-        <a href="screenshots.html" class="mobile-nav-link">Görseller</a>
-        <a href="sss.html" class="mobile-nav-link">SSS</a>
-        <a href="iletisim.html" class="mobile-nav-link">İletişim</a>
-      </nav>
-      <div class="mobile-cta">
-        <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn-ghost w-full">Paneli Gör</a>
-        <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn-primary w-full">Ücretsiz Dene</a>
-      </div>
+  </nav>
+  <div class="nav__drawer" id="nav-drawer" aria-hidden="true">
+    <a href="/" class="nav__drawer-link">Ana Sayfa</a>
+    <a href="ozellikler.html" class="nav__drawer-link">Özellikler</a>
+    <a href="screenshots.html" class="nav__drawer-link">Ekranlar</a>
+    <a href="sss.html" class="nav__drawer-link">SSS</a>
+    <a href="iletisim.html" class="nav__drawer-link">İletişim</a>
+    <div class="nav__drawer-actions">
+      <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--ghost btn--full">Paneli Gör</a>
+      <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--primary btn--full">Ücretsiz Dene</a>
     </div>
-  </header>
+  </div>
 
   <main>
-    <section class="inner-hero il-hero page-shell" aria-labelledby="il-b">
+    <div class="features-hero">
       <div class="container">
-        <nav class="inner-breadcrumb" aria-label="Sayfa yolu"><a href="index.html">Ana Sayfa</a><span aria-hidden="true">/</span><span style="color:var(--clr-text-muted)">İletişim</span></nav>
-        <span class="eyebrow">Bizimle konuşun</span>
-        <h1 id="il-b">İletişim · <span class="text-gradient">satış ve destek</span></h1>
-        <p class="lead" style="max-width:600px;color:var(--clr-text-muted);line-height:1.75;margin-top:var(--sp-4)">
-          Çok lokasyon gereksinimleri veya SLA konuşması için doğrudan bize yazın; demoyu doğrudan <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener">panel bağlantınızdan</a> da başlatabilirsiniz.
-        </p>
-      </div>
-    </section>
-
-    <div class="container">
-      <div class="il-grid">
-        <article class="il-panel" aria-labelledby="il-form-b">
-          <h2 id="il-form-b">Talep formu</h2>
-          <p>Bu özet seçtiğiniz e‑posta istemcisinde görüntülenecek biçime dönüşür.</p>
-          <form id="il-contact-form" class="il-form" novalidate>
-            <div class="il-field">
-              <label for="il-name">Başlık / ad soyad</label>
-              <input id="il-name" name="name" type="text" required autocomplete="name" />
-            </div>
-            <div class="il-field">
-              <label for="il-clinic">Klinik tanımı</label>
-              <input id="il-clinic" name="clinic" type="text" autocomplete="organization" placeholder="Şehir • şube adı vb." />
-            </div>
-            <div class="il-field">
-              <label for="il-email">E-posta</label>
-              <input id="il-email" name="email" type="email" required autocomplete="email" />
-            </div>
-            <div class="il-field">
-              <label for="il-phone">Telefon</label>
-              <input id="il-phone" name="phone" type="tel" autocomplete="tel" />
-            </div>
-            <div class="il-field">
-              <label for="il-topic">Konu</label>
-              <select id="il-topic" name="topic" required>
-                <option value="demo">Ürün özeti demo</option>
-                <option value="fiyatlandirma">Fiyatlandırma</option>
-                <option value="teknik">Teknik ve entegrasyon</option>
-                <option value="diger">Diğer</option>
-              </select>
-            </div>
-            <div class="il-field">
-              <label for="il-msg">Mesaj</label>
-              <textarea id="il-msg" name="message" required placeholder="Kısa ihtiyaç özeti yazın"></textarea>
-            </div>
-            <div class="il-field">
-              <button type="submit" class="btn btn-primary btn-lg">Mail ile gönder</button>
-            </div>
-            <input type="hidden" name="_to" value="info@vetapp.com.tr" />
-          </form>
-        </article>
-
-        <aside class="il-aside-stack" aria-label="Doğrudan kanallar" style="display:flex;flex-direction:column;gap:var(--sp-6)">
-          <div class="il-channel">
-            <span>E-posta</span>
-            <a href="mailto:info@vetapp.com.tr">info@vetapp.com.tr</a>
-            <small>Çalışma günleri içinde dönüş hedefliyoruz.</small>
-          </div>
-          <div class="il-channel">
-            <span>Panel başlat</span>
-            <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener">panel.vetapp.com.tr</a>
-            <small>Hesapsız olarak denemeniz mümkündür.</small>
-          </div>
-          <div class="il-split">
-            <div class="il-mini"><h4>SSS kaynağı</h4><p><a href="sss.html">Sık sorulan sorular</a> bağlamını genişleterek okuyabilirsiniz.</p></div>
-            <div class="il-mini"><h4>Özellik rehberi</h4><p><a href="ozellikler.html">Modül detayı</a> sayfasından modüller bölüm bölüm açılmıştır.</p></div>
-          </div>
-        </aside>
+        <p class="features-hero__eyebrow">İletişim</p>
+        <h1 class="features-hero__title">
+          Size nasıl<br>
+          <span class="text-grad">yardımcı olabiliriz?</span>
+        </h1>
+        <p class="features-hero__desc">Sorularınız, destek talepleriniz veya işbirliği için ekibimize ulaşın.</p>
       </div>
     </div>
 
-    <section class="il-band">
+    <section class="section">
       <div class="container">
-        <div class="il-band__inner">
-          <div class="il-map" aria-hidden="true"><span>Harita / fizik adres bilgisi eklenebilir.<br>Lokasyon bildirilirse adres bloğu olarak kullanılacaktır.</span></div>
-          <div class="il-office">
-            <h3>Ofis &amp; bölgesel kapsama</h3>
-            <ul>
-              <li><strong>Türkiye</strong><span>Yazılım ve destek teslimatımız Türkiye merkezlidir.</span></li>
-              <li><strong>Yenilik</strong><span>Yol haritası talepleri doğrudan e-posta kanalına yazılabilir.</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+        <div class="contact-layout" data-reveal>
 
-    <section class="page-cta">
-      <div class="container">
-        <span class="eyebrow">Kısayol</span>
-        <h2>Şimdi <span class="text-gradient">panele bağlanarak</span> denemeyi de başlatın</h2>
-        <div class="page-cta__actions">
-          <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Paneli Görüntüle</a>
-          <a href="sss.html" class="btn btn-ghost btn-lg">Önce SSS</a>
+          <!-- Info side -->
+          <div>
+            <h2 class="contact-info__title">Bize ulaşın</h2>
+            <p class="contact-info__desc">
+              Teknik destek, fiyatlandırma veya VetApp hakkında soru sormak için aşağıdaki formu doldurun ya da doğrudan iletişime geçin.
+            </p>
+
+            <div class="contact-detail">
+              <div class="contact-detail__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <p class="contact-detail__label">E-posta</p>
+                <p class="contact-detail__val">destek@vetapp.com.tr</p>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-detail__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <div>
+                <p class="contact-detail__label">Güvenlik</p>
+                <p class="contact-detail__val">Verileriniz güvenli ve izole</p>
+              </div>
+            </div>
+
+            <div class="contact-detail">
+              <div class="contact-detail__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <div>
+                <p class="contact-detail__label">Yanıt süresi</p>
+                <p class="contact-detail__val">Genellikle 24 saat içinde</p>
+              </div>
+            </div>
+
+            <div style="margin-top: var(--space-10);">
+              <p style="font-size: var(--text-sm); color: var(--text-muted); margin-bottom: var(--space-5); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: var(--tracking-widest);">Hızlı başlangıç</p>
+              <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--primary">
+                Ücretsiz Denemeyi Başlat
+                <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <div class="contact-form" role="form" aria-label="İletişim formu">
+            <h2 class="contact-form__title">Mesaj gönderin</h2>
+            <p style="font-size: var(--text-sm); color: var(--text-muted);">Formu doldurduğunuzda en kısa sürede size dönüş yapacağız.</p>
+
+            <form action="mailto:destek@vetapp.com.tr" method="get" enctype="text/plain" id="contact-form">
+              <div class="form-group">
+                <label class="form-label" for="contact-name">Ad Soyad</label>
+                <input class="form-input" type="text" id="contact-name" name="name" placeholder="Dr. Ahmet Yılmaz" required autocomplete="name" />
+              </div>
+              <div class="form-group" style="margin-top: var(--space-4);">
+                <label class="form-label" for="contact-email">E-posta adresi</label>
+                <input class="form-input" type="email" id="contact-email" name="email" placeholder="ahmet@klinik.com.tr" required autocomplete="email" />
+              </div>
+              <div class="form-group" style="margin-top: var(--space-4);">
+                <label class="form-label" for="contact-subject">Konu</label>
+                <select class="form-select form-input" id="contact-subject" name="subject">
+                  <option value="">Konu seçin...</option>
+                  <option value="destek">Teknik Destek</option>
+                  <option value="fiyat">Fiyatlandırma</option>
+                  <option value="demo">Demo Talebi</option>
+                  <option value="diger">Diğer</option>
+                </select>
+              </div>
+              <div class="form-group" style="margin-top: var(--space-4);">
+                <label class="form-label" for="contact-message">Mesajınız</label>
+                <textarea class="form-textarea" id="contact-message" name="body" placeholder="Merhaba, VetApp hakkında bilgi almak istiyorum..."></textarea>
+              </div>
+              <button type="submit" class="btn btn--primary btn--full" style="margin-top: var(--space-5);" id="contact-submit">
+                Gönder
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M14 2L2 7l5 3 1.5 5L14 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </form>
+          </div>
+
         </div>
       </div>
     </section>
@@ -181,48 +157,42 @@
 
   <footer class="footer">
     <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="logo"><div class="logo-mark">V</div><div class="logo-text"><span class="logo-name">VETAPP</span><span class="logo-tagline">Veteriner Klinik Yönetim Sistemi</span></div></a>
-          <p class="footer-desc">Ürün hakkında yanıtlar için SSS bağlantılıdır.</p>
-          <p class="footer-copy">© 2026 VetApp</p>
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="assets/images/logos/vetapp-dark-mono-light.png" alt="VetApp" class="footer__logo" width="130" height="32" loading="lazy" />
+          <p class="footer__tagline">Türkiye'nin veteriner klinikleri için tasarlanmış modern klinik yönetim yazılımı.</p>
         </div>
-        <div class="footer-links">
-          <div class="footer-col"><h4>Ürün</h4><ul><li><a href="ozellikler.html">Özellikler</a></li><li><a href="screenshots.html">Görseller</a></li><li><a href="sss.html">SSS</a></li><li><a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener">Panel</a></li></ul></div>
-          <div class="footer-col"><h4>Sayfa</h4><ul><li><a href="index.html">Ana sayfa</a></li><li><a href="iletisim.html" aria-current="page">İletişim</a></li></ul></div>
-          <div class="footer-col"><h4>Yasal iletişim</h4><ul><li><a href="mailto:info@vetapp.com.tr">info@vetapp.com.tr</a></li></ul></div>
+        <div>
+          <p class="footer__col-title">Ürün</p>
+          <ul class="footer__links">
+            <li><a href="ozellikler.html" class="footer__link">Özellikler</a></li>
+            <li><a href="screenshots.html" class="footer__link">Ekranlar</a></li>
+            <li><a href="sss.html" class="footer__link">SSS</a></li>
+            <li><a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="footer__link">Giriş Yap</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Şirket</p>
+          <ul class="footer__links"><li><a href="iletisim.html" class="footer__link">İletişim</a></li></ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Yasal</p>
+          <ul class="footer__links">
+            <li><a href="gizlilik.html" class="footer__link">Gizlilik Politikası</a></li>
+            <li><a href="kullanim-sartlari.html" class="footer__link">Kullanım Şartları</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2025 VetApp. Tüm hakları saklıdır.</p>
+        <div class="footer__legal">
+          <a href="gizlilik.html" class="footer__legal-link">Gizlilik</a>
+          <a href="kullanim-sartlari.html" class="footer__legal-link">Kullanım Şartları</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
-  <script>
-  (function () {
-    var form = document.getElementById("il-contact-form");
-    if (!form) return;
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var fd = new FormData(form);
-      var name = (fd.get("name") || "").toString().trim();
-      var email = (fd.get("email") || "").toString().trim();
-      var topic = (fd.get("topic") || "").toString();
-      var clinic = (fd.get("clinic") || "").toString().trim();
-      var phone = (fd.get("phone") || "").toString().trim();
-      var msg = (fd.get("message") || "").toString().trim();
-      var subject = "VetApp talebi • " + topic;
-      var body = [
-        "Klinik tanımı: " + clinic,
-        "Başlık / ad soyad: " + name,
-        "E-posta yanıtlama: " + email,
-        "Telefon: " + phone,
-        "",
-        "Mesaj:",
-        msg
-      ].join("\n");
-      window.location.href = "mailto:info@vetapp.com.tr?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-    });
-  })();
-  </script>
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>

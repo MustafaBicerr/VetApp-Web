@@ -2,38 +2,162 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gizlilik Politikası | VetApp</title>
-  <meta name="description" content="VetApp gizlilik politikası ve KVKK bilgilendirmesi." />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+  <title>Gizlilik Politikası – VetApp</title>
+  <meta name="description" content="VetApp gizlilik politikası. Kişisel verilerinizin nasıl toplandığı, kullanıldığı ve korunduğu hakkında bilgi." />
+  <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://vetapp.com.tr/gizlilik.html" />
-  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/pages.css" />
 </head>
-<body>
-  <main class="container" style="max-width:800px;margin:40px auto;padding:0 16px;">
-    <h1>Gizlilik Politikası</h1>
-    <p>Son güncelleme: 8 Ağustos 2026</p>
-    <p>
-      VetApp, veteriner kliniklerinin stok, satış ve cari süreçlerini yönetmesi için
-      bir yazılım hizmetidir. Bu metin, kişisel verilerin işlenmesine ilişkin temel
-      bilgilendirmeyi içerir.
-    </p>
-    <h2>İşlenen veriler</h2>
-    <ul>
-      <li>Hesap bilgileri (ad, e-posta, telefon)</li>
-      <li>Klinik işletme bilgileri</li>
-      <li>Cari ve satış kayıtları</li>
-      <li>Veresiye satışlarda müşterinin rızasıyla paylaşılan TC ve telefon</li>
-    </ul>
-    <h2>Kara liste</h2>
-    <p>
-      Veresiye satışlarda geciken borçlara ilişkin özet bilgiler (klinik adları
-      paylaşılmadan) diğer kliniklere gösterilebilir. TC ve telefon bilgisi
-      müşterinin rızası ile alınır; paylaşmak istemeyen müşteri için veresiye
-      satış yapılmaz.
-    </p>
-    <h2>İletişim</h2>
-    <p>Sorularınız için: <a href="mailto:info@vetapp.com.tr">info@vetapp.com.tr</a></p>
-    <p><a href="/">Ana sayfaya dön</a></p>
+<body class="page-body">
+
+  <nav class="nav" id="main-nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="VetApp Ana Sayfa">
+        <img src="assets/images/logos/vetapp-carbon-premium.png" alt="VetApp" width="140" height="36" />
+      </a>
+      <div class="nav__links">
+        <a href="/" class="nav__link">Ana Sayfa</a>
+        <a href="ozellikler.html" class="nav__link">Özellikler</a>
+        <a href="screenshots.html" class="nav__link">Ekranlar</a>
+        <a href="sss.html" class="nav__link">SSS</a>
+        <a href="iletisim.html" class="nav__link">İletişim</a>
+      </div>
+      <div class="nav__actions">
+        <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">Paneli Gör</a>
+        <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--primary btn--sm">Ücretsiz Dene</a>
+      </div>
+      <button class="nav__burger" id="nav-burger" aria-label="Menüyü aç/kapat" aria-expanded="false" aria-controls="nav-drawer">
+        <span class="nav__burger-bar"></span><span class="nav__burger-bar"></span><span class="nav__burger-bar"></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav__drawer" id="nav-drawer" aria-hidden="true">
+    <a href="/" class="nav__drawer-link">Ana Sayfa</a>
+    <a href="ozellikler.html" class="nav__drawer-link">Özellikler</a>
+    <a href="screenshots.html" class="nav__drawer-link">Ekranlar</a>
+    <a href="sss.html" class="nav__drawer-link">SSS</a>
+    <a href="iletisim.html" class="nav__drawer-link">İletişim</a>
+    <div class="nav__drawer-actions">
+      <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--ghost btn--full">Paneli Gör</a>
+      <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--primary btn--full">Ücretsiz Dene</a>
+    </div>
+  </div>
+
+  <main>
+    <div class="features-hero">
+      <div class="container">
+        <p class="features-hero__eyebrow">Yasal</p>
+        <h1 class="features-hero__title">Gizlilik<br><span class="text-grad">Politikası</span></h1>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div class="legal-content">
+          <p class="legal-meta">Son güncelleme: Ocak 2025</p>
+
+          <p>VetApp ("Şirket", "biz", "bizim") olarak gizliliğinize önem veriyoruz. Bu Gizlilik Politikası, VetApp uygulamasını ve web sitesini ("Hizmet") kullanırken kişisel verilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu açıklamaktadır.</p>
+
+          <h2>1. Toplanan Veriler</h2>
+          <p>Hizmeti kullanırken aşağıdaki bilgileri toplayabiliriz:</p>
+          <ul>
+            <li>Ad, soyad ve iletişim bilgileri (e-posta, telefon)</li>
+            <li>Klinik bilgileri ve adres</li>
+            <li>Uygulama kullanım verileri ve log kayıtları</li>
+            <li>Ödeme bilgileri (güvenli ödeme sağlayıcıları aracılığıyla işlenir)</li>
+          </ul>
+
+          <h2>2. Verilerin Kullanımı</h2>
+          <p>Topladığımız verileri şu amaçlarla kullanıyoruz:</p>
+          <ul>
+            <li>Hizmeti sağlamak ve iyileştirmek</li>
+            <li>Teknik destek sunmak</li>
+            <li>Hesabınızı yönetmek</li>
+            <li>Güvenlik ve dolandırıcılık önleme</li>
+            <li>Yasal yükümlülükleri yerine getirmek</li>
+          </ul>
+
+          <h2>3. Veri Güvenliği</h2>
+          <p>Verilerinizi korumak için endüstri standardı güvenlik önlemleri alıyoruz:</p>
+          <ul>
+            <li>Tüm bağlantılar SSL/TLS şifrelemesi ile korunur</li>
+            <li>Her klinik için izole veri alanı sağlanır</li>
+            <li>Düzenli güvenlik yedeklemeleri yapılır</li>
+            <li>Erişim yetkilendirme sistemleri uygulanır</li>
+          </ul>
+
+          <h2>4. Üçüncü Taraf Paylaşımı</h2>
+          <p>Kişisel verilerinizi şu durumlar dışında üçüncü taraflarla paylaşmıyoruz:</p>
+          <ul>
+            <li>Açık rızanız bulunduğunda</li>
+            <li>Hizmet sağlayıcılarımızla (barındırma, ödeme işleme)</li>
+            <li>Yasal zorunluluk bulunduğunda</li>
+          </ul>
+
+          <h2>5. Veri Saklama</h2>
+          <p>Verilerinizi hesabınız aktif olduğu sürece saklarız. Hesabı silmeniz durumunda, verileriniz yasal yükümlülükler kapsamında belirli bir süre daha saklandıktan sonra silinir.</p>
+
+          <h2>6. Haklarınız</h2>
+          <p>KVKK kapsamında aşağıdaki haklara sahipsiniz:</p>
+          <ul>
+            <li>Kişisel verilerinize erişim hakkı</li>
+            <li>Verilerinizin düzeltilmesini talep etme hakkı</li>
+            <li>Verilerinizin silinmesini talep etme hakkı</li>
+            <li>Veri işlemeye itiraz etme hakkı</li>
+          </ul>
+          <p>Bu haklarınızı kullanmak için <a href="iletisim.html">iletişim sayfamız</a> üzerinden bize ulaşabilirsiniz.</p>
+
+          <h2>7. İletişim</h2>
+          <p>Gizlilik politikamız hakkında sorularınız için: <a href="mailto:destek@vetapp.com.tr">destek@vetapp.com.tr</a></p>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="assets/images/logos/vetapp-dark-mono-light.png" alt="VetApp" class="footer__logo" width="130" height="32" loading="lazy" />
+          <p class="footer__tagline">Türkiye'nin veteriner klinikleri için tasarlanmış modern klinik yönetim yazılımı.</p>
+        </div>
+        <div>
+          <p class="footer__col-title">Ürün</p>
+          <ul class="footer__links">
+            <li><a href="ozellikler.html" class="footer__link">Özellikler</a></li>
+            <li><a href="screenshots.html" class="footer__link">Ekranlar</a></li>
+            <li><a href="sss.html" class="footer__link">SSS</a></li>
+          </ul>
+        </div>
+        <div><p class="footer__col-title">Şirket</p><ul class="footer__links"><li><a href="iletisim.html" class="footer__link">İletişim</a></li></ul></div>
+        <div>
+          <p class="footer__col-title">Yasal</p>
+          <ul class="footer__links">
+            <li><a href="gizlilik.html" class="footer__link">Gizlilik Politikası</a></li>
+            <li><a href="kullanim-sartlari.html" class="footer__link">Kullanım Şartları</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2025 VetApp. Tüm hakları saklıdır.</p>
+        <div class="footer__legal">
+          <a href="gizlilik.html" class="footer__legal-link">Gizlilik</a>
+          <a href="kullanim-sartlari.html" class="footer__legal-link">Kullanım Şartları</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>

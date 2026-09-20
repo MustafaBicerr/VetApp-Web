@@ -1,63 +1,148 @@
-/* ==========================================
-   LAYOUT.CSS – Container, grid, spacing
-   ========================================== */
+/* ============================================================
+   VETAPP — Layout
+   Container, grid systems, section wrappers
+   ============================================================ */
+
+/* ── Container ─────────────────────────────────────────────── */
 
 .container {
   width: 100%;
-  max-width: var(--container-w);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--container-px);
-  padding-right: var(--container-px);
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
 }
 
-/* Section base padding */
+.container--narrow {
+  max-width: 760px;
+}
+
+.container--wide {
+  max-width: 1400px;
+}
+
+/* ── Section wrappers ──────────────────────────────────────── */
+
 .section {
-  padding-block: var(--sp-24);
+  padding-block: var(--section-gap);
 }
 
-@media (max-width: 768px) {
-  .section {
-    padding-block: var(--sp-16);
-  }
+.section--sm {
+  padding-block: clamp(3rem, 6vw, 5rem);
 }
 
-/* Utility */
-.w-full { width: 100%; }
+.section--lg {
+  padding-block: clamp(6rem, 12vw, 11rem);
+}
 
-/* Grid helpers */
-.grid-2 {
+/* ── Section header ────────────────────────────────────────── */
+
+.section-head {
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.section-head--center {
+  text-align: center;
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+.section-head__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--text-brand);
+  margin-bottom: var(--space-4);
+}
+
+.section-head__label::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+.section-head__title {
+  font-size: var(--text-4xl);
+  margin-bottom: var(--space-5);
+}
+
+.section-head__desc {
+  font-size: var(--text-lg);
+  max-width: 560px;
+}
+
+.section-head--center .section-head__desc {
+  margin-inline: auto;
+}
+
+/* ── Grid systems ──────────────────────────────────────────── */
+
+/* Auto-fill responsive grid */
+.grid-auto {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--sp-6);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: var(--space-6);
 }
 
-.grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--sp-6);
-}
-
-@media (max-width: 900px) {
-  .grid-2, .grid-3 { grid-template-columns: 1fr; }
-}
-
-/* Feature split layout */
-.feature-split {
+/* 2-column split */
+.split {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 5vw, 5rem);
+  gap: clamp(3rem, 6vw, 6rem);
   align-items: center;
 }
 
-.feature-split--reverse .feature-content { order: 2; }
-.feature-split--reverse .feature-visual  { order: 1; }
+.split--reverse { direction: rtl; }
+.split--reverse > * { direction: ltr; }
+
+@media (max-width: 860px) {
+  .split { grid-template-columns: 1fr; }
+  .split--reverse { direction: ltr; }
+}
+
+/* 3-column */
+.col-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
 
 @media (max-width: 900px) {
-  .feature-split {
-    grid-template-columns: 1fr;
-    gap: var(--sp-10);
-  }
-  .feature-split--reverse .feature-content { order: 0; }
-  .feature-split--reverse .feature-visual  { order: 0; }
+  .col-3 { grid-template-columns: 1fr; gap: var(--space-4); }
+}
+
+/* ── Flex helpers ──────────────────────────────────────────── */
+
+.flex          { display: flex; }
+.flex-center   { display: flex; align-items: center; }
+.flex-between  { display: flex; align-items: center; justify-content: space-between; }
+.flex-col      { display: flex; flex-direction: column; }
+.gap-2  { gap: var(--space-2); }
+.gap-3  { gap: var(--space-3); }
+.gap-4  { gap: var(--space-4); }
+.gap-6  { gap: var(--space-6); }
+.gap-8  { gap: var(--space-8); }
+
+/* ── Spacing helpers ───────────────────────────────────────── */
+
+.mt-4  { margin-top: var(--space-4); }
+.mt-6  { margin-top: var(--space-6); }
+.mt-8  { margin-top: var(--space-8); }
+.mt-12 { margin-top: var(--space-12); }
+.mb-4  { margin-bottom: var(--space-4); }
+.mb-6  { margin-bottom: var(--space-6); }
+.mb-8  { margin-bottom: var(--space-8); }
+
+/* ── Dividers ──────────────────────────────────────────────── */
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border-subtle);
 }
