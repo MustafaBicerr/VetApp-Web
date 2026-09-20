@@ -1,8 +1,6 @@
 /* ============================================================
-   VETAPP — CSS Reset & Base
+   VETAPP — Base Reset & Typography (Light Theme)
    ============================================================ */
-
-/* ── Modern Reset ──────────────────────────────────────────── */
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -11,20 +9,20 @@
 }
 
 html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-  tab-size: 4;
 }
 
 body {
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   font-size: var(--text-base);
-  line-height: var(--leading-normal);
+  line-height: 1.6;
   color: var(--text-primary);
-  background-color: var(--bg-base);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  background: var(--bg);
+  min-height: 100vh;
 }
 
 img, video, svg {
@@ -38,97 +36,58 @@ a {
 }
 
 button {
-  font: inherit;
   cursor: pointer;
+  font-family: inherit;
   border: none;
   background: none;
 }
 
-ul, ol {
-  list-style: none;
-}
+ul, ol { list-style: none; }
+
+/* ── Typography ── */
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  font-weight: 800;
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
   color: var(--text-primary);
 }
 
+h1 { font-size: var(--text-4xl); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl); }
+
 p {
   color: var(--text-secondary);
-  line-height: var(--leading-loose);
+  line-height: 1.7;
 }
 
-/* ── Typography scale ──────────────────────────────────────── */
+/* ── Focus ── */
 
-.t-6xl { font-size: var(--text-6xl); letter-spacing: -0.04em; }
-.t-5xl { font-size: var(--text-5xl); letter-spacing: -0.03em; }
-.t-4xl { font-size: var(--text-4xl); }
-.t-3xl { font-size: var(--text-3xl); }
-.t-2xl { font-size: var(--text-2xl); }
-.t-xl  { font-size: var(--text-xl);  }
-.t-lg  { font-size: var(--text-lg);  }
-.t-sm  { font-size: var(--text-sm);  }
-.t-xs  { font-size: var(--text-xs);  }
-
-.fw-400 { font-weight: 400; }
-.fw-500 { font-weight: 500; }
-.fw-700 { font-weight: 700; }
-.fw-800 { font-weight: 800; }
-.fw-900 { font-weight: 900; }
-
-.font-display { font-family: var(--font-display); }
-.font-mono    { font-family: var(--font-mono); }
-
-/* ── Utility classes ───────────────────────────────────────── */
-
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-}
-
-.text-brand   { color: var(--text-brand); }
-.text-teal    { color: var(--teal); }
-.text-amber   { color: var(--amber); }
-.text-red     { color: var(--red); }
-.text-muted   { color: var(--text-muted); }
-.text-center  { text-align: center; }
-
-/* Brand gradient text */
-.text-grad {
-  background: linear-gradient(135deg, #fff 0%, var(--text-brand) 60%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.text-grad-teal {
-  background: linear-gradient(135deg, #fff 0%, var(--teal) 60%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Selection */
-::selection {
-  background: var(--brand-glow);
-  color: var(--brand);
-}
-
-/* Focus ring */
 :focus-visible {
   outline: 2px solid var(--brand);
-  outline-offset: 3px;
-  border-radius: 4px;
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
 }
 
-/* Scrollbar */
+/* ── Scrollbar ── */
+
 ::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: var(--bg-base); }
-::-webkit-scrollbar-thumb { background: var(--border-normal); border-radius: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ── Selection ── */
+::selection {
+  background: var(--brand-light);
+  color: var(--brand-dark);
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

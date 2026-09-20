@@ -4,27 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
   <title>Sık Sorulan Sorular – VetApp Veteriner Klinik Programı</title>
-  <meta name="description" content="VetApp hakkında sık sorulan sorular: kurulum, fiyatlandırma, özellikler, teknik destek ve daha fazlası." />
-  <meta name="robots" content="index, follow" />
+  <meta name="description" content="VetApp hakkında sık sorulan sorular: kurulum, fiyatlandırma, özellikler ve teknik destek." />
   <link rel="canonical" href="https://vetapp.com.tr/sss.html" />
-  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/tokens.css" />
   <link rel="stylesheet" href="assets/css/base.css" />
   <link rel="stylesheet" href="assets/css/layout.css" />
   <link rel="stylesheet" href="assets/css/components.css" />
   <link rel="stylesheet" href="assets/css/animations.css" />
   <link rel="stylesheet" href="assets/css/pages.css" />
+  <style>
+    body { padding-top: var(--nav-h); }
+    .cta-section { background: var(--brand); padding-block: clamp(var(--sp-16),8vw,var(--sp-20)); text-align: center; }
+    .cta-section__title { font-size: clamp(var(--text-2xl),3.5vw,var(--text-4xl)); font-weight: 800; color: #fff; letter-spacing: -0.03em; margin-bottom: var(--sp-4); }
+    .cta-section__desc { font-size: var(--text-base); color: rgba(255,255,255,0.8); max-width: 440px; margin-inline: auto; margin-bottom: var(--sp-8); }
+    .btn--white { background:#fff; color:var(--brand); border-color:#fff; }
+    .btn--white:hover { background:var(--brand-light); }
+    .btn--white-outline { background:transparent; color:#fff; border-color:rgba(255,255,255,0.5); }
+    .btn--white-outline:hover { background:rgba(255,255,255,0.1); }
+  </style>
 </head>
-<body class="page-body">
+<body>
 
   <nav class="nav" id="main-nav">
     <div class="nav__inner">
-      <a href="/" class="nav__logo" aria-label="VetApp Ana Sayfa">
-        <img src="assets/images/logos/vetapp-carbon-premium.png" alt="VetApp" width="140" height="36" />
-      </a>
+      <a href="/" class="nav__logo" aria-label="VetApp"><img src="assets/images/logos/vetapp-carbon-premium.png" alt="VetApp" width="130" height="32" /></a>
       <div class="nav__links">
         <a href="/" class="nav__link">Ana Sayfa</a>
         <a href="ozellikler.html" class="nav__link">Özellikler</a>
@@ -33,10 +40,10 @@
         <a href="iletisim.html" class="nav__link">İletişim</a>
       </div>
       <div class="nav__actions">
-        <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">Paneli Gör</a>
+        <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">Giriş Yap</a>
         <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--primary btn--sm">Ücretsiz Dene</a>
       </div>
-      <button class="nav__burger" id="nav-burger" aria-label="Menüyü aç/kapat" aria-expanded="false" aria-controls="nav-drawer">
+      <button class="nav__burger" id="nav-burger" aria-label="Menü" aria-expanded="false">
         <span class="nav__burger-bar"></span><span class="nav__burger-bar"></span><span class="nav__burger-bar"></span>
       </button>
     </div>
@@ -45,187 +52,137 @@
     <a href="/" class="nav__drawer-link">Ana Sayfa</a>
     <a href="ozellikler.html" class="nav__drawer-link">Özellikler</a>
     <a href="screenshots.html" class="nav__drawer-link">Ekranlar</a>
-    <a href="sss.html" class="nav__drawer-link">SSS</a>
+    <a href="sss.html" class="nav__drawer-link is-active">SSS</a>
     <a href="iletisim.html" class="nav__drawer-link">İletişim</a>
     <div class="nav__drawer-actions">
-      <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--ghost btn--full">Paneli Gör</a>
+      <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--outline btn--full">Giriş Yap</a>
       <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--primary btn--full">Ücretsiz Dene</a>
     </div>
   </div>
 
   <main>
-    <div class="features-hero">
+    <div class="page-hero">
       <div class="container">
-        <p class="features-hero__eyebrow">SSS</p>
-        <h1 class="features-hero__title">Sık sorulan<br><span class="text-grad">sorular</span></h1>
-        <p class="features-hero__desc">Aklınızdaki soruları burada bulamadıysanız <a href="iletisim.html" style="color: var(--text-brand);">iletişime geçin</a>.</p>
+        <p class="page-hero__eyebrow">SSS</p>
+        <h1 class="page-hero__title">Sık sorulan<br><span>sorular</span></h1>
+        <p class="page-hero__desc">Aradığınızı bulamadıysanız <a href="iletisim.html" style="color:var(--brand);font-weight:500;">iletişime geçin</a>.</p>
       </div>
     </div>
 
     <section class="section">
       <div class="container">
         <div class="faq-layout">
-          <!-- Sidebar -->
-          <aside aria-label="SSS kategorileri">
-            <p class="faq-sidebar__title">Kategoriler</p>
-            <nav class="faq-sidebar__links">
+          <aside>
+            <p class="faq-sidebar__label">Kategoriler</p>
+            <nav class="faq-sidebar__nav">
               <a href="#genel" class="faq-sidebar__link">Genel</a>
-              <a href="#kurulum" class="faq-sidebar__link">Kurulum &amp; Başlangıç</a>
+              <a href="#kurulum" class="faq-sidebar__link">Kurulum</a>
               <a href="#ozellikler" class="faq-sidebar__link">Özellikler</a>
               <a href="#teknik" class="faq-sidebar__link">Teknik &amp; Güvenlik</a>
               <a href="#fiyat" class="faq-sidebar__link">Fiyatlandırma</a>
             </nav>
           </aside>
 
-          <!-- Questions -->
           <div>
-            <div class="faq-category" id="genel">
-              <p class="faq-category__title">Genel</p>
+            <div class="faq-section" id="genel">
+              <p class="faq-section__title">Genel</p>
               <div class="accordion">
                 <div class="accordion__item is-open">
                   <button class="accordion__trigger" aria-expanded="true">
                     VetApp nedir, ne işe yarar?
-                    <svg class="accordion__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <svg class="accordion__icon" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
                   </button>
-                  <div class="accordion__body">
-                    <p class="accordion__content">VetApp, veteriner klinikleri için geliştirilmiş kapsamlı bir klinik yönetim yazılımıdır. Hasta kaydı, randevu takibi, aşı karnesi, hızlı satış POS, kasa yönetimi, ilaç stok takibi ve cari hesap yönetimini tek platformda birleştirir.</p>
-                  </div>
+                  <div class="accordion__body"><p class="accordion__content">VetApp, veteriner klinikleri için geliştirilmiş kapsamlı bir klinik yönetim yazılımıdır. Hasta kaydı, randevu takibi, aşı karnesi, hızlı satış POS, kasa yönetimi, ilaç stok takibi ve cari hesap yönetimini tek platformda birleştirir.</p></div>
                 </div>
                 <div class="accordion__item">
                   <button class="accordion__trigger" aria-expanded="false">
                     Hangi cihazlarda kullanabilirim?
-                    <svg class="accordion__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <svg class="accordion__icon" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
                   </button>
-                  <div class="accordion__body">
-                    <p class="accordion__content">VetApp; web tarayıcısı üzerinden PC/Mac'te, iOS (App Store) ve Android (Google Play) üzerinden akıllı telefon ve tablette çalışır. Tüm cihazlar arasında veriler otomatik senkronize edilir.</p>
-                  </div>
+                  <div class="accordion__body"><p class="accordion__content">VetApp; web tarayıcısı üzerinden PC/Mac'te, iOS ve Android üzerinden akıllı telefon ve tablette çalışır. Tüm cihazlar arasında veriler otomatik senkronize edilir.</p></div>
                 </div>
                 <div class="accordion__item">
                   <button class="accordion__trigger" aria-expanded="false">
                     Çoklu klinik desteği var mı?
-                    <svg class="accordion__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <svg class="accordion__icon" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
                   </button>
-                  <div class="accordion__body">
-                    <p class="accordion__content">Evet. VetApp çoklu klinik (multi-tenant) mimarisiyle inşa edilmiştir. Birden fazla klinik şubenizi tek hesaptan yönetebilir, her şubenin verisini izole tutabilirsiniz.</p>
-                  </div>
+                  <div class="accordion__body"><p class="accordion__content">Evet. VetApp çoklu klinik mimarisiyle inşa edilmiştir. Birden fazla klinik şubenizi tek hesaptan yönetebilir, her şubenin verisini izole tutabilirsiniz.</p></div>
                 </div>
               </div>
             </div>
 
-            <div class="faq-category" id="kurulum">
-              <p class="faq-category__title">Kurulum &amp; Başlangıç</p>
+            <div class="faq-section" id="kurulum">
+              <p class="faq-section__title">Kurulum &amp; Başlangıç</p>
               <div class="accordion">
                 <div class="accordion__item">
                   <button class="accordion__trigger" aria-expanded="false">
                     Kurulum ne kadar sürer?
-                    <svg class="accordion__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <svg class="accordion__icon" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
                   </button>
-                  <div class="accordion__body">
-                    <p class="accordion__content">Ortalama 5 dakika. panel.vetapp.com.tr adresinden kayıt olun, klinik bilgilerinizi girin ve kullanmaya başlayın. Herhangi bir sunucu kurulumu veya teknik bilgi gerekmez.</p>
-                  </div>
-                </div>
-                <div class="accordion__item">
-                  <button class="accordion__trigger" aria-expanded="false">
-                    Ekibime nasıl eğitim vereceğim?
-                    <svg class="accordion__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                  </button>
-                  <div class="accordion__body">
-                    <p class="accordion__content">VetApp sezgisel arayüzü sayesinde özel bir eğitim gerektirmez. Çoğu kullanıcı ilk günden verimli şekilde çalışmaya başlar. Yardım ve destek için iletişim sayfamızdan bize ulaşabilirsiniz.</p>
-                  </div>
+                  <div class="accordion__body"><p class="accordion__content">Ortalama 5 dakika. panel.vetapp.com.tr adresinden kayıt olun, klinik bilgilerinizi girin ve kullanmaya başlayın. Herhangi bir sunucu kurulumu gerekmez.</p></div>
                 </div>
                 <div class="accordion__item">
                   <button class="accordion__trigger" aria-expanded="false">
                     Mevcut hasta verilerimi aktarabilir miyim?
-                    <svg class="accordion__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <svg class="accordion__icon" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
                   </button>
-                  <div class="accordion__body">
-                    <p class="accordion__content">Eski sisteminizdeki verileri aktarmak için destek ekibimizle iletişime geçin. Excel veya CSV formatındaki verilerinizi sisteme aktarmanıza yardımcı olabiliriz.</p>
-                  </div>
+                  <div class="accordion__body"><p class="accordion__content">Eski sisteminizdeki verileri aktarmak için destek ekibimizle iletişime geçin. Excel veya CSV formatındaki verilerinizi sisteme aktarmanıza yardımcı olabiliriz.</p></div>
                 </div>
               </div>
             </div>
 
-            <div class="faq-category" id="ozellikler">
-              <p class="faq-category__title">Özellikler</p>
+            <div class="faq-section" id="ozellikler">
+              <p class="faq-section__title">Özellikler</p>
               <div class="accordion">
                 <div class="accordion__item">
                   <button class="accordion__trigger" aria-expanded="false">
                     Aşı hatırlatma bildirimleri gönderilir mi?
-                    <svg class="accordion__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <svg class="accordion__icon" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
                   </button>
-                  <div class="accordion__body">
-                    <p class="accordion__content">Evet. Aşı takvimi yaklaşan hastalar için sistem içi ve mobil uygulama bildirimleri gönderilir. Hiçbir aşı takvimi atlanmaz.</p>
-                  </div>
+                  <div class="accordion__body"><p class="accordion__content">Evet. Aşı takvimi yaklaşan hastalar için sistem içi ve mobil uygulama bildirimleri gönderilir. Hiçbir aşı takvimi atlanmaz.</p></div>
                 </div>
                 <div class="accordion__item">
                   <button class="accordion__trigger" aria-expanded="false">
                     Stok SKT uyarısı nasıl çalışır?
-                    <svg class="accordion__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <svg class="accordion__icon" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
                   </button>
-                  <div class="accordion__body">
-                    <p class="accordion__content">İlaç ve ürün eklerken son kullanma tarihini girerseniz, SKT yaklaştığında sistem sizi otomatik olarak uyarır. Kritik stok eşiği belirlediğinizde de bildirim alırsınız.</p>
-                  </div>
-                </div>
-                <div class="accordion__item">
-                  <button class="accordion__trigger" aria-expanded="false">
-                    Cari hesap raporları alabilir miyim?
-                    <svg class="accordion__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                  </button>
-                  <div class="accordion__body">
-                    <p class="accordion__content">Evet. Müşteri bazlı ve tedarikçi bazlı cari raporları, gün sonu kasa raporları ve ödeme dağılım analizlerini istediğiniz zaman alabilirsiniz.</p>
-                  </div>
+                  <div class="accordion__body"><p class="accordion__content">İlaç eklerken son kullanma tarihini girerseniz, SKT yaklaştığında sistem otomatik olarak uyarır. Kritik stok eşiği belirlediğinizde de bildirim alırsınız.</p></div>
                 </div>
               </div>
             </div>
 
-            <div class="faq-category" id="teknik">
-              <p class="faq-category__title">Teknik &amp; Güvenlik</p>
+            <div class="faq-section" id="teknik">
+              <p class="faq-section__title">Teknik &amp; Güvenlik</p>
               <div class="accordion">
                 <div class="accordion__item">
                   <button class="accordion__trigger" aria-expanded="false">
                     Verilerim güvende mi?
-                    <svg class="accordion__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <svg class="accordion__icon" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
                   </button>
-                  <div class="accordion__body">
-                    <p class="accordion__content">VetApp, her klinike izole veri alanı sağlar. Verilerinize başka bir klinik erişemez. Tüm bağlantılar HTTPS ile şifrelenir, düzenli yedekleme yapılır.</p>
-                  </div>
+                  <div class="accordion__body"><p class="accordion__content">VetApp, her klinike izole veri alanı sağlar. Verilerinize başka bir klinik erişemez. Tüm bağlantılar HTTPS ile şifrelenir ve düzenli yedekleme yapılır.</p></div>
                 </div>
                 <div class="accordion__item">
                   <button class="accordion__trigger" aria-expanded="false">
                     İnternet olmadan çalışır mı?
-                    <svg class="accordion__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <svg class="accordion__icon" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
                   </button>
-                  <div class="accordion__body">
-                    <p class="accordion__content">VetApp bulut tabanlı bir sistemdir ve internet bağlantısı gerektirir. Ancak mobil uygulama bazı verileri önbelleğe alır ve kısa internet kesintilerinde sınırlı işlem yapmanıza imkân tanır.</p>
-                  </div>
+                  <div class="accordion__body"><p class="accordion__content">VetApp bulut tabanlıdır ve internet bağlantısı gerektirir. Mobil uygulama bazı verileri önbelleğe alır ve kısa internet kesintilerinde sınırlı işlem yapmanıza imkân tanır.</p></div>
                 </div>
               </div>
             </div>
 
-            <div class="faq-category" id="fiyat">
-              <p class="faq-category__title">Fiyatlandırma</p>
+            <div class="faq-section" id="fiyat">
+              <p class="faq-section__title">Fiyatlandırma</p>
               <div class="accordion">
                 <div class="accordion__item">
                   <button class="accordion__trigger" aria-expanded="false">
                     VetApp ücretli mi?
-                    <svg class="accordion__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <svg class="accordion__icon" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
                   </button>
-                  <div class="accordion__body">
-                    <p class="accordion__content">VetApp ücretsiz bir deneme sürümü sunar. Fiyatlandırma detayları ve abonelik planları için lütfen <a href="iletisim.html" style="color: var(--text-brand);">iletişime geçin</a>.</p>
-                  </div>
-                </div>
-                <div class="accordion__item">
-                  <button class="accordion__trigger" aria-expanded="false">
-                    Deneme sürümü ne kadar sürer?
-                    <svg class="accordion__icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                  </button>
-                  <div class="accordion__body">
-                    <p class="accordion__content">Deneme süresi ve koşulları için lütfen <a href="iletisim.html" style="color: var(--text-brand);">iletişime geçin</a>. Klinik ihtiyaçlarınıza göre size özel teklif sunabiliriz.</p>
-                  </div>
+                  <div class="accordion__body"><p class="accordion__content">VetApp ücretsiz bir deneme sürümü sunar. Fiyatlandırma detayları için lütfen <a href="iletisim.html" style="color:var(--brand);">iletişime geçin</a>.</p></div>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -233,14 +190,11 @@
 
     <section class="cta-section">
       <div class="container">
-        <div class="cta-section__inner" data-reveal>
-          <img src="assets/images/logos/vetapp-carbon-premium.png" alt="VetApp" class="cta-section__logo" width="160" height="40" loading="lazy" />
-          <h2 class="cta-section__title">Sorunuz mu var?<br><span class="text-grad">İletişime geçin</span></h2>
-          <p class="cta-section__desc">Ekibimiz size yardımcı olmaktan memnuniyet duyar.</p>
-          <div class="cta-section__actions">
-            <a href="iletisim.html" class="btn btn--primary btn--lg">İletişime Geç</a>
-            <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--ghost btn--lg">Ücretsiz Dene</a>
-          </div>
+        <h2 class="cta-section__title">Sorunuz mu var?</h2>
+        <p class="cta-section__desc">Ekibimiz yardımcı olmaktan memnuniyet duyar.</p>
+        <div style="display:flex;align-items:center;justify-content:center;gap:var(--sp-3);flex-wrap:wrap;">
+          <a href="iletisim.html" class="btn btn--white btn--lg">İletişime Geç</a>
+          <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--white-outline btn--lg">Ücretsiz Dene</a>
         </div>
       </div>
     </section>
@@ -249,41 +203,17 @@
   <footer class="footer">
     <div class="container">
       <div class="footer__grid">
-        <div class="footer__brand">
-          <img src="assets/images/logos/vetapp-dark-mono-light.png" alt="VetApp" class="footer__logo" width="130" height="32" loading="lazy" />
-          <p class="footer__tagline">Türkiye'nin veteriner klinikleri için tasarlanmış modern klinik yönetim yazılımı.</p>
-        </div>
-        <div>
-          <p class="footer__col-title">Ürün</p>
-          <ul class="footer__links">
-            <li><a href="ozellikler.html" class="footer__link">Özellikler</a></li>
-            <li><a href="screenshots.html" class="footer__link">Ekranlar</a></li>
-            <li><a href="sss.html" class="footer__link">SSS</a></li>
-            <li><a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="footer__link">Giriş Yap</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="footer__col-title">Şirket</p>
-          <ul class="footer__links"><li><a href="iletisim.html" class="footer__link">İletişim</a></li></ul>
-        </div>
-        <div>
-          <p class="footer__col-title">Yasal</p>
-          <ul class="footer__links">
-            <li><a href="gizlilik.html" class="footer__link">Gizlilik Politikası</a></li>
-            <li><a href="kullanim-sartlari.html" class="footer__link">Kullanım Şartları</a></li>
-          </ul>
-        </div>
+        <div><img src="assets/images/logos/vetapp-carbon-premium.png" alt="VetApp" class="footer__logo" width="120" height="30" loading="lazy" /><p class="footer__tagline">Türkiye'nin veteriner klinikleri için tasarlanmış modern klinik yönetim yazılımı.</p></div>
+        <div><p class="footer__col-title">Ürün</p><ul class="footer__links"><li><a href="ozellikler.html" class="footer__link">Özellikler</a></li><li><a href="screenshots.html" class="footer__link">Ekranlar</a></li><li><a href="sss.html" class="footer__link">SSS</a></li></ul></div>
+        <div><p class="footer__col-title">Şirket</p><ul class="footer__links"><li><a href="iletisim.html" class="footer__link">İletişim</a></li></ul></div>
+        <div><p class="footer__col-title">Yasal</p><ul class="footer__links"><li><a href="gizlilik.html" class="footer__link">Gizlilik</a></li><li><a href="kullanim-sartlari.html" class="footer__link">Kullanım Şartları</a></li></ul></div>
       </div>
       <div class="footer__bottom">
         <p class="footer__copy">&copy; 2025 VetApp. Tüm hakları saklıdır.</p>
-        <div class="footer__legal">
-          <a href="gizlilik.html" class="footer__legal-link">Gizlilik</a>
-          <a href="kullanim-sartlari.html" class="footer__legal-link">Kullanım Şartları</a>
-        </div>
+        <div class="footer__legal"><a href="gizlilik.html" class="footer__legal-link">Gizlilik</a><a href="kullanim-sartlari.html" class="footer__legal-link">Kullanım Şartları</a></div>
       </div>
     </div>
   </footer>
-
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>

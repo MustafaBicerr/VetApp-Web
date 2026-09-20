@@ -4,27 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
   <title>Ekran Görüntüleri – VetApp Veteriner Klinik Programı</title>
-  <meta name="description" content="VetApp veteriner klinik yönetim programının masaüstü ve mobil ekran görüntüleri. Dashboard, POS, stok, cari hesap ve daha fazlası." />
-  <meta name="robots" content="index, follow" />
+  <meta name="description" content="VetApp veteriner klinik yönetim programının masaüstü ve mobil ekran görüntüleri." />
   <link rel="canonical" href="https://vetapp.com.tr/screenshots.html" />
-  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/tokens.css" />
   <link rel="stylesheet" href="assets/css/base.css" />
   <link rel="stylesheet" href="assets/css/layout.css" />
   <link rel="stylesheet" href="assets/css/components.css" />
   <link rel="stylesheet" href="assets/css/animations.css" />
   <link rel="stylesheet" href="assets/css/pages.css" />
+  <style>
+    body { padding-top: var(--nav-h); }
+    .cta-section { background: var(--brand); padding-block: clamp(var(--sp-16),8vw,var(--sp-24)); text-align: center; }
+    .cta-section__title { font-size: clamp(var(--text-2xl),3.5vw,var(--text-4xl)); font-weight: 800; color: #fff; letter-spacing: -0.03em; margin-bottom: var(--sp-4); }
+    .cta-section__desc { font-size: var(--text-base); color: rgba(255,255,255,0.8); max-width: 440px; margin-inline: auto; margin-bottom: var(--sp-8); }
+    .btn--white { background:#fff; color:var(--brand); border-color:#fff; }
+    .btn--white:hover { background:var(--brand-light); }
+    .btn--white-outline { background:transparent; color:#fff; border-color:rgba(255,255,255,0.5); }
+    .btn--white-outline:hover { background:rgba(255,255,255,0.1); }
+  </style>
 </head>
-<body class="page-body">
+<body>
 
   <nav class="nav" id="main-nav">
     <div class="nav__inner">
-      <a href="/" class="nav__logo" aria-label="VetApp Ana Sayfa">
-        <img src="assets/images/logos/vetapp-carbon-premium.png" alt="VetApp" width="140" height="36" />
-      </a>
+      <a href="/" class="nav__logo" aria-label="VetApp"><img src="assets/images/logos/vetapp-carbon-premium.png" alt="VetApp" width="130" height="32" /></a>
       <div class="nav__links">
         <a href="/" class="nav__link">Ana Sayfa</a>
         <a href="ozellikler.html" class="nav__link">Özellikler</a>
@@ -33,10 +40,10 @@
         <a href="iletisim.html" class="nav__link">İletişim</a>
       </div>
       <div class="nav__actions">
-        <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">Paneli Gör</a>
+        <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">Giriş Yap</a>
         <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--primary btn--sm">Ücretsiz Dene</a>
       </div>
-      <button class="nav__burger" id="nav-burger" aria-label="Menüyü aç/kapat" aria-expanded="false" aria-controls="nav-drawer">
+      <button class="nav__burger" id="nav-burger" aria-label="Menü" aria-expanded="false">
         <span class="nav__burger-bar"></span><span class="nav__burger-bar"></span><span class="nav__burger-bar"></span>
       </button>
     </div>
@@ -44,139 +51,176 @@
   <div class="nav__drawer" id="nav-drawer" aria-hidden="true">
     <a href="/" class="nav__drawer-link">Ana Sayfa</a>
     <a href="ozellikler.html" class="nav__drawer-link">Özellikler</a>
-    <a href="screenshots.html" class="nav__drawer-link">Ekranlar</a>
+    <a href="screenshots.html" class="nav__drawer-link is-active">Ekranlar</a>
     <a href="sss.html" class="nav__drawer-link">SSS</a>
     <a href="iletisim.html" class="nav__drawer-link">İletişim</a>
     <div class="nav__drawer-actions">
-      <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--ghost btn--full">Paneli Gör</a>
+      <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--outline btn--full">Giriş Yap</a>
       <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--primary btn--full">Ücretsiz Dene</a>
     </div>
   </div>
 
   <main>
-    <!-- Hero -->
-    <div class="features-hero">
+    <div class="page-hero">
       <div class="container">
-        <p class="features-hero__eyebrow">Uygulamayı keşfet</p>
-        <h1 class="features-hero__title">
-          Her cihazda<br>
-          <span class="text-grad">kusursuz deneyim</span>
-        </h1>
-        <p class="features-hero__desc">Masaüstü ve mobil için ayrı ayrı optimize edilmiş, sezgisel arayüz tasarımı.</p>
+        <p class="page-hero__eyebrow">Uygulamayı keşfet</p>
+        <h1 class="page-hero__title">Her cihazda<br><span>kusursuz deneyim</span></h1>
+        <p class="page-hero__desc">Masaüstü ve mobil için ayrı ayrı optimize edilmiş, sezgisel arayüz tasarımı.</p>
       </div>
     </div>
 
     <!-- Desktop screenshots -->
-    <section class="section" aria-labelledby="desktop-title">
+    <section class="section" aria-labelledby="desktop-heading">
       <div class="container">
-        <div class="section-head" data-reveal>
-          <p class="section-head__label">Masaüstü</p>
-          <h2 class="section-head__title" id="desktop-title">Web uygulaması ekranları</h2>
-          <p class="section-head__desc">Geniş ekranlarda tüm verilerinize rahat erişin.</p>
+        <div class="section-header" data-reveal>
+          <p class="section-label">Masaüstü</p>
+          <h2 class="section-title" id="desktop-heading">Web uygulama ekranları</h2>
+          <p class="section-desc" style="max-width:460px;">Geniş ekranlarda tüm verilerinize kolayca erişin.</p>
         </div>
 
-        <div class="screenshots-grid" data-stagger>
-          <div class="screenshot-item">
-            <div class="browser-frame screenshot-item__frame">
-              <div class="browser-frame__bar"><span class="browser-frame__dot"></span><span class="browser-frame__dot"></span><span class="browser-frame__dot"></span><div class="browser-frame__url"></div></div>
-              <img src="assets/images/desktop/dashboard-genel-bakis.png" alt="VetApp dashboard genel bakış" loading="lazy" />
+        <div class="ss-page-grid" data-stagger>
+
+          <div class="ss-page-item">
+            <div class="ss-page-frame">
+              <div class="ss-page-chrome">
+                <span class="ss-page-dot"></span><span class="ss-page-dot"></span><span class="ss-page-dot"></span>
+                <div class="ss-page-url"></div>
+              </div>
+              <img src="assets/images/desktop/dashboard-genel-bakis.png" alt="Dashboard – Genel Bakış" loading="lazy" />
             </div>
-            <p class="screenshot-item__label">Dashboard — Genel Bakış</p>
+            <p class="ss-page-label">Dashboard — Genel Bakış</p>
+            <p class="ss-page-caption">Ciro, alacak, kasa özeti ve stok uyarısı tek ekranda</p>
           </div>
-          <div class="screenshot-item">
-            <div class="browser-frame screenshot-item__frame">
-              <div class="browser-frame__bar"><span class="browser-frame__dot"></span><span class="browser-frame__dot"></span><span class="browser-frame__dot"></span><div class="browser-frame__url"></div></div>
-              <img src="assets/images/desktop/dashboard-kasa-ozeti-grafik.png" alt="VetApp kasa özeti grafik" loading="lazy" />
+
+          <div class="ss-page-item">
+            <div class="ss-page-frame">
+              <div class="ss-page-chrome">
+                <span class="ss-page-dot"></span><span class="ss-page-dot"></span><span class="ss-page-dot"></span>
+                <div class="ss-page-url"></div>
+              </div>
+              <img src="assets/images/desktop/dashboard-kasa-ozeti-grafik.png" alt="Kasa Özeti ve Grafik" loading="lazy" />
             </div>
-            <p class="screenshot-item__label">Dashboard — Kasa &amp; Grafik</p>
+            <p class="ss-page-label">Dashboard — Kasa &amp; Grafik</p>
+            <p class="ss-page-caption">Saatlik satış grafiği ve ödeme dağılımı</p>
           </div>
-          <div class="screenshot-item">
-            <div class="browser-frame screenshot-item__frame">
-              <div class="browser-frame__bar"><span class="browser-frame__dot"></span><span class="browser-frame__dot"></span><span class="browser-frame__dot"></span><div class="browser-frame__url"></div></div>
-              <img src="assets/images/desktop/dashboard-islem-gezgini.png" alt="VetApp işlem gezgini" loading="lazy" />
+
+          <div class="ss-page-item">
+            <div class="ss-page-frame">
+              <div class="ss-page-chrome">
+                <span class="ss-page-dot"></span><span class="ss-page-dot"></span><span class="ss-page-dot"></span>
+                <div class="ss-page-url"></div>
+              </div>
+              <img src="assets/images/desktop/dashboard-islem-gezgini.png" alt="İşlem Gezgini" loading="lazy" />
             </div>
-            <p class="screenshot-item__label">Dashboard — İşlem Gezgini</p>
+            <p class="ss-page-label">Dashboard — İşlem Gezgini</p>
+            <p class="ss-page-caption">Tüm satış kayıtları, tarih ve müşteri filtrelemesi</p>
           </div>
-          <div class="screenshot-item">
-            <div class="browser-frame screenshot-item__frame">
-              <div class="browser-frame__bar"><span class="browser-frame__dot"></span><span class="browser-frame__dot"></span><span class="browser-frame__dot"></span><div class="browser-frame__url"></div></div>
-              <img src="assets/images/desktop/satis-hizli-satis-pos.png" alt="VetApp hızlı satış POS" loading="lazy" />
+
+          <div class="ss-page-item">
+            <div class="ss-page-frame">
+              <div class="ss-page-chrome">
+                <span class="ss-page-dot"></span><span class="ss-page-dot"></span><span class="ss-page-dot"></span>
+                <div class="ss-page-url"></div>
+              </div>
+              <img src="assets/images/desktop/satis-hizli-satis-pos.png" alt="Hızlı Satış POS" loading="lazy" />
             </div>
-            <p class="screenshot-item__label">Satış — Hızlı Satış POS</p>
+            <p class="ss-page-label">Satış — Hızlı Satış POS</p>
+            <p class="ss-page-caption">Dokunmatik ekrana optimize POS arayüzü</p>
           </div>
-          <div class="screenshot-item">
-            <div class="browser-frame screenshot-item__frame">
-              <div class="browser-frame__bar"><span class="browser-frame__dot"></span><span class="browser-frame__dot"></span><span class="browser-frame__dot"></span><div class="browser-frame__url"></div></div>
-              <img src="assets/images/desktop/satis-kasa-gider-yonetimi.png" alt="VetApp kasa ve gider yönetimi" loading="lazy" />
+
+          <div class="ss-page-item">
+            <div class="ss-page-frame">
+              <div class="ss-page-chrome">
+                <span class="ss-page-dot"></span><span class="ss-page-dot"></span><span class="ss-page-dot"></span>
+                <div class="ss-page-url"></div>
+              </div>
+              <img src="assets/images/desktop/satis-kasa-gider-yonetimi.png" alt="Kasa ve Gider" loading="lazy" />
             </div>
-            <p class="screenshot-item__label">Satış — Kasa &amp; Gider</p>
+            <p class="ss-page-label">Satış — Kasa &amp; Gider</p>
+            <p class="ss-page-caption">Gün sonu kapanış ve gider yönetimi</p>
           </div>
-          <div class="screenshot-item">
-            <div class="browser-frame screenshot-item__frame">
-              <div class="browser-frame__bar"><span class="browser-frame__dot"></span><span class="browser-frame__dot"></span><span class="browser-frame__dot"></span><div class="browser-frame__url"></div></div>
-              <img src="assets/images/desktop/cari-musteriler-listesi.png" alt="VetApp müşteri listesi" loading="lazy" />
+
+          <div class="ss-page-item">
+            <div class="ss-page-frame">
+              <div class="ss-page-chrome">
+                <span class="ss-page-dot"></span><span class="ss-page-dot"></span><span class="ss-page-dot"></span>
+                <div class="ss-page-url"></div>
+              </div>
+              <img src="assets/images/desktop/cari-musteriler-listesi.png" alt="Müşteri Listesi" loading="lazy" />
             </div>
-            <p class="screenshot-item__label">Cari — Müşteriler Listesi</p>
+            <p class="ss-page-label">Cari — Müşteriler</p>
+            <p class="ss-page-caption">Müşteri cari hesap ve alacak takibi</p>
           </div>
-          <div class="screenshot-item">
-            <div class="browser-frame screenshot-item__frame">
-              <div class="browser-frame__bar"><span class="browser-frame__dot"></span><span class="browser-frame__dot"></span><span class="browser-frame__dot"></span><div class="browser-frame__url"></div></div>
-              <img src="assets/images/desktop/cari-tedarikciler-listesi.png" alt="VetApp tedarikçi listesi" loading="lazy" />
+
+          <div class="ss-page-item">
+            <div class="ss-page-frame">
+              <div class="ss-page-chrome">
+                <span class="ss-page-dot"></span><span class="ss-page-dot"></span><span class="ss-page-dot"></span>
+                <div class="ss-page-url"></div>
+              </div>
+              <img src="assets/images/desktop/cari-tedarikciler-listesi.png" alt="Tedarikçi Listesi" loading="lazy" />
             </div>
-            <p class="screenshot-item__label">Cari — Tedarikçiler</p>
+            <p class="ss-page-label">Cari — Tedarikçiler</p>
+            <p class="ss-page-caption">Tedarikçi borçları ve vade takibi</p>
           </div>
-          <div class="screenshot-item">
-            <div class="browser-frame screenshot-item__frame">
-              <div class="browser-frame__bar"><span class="browser-frame__dot"></span><span class="browser-frame__dot"></span><span class="browser-frame__dot"></span><div class="browser-frame__url"></div></div>
-              <img src="assets/images/desktop/stok-alim-faturasi-kalemler.png" alt="VetApp stok alım faturası" loading="lazy" />
+
+          <div class="ss-page-item">
+            <div class="ss-page-frame">
+              <div class="ss-page-chrome">
+                <span class="ss-page-dot"></span><span class="ss-page-dot"></span><span class="ss-page-dot"></span>
+                <div class="ss-page-url"></div>
+              </div>
+              <img src="assets/images/desktop/stok-alim-faturasi-kalemler.png" alt="Stok Alım Faturası" loading="lazy" />
             </div>
-            <p class="screenshot-item__label">Stok — Alım Faturası</p>
+            <p class="ss-page-label">Stok — Alım Faturası</p>
+            <p class="ss-page-caption">Tedarikçi mal kabulü ve SKT takibi</p>
           </div>
+
         </div>
       </div>
     </section>
 
     <!-- Mobile screenshots -->
-    <section class="section" style="background: var(--bg-raised);" aria-labelledby="mobile-title">
+    <section class="section section--gray" aria-labelledby="mobile-heading">
       <div class="container">
-        <div class="section-head" data-reveal>
-          <p class="section-head__label">Mobil</p>
-          <h2 class="section-head__title" id="mobile-title">iOS &amp; Android uygulaması</h2>
-          <p class="section-head__desc">Kliniğinizi avucunuzda taşıyın. Tüm veriler senkronize.</p>
+        <div class="section-header--center" data-reveal>
+          <p class="section-label">Mobil</p>
+          <h2 class="section-title" id="mobile-heading">iOS &amp; Android uygulaması</h2>
+          <p class="section-desc">Kliniğinizi avucunuzda taşıyın. Web ile tam senkronize, anında kullanıma hazır.</p>
         </div>
 
-        <div class="mobile-screenshots" data-stagger>
-          <div class="mobile-screenshot-item">
-            <div class="phone-frame"><img src="assets/images/mobile/mobil-dashboard-genel-bakis.png" alt="VetApp mobil dashboard" loading="lazy" /></div>
-            <p class="screenshot-item__label" style="text-align:center; margin-top: var(--space-3);">Dashboard</p>
+        <div class="mobile-page-grid" data-stagger>
+          <div class="mobile-page-item">
+            <div class="mobile-page-frame"><img src="assets/images/mobile/mobil-dashboard-genel-bakis.png" alt="Mobil Dashboard" loading="lazy" /></div>
+            <p class="mobile-page-label">Dashboard</p>
           </div>
-          <div class="mobile-screenshot-item">
-            <div class="phone-frame"><img src="assets/images/mobile/mobil-satis-hizli-satis-odeme.png" alt="VetApp mobil hızlı satış" loading="lazy" /></div>
-            <p class="screenshot-item__label" style="text-align:center; margin-top: var(--space-3);">Hızlı Satış</p>
+          <div class="mobile-page-item">
+            <div class="mobile-page-frame"><img src="assets/images/mobile/mobil-satis-hizli-satis-odeme.png" alt="Hızlı Satış" loading="lazy" /></div>
+            <p class="mobile-page-label">Hızlı Satış</p>
           </div>
-          <div class="mobile-screenshot-item">
-            <div class="phone-frame"><img src="assets/images/mobile/mobil-cari-musteriler.png" alt="VetApp mobil müşteriler" loading="lazy" /></div>
-            <p class="screenshot-item__label" style="text-align:center; margin-top: var(--space-3);">Müşteriler</p>
+          <div class="mobile-page-item">
+            <div class="mobile-page-frame"><img src="assets/images/mobile/mobil-cari-musteriler.png" alt="Müşteriler" loading="lazy" /></div>
+            <p class="mobile-page-label">Müşteriler</p>
           </div>
-          <div class="mobile-screenshot-item">
-            <div class="phone-frame"><img src="assets/images/mobile/mobil-stok-alim-faturasi-evrak.png" alt="VetApp mobil stok" loading="lazy" /></div>
-            <p class="screenshot-item__label" style="text-align:center; margin-top: var(--space-3);">Stok Faturası</p>
+          <div class="mobile-page-item">
+            <div class="mobile-page-frame"><img src="assets/images/mobile/mobil-stok-alim-faturasi-evrak.png" alt="Stok Faturası" loading="lazy" /></div>
+            <p class="mobile-page-label">Stok Faturası</p>
           </div>
-          <div class="mobile-screenshot-item">
-            <div class="phone-frame"><img src="assets/images/mobile/mobil-dashboard-odeme-dagilimi.png" alt="VetApp mobil ödeme dağılımı" loading="lazy" /></div>
-            <p class="screenshot-item__label" style="text-align:center; margin-top: var(--space-3);">Ödeme Dağılımı</p>
+          <div class="mobile-page-item">
+            <div class="mobile-page-frame"><img src="assets/images/mobile/mobil-dashboard-odeme-dagilimi.png" alt="Ödeme Dağılımı" loading="lazy" /></div>
+            <p class="mobile-page-label">Ödeme Dağılımı</p>
           </div>
-          <div class="mobile-screenshot-item">
-            <div class="phone-frame"><img src="assets/images/mobile/mobil-cari-tedarikciler.png" alt="VetApp mobil tedarikçiler" loading="lazy" /></div>
-            <p class="screenshot-item__label" style="text-align:center; margin-top: var(--space-3);">Tedarikçiler</p>
+          <div class="mobile-page-item">
+            <div class="mobile-page-frame"><img src="assets/images/mobile/mobil-cari-tedarikciler.png" alt="Tedarikçiler" loading="lazy" /></div>
+            <p class="mobile-page-label">Tedarikçiler</p>
           </div>
-          <div class="mobile-screenshot-item">
-            <div class="phone-frame"><img src="assets/images/mobile/mobil-dashboard-islem-gezgini.png" alt="VetApp mobil işlem gezgini" loading="lazy" /></div>
-            <p class="screenshot-item__label" style="text-align:center; margin-top: var(--space-3);">İşlem Gezgini</p>
+          <div class="mobile-page-item">
+            <div class="mobile-page-frame"><img src="assets/images/mobile/mobil-dashboard-islem-gezgini.png" alt="İşlemler" loading="lazy" /></div>
+            <p class="mobile-page-label">İşlemler</p>
           </div>
-          <div class="mobile-screenshot-item">
-            <div class="phone-frame"><img src="assets/images/mobile/mobil-stok-alim-faturasi-odeme.png" alt="VetApp mobil stok ödeme" loading="lazy" /></div>
-            <p class="screenshot-item__label" style="text-align:center; margin-top: var(--space-3);">Stok Ödeme</p>
+          <div class="mobile-page-item">
+            <div class="mobile-page-frame"><img src="assets/images/mobile/mobil-stok-alim-faturasi-odeme.png" alt="Stok Ödeme" loading="lazy" /></div>
+            <p class="mobile-page-label">Stok Ödeme</p>
           </div>
         </div>
       </div>
@@ -185,16 +229,11 @@
     <!-- CTA -->
     <section class="cta-section">
       <div class="container">
-        <div class="cta-section__inner" data-reveal>
-          <img src="assets/images/logos/vetapp-carbon-premium.png" alt="VetApp" class="cta-section__logo" width="160" height="40" loading="lazy" />
-          <h2 class="cta-section__title">Beğendiniz mi?<br><span class="text-grad">Ücretsiz deneyin</span></h2>
-          <p class="cta-section__desc">5 dakikada kurulum, eğitim gerektirmez.</p>
-          <div class="cta-section__actions">
-            <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--primary btn--lg">
-              Ücretsiz Denemeyi Başlat
-              <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-          </div>
+        <h2 class="cta-section__title">Beğendiniz mi? Ücretsiz deneyin</h2>
+        <p class="cta-section__desc">5 dakikada kurulum, eğitim gerektirmez.</p>
+        <div style="display:flex;align-items:center;justify-content:center;gap:var(--sp-3);flex-wrap:wrap;">
+          <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--white btn--lg">Ücretsiz Denemeyi Başlat</a>
+          <a href="ozellikler.html" class="btn btn--white-outline btn--lg">Özellikleri Gör</a>
         </div>
       </div>
     </section>
@@ -203,41 +242,20 @@
   <footer class="footer">
     <div class="container">
       <div class="footer__grid">
-        <div class="footer__brand">
-          <img src="assets/images/logos/vetapp-dark-mono-light.png" alt="VetApp" class="footer__logo" width="130" height="32" loading="lazy" />
+        <div>
+          <img src="assets/images/logos/vetapp-carbon-premium.png" alt="VetApp" class="footer__logo" width="120" height="30" loading="lazy" />
           <p class="footer__tagline">Türkiye'nin veteriner klinikleri için tasarlanmış modern klinik yönetim yazılımı.</p>
         </div>
-        <div>
-          <p class="footer__col-title">Ürün</p>
-          <ul class="footer__links">
-            <li><a href="ozellikler.html" class="footer__link">Özellikler</a></li>
-            <li><a href="screenshots.html" class="footer__link">Ekranlar</a></li>
-            <li><a href="sss.html" class="footer__link">SSS</a></li>
-            <li><a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="footer__link">Giriş Yap</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="footer__col-title">Şirket</p>
-          <ul class="footer__links"><li><a href="iletisim.html" class="footer__link">İletişim</a></li></ul>
-        </div>
-        <div>
-          <p class="footer__col-title">Yasal</p>
-          <ul class="footer__links">
-            <li><a href="gizlilik.html" class="footer__link">Gizlilik Politikası</a></li>
-            <li><a href="kullanim-sartlari.html" class="footer__link">Kullanım Şartları</a></li>
-          </ul>
-        </div>
+        <div><p class="footer__col-title">Ürün</p><ul class="footer__links"><li><a href="ozellikler.html" class="footer__link">Özellikler</a></li><li><a href="screenshots.html" class="footer__link">Ekranlar</a></li><li><a href="sss.html" class="footer__link">SSS</a></li></ul></div>
+        <div><p class="footer__col-title">Şirket</p><ul class="footer__links"><li><a href="iletisim.html" class="footer__link">İletişim</a></li></ul></div>
+        <div><p class="footer__col-title">Yasal</p><ul class="footer__links"><li><a href="gizlilik.html" class="footer__link">Gizlilik</a></li><li><a href="kullanim-sartlari.html" class="footer__link">Kullanım Şartları</a></li></ul></div>
       </div>
       <div class="footer__bottom">
         <p class="footer__copy">&copy; 2025 VetApp. Tüm hakları saklıdır.</p>
-        <div class="footer__legal">
-          <a href="gizlilik.html" class="footer__legal-link">Gizlilik</a>
-          <a href="kullanim-sartlari.html" class="footer__legal-link">Kullanım Şartları</a>
-        </div>
+        <div class="footer__legal"><a href="gizlilik.html" class="footer__legal-link">Gizlilik</a><a href="kullanim-sartlari.html" class="footer__legal-link">Kullanım Şartları</a></div>
       </div>
     </div>
   </footer>
-
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>
