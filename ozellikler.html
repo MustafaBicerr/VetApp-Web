@@ -1,217 +1,159 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-  <title>Özellikler – VetApp Veteriner Klinik Yönetim Programı</title>
-  <meta name="description" content="VetApp'in tüm özellikleri: hasta kartı, randevu takvimi, aşı karnesi, hızlı satış POS, kasa yönetimi, ilaç stok takibi, cari hesap ve daha fazlası." />
-  <link rel="canonical" href="https://vetapp.com.tr/ozellikler.html" />
-  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/tokens.css" />
-  <link rel="stylesheet" href="assets/css/base.css" />
-  <link rel="stylesheet" href="assets/css/layout.css" />
-  <link rel="stylesheet" href="assets/css/components.css" />
-  <link rel="stylesheet" href="assets/css/animations.css" />
-  <link rel="stylesheet" href="assets/css/pages.css" />
-  <style>
-    body { padding-top: var(--nav-h); }
-    .cta-section { background: var(--brand); padding-block: clamp(var(--sp-16),8vw,var(--sp-24)); text-align: center; }
-    .cta-section__title { font-size: clamp(var(--text-2xl),3.5vw,var(--text-4xl)); font-weight: 800; color: #fff; letter-spacing: -0.03em; margin-bottom: var(--sp-4); }
-    .cta-section__desc { font-size: var(--text-base); color: rgba(255,255,255,0.8); max-width: 440px; margin-inline: auto; margin-bottom: var(--sp-8); }
-    .btn--white { background:#fff; color:var(--brand); border-color:#fff; }
-    .btn--white:hover { background:var(--brand-light); }
-    .btn--white-outline { background:transparent; color:#fff; border-color:rgba(255,255,255,0.5); }
-    .btn--white-outline:hover { background:rgba(255,255,255,0.1); border-color:#fff; }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Özellikler – VetApp Veteriner Klinik Yazılımı</title>
+  <meta name="description" content="VetApp özellikleri: hasta ve randevu, SOAP muayene, aşı takibi, hızlı satış, kasa, parti/SKT stok takibi, alım faturası, cari hesap ve dashboard.">
+  <link rel="canonical" href="https://www.vetapp.com.tr/ozellikler">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="theme-color" content="#0A70C8">
+  <link rel="alternate" hreflang="tr" href="https://www.vetapp.com.tr/ozellikler">
+  <link rel="alternate" hreflang="x-default" href="https://www.vetapp.com.tr/ozellikler">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="VetApp">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:title" content="Özellikler – VetApp Veteriner Klinik Yazılımı">
+  <meta property="og:description" content="VetApp özellikleri: hasta ve randevu, SOAP muayene, aşı takibi, hızlı satış, kasa, parti/SKT stok takibi, alım faturası, cari hesap ve dashboard.">
+  <meta property="og:url" content="https://www.vetapp.com.tr/ozellikler">
+  <meta property="og:image" content="https://www.vetapp.com.tr/assets/img/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="VetApp — veteriner klinik yönetim yazılımı">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/img/favicon-64.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" href="/assets/fonts/Geist-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/InstrumentSerif-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="stylesheet" href="/assets/css/site.css?v=0f1fb5ae68b8af22">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"VetApp","item":"https://www.vetapp.com.tr/"},{"@type":"ListItem","position":2,"name":"Özellikler","item":"https://www.vetapp.com.tr/ozellikler"}]}</script>
 </head>
 <body>
-
-  <nav class="nav" id="main-nav">
-    <div class="nav__inner">
-      <a href="/" class="nav__logo" aria-label="VetApp"><img src="assets/images/logos/vetapp-carbon-premium.png" alt="VetApp" width="130" height="32" /></a>
-      <div class="nav__links">
-        <a href="/" class="nav__link">Ana Sayfa</a>
-        <a href="ozellikler.html" class="nav__link is-active">Özellikler</a>
-        <a href="screenshots.html" class="nav__link">Ekranlar</a>
-        <a href="sss.html" class="nav__link">SSS</a>
-        <a href="iletisim.html" class="nav__link">İletişim</a>
+  <a class="skip" href="#main">İçeriğe geç</a>
+  <header class="site-header" id="top">
+    <div class="container">
+      <a class="brand" href="/" aria-label="VetApp ana sayfa"><img src="/assets/img/logo.png" width="119" height="30" alt="VetApp"></a>
+      <nav class="nav" aria-label="Ana menü"><a href="/ozellikler" aria-current="page">Özellikler</a><a href="/depolar">İlaç depoları için</a><a href="/sss">SSS</a><a href="/iletisim">İletişim</a></nav>
+      <div class="header-cta">
+        <a class="login" href="https://panel.vetapp.com.tr/#/login">Giriş yap</a>
+        <a class="btn btn--primary btn--sm" href="https://panel.vetapp.com.tr/#/register">30 gün ücretsiz başla</a>
       </div>
-      <div class="nav__actions">
-        <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--ghost btn--sm">Giriş Yap</a>
-        <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--primary btn--sm">Ücretsiz Dene</a>
-      </div>
-      <button class="nav__burger" id="nav-burger" aria-label="Menü" aria-expanded="false">
-        <span class="nav__burger-bar"></span><span class="nav__burger-bar"></span><span class="nav__burger-bar"></span>
-      </button>
+      <button class="menu-btn" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobile-menu"><span></span></button>
     </div>
-  </nav>
-  <div class="nav__drawer" id="nav-drawer" aria-hidden="true">
-    <a href="/" class="nav__drawer-link">Ana Sayfa</a>
-    <a href="ozellikler.html" class="nav__drawer-link is-active">Özellikler</a>
-    <a href="screenshots.html" class="nav__drawer-link">Ekranlar</a>
-    <a href="sss.html" class="nav__drawer-link">SSS</a>
-    <a href="iletisim.html" class="nav__drawer-link">İletişim</a>
-    <div class="nav__drawer-actions">
-      <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--outline btn--full">Giriş Yap</a>
-      <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--primary btn--full">Ücretsiz Dene</a>
-    </div>
+  </header>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/ozellikler">Özellikler</a><a href="/depolar">İlaç depoları için</a><a href="/sss">SSS</a><a href="/iletisim">İletişim</a>
+    <a class="btn btn--primary" href="https://panel.vetapp.com.tr/#/register">30 gün ücretsiz başla</a>
+    <a class="btn btn--ghost" style="color:var(--ink)" href="https://panel.vetapp.com.tr/#/demo">Canlı demoyu aç</a>
   </div>
+  <main id="main">
 
-  <main>
-    <!-- Page Hero -->
-    <div class="page-hero">
+    <section class="page-hero">
       <div class="container">
-        <p class="page-hero__eyebrow">Tüm özellikler</p>
-        <h1 class="page-hero__title">Kliniğinizin ihtiyacı olan<br><span>her şey bir arada</span></h1>
-        <p class="page-hero__desc">Dashboard'dan stok takibine, hızlı satıştan cari hesaba — VetApp kliniğinizi uçtan uca yönetir.</p>
+        <p class="crumbs"><a href="/">VetApp</a> / Özellikler</p>
+        <h1>Bir kliniğin ihtiyaç duyduğu <em>her adım,</em> tek yazılımda.</h1>
+        <p class="lede">VetApp’in kapsadığı modüller ve her birinde neler yapabileceğiniz.</p>
       </div>
+    </section>
+    <div class="container">
+      <section class="module reveal" id="klinik">
+        <div class="head">
+          <div class="text">
+            <span class="kicker">Klinik</span>
+            <h2>Hasta kayıtları, <em>randevu ve aşı.</em></h2>
+            <p class="lede">Klinik iş akışının omurgası: hasta, randevu, muayene ve aşı bir arada.</p>
+          </div>
+          <div class="frame"><div class="bar"><i></i><i></i><i></i><span class="url">panel.vetapp.com.tr/#/clinic/patients</span></div><img src="/assets/img/hastalar-1800.webp" srcset="/assets/img/hastalar-900.webp 900w, /assets/img/hastalar-1800.webp 1800w" sizes="(min-width: 1024px) 700px, 100vw" width="1800" height="1125" alt="VetApp hasta listesi" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="cap-grid"><div class="cap"><h3>Hasta (hayvan) kartı</h3><p>Tür ve ırk kataloğu, sahibi, doğum tarihi, cinsiyet, kısırlaştırma, renk, çip no ve kilo.</p></div><div class="cap"><h3>Randevu takvimi</h3><p>Gün bazlı liste; personel, oda ve süre; planlandı / geldi / tamamlandı / gelmedi / iptal durumları.</p></div><div class="cap"><h3>SOAP muayene</h3><p>Şikâyet, anamnez, klinik bulgular, tanı ve tedavi planı; kilo, ateş, nabız ve solunum.</p></div><div class="cap"><h3>Aşı takibi</h3><p>Tür bazlı aşı protokolleri; uygulama ve bir sonraki tarih; vadesi yaklaşan ve geciken aşı gündemi.</p></div><div class="cap"><h3>Hasta zaman çizelgesi</h3><p>Muayeneler, randevular ve aşılar tek kronolojik akışta.</p></div><div class="cap"><h3>Muayeneden satışa</h3><p>Yapılan işlem tek tıkla satış ekranına taşınır; satış hasta ve muayeneyle ilişkilendirilir.</p></div></div>
+      </section>
+      <section class="module reveal" id="satis">
+        <div class="head">
+          <div class="text">
+            <span class="kicker">Satış ve kasa</span>
+            <h2>Hızlı satış ve <em>net kasa.</em></h2>
+            <p class="lede">Sıra bekleyen müşteriye saniyeler içinde satış; gün sonunda kasayla birebir uyum.</p>
+          </div>
+          <div class="frame"><div class="bar"><i></i><i></i><i></i><span class="url">panel.vetapp.com.tr/#/sales/cash</span></div><img src="/assets/img/kasa-1800.webp" srcset="/assets/img/kasa-900.webp 900w, /assets/img/kasa-1800.webp 1800w" sizes="(min-width: 1024px) 700px, 100vw" width="1800" height="1125" alt="VetApp kasa ve gider yönetimi" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="cap-grid"><div class="cap"><h3>Hızlı satış ekranı</h3><p>Ürün arama, barkod okutma, müşteri seçimi ve ödeme tek ekranda.</p></div><div class="cap"><h3>Ödeme yöntemleri</h3><p>Nakit, kart, karma ve veresiye; aynı sepette satır bazında peşin/veresiye.</p></div><div class="cap"><h3>Kasa hareketleri</h3><p>Satış tahsilatları, veresiye tahsilatları ve masraflar tarih ve yönteme göre listelenir.</p></div><div class="cap"><h3>Masraf girişi</h3><p>Günlük giderleri kategoriyle kaydedin; net kasa otomatik hesaplanır.</p></div><div class="cap"><h3>Gün sonu</h3><p>Nakit ve kart toplamları, günlük gider ve net kasa tek özet kartında.</p></div><div class="cap"><h3>Satış geçmişi</h3><p>Fiş detayları, indirimli ve veresiye satış filtreleri.</p></div></div>
+      </section>
+      <section class="module reveal" id="stok">
+        <div class="head">
+          <div class="text">
+            <span class="kicker">Stok</span>
+            <h2>İlaç ve ürün stoğu, <em>SKT’ye kadar.</em></h2>
+            <p class="lede">Referans ilaç kataloğu ve barkodla hızlı kayıt; parti ve son kullanma tarihiyle güvenli takip.</p>
+          </div>
+          <div class="frame"><div class="bar"><i></i><i></i><i></i><span class="url">panel.vetapp.com.tr/#/stock/entry</span></div><img src="/assets/img/stok-giris-1800.webp" srcset="/assets/img/stok-giris-900.webp 900w, /assets/img/stok-giris-1800.webp 1800w" sizes="(min-width: 1024px) 700px, 100vw" width="1800" height="1125" alt="VetApp alım faturası ve stok girişi ekranı" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="cap-grid"><div class="cap"><h3>İlaç referans kataloğu</h3><p>1.694 ilaçlık kataloğu arayın; kendi ürün kartınızı tek tıkla oluşturun.</p></div><div class="cap"><h3>Barkod</h3><p>Kamerayla veya barkod okuyucuyla ürün bulun, barkodsuz ürüne barkod tanımlayın.</p></div><div class="cap"><h3>Parti ve SKT</h3><p>Her giriş parti ve son kullanma tarihiyle tutulur; satışta SKT’si yakın olan parti öne alınır.</p></div><div class="cap"><h3>Uyarılar</h3><p>Kritik stok eşiği ve SKT yaklaşan ürünler panelde görünür.</p></div><div class="cap"><h3>Alım faturası (mal kabul)</h3><p>Çoklu iskonto, KDV, vade, mal fazlası; stok ve tedarikçi borcu otomatik güncellenir.</p></div><div class="cap"><h3>İlk stok girişi</h3><p>Açılış stoğunu bir seferde kaydedin; devreden bakiyeyle başlayın.</p></div></div>
+      </section>
+      <section class="module reveal" id="cari">
+        <div class="head">
+          <div class="text">
+            <span class="kicker">Cari hesap</span>
+            <h2>Müşteri ve tedarikçi <em>hesapları.</em></h2>
+            <p class="lede">Kime borçlusunuz, kimden alacağınız var — vade vade, fatura fatura.</p>
+          </div>
+          <div class="frame"><div class="bar"><i></i><i></i><i></i><span class="url">panel.vetapp.com.tr/#/accounts/suppliers</span></div><img src="/assets/img/tedarikciler-1800.webp" srcset="/assets/img/tedarikciler-900.webp 900w, /assets/img/tedarikciler-1800.webp 1800w" sizes="(min-width: 1024px) 700px, 100vw" width="1800" height="1125" alt="VetApp tedarikçi cari listesi" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="cap-grid"><div class="cap"><h3>Müşteri cari</h3><p>Borç/alacak geçmişi, açık satışlar ve tahsilat kayıtları.</p></div><div class="cap"><h3>Tedarikçi cari</h3><p>Alım faturaları, vadeler ve ödemeler; fatura bazlı veya tutar bazlı kısmi ödeme.</p></div><div class="cap"><h3>Resmî depo listesi</h3><p>300’den fazla veteriner ilaç deposu listesinden tedarikçi seçerek hızlı kayıt.</p></div><div class="cap"><h3>Devreden bakiye</h3><p>Müşteri ve tedarikçi açılış bakiyelerini ayrı etiketle kaydedin.</p></div><div class="cap"><h3>Enflasyon korumalı veresiye</h3><p>Fiyat güncellemesi, açık veresiye kalemlere fark olarak yansıtılabilir.</p></div><div class="cap"><h3>Veresiye güvenliği</h3><p>Veresiye satışta müşteri kimlik doğrulaması ve borçlu müşteri uyarısı.</p></div></div>
+      </section>
+      <section class="module reveal" id="panel">
+        <div class="head">
+          <div class="text">
+            <span class="kicker">Panel ve raporlar</span>
+            <h2>Güne <em>özet kartlarıyla</em> başlayın.</h2>
+            <p class="lede">Kasa, alacak, borç, stok ve randevu — işletmenin nabzı tek ekranda.</p>
+          </div>
+          <div class="frame"><div class="bar"><i></i><i></i><i></i><span class="url">panel.vetapp.com.tr</span></div><img src="/assets/img/dashboard-1800.webp" srcset="/assets/img/dashboard-900.webp 900w, /assets/img/dashboard-1800.webp 1800w" sizes="(min-width: 1024px) 700px, 100vw" width="1800" height="1125" alt="VetApp genel bakış paneli" loading="lazy" decoding="async"></div>
+        </div>
+        <div class="cap-grid"><div class="cap"><h3>Günlük özet</h3><p>Günlük kasa, genel alacak, tedarikçi borçları, bugünkü randevular ve kritik stok.</p></div><div class="cap"><h3>Saatlik satış grafiği</h3><p>Satış hacmi, peşin kasa ve tahsilat; yoğun saatlerinizi görün.</p></div><div class="cap"><h3>Ödeme akışı</h3><p>Nakit ve kart payı, saat bazında dağılım.</p></div><div class="cap"><h3>Haftalık performans</h3><p>Son 7 günün satış, kasa ve tahsilat karşılaştırması.</p></div><div class="cap"><h3>Kasa özeti</h3><p>Bu ay ve tüm zamanlar için net nakit ve net kart.</p></div><div class="cap"><h3>Detaya inme</h3><p>Kartlara tıklayarak işlem ve fatura detaylarına geçin.</p></div></div>
+      </section>
     </div>
 
-    <!-- 01 Dashboard -->
-    <div class="feat-module" id="dashboard">
-      <div class="container">
-        <div class="feat-module__layout" data-reveal>
-          <div class="feat-module__copy">
-            <p class="feat-module__tag">01 — Dashboard</p>
-            <h2 class="feat-module__title">Kliniğinizin nabzını anlık görün</h2>
-            <p class="feat-module__desc">Gün başladığı anda günlük cironuzu, alacaklarınızı, borçlarınızı ve kritik stok uyarılarınızı tek ekranda görün.</p>
-            <div class="check-list">
-              <div class="check-item"><div class="check-item__icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Günlük kasa özeti — nakit, kart ve toplam ciro anlık güncellenir</span></div>
-              <div class="check-item"><div class="check-item__icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>İşlem gezgini — tüm satışları anlık filtreleyin ve arayın</span></div>
-              <div class="check-item"><div class="check-item__icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Saatlik satış grafiği ve ödeme dağılımı (pie chart)</span></div>
-              <div class="check-item"><div class="check-item__icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Alacak &amp; borç özeti, kritik stok uyarısı</span></div>
-            </div>
-          </div>
-          <div class="feat-module__screenshot">
-            <div class="ss-page-chrome">
-              <span class="ss-page-dot"></span><span class="ss-page-dot"></span><span class="ss-page-dot"></span>
-              <div class="ss-page-url"></div>
-            </div>
-            <img src="assets/images/desktop/dashboard-genel-bakis.png" alt="Dashboard genel bakış" loading="lazy" />
-          </div>
-        </div>
-        <div class="sub-feat-grid" data-stagger>
-          <div class="sub-feat"><p class="sub-feat__title">Günlük Kasa Özeti</p><p class="sub-feat__desc">Nakit, kart ve toplam ciro anlık güncellenir.</p></div>
-          <div class="sub-feat"><p class="sub-feat__title">İşlem Gezgini</p><p class="sub-feat__desc">Tüm satışları tarih, müşteri veya ürüne göre filtreleyin.</p></div>
-          <div class="sub-feat"><p class="sub-feat__title">Saatlik Satış Grafiği</p><p class="sub-feat__desc">Zirve saatlerinizi keşfedin, haftalık trendi görün.</p></div>
-          <div class="sub-feat"><p class="sub-feat__title">Ödeme Dağılımı</p><p class="sub-feat__desc">Nakit / kart / havale oranlarını pie chart ile analiz edin.</p></div>
-          <div class="sub-feat"><p class="sub-feat__title">Alacak &amp; Borç</p><p class="sub-feat__desc">Borçlu müşteri sayısı ve toplam alacak miktarı her zaman görünür.</p></div>
-          <div class="sub-feat"><p class="sub-feat__title">Kritik Stok Uyarısı</p><p class="sub-feat__desc">Azalan veya SKT yaklaşan ilaçlar dashboard'da otomatik işaretlenir.</p></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 02 Satış & Kasa -->
-    <div class="feat-module feat-module--alt" id="satis">
-      <div class="container">
-        <div class="feat-module__layout feat-module__layout--reverse" data-reveal>
-          <div class="feat-module__screenshot">
-            <div class="ss-page-chrome">
-              <span class="ss-page-dot"></span><span class="ss-page-dot"></span><span class="ss-page-dot"></span>
-              <div class="ss-page-url"></div>
-            </div>
-            <img src="assets/images/desktop/satis-hizli-satis-pos.png" alt="Hızlı satış POS" loading="lazy" />
-          </div>
-          <div class="feat-module__copy">
-            <p class="feat-module__tag">02 — Satış &amp; Kasa</p>
-            <h2 class="feat-module__title">Saniyeler içinde satış, anında rapor</h2>
-            <p class="feat-module__desc">Dokunmatik ekrana optimize POS arayüzü ve anlık kasa raporları ile hiç vakit kaybetmeyin.</p>
-            <div class="check-list">
-              <div class="check-item"><div class="check-item__icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Hızlı Satış POS — ürün arama, müşteri, tahsilat tek akışta</span></div>
-              <div class="check-item"><div class="check-item__icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Gün sonu kasa, gider kaydı ve mutabakat</span></div>
-              <div class="check-item"><div class="check-item__icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Nakit, kart, havale ve cari hesap ödemeleri</span></div>
-              <div class="check-item"><div class="check-item__icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Kasa analitikleri — saatlik ve günlük trend raporları</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 03 Stok -->
-    <div class="feat-module" id="stok">
-      <div class="container">
-        <div class="feat-module__layout" data-reveal>
-          <div class="feat-module__copy">
-            <p class="feat-module__tag">03 — Stok &amp; Tedarik</p>
-            <h2 class="feat-module__title">İlaç stoğu ve tedarikçi yönetimi</h2>
-            <p class="feat-module__desc">SKT uyarıları, kritik stok bildirimleri ve tedarikçi borç takibi — hiçbir ürün tükenmez, hiçbir fatura unutulmaz.</p>
-            <div class="check-list">
-              <div class="check-item"><div class="check-item__icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>SKT Uyarıları — son kullanma tarihi yaklaşan ürünler otomatik işaretlenir</span></div>
-              <div class="check-item"><div class="check-item__icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Mal Kabul Faturası — stok otomatik güncellenir</span></div>
-              <div class="check-item"><div class="check-item__icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Kritik stok eşiği — tükenmeden önce bildirim</span></div>
-              <div class="check-item"><div class="check-item__icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Tedarikçi borç ve vade takibi</span></div>
-            </div>
-          </div>
-          <div class="feat-module__screenshot">
-            <div class="ss-page-chrome">
-              <span class="ss-page-dot"></span><span class="ss-page-dot"></span><span class="ss-page-dot"></span>
-              <div class="ss-page-url"></div>
-            </div>
-            <img src="assets/images/desktop/stok-alim-faturasi-kalemler.png" alt="Stok alım faturası" loading="lazy" />
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 04 Cari -->
-    <div class="feat-module feat-module--alt" id="cari">
-      <div class="container">
-        <div class="feat-module__layout feat-module__layout--reverse" data-reveal>
-          <div class="feat-module__screenshot">
-            <div class="ss-page-chrome">
-              <span class="ss-page-dot"></span><span class="ss-page-dot"></span><span class="ss-page-dot"></span>
-              <div class="ss-page-url"></div>
-            </div>
-            <img src="assets/images/desktop/cari-musteriler-listesi.png" alt="Müşteri cari listesi" loading="lazy" />
-          </div>
-          <div class="feat-module__copy">
-            <p class="feat-module__tag">04 — Cari Hesap</p>
-            <h2 class="feat-module__title">Müşteri alacakları ve enflasyon takibi</h2>
-            <p class="feat-module__desc">Türkiye'nin ekonomik koşullarına göre optimize edilmiş cari hesap yönetimi. Borçlu müşterileri anında tespit edin.</p>
-            <div class="check-list">
-              <div class="check-item"><div class="check-item__icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Müşteri cari hesap — borç/alacak geçmişi ve bakiye</span></div>
-              <div class="check-item"><div class="check-item__icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Tedarikçi cari — vade ve ödeme takibi</span></div>
-              <div class="check-item"><div class="check-item__icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Kısmi ödeme ve taksitli tahsilat desteği</span></div>
-              <div class="check-item"><div class="check-item__icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Türkiye enflasyon ortamı için optimize fiyat takibi</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CTA -->
-    <section class="cta-section">
-      <div class="container">
-        <h2 class="cta-section__title">Tüm özellikleri ücretsiz deneyin</h2>
-        <p class="cta-section__desc">5 dakikada kurulum, eğitim gerektirmez, kredi kartı istenmez.</p>
-        <div style="display:flex;align-items:center;justify-content:center;gap:var(--sp-3);flex-wrap:wrap;">
-          <a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="btn btn--white btn--lg">Ücretsiz Denemeyi Başlat</a>
-          <a href="iletisim.html" class="btn btn--white-outline btn--lg">İletişime Geç</a>
+    <section class="cta">
+      <div class="container reveal">
+        <h2>Kliniğinizi 30 gün <em>ücretsiz</em> deneyin.</h2>
+        <p>Kayıt olun, stok ve cari kayıtlarınızı ekleyin, ilk satışınızı yapın. Kredi kartı gerekmez.</p>
+        <div class="actions">
+          <a class="btn btn--light" href="https://panel.vetapp.com.tr/#/register">Ücretsiz başlayın <span class="arr" aria-hidden="true">→</span></a>
+          <a class="btn btn--outline-light" href="https://panel.vetapp.com.tr/#/demo">Canlı demoyu açın</a>
         </div>
       </div>
     </section>
   </main>
-
-  <footer class="footer">
+  <footer class="site-footer">
     <div class="container">
-      <div class="footer__grid">
+      <div class="foot-grid">
         <div>
-          <img src="assets/images/logos/vetapp-carbon-premium.png" alt="VetApp" class="footer__logo" width="120" height="30" loading="lazy" />
-          <p class="footer__tagline">Türkiye'nin veteriner klinikleri için tasarlanmış modern klinik yönetim yazılımı.</p>
+          <img src="/assets/img/logo_white.png" width="119" height="30" alt="VetApp" loading="lazy">
+          <p>Veteriner klinikleri için hasta, randevu, stok, kasa ve cari hesap yönetimi. Web, Android ve iOS.</p>
         </div>
-        <div><p class="footer__col-title">Ürün</p><ul class="footer__links"><li><a href="ozellikler.html" class="footer__link">Özellikler</a></li><li><a href="screenshots.html" class="footer__link">Ekranlar</a></li><li><a href="sss.html" class="footer__link">SSS</a></li><li><a href="https://panel.vetapp.com.tr" target="_blank" rel="noopener" class="footer__link">Giriş Yap</a></li></ul></div>
-        <div><p class="footer__col-title">Şirket</p><ul class="footer__links"><li><a href="iletisim.html" class="footer__link">İletişim</a></li></ul></div>
-        <div><p class="footer__col-title">Yasal</p><ul class="footer__links"><li><a href="gizlilik.html" class="footer__link">Gizlilik</a></li><li><a href="kullanim-sartlari.html" class="footer__link">Kullanım Şartları</a></li></ul></div>
+        <div><h4>Ürün</h4><ul>
+          <li><a href="/ozellikler">Özellikler</a></li>
+          <li><a href="https://panel.vetapp.com.tr/#/demo">Canlı demo</a></li>
+          <li><a href="https://panel.vetapp.com.tr/#/login">Giriş yap</a></li>
+          <li><a href="https://panel.vetapp.com.tr/#/register">Ücretsiz başla</a></li>
+        </ul></div>
+        <div><h4>Şirket</h4><ul>
+          <li><a href="/depolar">İlaç depoları için</a></li>
+          <li><a href="/sss">Sık sorulan sorular</a></li>
+          <li><a href="/iletisim">İletişim</a></li>
+        </ul></div>
+        <div><h4>Yasal</h4><ul>
+          <li><a href="/gizlilik">Gizlilik politikası</a></li>
+          <li><a href="/kullanim-sartlari">Kullanım şartları</a></li>
+          <li><a href="mailto:destek@vetapp.com.tr">destek@vetapp.com.tr</a></li>
+        </ul></div>
       </div>
-      <div class="footer__bottom">
-        <p class="footer__copy">&copy; 2025 VetApp. Tüm hakları saklıdır.</p>
-        <div class="footer__legal"><a href="gizlilik.html" class="footer__legal-link">Gizlilik</a><a href="kullanim-sartlari.html" class="footer__legal-link">Kullanım Şartları</a></div>
-      </div>
+      <div class="foot-base"><span>© 2026 VetApp. Tüm hakları saklıdır.</span><span>info@vetapp.com.tr</span></div>
     </div>
   </footer>
-  <script src="assets/js/main.js" defer></script>
+  <script src="/assets/js/site.js?v=0f1fb5ae68b8af22" defer></script>
 </body>
 </html>
