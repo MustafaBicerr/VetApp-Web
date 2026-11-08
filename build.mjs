@@ -24,7 +24,7 @@ const urls = pages
 fs.writeFileSync(path.join(root, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
 fs.writeFileSync(path.join(root, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
 fs.writeFileSync(path.join(root, 'site.webmanifest'), JSON.stringify({
-  name: 'VetApp', short_name: 'VetApp', start_url: '/', display: 'browser', background_color: '#ffffff', theme_color: '#0A70C8', lang: 'tr',
+  name: 'VetApp', short_name: 'VetApp', start_url: '/', display: 'browser', background_color: '#0b0d10', theme_color: '#0b0d10', lang: 'tr',
   icons: [{ src: '/assets/img/icon-192.png', sizes: '192x192', type: 'image/png' }, { src: '/assets/img/icon-512.png', sizes: '512x512', type: 'image/png' }],
 }, null, 2) + '\n');
 console.log('sitemap.xml, robots.txt, site.webmanifest güncellendi');

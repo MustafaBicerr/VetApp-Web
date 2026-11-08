@@ -1,4 +1,5 @@
 // VetApp tanıtım sitesi — içerik ve şablonlar. `node build.mjs` ile statik HTML üretilir.
+// Tasarım dili MB Yazılım (mbicer.com.tr) ile ortaktır: IBM Plex, koyu zemin + açık bölümler, mavi vurgu.
 export const SITE = 'https://www.vetapp.com.tr';
 export const PANEL = 'https://panel.vetapp.com.tr';
 export const API = 'https://api.vetapp.com.tr/api';
@@ -7,19 +8,50 @@ export const URLS = {
   login: `${PANEL}/#/login`,
   demo: `${PANEL}/#/demo`,
 };
+export const MAKER = 'https://www.mbicer.com.tr';
+export const PHONE = '+90 535 226 54 08';
+export const WA = 'https://wa.me/905352265408?text=' + encodeURIComponent('Merhaba, VetApp hakkında bilgi almak istiyorum.');
+export const STATS = { clinics: 417, cities: 53, drugs: 1694 };
 export const YEAR = new Date().getFullYear();
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-// ───────── yardımcılar ─────────
-const shot = (name, alt, { sizes = '(min-width: 1024px) 760px, 100vw', eager = false } = {}) =>
+// ───────── ikonlar (satır içi SVG, 24px ızgara) ─────────
+const P = {
+  arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+  check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+  calendar: '<rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+  syringe: '<path d="M18 2l4 4M15 5l4 4M17 7l-9.5 9.5-3 .5.5-3L14.5 4.5M10.5 9.5l2 2M8 12l2 2M2 22l3.5-3.5"/>',
+  barcode: '<path d="M3 5v14M7 5v14M10 5v14M14 5v14M17 5v14M21 5v14"/>',
+  box: '<path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/>',
+  wallet: '<rect x="3" y="6" width="18" height="14" rx="2.5"/><path d="M3 10h18M16 15h2"/>',
+  shield: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>',
+  cloud: '<path d="M7 18a4.5 4.5 0 01-.6-8.96A6 6 0 0118 9.5a4 4 0 01-1 8.5H7z"/><path d="M12 11v5M9.5 13.5L12 11l2.5 2.5"/>',
+  lock: '<rect x="4.5" y="10.5" width="15" height="10" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 018 0v3"/>',
+  layers: '<path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/>',
+  userplus: '<circle cx="9" cy="8" r="4"/><path d="M2 21c0-3.9 3.1-7 7-7s7 3.1 7 7M19 8v6M16 11h6"/>',
+  upload: '<path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 15v4a2 2 0 002 2h12a2 2 0 002-2v-4"/>',
+  play: '<circle cx="12" cy="12" r="9"/><path d="M10 8.5l5.5 3.5-5.5 3.5z"/>',
+  mail: '<rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5L12 13l8.5-6.5"/>',
+  phone: '<path d="M5 3.5h3.5l1.8 4.6-2.3 1.4a11 11 0 006 6l1.4-2.3 4.6 1.8V18.5a2 2 0 01-2 2A16.5 16.5 0 013 5.5a2 2 0 012-2z"/>',
+  globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/>',
+  mobile: '<rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M11 18.5h2"/>',
+  laptop: '<rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19.5h20"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  bell: '<path d="M6 16V11a6 6 0 1112 0v5l1.5 2h-15L6 16zM10 21h4"/>',
+};
+const icon = (n, cls = '') => `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]}</svg>`;
+const waIcon = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2z"/></svg>';
+const arrow = `<span class="arr" aria-hidden="true">${icon('arrow')}</span>`;
+
+// ───────── görsel yardımcıları ─────────
+const shot = (name, alt, { sizes = '(min-width: 960px) 640px, 100vw', eager = false } = {}) =>
   `<img src="/assets/img/${name}-1800.webp" srcset="/assets/img/${name}-900.webp 900w, /assets/img/${name}-1800.webp 1800w" sizes="${sizes}" width="1800" height="1125" alt="${esc(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
 const frame = (name, alt, url = 'panel.vetapp.com.tr', opts) =>
-  `<div class="frame"><div class="bar"><i></i><i></i><i></i><span class="url">${url}</span></div>${shot(name, alt, opts)}</div>`;
-const phone = (name, alt, cls = '') =>
-  `<div class="phone ${cls}"><img src="/assets/img/${name}.webp" width="585" height="1266" alt="${esc(alt)}" loading="lazy" decoding="async"></div>`;
-const checks = (items) => `<ul class="checks">${items.map((i) => `<li>${i}</li>`).join('')}</ul>`;
-const arrow = '<span class="arr" aria-hidden="true">→</span>';
+  `<div class="frame"><div class="fbar"><i></i><i></i><i></i><span>${url}</span></div>${shot(name, alt, opts)}</div>`;
+const sbar = (time = '09:41') => `<div class="sbar"><span data-clock>${time}</span><span class="dots"><i></i><i></i><i></i><i></i></span></div>`;
+const phoneImg = (name, alt, { eager = false, time = '09:41' } = {}) =>
+  `<div class="phone"><div class="screen">${sbar(time)}<div class="scr-area"><div class="scr on"><img src="/assets/img/${name}.webp" width="585" height="1266" alt="${esc(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></div></div></div></div>`;
 
 // ───────── SSS verisi (ana sayfa + /sss + FAQPage şeması) ─────────
 export const FAQ = [
@@ -56,14 +88,15 @@ export const FAQ = [
     ],
   },
 ];
-const HOME_FAQ = [FAQ[0].items[0], FAQ[1].items[0], FAQ[1].items[1], FAQ[2].items[0], FAQ[2].items[3], FAQ[3].items[0]];
+const HOME_FAQ = [FAQ[1].items[0], FAQ[0].items[1], FAQ[3].items[0], FAQ[3].items[1]];
 const faqHtml = (items) => `<div class="faq">${items.map(([q, a]) => `<details><summary>${esc(q)}</summary><div class="a"><p>${esc(a)}</p></div></details>`).join('')}</div>`;
 const faqLd = (items) => ({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: items.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) });
 
 // ───────── düzen ─────────
 const NAV = [
   ['/ozellikler', 'Özellikler'],
-  ['/depolar', 'İlaç depoları için'],
+  ['/#bir-gun', 'Nasıl çalışır'],
+  ['/depolar', 'İlaç depoları'],
   ['/sss', 'SSS'],
   ['/iletisim', 'İletişim'],
 ];
@@ -77,12 +110,13 @@ export function layout(page, body) {
 <html lang="tr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>${esc(page.title)}</title>
   <meta name="description" content="${esc(page.description)}">
   <link rel="canonical" href="${url}">
   <meta name="robots" content="${page.noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1'}">
-  <meta name="theme-color" content="#0A70C8">
+  <meta name="theme-color" content="#0b0d10">
+  <meta name="color-scheme" content="dark light">
   <link rel="alternate" hreflang="tr" href="${url}">
   <link rel="alternate" hreflang="x-default" href="${url}">
   <meta property="og:type" content="website">
@@ -100,8 +134,8 @@ export function layout(page, body) {
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/img/favicon-64.png">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="preload" href="/assets/fonts/Geist-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/assets/fonts/InstrumentSerif-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/ibm-plex-sans-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <script>document.documentElement.classList.add('js')</script>
   <link rel="stylesheet" href="/assets/css/site.css?v=${BUILD_ID}">
   ${ld}
@@ -110,19 +144,21 @@ export function layout(page, body) {
   <a class="skip" href="#main">İçeriğe geç</a>
   <header class="site-header" id="top">
     <div class="container">
-      <a class="brand" href="/" aria-label="VetApp ana sayfa"><img src="/assets/img/logo.png" width="${Math.round(30 * 3.95)}" height="30" alt="VetApp"></a>
+      <a class="brand" href="/" aria-label="VetApp ana sayfa"><img src="/assets/img/logo_white.png" width="103" height="26" alt="VetApp"></a>
       <nav class="nav" aria-label="Ana menü">${nav}</nav>
       <div class="header-cta">
         <a class="login" href="${URLS.login}">Giriş yap</a>
-        <a class="btn btn--primary btn--sm" href="${URLS.register}">30 gün ücretsiz başla</a>
+        <a class="btn btn--primary btn--sm" href="${URLS.register}">Ücretsiz başla</a>
       </div>
       <button class="menu-btn" type="button" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobile-menu"><span></span></button>
     </div>
   </header>
   <div class="mobile-menu" id="mobile-menu">
     ${mnav}
-    <a class="btn btn--primary" href="${URLS.register}">30 gün ücretsiz başla</a>
-    <a class="btn btn--ghost" style="color:var(--ink)" href="${URLS.demo}">Canlı demoyu aç</a>
+    <a href="${URLS.login}">Giriş yap</a>
+    <a class="btn btn--primary" href="${URLS.register}">30 gün ücretsiz başla ${arrow}</a>
+    <a class="btn btn--wa" href="${WA}" target="_blank" rel="noopener">${waIcon} WhatsApp’tan yazın</a>
+    <p class="mm-foot">Bir MB Yazılım ürünüdür</p>
   </div>
   <main id="main">
 ${body}
@@ -131,8 +167,9 @@ ${body}
     <div class="container">
       <div class="foot-grid">
         <div>
-          <img src="/assets/img/logo_white.png" width="119" height="30" alt="VetApp" loading="lazy">
-          <p>Veteriner klinikleri için hasta, randevu, stok, kasa ve cari hesap yönetimi. Web, Android ve iOS.</p>
+          <img src="/assets/img/logo_white.png" width="103" height="26" alt="VetApp" loading="lazy">
+          <p>Veteriner klinikleri için randevu, aşı, satış, stok ve kasa yönetimi. Web, Android ve iOS.</p>
+          <p>Bir <a href="${MAKER}" style="color:var(--ink)">MB Yazılım</a> ürünüdür. Kayseri, Türkiye.</p>
         </div>
         <div><h4>Ürün</h4><ul>
           <li><a href="/ozellikler">Özellikler</a></li>
@@ -140,10 +177,11 @@ ${body}
           <li><a href="${URLS.login}">Giriş yap</a></li>
           <li><a href="${URLS.register}">Ücretsiz başla</a></li>
         </ul></div>
-        <div><h4>Şirket</h4><ul>
-          <li><a href="/depolar">İlaç depoları için</a></li>
+        <div><h4>Destek</h4><ul>
           <li><a href="/sss">Sık sorulan sorular</a></li>
           <li><a href="/iletisim">İletişim</a></li>
+          <li><a href="${WA}" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="/depolar">İlaç depoları için</a></li>
         </ul></div>
         <div><h4>Yasal</h4><ul>
           <li><a href="/gizlilik">Gizlilik politikası</a></li>
@@ -151,9 +189,14 @@ ${body}
           <li><a href="mailto:destek@vetapp.com.tr">destek@vetapp.com.tr</a></li>
         </ul></div>
       </div>
-      <div class="foot-base"><span>© ${YEAR} VetApp. Tüm hakları saklıdır.</span><span>info@vetapp.com.tr</span></div>
+      <div class="foot-base"><span>© ${YEAR} VetApp · MB Yazılım</span><a href="tel:${PHONE.replace(/\s/g, '')}">${PHONE}</a></div>
     </div>
   </footer>
+  <div class="dock" aria-label="Hızlı işlemler">
+    <a class="btn btn--primary" href="${URLS.register}">30 gün ücretsiz başla ${arrow}</a>
+    <a class="btn btn--wa" href="${WA}" target="_blank" rel="noopener" aria-label="WhatsApp’tan yazın">${waIcon}</a>
+  </div>
+  <a class="wa-float" href="${WA}" target="_blank" rel="noopener" aria-label="WhatsApp’tan yazın">${waIcon}</a>
   <script src="/assets/js/site.js?v=${BUILD_ID}" defer></script>
 </body>
 </html>
@@ -164,14 +207,14 @@ export let BUILD_ID = '0';
 export const setBuildId = (v) => { BUILD_ID = v; };
 
 // ───────── JSON-LD ─────────
-const orgLd = { '@context': 'https://schema.org', '@type': 'Organization', name: 'VetApp', url: SITE + '/', logo: SITE + '/assets/img/logo.png', email: 'info@vetapp.com.tr' };
+const orgLd = { '@context': 'https://schema.org', '@type': 'Organization', name: 'VetApp', url: SITE + '/', logo: SITE + '/assets/img/logo.png', email: 'info@vetapp.com.tr', telephone: PHONE, parentOrganization: { '@type': 'Organization', name: 'MB Yazılım', url: MAKER + '/' } };
 const siteLd = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'VetApp', alternateName: ['VetApp Veteriner Klinik Yazılımı', 'VetApp Panel'], url: SITE + '/', inLanguage: 'tr' };
 const appLd = {
   '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'VetApp', applicationCategory: 'BusinessApplication',
   operatingSystem: 'Web, Android, iOS', inLanguage: 'tr', url: SITE + '/',
-  description: 'Veteriner klinikleri için hasta kaydı, randevu, aşı takibi, hızlı satış, kasa, stok ve cari hesap yönetimi yazılımı.',
+  description: 'Veteriner klinikleri için randevu, aşı takibi, hızlı satış, kasa, stok ve cari hesap yönetimi yazılımı.',
   offers: { '@type': 'Offer', description: '30 gün ücretsiz deneme, kredi kartı gerekmez.' },
-  publisher: { '@type': 'Organization', name: 'VetApp', url: SITE + '/' },
+  publisher: { '@type': 'Organization', name: 'MB Yazılım', url: MAKER + '/' },
 };
 const crumbLd = (name, path) => ({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
   { '@type': 'ListItem', position: 1, name: 'VetApp', item: SITE + '/' },
@@ -180,6 +223,7 @@ const crumbLd = (name, path) => ({ '@context': 'https://schema.org', '@type': 'B
 
 const pageHero = (crumb, h1, lede) => `
     <section class="page-hero">
+      <div class="grid-fade grid-bg" aria-hidden="true"></div>
       <div class="container">
         <p class="crumbs"><a href="/">VetApp</a> / ${esc(crumb)}</p>
         <h1>${h1}</h1>
@@ -187,33 +231,79 @@ const pageHero = (crumb, h1, lede) => `
       </div>
     </section>`;
 
-const ctaBand = (title = 'Kliniğinizi 30 gün <em>ücretsiz</em> deneyin.', text = 'Kayıt olun, stok ve cari kayıtlarınızı ekleyin, ilk satışınızı yapın. Kredi kartı gerekmez.') => `
-    <section class="cta">
-      <div class="container reveal">
-        <h2>${title}</h2>
-        <p>${text}</p>
-        <div class="actions">
-          <a class="btn btn--light" href="${URLS.register}">Ücretsiz başlayın ${arrow}</a>
-          <a class="btn btn--outline-light" href="${URLS.demo}">Canlı demoyu açın</a>
+const finalCta = (title = 'Kliniğinizi 30 gün ücretsiz deneyin.', text = 'Kurulum yok, kredi kartı yok. Beş dakikada ilk randevunuzu açın.') => `
+    <section class="sec final" data-final>
+      <div class="container">
+        <span class="tag reveal">Hemen başlayın</span>
+        <h2 class="reveal d1">${title}</h2>
+        <p class="lede reveal d2">${text}</p>
+        <div class="actions reveal d3">
+          <a class="btn btn--primary" href="${URLS.register}">Ücretsiz başla ${arrow}</a>
+          <a class="btn btn--wa" href="${WA}" target="_blank" rel="noopener">${waIcon} WhatsApp’tan sorun</a>
         </div>
+        <p class="note reveal d3"><span>Kart gerekmez</span><span>Kurulum yok</span><span><a href="${URLS.demo}" style="text-decoration:underline">Demoyu kayıtsız açın</a></span></p>
       </div>
     </section>`;
 
 const contactForm = ({ kind = 'GENERAL', source, orgLabel = 'Klinik / kurum', msgLabel = 'Mesajınız', kinds = null, button = 'Mesajı gönder' }) => `
-        <form class="card" data-contact data-api="${API}/public/contact" novalidate>
+        <form class="form" data-contact data-api="${API}/public/contact" novalidate>
           <input type="hidden" name="source_page" value="${source}">
           <div class="fields">
             <div class="field"><label for="f-name">Ad soyad</label><input id="f-name" name="name" autocomplete="name" required minlength="2"></div>
-            <div class="field"><label for="f-email">E-posta</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
-            <div class="field"><label for="f-phone">Telefon <span style="font-weight:400;color:var(--muted)">(isteğe bağlı)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+            <div class="field"><label for="f-phone">Telefon <span>(isteğe bağlı)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel"></div>
+            <div class="field"><label for="f-email">E-posta</label><input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required></div>
             <div class="field"><label for="f-org">${orgLabel}</label><input id="f-org" name="organization" autocomplete="organization"></div>
             ${kinds ? `<div class="field full"><label for="f-kind">Konu</label><select id="f-kind" name="kind">${kinds.map(([v, l]) => `<option value="${v}">${l}</option>`).join('')}</select></div>` : `<input type="hidden" name="kind" value="${kind}">`}
             <div class="field full"><label for="f-msg">${msgLabel}</label><textarea id="f-msg" name="message" required minlength="10"></textarea></div>
             <div class="hp" aria-hidden="true"><label>Web sitesi <input name="website" tabindex="-1" autocomplete="off"></label></div>
-            <label class="consent"><input type="checkbox" name="consent" required><span>Mesajımın yanıtlanabilmesi için bilgilerimin işlenmesini ve <a href="/gizlilik" style="color:var(--brand)">gizlilik politikasını</a> okuduğumu onaylıyorum.</span></label>
+            <label class="consent"><input type="checkbox" name="consent" required><span>Mesajımın yanıtlanabilmesi için bilgilerimin işlenmesini ve <a href="/gizlilik">gizlilik politikasını</a> okuduğumu onaylıyorum.</span></label>
           </div>
           <div class="form-foot"><button class="btn btn--primary" type="submit">${button}</button><span class="form-msg" role="status" aria-live="polite"></span></div>
         </form>`;
+
+// ───────── "Klinikte bir gün" sahneleri ─────────
+const STEPS = [
+  { time: '09:00', h: 'Gün, randevu listesiyle başlar.', p: 'Gelen hastayı tek dokunuşla karşılayın, muayeneye geçin.' },
+  { time: '11:30', h: 'Hiçbir aşı unutulmaz.', p: 'Vadesi gelen ve geciken aşılar kendiliğinden öne çıkar.' },
+  { time: '15:30', h: 'Barkodu okutun, satış bitsin.', p: 'Nakit, kart ya da veresiye. Hepsi tek ekranda.' },
+  { time: '17:00', h: 'Stok kendini haber verir.', p: 'Azalan ve son kullanma tarihi yaklaşan ilaçlar uyarı verir.' },
+  { time: '19:00', h: 'Kasa tek bakışta kapanır.', p: 'Gün sonu raporu sizi bekliyor. Hesap tutar.' },
+];
+const appNav = (on) => `<div class="app-nav" aria-hidden="true">${[0, 1, 2, 3, 4].map((i) => `<i${i === on ? ' class="on"' : ''}></i>`).join('')}</div>`;
+const SCREENS = [
+  // 09:00 — gerçek klinik ekranı + "Geldi" rozeti
+  `<div class="scr on"><img src="/assets/img/m-klinik.webp" width="585" height="1266" alt="VetApp klinik ekranı: bugünkü randevular" loading="lazy" decoding="async"><span class="fx tap" aria-hidden="true"></span><span class="fx badge-pop" aria-hidden="true">✓ Geldi</span></div>`,
+  // 11:30 — aşı takvimi
+  `<div class="scr" aria-hidden="true">
+    <div class="app-top"><h4>Aşı takvimi</h4><p>Pamuk · Kedi · 3 yaş</p></div>
+    <div class="app-body stag">
+      <div class="row"><span class="av g">${icon('check')}</span><span class="tx"><b>Karma aşı</b><small>12 Mart · yapıldı</small></span><span class="pill ok">Tamam</span></div>
+      <div class="row"><span class="av g">${icon('check')}</span><span class="tx"><b>Kuduz</b><small>2 Nisan · yapıldı</small></span><span class="pill ok">Tamam</span></div>
+      <div class="row pulse" style="border-color:#f5c27a"><span class="av o">${icon('syringe')}</span><span class="tx"><b>Karma (rapel)</b><small>Yarın · 10:30</small></span><span class="pill warn">Yarın</span></div>
+      <div class="row"><span class="av b">${icon('calendar')}</span><span class="tx"><b>İç parazit</b><small>12 gün sonra</small></span><span class="pill info">Planlı</span></div>
+      <div class="row"><span class="av r">${icon('bell')}</span><span class="tx"><b>Tarçın · Kuduz</b><small>5 gün gecikti</small></span><span class="pill bad">Gecikti</span></div>
+    </div>${appNav(1)}</div>`,
+  // 15:30 — gerçek hızlı satış ekranı + tarama, sepet, ödendi
+  `<div class="scr"><img src="/assets/img/m-pos.webp" width="585" height="1266" alt="VetApp hızlı satış ekranı" loading="lazy" decoding="async"><span class="fx scan" aria-hidden="true"></span><span class="fx cart" aria-hidden="true"><span>Sepet · 2 ürün<small>Amoksisilin, Göz damlası</small></span><span>₺293</span></span><span class="fx paid" aria-hidden="true"><span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Ödeme alındı</span></div>`,
+  // 17:00 — stok uyarıları
+  `<div class="scr" aria-hidden="true">
+    <div class="app-top"><h4>Stok</h4><p>3 ürün dikkat istiyor</p></div>
+    <div class="app-body stag">
+      <div class="row" style="display:block"><div style="display:flex;justify-content:space-between;gap:.5em"><b style="font-size:.92em">Amoksisilin 250 mg</b><span class="pill bad">Kritik · 3</span></div><div class="bar"><i class="r" style="--v:12%"></i></div></div>
+      <div class="row" style="display:block"><div style="display:flex;justify-content:space-between;gap:.5em"><b style="font-size:.92em">Göz damlası</b><span class="pill warn">SKT 12 gün</span></div><div class="bar"><i class="o" style="--v:46%"></i></div></div>
+      <div class="row" style="display:block"><div style="display:flex;justify-content:space-between;gap:.5em"><b style="font-size:.92em">Karma aşı</b><span class="pill warn">Azalıyor · 6</span></div><div class="bar"><i class="o" style="--v:28%"></i></div></div>
+      <div class="row" style="display:block"><div style="display:flex;justify-content:space-between;gap:.5em"><b style="font-size:.92em">Mama 2 kg</b><span class="pill ok">Yeterli · 41</span></div><div class="bar"><i style="--v:82%"></i></div></div>
+      <div class="row" style="display:block"><div style="display:flex;justify-content:space-between;gap:.5em"><b style="font-size:.92em">Pire damlası</b><span class="pill ok">Yeterli · 24</span></div><div class="bar"><i style="--v:64%"></i></div></div>
+    </div>${appNav(3)}</div>`,
+  // 19:00 — gün sonu
+  `<div class="scr" aria-hidden="true">
+    <div class="app-top"><h4>Gün sonu</h4><p>Bugün · 18 işlem</p></div>
+    <div class="app-body">
+      <div class="row" style="display:block"><small style="color:#6b7280;font-size:.78em">Net kasa</small><div class="big-num">₺10.031</div>
+        <div class="chart"><i style="--h:22%"></i><i style="--h:40%"></i><i style="--h:30%"></i><i style="--h:55%"></i><i style="--h:48%"></i><i style="--h:92%"></i><i style="--h:70%"></i><i style="--h:38%"></i></div></div>
+      <div class="row stag" style="display:block"><div class="kv"><span>Nakit</span><b>₺4.120</b></div><div class="kv"><span>Kart</span><b>₺5.911</b></div><div class="kv"><span>Veresiye</span><b style="color:#b25e00">₺850</b></div><div class="kv"><span>Gider</span><b>−₺0</b></div></div>
+    </div>${appNav(0)}</div>`,
+];
 
 // ───────── SAYFALAR ─────────
 export const pages = [];
@@ -221,170 +311,133 @@ export const pages = [];
 // — Ana sayfa —
 pages.push({
   file: 'index.html', path: '/', changefreq: 'weekly', priority: '1.0',
-  title: 'VetApp – Veteriner Klinik Yönetim Yazılımı',
-  description: 'Hasta kaydı, randevu, aşı takibi, hızlı satış, kasa, stok ve cari hesap — veteriner klinikleri için tek panel. Web, Android ve iOS. 30 gün ücretsiz deneyin.',
+  title: 'VetApp – Veteriner Klinik Yönetim Yazılımı | Randevu, Aşı, Stok, Kasa',
+  ogTitle: 'VetApp – Kliniğinizin bütün günü, tek uygulamada',
+  description: `Veteriner klinikleri için randevu, aşı takibi, hızlı satış, stok ve kasa tek uygulamada. ${STATS.clinics} klinik, ${STATS.cities} şehir. Web, Android ve iOS. 30 gün ücretsiz.`,
   ld: [orgLd, siteLd, appLd, faqLd(HOME_FAQ)],
   body: () => `
     <section class="hero">
-      <div class="container grid">
-        <div class="copy">
-          <span class="eyebrow"><b>Yeni</b> Veteriner klinikleri için klinik yönetim yazılımı</span>
-          <h1>Kliniğinizin tüm günü, <em>tek ekranda.</em></h1>
-          <p class="lede">Hasta kaydı, randevu, aşı takibi, stok, kasa ve cari hesap — hepsi aynı panelde. Web’de, Android’de ve iOS’ta aynı hesapla çalışın.</p>
-          <div class="actions">
-            <a class="btn btn--primary" href="${URLS.register}">30 gün ücretsiz başlayın ${arrow}</a>
-            <a class="btn btn--ghost" href="${URLS.demo}">Canlı demoyu açın</a>
+      <div class="grid-fade grid-bg" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-copy">
+          <span class="tag">Veteriner klinik yazılımı</span>
+          <h1>Kliniğinizin bütün günü, <span class="soft">tek uygulamada.</span></h1>
+          <p class="lede">Randevu, aşı, satış, stok ve kasa. Telefonda, tablette, bilgisayarda.</p>
+          <div class="actions" data-hero-cta>
+            <a class="btn btn--primary" href="${URLS.register}">30 gün ücretsiz başla ${arrow}</a>
+            <a class="btn btn--ghost" href="${URLS.demo}">${icon('play')} Demoyu aç</a>
           </div>
-          <div class="assure"><span>Kredi kartı gerekmez</span><span>Kurulum yok</span><span>Demo kayıt gerektirmez</span></div>
+          <p class="hero-note"><span>${icon('check')} Kart gerekmez</span><span>${icon('check')} Kurulum yok</span><span>${icon('check')} Türkçe destek</span></p>
         </div>
-        <div class="visual">
-          ${frame('dashboard', 'VetApp panel: günlük kasa, alacaklar, saatlik satış grafiği ve haftalık performans', 'panel.vetapp.com.tr', { sizes: '(min-width: 1024px) 760px, 100vw', eager: true })}
-          ${phone('m-dashboard', 'VetApp mobil uygulaması genel bakış ekranı')}
-        </div>
-      </div>
-    </section>
-
-    <section class="facts" aria-label="Rakamlarla VetApp">
-      <div class="container">
-        <div class="fact"><b>1.694</b><span>hazır ilaç kaydı; barkodla ürün kartı otomatik oluşur</span></div>
-        <div class="fact"><b>30 gün</b><span>ücretsiz deneme, kredi kartı istenmez</span></div>
-        <div class="fact"><b>3 platform</b><span>web, Android ve iOS — tek hesap</span></div>
-        <div class="fact"><b>Ayrı alan</b><span>her klinik kendi verisiyle, kendi hesabında çalışır</span></div>
-      </div>
-    </section>
-
-    <section class="section" id="ozellikler">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="kicker">Neler yapabilirsiniz</span>
-          <h2>Muayeneden kasa kapanışına, <em>günün her anı</em> için.</h2>
-          <p class="lede">VetApp bir klinikte günün nasıl aktığına göre tasarlandı: hasta kapıdan girer, muayene olur, aşı yapılır, satış kesilir, tahsilat alınır — hepsi aynı kayıtta birleşir.</p>
-        </div>
-
-        <article class="chapter reveal">
-          <div class="text">
-            <span class="kicker">01 · Klinik</span>
-            <h2>Hasta kartından <em>aşı karnesine.</em></h2>
-            <p>Her hayvan için tür, ırk, sahip ve kilo geçmişi. Randevudan muayeneye, muayeneden aşıya tek akış.</p>
-            ${checks([
-              '<b>Randevu takvimi</b> — planlandı, geldi, tamamlandı, gelmedi durumlarıyla',
-              '<b>SOAP muayene kaydı</b> — şikâyet, bulgular, tanı, tedavi planı; kilo, ateş, nabız',
-              '<b>Aşı protokolleri</b> ve vadesi gelen/geciken aşı gündemi',
-              '<b>Muayeneden satışa</b> geçiş: yapılan işlem tek tıkla kasaya taşınır',
-            ])}
+        <div class="hero-visual">
+          ${phoneImg('m-dashboard', 'VetApp mobil uygulaması: günlük kasa, alacak ve randevu özeti', { eager: true })}
+          <div class="toasts" aria-hidden="true">
+            <div class="toast t1"><span class="ic amber">${icon('syringe')}</span><span><b>Pamuk · karma aşı</b><small>Yarın 10:30</small></span></div>
+            <div class="toast t2"><span class="ic green">${icon('wallet')}</span><span><b>Ödeme alındı</b><small>₺293 · Kart</small></span></div>
+            <div class="toast t3"><span class="ic red">${icon('box')}</span><span><b>Amoksisilin azaldı</b><small>Stokta 3 adet</small></span></div>
           </div>
-          ${frame('klinik', 'VetApp klinik ekranı: bugünkü randevular ve aşı gündemi', 'panel.vetapp.com.tr/#/clinic', { sizes: '(min-width: 1024px) 700px, 100vw' })}
-        </article>
+        </div>
+      </div>
+      <div class="proof" aria-label="Rakamlarla VetApp">
+        <div class="container">
+          <div class="it"><b data-count="${STATS.clinics}">${STATS.clinics}</b><span>klinik</span></div>
+          <div class="it"><b data-count="${STATS.cities}">${STATS.cities}</b><span>şehir</span></div>
+          <div class="it"><b data-count="${STATS.drugs}">${STATS.drugs.toLocaleString('tr-TR')}</b><span>ilaç kataloğu</span></div>
+        </div>
+      </div>
+    </section>
 
-        <article class="chapter rev reveal">
-          <div class="text">
-            <span class="kicker">02 · Satış ve kasa</span>
-            <h2>Barkodu okutun, <em>tahsilatı tek ekranda</em> alın.</h2>
-            <p>Dokunmatik uyumlu hızlı satış ekranı; nakit, kart, karma ve veresiye ödeme; gün sonu kasa.</p>
-            ${checks([
-              '<b>Satır bazlı ödeme</b> — aynı sepette peşin ve veresiye kalemler',
-              '<b>Karma ödeme</b> ve parça parça tahsilat',
-              '<b>Gün sonu kasa</b>, masraf girişi ve kasa hareket dökümü',
-              '<b>Parti ve SKT’ye göre</b> otomatik stok düşümü',
-            ])}
+    <section class="story" id="bir-gun" data-story aria-labelledby="story-h">
+      <div class="container story-intro">
+        <div class="sec-head reveal">
+          <span class="tag">Klinikte bir gün</span>
+          <h2 id="story-h">İlk hastadan kasa kapanışına. <span class="soft">Kaydırın, birlikte geçirelim.</span></h2>
+        </div>
+      </div>
+      <div class="stage-wrap">
+        <div class="stage">
+          <div class="container">
+            <div class="stage-copy">
+              <div class="progress" aria-hidden="true">${STEPS.map(() => '<i></i>').join('')}</div>
+              <div class="cap-box">
+                ${STEPS.map((s, i) => `<div class="step-cap${i === 0 ? ' on' : ''}" data-time="${s.time}"><span class="clock">${s.time} <i></i></span><h3>${s.h}</h3><p>${s.p}</p></div>`).join('\n                ')}
+              </div>
+            </div>
+            <div class="stage-phone">
+              <div class="phone"><div class="screen">${sbar('09:00')}<div class="scr-area">${SCREENS.join('')}</div></div></div>
+            </div>
           </div>
-          ${frame('pos', 'VetApp hızlı satış ekranı: ürün kartları, müşteri seçimi ve ödeme yöntemi', 'panel.vetapp.com.tr/#/sales/pos', { sizes: '(min-width: 1024px) 700px, 100vw' })}
-        </article>
-
-        <article class="chapter reveal">
-          <div class="text">
-            <span class="kicker">03 · Stok</span>
-            <h2>İlaç stoğu, <em>son kullanma tarihine</em> kadar izlenir.</h2>
-            <p>1.694 ilaçlık referans katalog ve barkod desteğiyle ürün kartı açmak saniyeler sürer.</p>
-            ${checks([
-              '<b>Barkod okutun</b>, ürün kartı kataloğdan otomatik gelsin',
-              '<b>Parti ve SKT takibi</b>; yaklaşan SKT ve kritik stok uyarıları',
-              '<b>Alım faturası</b>: çoklu iskonto, KDV, vade ve tedarikçi borcu',
-              '<b>İlk stok girişi</b> ile açılış bakiyenizi tek seferde kaydedin',
-            ])}
-          </div>
-          ${frame('urunler', 'VetApp ürünler ve stok listesi', 'panel.vetapp.com.tr/#/stock/products', { sizes: '(min-width: 1024px) 700px, 100vw' })}
-        </article>
-
-        <article class="chapter rev reveal">
-          <div class="text">
-            <span class="kicker">04 · Cari</span>
-            <h2>Veresiye düzenli, <em>tahsilat net.</em></h2>
-            <p>Müşteri ve tedarikçi hesapları, vadeler ve tahsilatlar tek bakışta.</p>
-            ${checks([
-              '<b>Müşteri ve tedarikçi cari</b> — borç/alacak geçmişi ve bakiye',
-              '<b>Kısmi ve fatura bazlı</b> tahsilat ve ödeme',
-              '<b>Devreden bakiye</b> girişi; vadesi gelenler için uyarılar',
-              '<b>Enflasyon korumalı</b> veresiye: fiyat değişimi açık alacağa yansır',
-            ])}
-          </div>
-          ${frame('musteriler', 'VetApp müşteri cari listesi: toplam alacak, borçlu müşteriler ve günlük tahsilat', 'panel.vetapp.com.tr/#/accounts', { sizes: '(min-width: 1024px) 700px, 100vw' })}
-        </article>
+        </div>
+        <div class="steps-track" aria-hidden="true">${STEPS.map((_, i) => `<div class="trig" data-i="${i}"></div>`).join('')}</div>
       </div>
     </section>
 
-    <section class="section section--wash" aria-labelledby="devices-h">
+    <section class="sec light" aria-labelledby="dev-h">
       <div class="container">
-        <div class="section-head reveal">
-          <span class="kicker">Her cihazda</span>
-          <h2 id="devices-h">Cebinizde de <em>aynı klinik.</em></h2>
-          <p class="lede">Masaüstünde başladığınız işi telefonda sürdürün. Aynı hesap, aynı veri — Android ve iOS uygulamasıyla.</p>
+        <div class="sec-head center reveal">
+          <span class="tag">Her cihazda</span>
+          <h2 id="dev-h">Masada başlayın, <span class="soft">cepte devam edin.</span></h2>
         </div>
-        <div class="devices reveal">
-          <figure>${phone('m-dashboard', 'Mobil genel bakış')}<figcaption>Genel bakış</figcaption></figure>
-          <figure>${phone('m-pos', 'Mobil hızlı satış')}<figcaption>Hızlı satış</figcaption></figure>
-          <figure>${phone('m-stok', 'Mobil stok')}<figcaption>Stok</figcaption></figure>
-          <figure>${phone('m-klinik', 'Mobil klinik ekranı')}<figcaption>Klinik</figcaption></figure>
+        <div class="devices reveal d1">
+          <div class="laptop"><div class="lid">${shot('dashboard', 'VetApp web paneli: günlük kasa, alacaklar ve saatlik satış grafiği', { sizes: '(min-width: 960px) 900px, 100vw' })}</div><div class="base"></div></div>
+          ${phoneImg('m-pos', 'VetApp mobil hızlı satış ekranı', { time: '15:30' })}
+        </div>
+        <div class="platforms reveal d2">
+          <span>${icon('laptop')} Web paneli</span><span>${icon('mobile')} Android</span><span>${icon('mobile')} iPhone</span><span>${icon('cloud')} Tek hesap, anlık senkron</span>
         </div>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="steps-h">
+    <section class="sec light alt" aria-labelledby="how-h">
       <div class="container">
-        <div class="section-head reveal">
-          <span class="kicker">Başlamak kolay</span>
-          <h2 id="steps-h">Üç adımda <em>kullanıma hazır.</em></h2>
+        <div class="sec-head reveal">
+          <span class="tag">Başlamak kolay</span>
+          <h2 id="how-h">Üç adımda hazırsınız.</h2>
         </div>
-        <div class="steps reveal">
-          <div class="step"><div class="n">1</div><h3>Hesabınızı oluşturun</h3><p>Klinik bilgilerinizi girin, e-postanızı doğrulayın. Deponuzdan referans kodu aldıysanız kayıtta girin.</p></div>
-          <div class="step"><div class="n">2</div><h3>Stok ve carilerinizi ekleyin</h3><p>Barkodla ürünlerinizi tanıtın, müşteri ve tedarikçilerinizi ve varsa devreden bakiyelerini kaydedin.</p></div>
-          <div class="step"><div class="n">3</div><h3>Satışa ve randevuya başlayın</h3><p>İlk muayeneyi açın, ilk satışı kesin. Panel, günün özetini sizin için hazırlar.</p></div>
+        <ol class="how">
+          <li class="reveal"><span class="n">${icon('userplus')}</span><span class="t">1 · 2 DAKİKA</span><h3>Hesabınızı açın</h3><p>Klinik adınızı ve e-postanızı girin.</p></li>
+          <li class="reveal d1"><span class="n">${icon('barcode')}</span><span class="t">2 · BARKODLA</span><h3>Ürünlerinizi okutun</h3><p>İlaç kartları ${STATS.drugs.toLocaleString('tr-TR')} ilaçlık katalogdan kendiliğinden dolar.</p></li>
+          <li class="reveal d2"><span class="n">${icon('calendar')}</span><span class="t">3 · HEMEN</span><h3>İlk randevuyu açın</h3><p>Gerisi akışına bırakılır. Panel gününüzü özetler.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="trust-h">
+      <div class="container">
+        <div class="sec-head reveal">
+          <span class="tag">Güvence</span>
+          <h2 id="trust-h">Verileriniz sizin. <span class="soft">Güvende ve yedekli.</span></h2>
+        </div>
+        <div class="trust">
+          <div class="tcard reveal"><span class="ic green">${icon('cloud')}</span><h3>Her gün yedek</h3><p>Veritabanı her gece otomatik yedeklenir.</p><span class="meter" aria-hidden="true"><i></i></span></div>
+          <div class="tcard reveal d1"><span class="ic blue">${icon('lock')}</span><h3>Şifreli bağlantı</h3><p>Tüm trafik HTTPS ile korunur.</p></div>
+          <div class="tcard reveal d2"><span class="ic amber">${icon('layers')}</span><h3>Klinik başına ayrı alan</h3><p>Her klinik yalnızca kendi verisini görür.</p></div>
+          <div class="tcard reveal d3"><span class="ic blue">${icon('shield')}</span><h3>KVKK’ya uygun</h3><p>Verileriniz Türkiye’de, sizin kontrolünüzde.</p></div>
+        </div>
+        <div class="maker reveal">
+          <img src="/assets/img/mb-mark.png" width="40" height="36" alt="" loading="lazy">
+          <p><b>MB Yazılım güvencesiyle.</b> VetApp’i geliştiren ekip, kurulumdan sonra da yanınızda.</p>
+          <a href="${MAKER}" target="_blank" rel="noopener">mbicer.com.tr ${arrow}</a>
         </div>
       </div>
     </section>
 
-    <section class="band">
+    <section class="sec light" aria-labelledby="faq-h">
       <div class="container">
-        <div class="text reveal">
-          <span class="kicker">İlaç depoları için</span>
-          <h2>Kliniklerinize <em>modern bir yazılım</em> sunun.</h2>
-          <p>Veteriner ilaç depolarıyla iş ortaklığı yapıyoruz: deponuza özel referans koduyla VetApp’e katılan her klinik için komisyon kazanın, müşterilerinize değer katın.</p>
-          <div class="actions"><a class="btn btn--light" href="/depolar">İş ortaklığı hakkında ${arrow}</a></div>
-        </div>
-        <div class="terms reveal">
-          <div><b>Size özel referans kodu</b><span>Her depoya 10 haneli benzersiz bir kod tahsis edilir.</span></div>
-          <div><b>Kayıtta otomatik eşleşme</b><span>Klinik kayıt sırasında kodu girer; hangi klinik hangi depo aracılığıyla geldi bilinir.</span></div>
-          <div><b>Klinik başına komisyon</b><span>Koşullar ortaklık sözleşmesinde netleştirilir.</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="faq-h">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="kicker">Sık sorulanlar</span>
-          <h2 id="faq-h">Aklınıza takılanlar.</h2>
+        <div class="sec-head reveal">
+          <span class="tag">Sık sorulanlar</span>
+          <h2 id="faq-h">Kısa cevaplar.</h2>
         </div>
         <div class="reveal">${faqHtml(HOME_FAQ)}</div>
-        <p style="margin-top:28px"><a class="btn btn--ghost" href="/sss">Tüm soruları gör ${arrow}</a></p>
+        <p style="margin-top:28px"><a class="btn btn--ghost" href="/sss">Tüm sorular ${arrow}</a></p>
       </div>
     </section>
-${ctaBand()}`,
+${finalCta()}`,
 });
 
 // — Özellikler —
 const MODULES = [
-  { id: 'klinik', kicker: 'Klinik', h: 'Hasta kayıtları, <em>randevu ve aşı.</em>', shot: 'hastalar', alt: 'VetApp hasta listesi', url: 'panel.vetapp.com.tr/#/clinic/patients', lede: 'Klinik iş akışının omurgası: hasta, randevu, muayene ve aşı bir arada.', caps: [
+  { id: 'klinik', mob: 'm-klinik', kicker: 'Klinik', h: 'Hasta kayıtları, randevu ve aşı.', shot: 'hastalar', alt: 'VetApp hasta listesi', url: 'panel.vetapp.com.tr/#/clinic/patients', lede: 'Klinik iş akışının omurgası: hasta, randevu, muayene ve aşı bir arada.', caps: [
     ['Hasta (hayvan) kartı', 'Tür ve ırk kataloğu, sahibi, doğum tarihi, cinsiyet, kısırlaştırma, renk, çip no ve kilo.'],
     ['Randevu takvimi', 'Gün bazlı liste; personel, oda ve süre; planlandı / geldi / tamamlandı / gelmedi / iptal durumları.'],
     ['SOAP muayene', 'Şikâyet, anamnez, klinik bulgular, tanı ve tedavi planı; kilo, ateş, nabız ve solunum.'],
@@ -392,7 +445,7 @@ const MODULES = [
     ['Hasta zaman çizelgesi', 'Muayeneler, randevular ve aşılar tek kronolojik akışta.'],
     ['Muayeneden satışa', 'Yapılan işlem tek tıkla satış ekranına taşınır; satış hasta ve muayeneyle ilişkilendirilir.'],
   ] },
-  { id: 'satis', kicker: 'Satış ve kasa', h: 'Hızlı satış ve <em>net kasa.</em>', shot: 'kasa', alt: 'VetApp kasa ve gider yönetimi', url: 'panel.vetapp.com.tr/#/sales/cash', lede: 'Sıra bekleyen müşteriye saniyeler içinde satış; gün sonunda kasayla birebir uyum.', caps: [
+  { id: 'satis', mob: 'm-pos', kicker: 'Satış ve kasa', h: 'Hızlı satış ve net kasa.', shot: 'kasa', alt: 'VetApp kasa ve gider yönetimi', url: 'panel.vetapp.com.tr/#/sales/cash', lede: 'Sıra bekleyen müşteriye saniyeler içinde satış; gün sonunda kasayla birebir uyum.', caps: [
     ['Hızlı satış ekranı', 'Ürün arama, barkod okutma, müşteri seçimi ve ödeme tek ekranda.'],
     ['Ödeme yöntemleri', 'Nakit, kart, karma ve veresiye; aynı sepette satır bazında peşin/veresiye.'],
     ['Kasa hareketleri', 'Satış tahsilatları, veresiye tahsilatları ve masraflar tarih ve yönteme göre listelenir.'],
@@ -400,7 +453,7 @@ const MODULES = [
     ['Gün sonu', 'Nakit ve kart toplamları, günlük gider ve net kasa tek özet kartında.'],
     ['Satış geçmişi', 'Fiş detayları, indirimli ve veresiye satış filtreleri.'],
   ] },
-  { id: 'stok', kicker: 'Stok', h: 'İlaç ve ürün stoğu, <em>SKT’ye kadar.</em>', shot: 'stok-giris', alt: 'VetApp alım faturası ve stok girişi ekranı', url: 'panel.vetapp.com.tr/#/stock/entry', lede: 'Referans ilaç kataloğu ve barkodla hızlı kayıt; parti ve son kullanma tarihiyle güvenli takip.', caps: [
+  { id: 'stok', kicker: 'Stok', h: 'İlaç ve ürün stoğu, SKT’ye kadar.', shot: 'stok-giris', alt: 'VetApp alım faturası ve stok girişi ekranı', url: 'panel.vetapp.com.tr/#/stock/entry', lede: 'Referans ilaç kataloğu ve barkodla hızlı kayıt; parti ve son kullanma tarihiyle güvenli takip.', caps: [
     ['İlaç referans kataloğu', '1.694 ilaçlık kataloğu arayın; kendi ürün kartınızı tek tıkla oluşturun.'],
     ['Barkod', 'Kamerayla veya barkod okuyucuyla ürün bulun, barkodsuz ürüne barkod tanımlayın.'],
     ['Parti ve SKT', 'Her giriş parti ve son kullanma tarihiyle tutulur; satışta SKT’si yakın olan parti öne alınır.'],
@@ -408,7 +461,7 @@ const MODULES = [
     ['Alım faturası (mal kabul)', 'Çoklu iskonto, KDV, vade, mal fazlası; stok ve tedarikçi borcu otomatik güncellenir.'],
     ['İlk stok girişi', 'Açılış stoğunu bir seferde kaydedin; devreden bakiyeyle başlayın.'],
   ] },
-  { id: 'cari', kicker: 'Cari hesap', h: 'Müşteri ve tedarikçi <em>hesapları.</em>', shot: 'tedarikciler', alt: 'VetApp tedarikçi cari listesi', url: 'panel.vetapp.com.tr/#/accounts/suppliers', lede: 'Kime borçlusunuz, kimden alacağınız var — vade vade, fatura fatura.', caps: [
+  { id: 'cari', kicker: 'Cari hesap', h: 'Müşteri ve tedarikçi hesapları.', shot: 'tedarikciler', alt: 'VetApp tedarikçi cari listesi', url: 'panel.vetapp.com.tr/#/accounts/suppliers', lede: 'Kime borçlusunuz, kimden alacağınız var — vade vade, fatura fatura.', caps: [
     ['Müşteri cari', 'Borç/alacak geçmişi, açık satışlar ve tahsilat kayıtları.'],
     ['Tedarikçi cari', 'Alım faturaları, vadeler ve ödemeler; fatura bazlı veya tutar bazlı kısmi ödeme.'],
     ['Resmî depo listesi', '300’den fazla veteriner ilaç deposu listesinden tedarikçi seçerek hızlı kayıt.'],
@@ -416,7 +469,7 @@ const MODULES = [
     ['Enflasyon korumalı veresiye', 'Fiyat güncellemesi, açık veresiye kalemlere fark olarak yansıtılabilir.'],
     ['Veresiye güvenliği', 'Veresiye satışta müşteri kimlik doğrulaması ve borçlu müşteri uyarısı.'],
   ] },
-  { id: 'panel', kicker: 'Panel ve raporlar', h: 'Güne <em>özet kartlarıyla</em> başlayın.', shot: 'dashboard', alt: 'VetApp genel bakış paneli', url: 'panel.vetapp.com.tr', lede: 'Kasa, alacak, borç, stok ve randevu — işletmenin nabzı tek ekranda.', caps: [
+  { id: 'panel', mob: 'm-dashboard', kicker: 'Panel ve raporlar', h: 'Güne özet kartlarıyla başlayın.', shot: 'dashboard', alt: 'VetApp genel bakış paneli', url: 'panel.vetapp.com.tr', lede: 'Kasa, alacak, borç, stok ve randevu — işletmenin nabzı tek ekranda.', caps: [
     ['Günlük özet', 'Günlük kasa, genel alacak, tedarikçi borçları, bugünkü randevular ve kritik stok.'],
     ['Saatlik satış grafiği', 'Satış hacmi, peşin kasa ve tahsilat; yoğun saatlerinizi görün.'],
     ['Ödeme akışı', 'Nakit ve kart payı, saat bazında dağılım.'],
@@ -425,26 +478,29 @@ const MODULES = [
     ['Detaya inme', 'Kartlara tıklayarak işlem ve fatura detaylarına geçin.'],
   ] },
 ];
+const ck = `<span class="ck">${icon('check')}</span>`;
 pages.push({
   file: 'ozellikler.html', path: '/ozellikler', changefreq: 'monthly', priority: '0.9',
   title: 'Özellikler – VetApp Veteriner Klinik Yazılımı',
-  description: 'VetApp özellikleri: hasta ve randevu, SOAP muayene, aşı takibi, hızlı satış, kasa, parti/SKT stok takibi, alım faturası, cari hesap ve dashboard.',
+  description: 'VetApp özellikleri: hasta ve randevu, muayene, aşı takibi, hızlı satış, kasa, SKT’li stok takibi, alım faturası, cari hesap ve gün sonu paneli.',
   ld: [crumbLd('Özellikler', '/ozellikler')],
-  body: () => `${pageHero('Özellikler', 'Bir kliniğin ihtiyaç duyduğu <em>her adım,</em> tek yazılımda.', 'VetApp’in kapsadığı modüller ve her birinde neler yapabileceğiniz.')}
-    <div class="container">
-${MODULES.map((m) => `      <section class="module reveal" id="${m.id}">
+  body: () => `${pageHero('Özellikler', 'Bir kliniğin ihtiyacı olan her şey. <span class="soft">Tek uygulamada.</span>', 'Randevudan kasaya, VetApp’in bütün modülleri.')}
+    <div class="light">
+      <div class="container">
+${MODULES.map((m) => `      <section class="module" id="${m.id}">
         <div class="head">
-          <div class="text">
-            <span class="kicker">${m.kicker}</span>
+          <div class="text reveal">
+            <span class="tag">${m.kicker}</span>
             <h2>${m.h}</h2>
             <p class="lede">${m.lede}</p>
           </div>
-          ${frame(m.shot, m.alt, m.url, { sizes: '(min-width: 1024px) 700px, 100vw' })}
+          <div class="reveal d1">${m.mob ? `<div class="mod-phone only-mob">${phoneImg(m.mob, m.alt)}</div><div class="only-desk">${frame(m.shot, m.alt, m.url)}</div>` : frame(m.shot, m.alt, m.url)}</div>
         </div>
-        <div class="cap-grid">${m.caps.map(([t, d]) => `<div class="cap"><h3>${t}</h3><p>${d}</p></div>`).join('')}</div>
+        <div class="caps">${m.caps.map(([t, d]) => `<div class="cap reveal">${ck}<div><h3>${t}</h3><p>${d}</p></div></div>`).join('')}</div>
       </section>`).join('\n')}
+      </div>
     </div>
-${ctaBand()}`,
+${finalCta()}`,
 });
 
 // — İlaç depoları —
@@ -453,43 +509,44 @@ pages.push({
   title: 'İlaç Depoları İçin İş Ortaklığı – VetApp',
   description: 'Veteriner ilaç depoları için VetApp iş ortaklığı: deponuza özel referans koduyla katılan her klinik için komisyon kazanın, müşterilerinize modern bir klinik yazılımı sunun.',
   ld: [crumbLd('İlaç depoları için', '/depolar')],
-  body: () => `${pageHero('İlaç depoları için', 'Kliniklerinize <em>modern bir yazılım</em> sunun.', 'VetApp, veteriner ilaç depolarıyla iş ortaklığı yapar. Deponuza özel referans koduyla VetApp’e katılan her klinik için komisyon kazanırsınız; müşterileriniz de stok, kasa ve cari işlerini tek panelde yönetir.')}
-    <section class="section">
+  body: () => `${pageHero('İlaç depoları için', 'Kliniklerinize modern bir yazılım sunun. <span class="soft">Her kayıttan kazanın.</span>', 'Deponuza özel referans koduyla VetApp’e katılan her klinik için komisyon kazanırsınız.')}
+    <section class="sec light">
       <div class="container">
-        <div class="section-head reveal"><span class="kicker">Nasıl işler</span><h2>Dört adımda <em>ortaklık.</em></h2></div>
-        <div class="steps reveal" style="grid-template-columns:repeat(4,1fr)">
-          <div class="step"><div class="n">1</div><h3>Başvurun</h3><p>Aşağıdaki formla bize ulaşın; sizi arayıp ortaklığı birlikte netleştirelim.</p></div>
-          <div class="step"><div class="n">2</div><h3>Kodunuzu alın</h3><p>Deponuza özel, benzersiz 10 haneli bir referans kodu tahsis edilir.</p></div>
-          <div class="step"><div class="n">3</div><h3>Kliniklerinize tanıtın</h3><p>Müşterileriniz kayıt sırasında kodu girer; klinik sizinle eşleşir.</p></div>
-          <div class="step"><div class="n">4</div><h3>Komisyon kazanın</h3><p>Koşullar ortaklık sözleşmesinde belirlenir; kaydolan klinikleri size raporlarız.</p></div>
-        </div>
+        <div class="sec-head reveal"><span class="tag">Nasıl işler</span><h2>Dört adımda ortaklık.</h2></div>
+        <ol class="steps4">
+          <li class="reveal"><span class="n">01</span><h3>Başvurun</h3><p>Formu doldurun, sizi arayalım.</p></li>
+          <li class="reveal d1"><span class="n">02</span><h3>Kodunuzu alın</h3><p>Deponuza özel 10 haneli referans kodu.</p></li>
+          <li class="reveal d2"><span class="n">03</span><h3>Kliniklerinize tanıtın</h3><p>Klinik kayıtta kodu girer, sizinle eşleşir.</p></li>
+          <li class="reveal d3"><span class="n">04</span><h3>Komisyon kazanın</h3><p>Kaydolan klinikleri size raporlarız.</p></li>
+        </ol>
       </div>
     </section>
-    <section class="section section--wash">
-      <div class="container">
-        <div class="chapter" style="padding:0">
-          <div class="text reveal">
-            <span class="kicker">Neden VetApp</span>
-            <h2>Müşterinize <em>değer katın,</em> bağınızı güçlendirin.</h2>
-            ${checks([
-              '<b>Stok ve cari düzeni</b> — müşterilerinizin sipariş ve ödeme takibi kolaylaşır',
-              '<b>1.694 ilaçlık katalog</b> hazır; ürün kartı barkodla saniyeler içinde açılır',
-              '<b>Sizin adınıza kayıt eşleşmesi</b> — hangi klinik hangi depo aracılığıyla geldi bellidir',
-              '<b>Kurulum yok</b> — klinikler web ve mobilde hemen başlar, 30 gün ücretsiz dener',
-            ])}
+    <section class="sec light alt">
+      <div class="container split">
+        <div class="reveal" style="display:grid;gap:14px">
+          <span class="tag">Neden VetApp</span>
+          <h2>Müşterinize değer katın.</h2>
+          <ul class="ticks">
+            <li>Klinikleriniz stok ve ödemelerini düzenli tutar.</li>
+            <li>${STATS.drugs.toLocaleString('tr-TR')} ilaçlık katalog hazır; barkodla saniyeler içinde kart açılır.</li>
+            <li>Hangi klinik sizin aracılığınızla geldi, kayıtta bellidir.</li>
+            <li>Kurulum yok; klinik 30 gün ücretsiz dener.</li>
+          </ul>
+        </div>
+        <div class="reveal d1">${frame('tedarikciler', 'VetApp tedarikçi cari ekranı', 'panel.vetapp.com.tr/#/accounts/suppliers')}</div>
+      </div>
+    </section>
+    <section class="sec light">
+      <div class="container split">
+        <div class="reveal" style="display:grid;gap:14px">
+          <span class="tag">Başvuru</span>
+          <h2>İş ortağımız olun.</h2>
+          <p class="lede">Komisyon oranı ve raporlama ortaklık görüşmesinde netleşir.</p>
+          <div class="contact-list" style="margin-top:8px">
+            <a href="${WA}" target="_blank" rel="noopener"><span class="ic green-l">${waIcon}</span><span><small>WhatsApp</small><b>${PHONE}</b></span></a>
           </div>
-          <div class="reveal">${frame('tedarikciler', 'VetApp tedarikçi cari ekranı', 'panel.vetapp.com.tr/#/accounts/suppliers', { sizes: '(min-width: 1024px) 640px, 100vw' })}</div>
         </div>
-      </div>
-    </section>
-    <section class="section">
-      <div class="container contact-grid">
-        <div class="contact-info reveal">
-          <span class="kicker">Başvuru</span>
-          <h2 style="font-size:clamp(2rem,3.4vw,2.9rem)">İş ortağımız <em>olun.</em></h2>
-          <p class="lede">Formu doldurun; en kısa sürede dönüş yapalım. Komisyon oranı, ödeme dönemi ve raporlama ortaklık görüşmesinde netleştirilir.</p>
-        </div>
-        <div class="reveal">${contactForm({ kind: 'PARTNER', source: '/depolar', orgLabel: 'Depo / firma adı', msgLabel: 'Kısaca deponuzu anlatın (şehir, hizmet verdiğiniz klinik sayısı)', button: 'Başvuruyu gönder' })}</div>
+        <div class="reveal d1">${contactForm({ kind: 'PARTNER', source: '/depolar', orgLabel: 'Depo / firma adı', msgLabel: 'Kısaca deponuzu anlatın (şehir, hizmet verdiğiniz klinik sayısı)', button: 'Başvuruyu gönder' })}</div>
       </div>
     </section>`,
 });
@@ -500,30 +557,31 @@ pages.push({
   title: 'Sık Sorulan Sorular – VetApp',
   description: 'VetApp hakkında sık sorulan sorular: ücretsiz deneme, cihaz desteği, aşı takibi, stok SKT uyarıları, veresiye yönetimi ve veri güvenliği.',
   ld: [crumbLd('Sık sorulan sorular', '/sss'), faqLd(FAQ.flatMap((g) => g.items))],
-  body: () => `${pageHero('Sık sorulan sorular', 'Aklınıza takılan <em>her şey.</em>', 'Bulamadığınız bir yanıt varsa <a href="/iletisim" style="color:var(--brand)">bize yazın</a>.')}
-    <div class="container" style="padding-bottom:96px">
-${FAQ.map((g) => `      <section class="faq-group reveal"><h2>${esc(g.group)}</h2>${faqHtml(g.items)}</section>`).join('\n')}
-    </div>
-${ctaBand()}`,
+  body: () => `${pageHero('Sık sorulan sorular', 'Aklınıza takılanlar.', `Bulamadığınız bir cevap mı var? <a href="${WA}" target="_blank" rel="noopener" style="color:var(--blue2)">WhatsApp’tan sorun</a>.`)}
+    <section class="sec light">
+      <div class="container" style="max-width:860px">
+${FAQ.map((g) => `        <section class="faq-group reveal"><h2>${esc(g.group)}</h2>${faqHtml(g.items)}</section>`).join('\n')}
+      </div>
+    </section>
+${finalCta()}`,
 });
 
 // — İletişim —
 pages.push({
   file: 'iletisim.html', path: '/iletisim', changefreq: 'yearly', priority: '0.6',
   title: 'İletişim ve Demo Talebi – VetApp',
-  description: 'VetApp ile iletişime geçin: demo talebi, destek ve iş ortaklığı soruları için bize yazın. info@vetapp.com.tr',
+  description: `VetApp ile iletişime geçin: WhatsApp ${PHONE}, info@vetapp.com.tr. Demo, destek ve iş ortaklığı için bize yazın.`,
   ld: [{ '@context': 'https://schema.org', '@type': 'ContactPage', name: 'İletişim – VetApp', url: SITE + '/iletisim' }, crumbLd('İletişim', '/iletisim')],
-  body: () => `${pageHero('İletişim', 'Size nasıl <em>yardımcı</em> olabiliriz?', 'Demo, destek veya iş ortaklığı için formu doldurun ya da doğrudan e-posta gönderin.')}
-    <section class="section" style="padding-top:56px">
-      <div class="container contact-grid">
-        <div class="contact-info reveal">
-          <dl>
-            <div><dt>Genel</dt><dd><a href="mailto:info@vetapp.com.tr">info@vetapp.com.tr</a></dd></div>
-            <div><dt>Destek ve gizlilik</dt><dd><a href="mailto:destek@vetapp.com.tr">destek@vetapp.com.tr</a></dd></div>
-            <div><dt>Canlı demo</dt><dd><a href="${URLS.demo}">Demoyu hemen açın</a> — kayıt gerekmez</dd></div>
-          </dl>
+  body: () => `${pageHero('İletişim', 'Size nasıl yardımcı olalım?', 'En hızlı yol WhatsApp. Form ve e-posta da açık.')}
+    <section class="sec light">
+      <div class="container split">
+        <div class="contact-list reveal">
+          <a href="${WA}" target="_blank" rel="noopener"><span class="ic green-l">${waIcon}</span><span><small>WhatsApp</small><b>${PHONE}</b></span></a>
+          <a href="tel:${PHONE.replace(/\s/g, '')}"><span class="ic blue-l">${icon('phone')}</span><span><small>Telefon</small><b>${PHONE}</b></span></a>
+          <a href="mailto:info@vetapp.com.tr"><span class="ic blue-l">${icon('mail')}</span><span><small>E-posta</small><b>info@vetapp.com.tr</b></span></a>
+          <a href="${URLS.demo}"><span class="ic blue-l">${icon('play')}</span><span><small>Canlı demo</small><b>Kayıt olmadan deneyin</b></span></a>
         </div>
-        <div class="reveal">${contactForm({
+        <div class="reveal d1">${contactForm({
           source: '/iletisim',
           kinds: [['DEMO', 'Demo talebi'], ['SUPPORT', 'Teknik destek'], ['PARTNER', 'İlaç deposu iş ortaklığı'], ['GENERAL', 'Diğer']],
         })}</div>
@@ -536,12 +594,12 @@ const legal = (file, path, title, h1, date, sections) => ({
   file, path, changefreq: 'yearly', priority: '0.4', title: `${title} – VetApp`, description: `VetApp ${title.toLowerCase()}: hizmetin kullanımı ve kişisel verilerin işlenmesine ilişkin koşullar.`,
   ld: [crumbLd(title, path)],
   body: () => `${pageHero('Yasal', h1)}
-    <section class="section" style="padding-top:48px"><div class="container"><div class="prose">
-      <p style="color:var(--muted)">Son güncelleme: ${date}</p>
-${sections.map(([h, html]) => `      <h2>${h}</h2>\n      ${html}`).join('\n')}
+    <section class="sec white"><div class="container"><div class="prose">
+      <p style="color:var(--mute-d)">Son güncelleme: ${date}</p>
+${sections.map(([h, html]) => `      ${h ? `<h2>${h}</h2>\n      ` : ''}${html}`).join('\n')}
     </div></div></section>`,
 });
-pages.push(legal('gizlilik.html', '/gizlilik', 'Gizlilik Politikası', 'Gizlilik <em>politikası</em>', 'Ocak 2025', [
+pages.push(legal('gizlilik.html', '/gizlilik', 'Gizlilik Politikası', 'Gizlilik politikası', 'Ocak 2025', [
   ['', '<p>VetApp (“Şirket”, “biz”, “bizim”) olarak gizliliğinize önem veriyoruz. Bu Gizlilik Politikası, VetApp uygulamasını ve web sitesini (“Hizmet”) kullanırken kişisel verilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu açıklamaktadır.</p>'],
   ['1. Toplanan veriler', '<p>Hizmeti kullanırken aşağıdaki bilgileri toplayabiliriz:</p><ul><li>Ad, soyad ve iletişim bilgileri (e-posta, telefon)</li><li>Klinik bilgileri ve adres</li><li>Uygulama kullanım verileri ve log kayıtları</li><li>Ödeme bilgileri (güvenli ödeme sağlayıcıları aracılığıyla işlenir)</li></ul>'],
   ['2. Verilerin kullanımı', '<p>Topladığımız verileri şu amaçlarla kullanıyoruz:</p><ul><li>Hizmeti sağlamak ve iyileştirmek</li><li>Teknik destek sunmak</li><li>Hesabınızı yönetmek</li><li>Güvenlik ve dolandırıcılık önleme</li><li>Yasal yükümlülükleri yerine getirmek</li></ul>'],
@@ -551,7 +609,7 @@ pages.push(legal('gizlilik.html', '/gizlilik', 'Gizlilik Politikası', 'Gizlilik
   ['6. Haklarınız', '<p>KVKK kapsamında aşağıdaki haklara sahipsiniz:</p><ul><li>Kişisel verilerinize erişim hakkı</li><li>Verilerinizin düzeltilmesini talep etme hakkı</li><li>Verilerinizin silinmesini talep etme hakkı</li><li>Veri işlemeye itiraz etme hakkı</li></ul><p>Bu haklarınızı kullanmak için <a href="/iletisim">iletişim sayfamız</a> üzerinden bize ulaşabilirsiniz.</p>'],
   ['7. İletişim', '<p>Gizlilik politikamız hakkında sorularınız için: <a href="mailto:destek@vetapp.com.tr">destek@vetapp.com.tr</a></p>'],
 ]));
-pages.push(legal('kullanim-sartlari.html', '/kullanim-sartlari', 'Kullanım Şartları', 'Kullanım <em>şartları</em>', 'Ocak 2025', [
+pages.push(legal('kullanim-sartlari.html', '/kullanim-sartlari', 'Kullanım Şartları', 'Kullanım şartları', 'Ocak 2025', [
   ['', '<p>Bu Kullanım Şartları, VetApp (“Hizmet”) kullanımını düzenleyen koşulları belirler. Hizmeti kullanarak bu şartları kabul etmiş sayılırsınız.</p>'],
   ['1. Hizmetin kullanımı', '<p>VetApp’i yalnızca yasal amaçlar için ve bu şartlara uygun şekilde kullanabilirsiniz. Hizmeti kötüye kullanmak, yetkisiz erişim sağlamak veya sistemin güvenliğini tehdit etmek kesinlikle yasaktır.</p>'],
   ['2. Hesap sorumluluğu', '<p>Hesabınızın güvenliğinden siz sorumlusunuz. Şifrenizi gizli tutun ve hesabınızdaki her türlü faaliyetten sorumlu olduğunuzu kabul edin.</p>'],
@@ -569,12 +627,13 @@ export const notFound = {
   file: '404.html', path: '/404', noindex: true, skipSitemap: true,
   title: 'Sayfa bulunamadı – VetApp', description: 'Aradığınız sayfa bulunamadı.',
   body: () => `
-    <section class="page-hero" style="min-height:60vh;display:flex;align-items:center">
+    <section class="page-hero" style="min-height:62vh;display:flex;align-items:center;border:0">
+      <div class="grid-fade grid-bg" aria-hidden="true"></div>
       <div class="container">
-        <p class="kicker">404</p>
-        <h1 style="margin-top:18px">Bu sayfayı <em>bulamadık.</em></h1>
-        <p class="lede" style="margin-top:22px">Aradığınız adres taşınmış ya da hiç var olmamış olabilir.</p>
-        <p style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn--primary" href="/">Ana sayfaya dön ${arrow}</a><a class="btn btn--ghost" href="/iletisim">Bize yazın</a></p>
+        <span class="tag">404</span>
+        <h1>Bu sayfayı bulamadık.</h1>
+        <p class="lede">Adres taşınmış ya da hiç var olmamış olabilir.</p>
+        <div class="actions" style="margin-top:8px"><a class="btn btn--primary" href="/">Ana sayfa ${arrow}</a><a class="btn btn--ghost" href="/iletisim">Bize yazın</a></div>
       </div>
     </section>`,
 };
