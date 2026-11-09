@@ -541,6 +541,61 @@ span.store { opacity: .55; }
 .btn--ghost-d:hover { border-color: #8a929c; }
 .post-sol { margin-top: 20px; font-size: .95rem; }
 
+/* ───────── kampanya ───────── */
+.announce { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 9px var(--g); background: linear-gradient(90deg, #0f3f8c, #1a63d6 55%, #0f3f8c); color: #fff; font-size: .86rem; line-height: 1.35; text-align: left; }
+.announce > span:nth-child(2) { min-width: 0; }
+.announce .gift svg { width: 18px; height: 18px; }
+.announce .arr svg { width: 15px; height: 15px; }
+.announce u { text-underline-offset: 3px; font-weight: 600; }
+.announce:hover .arr { transform: translateX(3px); }
+.announce .arr { transition: transform .25s var(--ease); flex: none; }
+.announce .gift { flex: none; }
+@media (max-width: 559px) { .announce { font-size: .8rem; justify-content: flex-start; } .announce .announce-more { display: block; } }
+.menu-open .announce { display: none; }
+.nav-hot, .nav a[href="/ucretsiz-veteriner-programi"] { color: #ffd27a; }
+@media (min-width: 960px) and (max-width: 1179px) { .nav { gap: 16px; font-size: .88rem; } .site-header .container { gap: 18px; } }
+.camp { position: relative; padding: 56px 0; background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; }
+.camp::before { content: ""; position: absolute; right: -200px; top: -240px; width: 640px; height: 640px; background: radial-gradient(circle, rgba(242, 169, 59, .16), transparent 62%); pointer-events: none; }
+@media (min-width: 768px) { .camp { padding: 80px 0; } }
+.camp .container { position: relative; display: grid; gap: 28px; }
+.camp-head { display: grid; gap: 14px; max-width: 760px; }
+.camp-head .tag { color: #ffd27a; }
+.camp-head .hl { color: #ffd27a; }
+.camp-grid { display: grid; gap: 14px; }
+@media (min-width: 860px) { .camp-grid { grid-template-columns: 1fr 1.15fr; } }
+.camp-card { display: grid; align-content: start; gap: 10px; padding: 24px; border-radius: var(--r4); background: var(--card); border: 1px solid var(--line2); }
+.camp-card.hot { border-color: rgba(242, 169, 59, .55); background: linear-gradient(160deg, rgba(242, 169, 59, .1), var(--card) 55%); }
+.camp-card .ic { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: rgba(63, 185, 80, .14); color: var(--green); }
+.camp-card.hot .ic { background: rgba(242, 169, 59, .16); color: var(--amber); }
+.camp-card .ic svg { width: 22px; height: 22px; }
+.camp-card h3 { font-size: 1.3rem; letter-spacing: -.02em; }
+.camp-card p { color: var(--mute); }
+.camp-progress { margin-top: 8px; display: grid; gap: 8px; }
+.cp-top { display: flex; justify-content: space-between; gap: 12px; font-size: .92rem; color: var(--mute); }
+.cp-top b { color: var(--ink); font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+.cp-left { color: #ffd27a; font-weight: 600; }
+.cp-bar { height: 10px; border-radius: 99px; background: var(--line); overflow: hidden; }
+.cp-bar i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--amber), #ffd27a); }
+.camp-progress small { font-family: var(--fm); font-size: .7rem; letter-spacing: .02em; color: var(--dim); }
+.camp-actions .btn--ghost { border-color: var(--line2); }
+.camp-strip { display: block; background: #fff8e8; border-bottom: 1px solid #f3dfb2; color: #4a3708; font-size: .92rem; }
+.camp-strip .container { display: flex; align-items: center; gap: 12px; padding-top: 14px; padding-bottom: 14px; }
+.camp-strip .container > span:nth-child(2) { flex: 1; min-width: 0; }
+.camp-strip .gift { flex: none; width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: #ffe6ad; color: #9a6400; }
+.camp-strip .gift svg { width: 18px; height: 18px; }
+.camp-strip small { color: #8a7440; font-family: var(--fm); font-size: .72rem; white-space: nowrap; }
+.camp-strip .arr { flex: none; color: #9a6400; transition: transform .25s var(--ease); }
+.camp-strip .arr svg { width: 18px; height: 18px; }
+.camp-strip:hover .arr { transform: translateX(3px); }
+.proof-asof, .final .asof { font-family: var(--fm); font-size: .7rem; color: var(--dim); letter-spacing: .02em; }
+.timeline { max-width: 720px; margin: 20px 0 0; display: grid; gap: 0; border-left: 2px solid var(--line-d); padding-left: 0; }
+.timeline li { position: relative; padding: 0 0 26px 26px; }
+.timeline li::before { content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #fff; border: 2px solid var(--blue); }
+.timeline li:last-child { padding-bottom: 0; }
+.timeline .when { font-family: var(--fm); font-size: .74rem; letter-spacing: .04em; text-transform: uppercase; color: var(--blue); }
+.timeline h3 { margin: 2px 0 4px; color: var(--ink-d); }
+.timeline p { color: var(--mute-d); }
+
 /* ───────── hareket azaltma ───────── */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

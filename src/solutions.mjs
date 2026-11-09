@@ -3,7 +3,7 @@
 // Yeni sayfa eklerken src/site.mjs içindeki SOLUTIONS listesine de ekleyin.
 import {
   SITE, URLS, WA, STATS, APP_STORE, PLAY_STORE, SOLUTIONS, esc, icon, arrow, ck,
-  frame, phoneImg, faqHtml, faqLd, crumbLd, pageHero, finalCta, postCard,
+  frame, phoneImg, faqHtml, faqLd, crumbLd, pageHero, finalCta, postCard, campaignStrip, CAMPAIGN, LEFT, ASOF, FREE_LINE,
 } from './site.mjs';
 import { loadPosts } from './markdown.mjs';
 
@@ -29,9 +29,9 @@ function solution(d) {
       const posts = loadPosts().filter((p) => p.related.includes(d.path)).slice(0, 3);
       return `${pageHero(d.crumb, d.h1, d.lede, `
         <div class="actions" data-hero-cta style="margin-top:8px">
-          <a class="btn btn--primary" href="${URLS.register}">30 gün ücretsiz başla ${arrow}</a>
+          <a class="btn btn--primary" href="${URLS.register}">Ücretsiz başla ${arrow}</a>
           <a class="btn btn--ghost" href="${URLS.demo}">${icon('play')} Demoyu aç</a>
-        </div>`)}
+        </div>`)}${campaignStrip()}
     <section class="sec light">
       <div class="container split">
         <div class="prose reveal">
@@ -86,7 +86,7 @@ export const solutionPages = [
     path: '/veteriner-programi', crumb: 'Veteriner programı', priority: '0.95',
     title: 'Veteriner Programı – Veteriner Klinik Yazılımı | VetApp',
     ogTitle: 'Veteriner programı: VetApp ile klinik yönetimi tek yazılımda',
-    description: 'Veteriner klinikleri için program: hasta ve randevu, aşı takibi, ilaç stok takibi, veresiye ve cari, hızlı satış ve kasa. Web, Android, iPhone. 30 gün ücretsiz.',
+    description: 'Veteriner klinikleri için program: hasta ve randevu, aşı takibi, ilaç stok takibi, veresiye ve cari, hızlı satış ve kasa. Web, Android, iPhone. Ocak 2027’ye kadar ücretsiz.',
     h1: 'Veteriner programı: <span class="soft">kliniğin bütün işleri tek yazılımda.</span>',
     lede: 'VetApp; veteriner klinikleri için geliştirilmiş, bulut tabanlı bir klinik yönetim programıdır. Kurulum gerektirmez, telefonda ve bilgisayarda aynı hesapla çalışır.',
     shot: ['dashboard', 'VetApp veteriner programı genel bakış paneli: günlük kasa, alacak ve randevular', 'panel.vetapp.com.tr'], mob: 'm-dashboard',
@@ -111,7 +111,7 @@ export const solutionPages = [
           <li><strong>İlaç stoğunu SKT ile tutuyor mu?</strong> Veteriner ilaçlarında parti ve son kullanma tarihi takibi şarttır. Sadece adet tutan bir stok modülü yetmez.</li>
           <li><strong>Veresiyeyi gerçekten yönetebiliyor mu?</strong> Türkiye’de kliniklerin büyük kısmı veresiye çalışır. Satır bazında veresiye, kısmi tahsilat ve devreden bakiye olmalı.</li>
           <li><strong>Tedarikçi borcunu da tutuyor mu?</strong> İlaç deposuna olan borç ve vadeler, alım faturasıyla birlikte otomatik güncellenmeli.</li>
-          <li><strong>Öğrenmesi kolay mı?</strong> Küçük ekiplerin eğitime ayıracak vakti yoktur. Ücretsiz deneme süresinde ekibinizle birlikte gerçek işlerinizi girerek test edin.</li>
+          <li><strong>Öğrenmesi kolay mı?</strong> Küçük ekiplerin eğitime ayıracak vakti yoktur. VetApp Ocak 2027’ye kadar tamamen ücretsiz olduğu için ekibinizle gerçek işlerinizi girerek risksiz test edebilirsiniz.</li>
         </ol>
         <p>Daha ayrıntılı bir kontrol listesi için <a href="/blog/veteriner-programi-secerken-dikkat-edilmesi-gerekenler">veteriner programı seçme rehberimizi</a> okuyabilirsiniz.</p>`],
       [H('VetApp kimler için uygun?'), `<ul>
@@ -124,8 +124,8 @@ export const solutionPages = [
         <p>Program yeni ve aktif olarak geliştiriliyor; kullanan kliniklerin geri bildirimleri doğrudan yeni sürümlere yansıyor. Bir öneriniz varsa <a href="${WA}" target="_blank" rel="noopener">WhatsApp’tan yazmanız</a> yeterli.</p>`],
     ],
     faq: [
-      ['En iyi veteriner programı hangisi?', 'Her kliniğin ihtiyacı farklıdır; en iyi program, sizin iş akışınıza uyan ve ekibinizin gerçekten kullandığı programdır. Bulut tabanlı olması, mobilde tam çalışması, ilaç stoğunu SKT ile tutması ve veresiyeyi yönetebilmesi temel ölçütlerdir. VetApp’i 30 gün ücretsiz deneyerek kendi işlerinizle karşılaştırabilirsiniz.'],
-      ['Ücretsiz veteriner programı var mı?', 'VetApp’i 30 gün boyunca bütün özellikleriyle ücretsiz kullanabilirsiniz; kredi kartı istenmez. Kayıt olmadan incelemek için canlı demo da açıktır.'],
+      ['En iyi veteriner programı hangisi?', 'Her kliniğin ihtiyacı farklıdır; en iyi program, sizin iş akışınıza uyan ve ekibinizin gerçekten kullandığı programdır. Bulut tabanlı olması, mobilde tam çalışması, ilaç stoğunu SKT ile tutması ve veresiyeyi yönetebilmesi temel ölçütlerdir. VetApp Ocak 2027’ye kadar tamamen ücretsiz olduğu için kendi işlerinizle risksiz karşılaştırabilirsiniz.'],
+      ['Ücretsiz veteriner programı var mı?', `Evet. VetApp ${CAMPAIGN.freeUntil}’ye kadar bütün özellikleriyle tamamen ücretsizdir; kart bilgisi istenmez. Kaydolup kullanan ilk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} de hediye edilir (${ASOF} itibarıyla ${LEFT} yer kaldı). Ayrıntılar: kampanya sayfası.`],
       ['Veteriner programını kurmak gerekiyor mu?', 'Hayır. VetApp bulut tabanlıdır; tarayıcıdan panel.vetapp.com.tr adresine girmeniz veya mobil uygulamayı indirmeniz yeterlidir. Yedekleme ve güncellemeler otomatik yapılır.'],
       ['Birden fazla çalışan aynı anda kullanabilir mi?', 'Evet. Klinik yöneticisi ekibindeki kişiler için kullanıcı hesabı açabilir; herkes aynı klinik verisi üzerinde çalışır.'],
       ['Mevcut Excel kayıtlarımı aktarabilir miyim?', 'Excel veya CSV verileriniz için bizimle iletişime geçin; aktarım konusunda yardımcı oluyoruz. Açılış stoğu ve devreden bakiyeler program içinden de kolayca girilebilir.'],
@@ -136,7 +136,7 @@ export const solutionPages = [
   solution({
     path: '/veteriner-stok-takip-programi', crumb: 'Veteriner stok takip programı',
     title: 'Veteriner Stok Takip Programı – İlaç, SKT, Barkod | VetApp',
-    description: 'Veteriner kliniği için ilaç ve sarf malzeme stok takip programı: barkod, parti ve son kullanma tarihi (SKT), kritik stok uyarısı, alım faturası. 30 gün ücretsiz.',
+    description: 'Veteriner kliniği için ilaç ve sarf malzeme stok takip programı: barkod, parti ve son kullanma tarihi (SKT), kritik stok uyarısı, alım faturası. Ocak 2027’ye kadar ücretsiz.',
     h1: 'Veteriner stok takip programı: <span class="soft">ilaç stoğu, SKT’ye kadar.</span>',
     lede: `İlaç ve sarf malzemelerinizi barkodla kaydedin, parti ve son kullanma tarihiyle izleyin. Azalan ve SKT’si yaklaşan ürünler kendiliğinden uyarı verir.`,
     shot: ['stok-giris', 'VetApp veteriner stok takip ekranı: alım faturası ve stok girişi', 'panel.vetapp.com.tr/#/stock/entry'], mob: 'm-stok',
@@ -178,14 +178,14 @@ export const solutionPages = [
       ['Sarf malzemeleri de takip edebilir miyim?', 'Evet. Enjektör, eldiven, serum seti gibi sarf malzemeleri de ürün olarak tanımlanır ve aynı şekilde stokta izlenir.'],
       ['Barkod okuyucu almam gerekiyor mu?', 'Gerekmez. Telefonun kamerası barkod okuyucu olarak çalışır. Masada hızlı çalışmak isterseniz bilgisayara bağlı standart bir USB barkod okuyucu da kullanılabilir.'],
     ],
-    ctaTitle: 'Stoğunuzu 30 gün ücretsiz VetApp’te tutun.',
+    ctaTitle: 'İlaç stoğunuzu VetApp’te ücretsiz tutun.',
   }),
 
   // ───────── 3. Cari / veresiye ─────────
   solution({
     path: '/veteriner-cari-takip-programi', crumb: 'Veteriner cari takip programı',
     title: 'Veteriner Cari ve Veresiye Takip Programı | VetApp',
-    description: 'Veteriner klinikleri için cari takip programı: müşteri veresiyesi, kısmi tahsilat, vade, ilaç deposu (tedarikçi) borcu ve devreden bakiye. Web ve mobil. 30 gün ücretsiz.',
+    description: 'Veteriner klinikleri için cari takip programı: müşteri veresiyesi, kısmi tahsilat, vade, ilaç deposu (tedarikçi) borcu ve devreden bakiye. Web ve mobil. Ocak 2027’ye kadar ücretsiz.',
     h1: 'Veteriner cari takip programı: <span class="soft">kimin ne borcu var, tek bakışta.</span>',
     lede: 'Müşteri veresiyesini, tahsilatları ve ilaç deposuna olan borçlarınızı fatura fatura, vade vade takip edin.',
     shot: ['musteriler', 'VetApp veteriner cari takip: müşteri hesapları listesi', 'panel.vetapp.com.tr/#/accounts/customers'], mob: 'm-cari',
@@ -218,14 +218,14 @@ export const solutionPages = [
       ['Eski defterimdeki borçları nasıl aktarırım?', 'Her müşteri ve tedarikçi için açılış bakiyesini “devreden bakiye” olarak girebilirsiniz. Bu kayıtlar ayrı etiketle tutulur, yeni satışlarla karışmaz.'],
       ['Telefondan tahsilat girebilir miyim?', 'Evet. iPhone ve Android uygulaması web panelindeki cari işlemlerin tamamını yapabilir; tahsilatı müşterinin yanında girersiniz.'],
     ],
-    ctaTitle: 'Veresiye defterini VetApp’e taşıyın.',
+    ctaTitle: 'Veresiye defterini ücretsiz VetApp’e taşıyın.',
   }),
 
   // ───────── 4. Aşı ─────────
   solution({
     path: '/veteriner-asi-takip-programi', crumb: 'Veteriner aşı takip programı',
     title: 'Veteriner Aşı Takip Programı – Aşı Takvimi | VetApp',
-    description: 'Veteriner klinikleri için aşı takip programı: tür bazlı aşı protokolleri, aşı takvimi, yaklaşan ve geciken aşı listesi, hasta geçmişi. Web ve mobil. 30 gün ücretsiz.',
+    description: 'Veteriner klinikleri için aşı takip programı: tür bazlı aşı protokolleri, aşı takvimi, yaklaşan ve geciken aşı listesi, hasta geçmişi. Web ve mobil. Ocak 2027’ye kadar ücretsiz.',
     h1: 'Veteriner aşı takip programı: <span class="soft">hiçbir aşı unutulmasın.</span>',
     lede: 'Her hastanın aşı geçmişi ve bir sonraki aşı tarihi kayıtlı; vadesi gelen ve geciken aşılar her sabah önünüzde.',
     shot: ['randevular', 'VetApp randevu ve aşı takip ekranı', 'panel.vetapp.com.tr/#/clinic/appointments'], mob: 'm-klinik',
@@ -255,14 +255,14 @@ export const solutionPages = [
       ['Farklı türler için farklı aşı takvimi tanımlanabilir mi?', 'Evet. Aşı protokolleri tür bazında tanımlanır; kedi ve köpek gibi türler için ayrı takvimler kullanılır.'],
       ['Hastanın geçmiş aşılarını görebilir miyim?', 'Evet. Hasta zaman çizelgesinde yapılan bütün aşılar, muayeneler ve randevular tarih sırasıyla görünür.'],
     ],
-    ctaTitle: 'Aşı takviminizi 30 gün ücretsiz deneyin.',
+    ctaTitle: 'Aşı takviminizi VetApp’te ücretsiz tutun.',
   }),
 
   // ───────── 5. Hasta / randevu ─────────
   solution({
     path: '/veteriner-hasta-takip-programi', crumb: 'Veteriner hasta takip programı',
     title: 'Veteriner Hasta ve Randevu Takip Programı | VetApp',
-    description: 'Veteriner hasta takip programı: hayvan kartı, sahip bilgisi, çip no, randevu takvimi, SOAP muayene kaydı ve hasta zaman çizelgesi. Web, Android, iPhone. 30 gün ücretsiz.',
+    description: 'Veteriner hasta takip programı: hayvan kartı, sahip bilgisi, çip no, randevu takvimi, SOAP muayene kaydı ve hasta zaman çizelgesi. Web, Android, iPhone. Ocak 2027’ye kadar ücretsiz.',
     h1: 'Veteriner hasta ve randevu takibi: <span class="soft">her hastanın hikâyesi tek kartta.</span>',
     lede: 'Hayvan kartı, randevu takvimi, muayene notları ve aşılar; hepsi aynı hasta geçmişinde.',
     shot: ['hastalar', 'VetApp veteriner hasta takip programı: hasta listesi', 'panel.vetapp.com.tr/#/clinic/patients'], mob: 'm-klinik',
@@ -324,7 +324,7 @@ export const solutionPages = [
   solution({
     path: '/buyukbas-veteriner-programi', crumb: 'Büyükbaş veteriner programı',
     title: 'Büyükbaş Veteriner Programı – Saha ve Çiftlik | VetApp',
-    description: 'Büyükbaş ağırlıklı çalışan veteriner klinikleri için program: çiftlikte mobilden kayıt, uzun vadeli veresiye, ilaç ve sarf malzeme stok takibi. 30 gün ücretsiz.',
+    description: 'Büyükbaş ağırlıklı çalışan veteriner klinikleri için program: çiftlikte mobilden kayıt, uzun vadeli veresiye, ilaç ve sarf malzeme stok takibi. Ocak 2027’ye kadar ücretsiz.',
     h1: 'Büyükbaş veteriner programı: <span class="soft">kayıt, işin bittiği yerde.</span>',
     lede: 'Çiftlikte yaptığınız tedaviyi, kullandığınız ilacı ve yazdığınız veresiyeyi kliniğe dönmeden telefondan girin.',
     shot: ['musteriler', 'VetApp müşteri cari listesi: büyükbaş yetiştiricilerinin veresiye hesapları', 'panel.vetapp.com.tr/#/accounts/customers'], mob: 'm-cari',
@@ -350,6 +350,6 @@ export const solutionPages = [
       ['İnternetin zayıf olduğu çiftliklerde çalışır mı?', 'VetApp çalışmak için internet bağlantısı gerektirir; mobil veri yeterlidir. Bağlantının hiç olmadığı yerlerde kaydı bağlantı geldiğinde girmeniz gerekir.'],
       ['Yetiştirici bazında borç takibi yapılabilir mi?', 'Evet. Her yetiştirici bir müşteri hesabıdır; yazılan veresiye, kısmi tahsilatlar ve kalan bakiye bu hesapta tutulur.'],
     ],
-    ctaTitle: 'Saha kayıtlarınızı 30 gün ücretsiz VetApp’e taşıyın.',
+    ctaTitle: 'Saha kayıtlarınızı ücretsiz VetApp’e taşıyın.',
   }),
 ];

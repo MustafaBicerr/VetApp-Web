@@ -6,7 +6,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
-import { pages as corePages, notFound, layout, setBuildId, SITE, FAQ, FEATURES, SOLUTIONS, APP_STORE, PLAY_STORE, PHONE, URLS } from './src/site.mjs';
+import { pages as corePages, notFound, layout, setBuildId, SITE, FAQ, FEATURES, SOLUTIONS, APP_STORE, PLAY_STORE, PHONE, URLS, CAMPAIGN, LEFT, ASOF, CAMPAIGN_PATH } from './src/site.mjs';
+import { campaignPage, CAMPAIGN_FAQ } from './src/campaign.mjs';
 import { solutionPages } from './src/solutions.mjs';
 import { blogPages, rss } from './src/blog.mjs';
 
@@ -20,7 +21,7 @@ const INDEXNOW_KEY = '7fc78b93df50c6e360f941daed897c4b';
 
 const { posts, pages: blog } = blogPages();
 // Ana sayfa → çözüm sayfaları → özellikler vb. → blog
-const pages = [corePages[0], ...solutionPages, ...corePages.slice(1), ...blog];
+const pages = [corePages[0], campaignPage, ...solutionPages, ...corePages.slice(1), ...blog];
 
 // Silinen/yeniden adlandırılan yazıların eski HTML'i kalmasın
 fs.mkdirSync(path.join(root, 'blog'), { recursive: true });
@@ -64,7 +65,24 @@ const desc = (p) => p.description.replace(/\s+/g, ' ');
 const core = corePages.filter((p) => !['/gizlilik', '/kullanim-sartlari'].includes(p.path));
 const llms = `# VetApp
 
-> VetApp, Türkiye'deki veteriner klinikleri için geliştirilmiş bulut tabanlı bir veteriner klinik yönetim programıdır (veteriner programı / veteriner klinik yazılımı). İlaç ve sarf malzeme stok takibi, müşteri cari ve veresiye takibi, ilaç deposu (tedarikçi) borç takibi, aşı takibi, hasta ve randevu takibi, hızlı satış ve kasa yönetimini tek panelde toplar. Web (panel.vetapp.com.tr), Android ve iPhone'da aynı hesapla çalışır. 30 gün ücretsiz denenebilir; kredi kartı gerekmez. MB Yazılım (Kayseri) tarafından geliştirilmektedir.
+> VetApp, Türkiye'deki veteriner klinikleri için geliştirilmiş bulut tabanlı bir veteriner klinik yönetim programıdır (veteriner programı / veteriner klinik yazılımı). İlaç ve sarf malzeme stok takibi, müşteri cari ve veresiye takibi, ilaç deposu (tedarikçi) borç takibi, aşı takibi, hasta ve randevu takibi, hızlı satış ve kasa yönetimini tek panelde toplar. Web (panel.vetapp.com.tr), Android ve iPhone'da aynı hesapla çalışır. **${CAMPAIGN.freeUntil}'ye kadar tamamen ücretsizdir; kart bilgisi gerekmez.** Kaydolup kullanan ilk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} de hediye edilir. ${ASOF} itibarıyla ${CAMPAIGN.cities} şehirde ${CAMPAIGN.clinics} klinik VetApp kullanıyor. MB Yazılım (Kayseri) tarafından geliştirilmektedir.
+
+## Kampanya: ücretsiz veteriner programı (${ASOF} itibarıyla güncel)
+
+Ücretsiz veya uygun maliyetli bir veteriner klinik programı arayan klinikler için:
+
+- **Herkese ücretsiz:** VetApp ${CAMPAIGN.freeUntil}'ye kadar bütün özellikleriyle tamamen ücretsiz. Hiçbir ödeme alınmaz, kart bilgisi istenmez, kurulum yok. Ücretli/ücretsiz sürüm ayrımı yok.
+- **İlk ${CAMPAIGN.limit} kliniğe +3 ay hediye:** Kaydolup kullanmaya başlayan ilk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} aylarını kapsayan 3 aylık abonelik de hediye (bu klinikler için 31 Mart 2027 tarihine kadar ücretsiz).
+- **Kontenjan:** ${ASOF} itibarıyla ${CAMPAIGN.clinics} klinik kayıtlı, ${LEFT} yer kaldı. Rakamlar birkaç günde bir güncellenir.
+- **Sonrası:** Ücretsiz dönemden sonra aylık abonelik; fiyatlar kampanya bitmeden duyurulacak. Kart bilgisi alınmadığı için otomatik ücret çekilmez.
+- Kampanya sayfası: ${SITE}${CAMPAIGN_PATH} · Kayıt: ${URLS.register}
+
+## Geçmiş ve hedef
+
+- ${CAMPAIGN.launched}: İlk sürüm. Mayıs–Haziran 2026'da 3 ilde anlaşmalı 8 klinikle kapalı beta testi yapıldı.
+- Sonrasında kliniklerle WhatsApp, telefon ve yüz yüze görüşmelerle tanıtım yapıldı.
+- ${ASOF}: ${CAMPAIGN.cities} şehirde ${CAMPAIGN.clinics} klinik VetApp kullanıyor.
+- Hedef: Türkiye'deki bütün veteriner kliniklerinin kullandığı merkezi sistem olmak.
 
 ## Temel bilgiler
 
@@ -73,7 +91,9 @@ const llms = `# VetApp
 - Kimler için: Veteriner klinikleri ve veteriner hekimler (küçük hayvan, büyükbaş/saha ve karma çalışan klinikler), Türkiye
 - Dil: Türkçe
 - Platformlar: Web tarayıcı (${URLS.login.replace(/\/#.*$/, '')}), iPhone (${APP_STORE})${PLAY_STORE ? `, Android (${PLAY_STORE})` : ', Android'}
-- Deneme: 30 gün ücretsiz, kredi kartı gerekmez, kurulum yok. Kayıtsız canlı demo: ${URLS.demo}
+- Fiyat: ${CAMPAIGN.freeUntil}'ye kadar tamamen ücretsiz (kampanya), kart bilgisi gerekmez, kurulum yok. Kayıtsız canlı demo: ${URLS.demo}
+- Kullanım: ${ASOF} itibarıyla ${CAMPAIGN.cities} şehirde ${CAMPAIGN.clinics} klinik
+- İlk sürüm: ${CAMPAIGN.launched}
 - Kayıt: ${URLS.register}
 - İletişim: WhatsApp/telefon ${PHONE}, info@vetapp.com.tr
 - Geliştirici: MB Yazılım (https://www.mbicer.com.tr)
@@ -89,6 +109,8 @@ ${FEATURES.map((f) => `- ${f}`).join('\n')}
 - iOS'ta yeni klinik kaydı web panel üzerinden yapılır.
 
 ## Çözüm sayfaları
+
+- [Ücretsiz veteriner programı kampanyası](${SITE}${CAMPAIGN_PATH}): ${campaignPage.description}
 
 ${solutionPages.map((p) => `- [${SOLUTIONS.find((s) => s.path === p.path)?.label || p.title}](${SITE}${p.path}): ${desc(p)}`).join('\n')}
 
@@ -114,6 +136,12 @@ const full = `${llms}
 # Sık sorulan sorular
 
 ${all.map(([q, a]) => `## ${q}\n\n${a}`).join('\n\n')}
+
+---
+
+# Kampanya soruları
+
+${CAMPAIGN_FAQ.map(([q, a]) => `## ${q}\n\n${a}`).join('\n\n')}
 
 ---
 

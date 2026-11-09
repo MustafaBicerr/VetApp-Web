@@ -73,4 +73,4 @@ Cari takip yalnızca müşteri alacağı değildir. İlaç depolarına olan bor�
 
 Veresiye yönetimi disiplin ister, ama doğru araçla bu disiplin zahmetsiz hâle gelir. Devreden bakiyeyle temiz bir başlangıç yapın, her veresiyeyi bir müşteriye bağlayın, tahsilatı anında girin ve haftada bir alacak listesine bakın.
 
-VetApp’in [veteriner cari ve veresiye takibi](/veteriner-cari-takip-programi) özelliklerine göz atabilir, [30 gün ücretsiz deneyebilirsiniz](https://panel.vetapp.com.tr/#/register). Büyükbaş ağırlıklı çalışıyorsanız [büyükbaş veteriner programı](/buyukbas-veteriner-programi) sayfamız da ilginizi çekebilir.
+VetApp’in [veteriner cari ve veresiye takibi](/veteriner-cari-takip-programi) özelliklerine göz atabilir, [Ocak 2027’ye kadar tamamen ücretsiz kullanabilirsiniz](/ucretsiz-veteriner-programi). Büyükbaş ağırlıklı çalışıyorsanız [büyükbaş veteriner programı](/buyukbas-veteriner-programi) sayfamız da ilginizi çekebilir.

@@ -90,10 +90,10 @@ Değerlendirdiğiniz programları bu tabloyla karşılaştırabilirsiniz:
 | Satır bazında veresiye | Gerçek klinik işleyişi | Evet |
 | Tedarikçi borcu | Depo ödemelerini kaçırmamak | Evet |
 | Aşı gündemi | Kaçan aşı = kaçan ziyaret | Evet |
-| Ücretsiz deneme | Risksiz karar | 30 gün, kart yok |
+| Ücretsiz kullanım | Risksiz karar | Ocak 2027’ye kadar tamamen ücretsiz, kart yok |
 
 ## Sonuç
 
 Bir veteriner programını broşürüne bakarak değil, kendi işlerinizle deneyerek seçin. Deneme süresinde stok girişini, bir veresiye satışı, bir tahsilatı ve bir gün sonu kapanışını mutlaka yapın. Program bu dört işi zahmetsiz yaptırıyorsa, kliniğinizde de yaşar.
 
-VetApp’i [30 gün ücretsiz deneyebilir](https://panel.vetapp.com.tr/#/register) ya da kayıt olmadan [canlı demoyu](https://panel.vetapp.com.tr/#/demo) açabilirsiniz. Tüm modüller için [veteriner programı](/veteriner-programi) sayfamıza göz atın.
+VetApp’i [Ocak 2027’ye kadar tamamen ücretsiz kullanabilir](/ucretsiz-veteriner-programi) ya da kayıt olmadan [canlı demoyu](https://panel.vetapp.com.tr/#/demo) açabilirsiniz. Tüm modüller için [veteriner programı](/veteriner-programi) sayfamıza göz atın.

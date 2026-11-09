@@ -14,3 +14,4 @@ node ../.../serve       # (yerel önizleme için herhangi bir statik sunucu; tem
 - Dağıtım: `git push` → `ssh vetapp-prod 'bash /root/vetapp_production/backend/scripts/deploy-server.sh web'`.
 - SEO: her sayfada canonical, OG/Twitter, JSON-LD (Organization, WebSite, SoftwareApplication, FAQPage, BreadcrumbList); sitemap `build.mjs` ile üretilir.
 - Blog yazısı ekleme: `content/blog/README.md`. SEO yol haritası ve deploy sonrası yapılacaklar: `docs/SEO-PLAN.md`.
+- **Kampanya rakamlarını güncelleme** (birkaç günde bir): `src/site.mjs` → `CAMPAIGN` içinde `asOf` (tarih), `clinics`, `cities` değerlerini admin panelindeki güncel sayılarla değiştirin → `node build.mjs` → commit + push → deploy. Kalan yer (500 − klinik), duyuru çubuğu, ana sayfa bandı, kampanya sayfası (`/ucretsiz-veteriner-programi`), SSS, şema ve llms.txt kendiliğinden güncellenir. Kontenjan dolunca metinler "kontenjan doldu" olarak değişir.

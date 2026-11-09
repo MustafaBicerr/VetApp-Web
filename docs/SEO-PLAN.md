@@ -11,6 +11,7 @@
 | Yapılandırılmış veri | Organization (sameAs, iletişim, bölge), WebSite, SoftwareApplication (özellik listesi, ekran görüntüleri, App Store), WebPage, BreadcrumbList, FAQPage, Blog/BlogPosting |
 | Yapay zekâ (GEO) | `/llms.txt` ve `/llms-full.txt` (ürünün özeti, özellikleri, sınırları, bütün SSS ve blog metni). `robots.txt`'te GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended vb. açıkça izinli |
 | Hızlı indeksleme | IndexNow anahtar dosyası + `node scripts/indexnow.mjs` |
+| Kampanya | `/ucretsiz-veteriner-programi` sayfası ("ücretsiz / uygun fiyatlı veteriner programı" aramaları), sitenin tepesinde duyuru çubuğu, ana sayfada hero altı kampanya bandı, çözüm sayfalarında kampanya şeridi, Offer şeması (geçerlilik tarihleri ve kalan kontenjan), llms.txt'te kampanya bölümü. Rakamlar `src/site.mjs` → `CAMPAIGN` |
 | Diğer | Twitter kartları, makale meta etiketleri, `apple-itunes-app` (Safari'de App Store bandı), sitemap'te gerçek `lastmod` |
 
 ## 2. Deploy sonrası bir kez yapılacaklar (sizde)

@@ -76,6 +76,6 @@ Bunları biliyorsanız, kliniğinizin işletme tarafı ilk günden kontrol altı
 
 ## VetApp ile ilk 30 gün
 
-VetApp, yeni açılan klinikler düşünülerek tasarlandı: açılış stoğu ve devreden bakiyeler ilk gün girilir, ilaç kartları 1.694 ilaçlık katalogdan barkodla dolar, mobil uygulama web panelindeki her işlemi yapar. Üstelik ilk 30 gün tamamen ücretsizdir.
+VetApp, yeni açılan klinikler düşünülerek tasarlandı: açılış stoğu ve devreden bakiyeler ilk gün girilir, ilaç kartları 1.694 ilaçlık katalogdan barkodla dolar, mobil uygulama web panelindeki her işlemi yapar. Üstelik VetApp Ocak 2027’ye kadar tamamen ücretsizdir ve kart bilgisi istemez; kaydolup kullanan ilk 500 kliniğe Ocak, Şubat ve Mart 2027 de hediye edilir. Ayrıntılar [kampanya sayfasında](/ucretsiz-veteriner-programi).
 
 [Ücretsiz hesabınızı açın](https://panel.vetapp.com.tr/#/register) ya da önce [canlı demoyu](https://panel.vetapp.com.tr/#/demo) inceleyin. Seçim yapmadan önce [veteriner programı seçme rehberimizi](/blog/veteriner-programi-secerken-dikkat-edilmesi-gerekenler) de okuyabilirsiniz.

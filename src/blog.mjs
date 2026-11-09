@@ -1,5 +1,5 @@
 // Blog: /blog (liste), /blog/<slug> (yazı), /feed.xml (RSS). Yazılar content/blog/*.md içinde.
-import { SITE, URLS, SOLUTIONS, esc, icon, arrow, crumbLd, pageHero, finalCta, postCard } from './site.mjs';
+import { SITE, URLS, SOLUTIONS, CAMPAIGN, LEFT, ASOF, CAMPAIGN_PATH, esc, icon, arrow, crumbLd, pageHero, finalCta, postCard, campaignStrip } from './site.mjs';
 import { loadPosts, trDate } from './markdown.mjs';
 
 const ORG = { '@id': SITE + '/#organization' };
@@ -16,7 +16,7 @@ export function blogPages() {
       { '@context': 'https://schema.org', '@type': 'Blog', '@id': SITE + '/blog#blog', name: 'VetApp Blog', url: SITE + '/blog', inLanguage: 'tr-TR', publisher: ORG,
         blogPost: posts.map((p) => ({ '@type': 'BlogPosting', headline: p.title, url: `${SITE}/blog/${p.slug}`, datePublished: p.date, dateModified: p.updated })) },
     ],
-    body: () => `${pageHero('Blog', 'Veteriner klinik yönetimi <span class="soft">üzerine rehberler.</span>', 'Stok, veresiye, aşı takibi ve klinik düzeni hakkında sahadan, pratik yazılar.')}
+    body: () => `${pageHero('Blog', 'Veteriner klinik yönetimi <span class="soft">üzerine rehberler.</span>', 'Stok, veresiye, aşı takibi ve klinik düzeni hakkında sahadan, pratik yazılar.')}${campaignStrip()}
     <section class="sec light">
       <div class="container">
         ${posts.length ? `<div class="post-grid">${posts.map((p, i) => postCard(p, ` reveal${i % 3 ? ` d${i % 3}` : ''}`)).join('')}</div>` : '<p>Yakında burada ilk yazımız olacak.</p>'}
@@ -52,9 +52,9 @@ ${finalCta()}`,
         <article class="prose article">
 ${p.html}
           <aside class="post-cta">
-            <b>Bu işleri VetApp’le yapmayı deneyin.</b>
-            <p>Veteriner klinikleri için stok, cari, aşı, randevu, satış ve kasa tek programda. 30 gün ücretsiz, kredi kartı gerekmez.</p>
-            <div class="actions"><a class="btn btn--primary" href="${URLS.register}">Ücretsiz başla ${arrow}</a><a class="btn btn--ghost-d" href="${URLS.demo}">${icon('play')} Demoyu aç</a></div>
+            <b>Bu işleri VetApp’le ücretsiz yapın.</b>
+            <p>Veteriner klinikleri için stok, cari, aşı, randevu, satış ve kasa tek programda. ${CAMPAIGN.freeUntil}’ye kadar tamamen ücretsiz, kart bilgisi gerekmez.${LEFT > 0 ? ` İlk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} de hediye; ${ASOF} itibarıyla ${LEFT} yer kaldı.` : ''}</p>
+            <div class="actions"><a class="btn btn--primary" href="${URLS.register}">Ücretsiz kaydol ${arrow}</a><a class="btn btn--ghost-d" href="${CAMPAIGN_PATH}">Kampanya detayları</a></div>
           </aside>
           ${sol.length ? `<p class="post-sol">İlgili: ${sol.map((s) => `<a href="${s.path}">${s.label}</a>`).join(' · ')}</p>` : ''}
         </article>

@@ -12,7 +12,28 @@ export const URLS = {
 export const MAKER = 'https://www.mbicer.com.tr';
 export const PHONE = '+90 535 226 54 08';
 export const WA = 'https://wa.me/905352265408?text=' + encodeURIComponent('Merhaba, VetApp hakkında bilgi almak istiyorum.');
-export const STATS = { clinics: 417, cities: 53, drugs: 1694 };
+// ───────── KAMPANYA ─────────
+// Rakamlar VetApp admin panelinden alınır. Birkaç günde bir: asOf, clinics, cities güncelle → node build.mjs → push → deploy.
+// Bütün site (ana sayfa bandı, duyuru çubuğu, kampanya sayfası, SSS, şema, llms.txt) bu tek yerden beslenir.
+export const CAMPAIGN = {
+  asOf: '2026-11-10',          // rakamların güncel olduğu gün (sitede "… itibarıyla" olarak yazılır)
+  clinics: 432,                // VetApp'i kullanan klinik sayısı
+  cities: 55,                  // bu kliniklerin bulunduğu şehir sayısı
+  limit: 500,                  // 3 ay hediye abonelik kontenjanı (ilk N klinik)
+  freeUntil: 'Ocak 2027',      // herkes için tamamen ücretsiz kullanım: bu aya kadar
+  freeEndIso: '2026-12-31',    // ücretsiz dönemin son günü (şema için)
+  giftMonths: 'Ocak, Şubat ve Mart 2027',
+  giftEndIso: '2027-03-31',    // hediye aboneliğin son günü
+  launched: 'Mayıs 2026',
+};
+export const STATS = { clinics: CAMPAIGN.clinics, cities: CAMPAIGN.cities, drugs: 1694 };
+export const LEFT = Math.max(0, CAMPAIGN.limit - CAMPAIGN.clinics);
+export const ASOF = trDate(CAMPAIGN.asOf);
+export const CAMPAIGN_PATH = '/ucretsiz-veteriner-programi';
+export const FREE_LINE = `${CAMPAIGN.freeUntil}’ye kadar tamamen ücretsiz`;
+export const GIFT_LINE = LEFT > 0
+  ? `İlk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} de hediye`
+  : `${CAMPAIGN.limit} kliniklik hediye kontenjanı doldu`;
 // Mağaza bağlantıları. Play Store adresi bilindiğinde PLAY_STORE'a yazın; boşsa hiçbir yerde gösterilmez.
 export const APP_STORE = 'https://apps.apple.com/tr/app/vetapp-mobil/id6761138905';
 export const PLAY_STORE = '';
@@ -52,6 +73,7 @@ const P = {
   mobile: '<rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M11 18.5h2"/>',
   laptop: '<rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19.5h20"/>',
   clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  gift: '<rect x="3.5" y="8" width="17" height="4" rx="1"/><path d="M5 12v8.5h14V12M12 8v12.5M12 8C10.5 5 7 4.5 7 6.5S10 8 12 8zM12 8c1.5-3 5-3.5 5-1.5S14 8 12 8z"/>',
   bell: '<path d="M6 16V11a6 6 0 1112 0v5l1.5 2h-15L6 16zM10 21h4"/>',
 };
 export const icon = (n, cls = '') => `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]}</svg>`;
@@ -82,16 +104,18 @@ export const FAQ = [
     group: 'Veteriner programı seçimi',
     items: [
       ['Veteriner programı (veteriner klinik yazılımı) ne işe yarar?', 'Veteriner programı; kliniğin hasta kayıtlarını, randevularını, aşı takvimini, ilaç ve sarf malzeme stoğunu, satışlarını, kasasını ve müşteri/tedarikçi cari hesaplarını tek yerde tutan yazılımdır. Defter, Excel ve hafızaya dayalı takibin yerini alır; hangi ilacın azaldığını, kimin ne kadar borcu olduğunu ve hangi hastanın aşısının geldiğini tek ekranda gösterir.'],
-      ['Ücretsiz veteriner programı var mı?', 'VetApp’i 30 gün boyunca tüm özellikleriyle ücretsiz kullanabilirsiniz; kredi kartı istenmez ve kurulum gerekmez. Kayıt olmadan incelemek isterseniz canlı demo da açıktır.'],
+      ['Ücretsiz veteriner programı var mı?', `Evet. VetApp ${CAMPAIGN.freeUntil}’ye kadar bütün özellikleriyle tamamen ücretsizdir; kart bilgisi istenmez, kurulum gerekmez. Ayrıca kaydolup kullanmaya başlayan ilk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} aylarını kapsayan 3 aylık abonelik hediye edilir (${ASOF} itibarıyla ${CAMPAIGN.clinics} klinik kayıtlı, ${LEFT} yer kaldı).`],
       ['VetApp büyükbaş ve saha çalışmasına uygun mu?', 'Evet. Mobil uygulama web panelindeki işlemlerin tamamını yapabildiği için çiftlikte, işin bittiği yerde satış, veresiye ve tedavi kaydı girilebilir; kliniğe dönüp bilgisayar başında tekrar yazmak gerekmez.'],
       ['Yeni açılan bir klinik için uygun mu?', 'Evet. Açılış stoğunuzu ve devreden müşteri/tedarikçi bakiyelerinizi ilk gün girersiniz; ilaç kartları 1.694 ilaçlık katalogdan barkodla dolar. Küçük ekipler için tasarlandı, eğitim gerektirmez.'],
     ],
   },
   {
-    group: 'Deneme ve fiyat',
+    group: 'Kampanya ve fiyat',
     items: [
-      ['Ücretsiz deneme nasıl işliyor?', 'Kayıt olduğunuz günden itibaren 30 gün boyunca tüm özellikleri ücretsiz kullanırsınız; kredi kartı istenmez. Süre dolmadan önce uygulama içinde hatırlatırız.'],
-      ['Deneme sonrası ne kadar ödeyeceğim?', 'Deneme sonrasında sade bir aylık abonelik uygulanır. Fiyat bilgisi yayına alındığında bu sitede ve kayıt ekranında açıkça gösterilecektir; sürpriz ücret yoktur.'],
+      [`VetApp ne zamana kadar ücretsiz?`, `VetApp ${CAMPAIGN.freeUntil}’ye kadar herkes için tamamen ücretsizdir. Bu süre boyunca hiçbir ödeme alınmaz, kart bilgisi istenmez ve bütün özellikler açıktır.`],
+      [`İlk ${CAMPAIGN.limit} klinik kampanyası nedir?`, `VetApp’e kaydolup kullanmaya başlayan ilk ${CAMPAIGN.limit} kliniğe ücretsiz dönemin ardından ${CAMPAIGN.giftMonths} aylarını kapsayan 3 aylık abonelik hediye edilir. ${ASOF} itibarıyla ${CAMPAIGN.cities} şehirde ${CAMPAIGN.clinics} klinik VetApp kullanıyor; hediyeden yararlanabilecek ${LEFT} yer kaldı.`],
+      ['Kart bilgisi girmem gerekiyor mu?', 'Hayır. Kayıt için yalnızca klinik adı ve iletişim bilgileri yeterlidir; kredi kartı veya ödeme bilgisi istenmez.'],
+      [`${CAMPAIGN.freeUntil}’den sonra ne olacak?`, 'Ücretsiz dönemden sonra sade bir aylık abonelik uygulanacak. Fiyatlar kampanya bitmeden önce bu sitede ve uygulamada açıkça duyurulacak. Kart bilgisi alınmadığı için hesabınızdan otomatik ücret çekilmez; devam edip etmemeye siz karar verirsiniz.'],
     ],
   },
   {
@@ -111,7 +135,7 @@ export const FAQ = [
     ],
   },
 ];
-const HOME_FAQ = [FAQ[1].items[0], FAQ[1].items[1], FAQ[0].items[1], FAQ[1].items[2], FAQ[3].items[1], FAQ[4].items[0]];
+const HOME_FAQ = [FAQ[2].items[0], FAQ[2].items[1], FAQ[2].items[3], FAQ[1].items[0], FAQ[0].items[1], FAQ[1].items[2], FAQ[4].items[0]];
 export const faqHtml = (items) => `<div class="faq">${items.map(([q, a]) => `<details><summary>${esc(q)}</summary><div class="a"><p>${esc(a)}</p></div></details>`).join('')}</div>`;
 export const faqLd = (items) => ({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: items.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) });
 
@@ -119,6 +143,7 @@ export const faqLd = (items) => ({ '@context': 'https://schema.org', '@type': 'F
 const NAV = [
   ['/ozellikler', 'Özellikler'],
   ['/veteriner-programi', 'Çözümler'],
+  ['/ucretsiz-veteriner-programi', 'Kampanya'],
   ['/blog', 'Blog'],
   ['/depolar', 'İlaç depoları'],
   ['/sss', 'SSS'],
@@ -174,6 +199,7 @@ export function layout(page, body) {
 </head>
 <body>
   <a class="skip" href="#main">İçeriğe geç</a>
+  ${page.path === CAMPAIGN_PATH ? '' : `<a class="announce" href="${CAMPAIGN_PATH}"><span class="gift" aria-hidden="true">${icon('gift')}</span><span><b>${FREE_LINE}.</b> <span class="announce-more">${GIFT_LINE}${LEFT > 0 ? ` · <u>${LEFT} yer kaldı</u>` : ''}</span></span>${arrow}</a>`}
   <header class="site-header" id="top">
     <div class="container">
       <a class="brand" href="/" aria-label="VetApp ana sayfa"><img src="/assets/img/logo_white.png" width="103" height="26" alt="VetApp"></a>
@@ -188,7 +214,7 @@ export function layout(page, body) {
   <div class="mobile-menu" id="mobile-menu">
     ${mnav}
     <a href="${URLS.login}">Giriş yap</a>
-    <a class="btn btn--primary" href="${URLS.register}">30 gün ücretsiz başla ${arrow}</a>
+    <a class="btn btn--primary" href="${URLS.register}">Ücretsiz başla ${arrow}</a>
     <a class="btn btn--wa" href="${WA}" target="_blank" rel="noopener">${waIcon} WhatsApp’tan yazın</a>
     <p class="mm-foot">Bir MB Yazılım ürünüdür</p>
   </div>
@@ -208,6 +234,7 @@ ${body}
         </ul></div>
         <div><h4>Ürün</h4><ul>
           <li><a href="/ozellikler">Özellikler</a></li>
+          <li><a href="${CAMPAIGN_PATH}">Ücretsiz kampanya</a></li>
           <li><a href="/blog">Blog</a></li>
           <li><a href="${APP_STORE}" target="_blank" rel="noopener">App Store (iPhone)</a></li>${PLAY_STORE ? `\n          <li><a href="${PLAY_STORE}" target="_blank" rel="noopener">Google Play (Android)</a></li>` : ''}
           <li><a href="${URLS.demo}">Canlı demo</a></li>
@@ -230,7 +257,7 @@ ${body}
     </div>
   </footer>
   <div class="dock" aria-label="Hızlı işlemler">
-    <a class="btn btn--primary" href="${URLS.register}">30 gün ücretsiz başla ${arrow}</a>
+    <a class="btn btn--primary" href="${URLS.register}">${CAMPAIGN.freeUntil}’ye kadar ücretsiz ${arrow}</a>
     <a class="btn btn--wa" href="${WA}" target="_blank" rel="noopener" aria-label="WhatsApp’tan yazın">${waIcon}</a>
   </div>
   <a class="wa-float" href="${WA}" target="_blank" rel="noopener" aria-label="WhatsApp’tan yazın">${waIcon}</a>
@@ -252,7 +279,7 @@ export const orgLd = {
   '@context': 'https://schema.org', '@type': 'Organization', '@id': ORG_ID, name: 'VetApp', alternateName: ['VetApp Veteriner Klinik Programı', 'VetApp Mobil'],
   url: SITE + '/', logo: { '@type': 'ImageObject', url: SITE + '/assets/img/logo.png' }, image: SITE + '/assets/img/og-image.png',
   description: 'VetApp, Türkiye’deki veteriner klinikleri için geliştirilmiş bulut tabanlı klinik yönetim programıdır: ilaç stok takibi, cari ve veresiye takibi, aşı ve randevu takibi, hızlı satış ve kasa.',
-  email: 'info@vetapp.com.tr', telephone: PHONE, areaServed: { '@type': 'Country', name: 'Türkiye' },
+  foundingDate: '2026-05', email: 'info@vetapp.com.tr', telephone: PHONE, areaServed: { '@type': 'Country', name: 'Türkiye' },
   address: { '@type': 'PostalAddress', addressLocality: 'Kayseri', addressCountry: 'TR' },
   contactPoint: [{ '@type': 'ContactPoint', contactType: 'customer support', telephone: PHONE, email: 'destek@vetapp.com.tr', availableLanguage: ['tr'], areaServed: 'TR' }],
   parentOrganization: { '@type': 'Organization', name: 'MB Yazılım', url: MAKER + '/' },
@@ -285,7 +312,16 @@ export const appLd = {
   featureList: FEATURES,
   screenshot: ['dashboard', 'pos', 'urunler', 'musteriler', 'randevular'].map((n) => SITE + `/assets/img/${n}-1800.webp`),
   audience: { '@type': 'BusinessAudience', audienceType: 'Veteriner klinikleri, veteriner hekimler, pet shop ve saha veterinerleri' },
-  offers: { '@type': 'Offer', price: '0', priceCurrency: 'TRY', description: '30 gün ücretsiz deneme, kredi kartı gerekmez.', url: URLS.register },
+  datePublished: '2026-05',
+  offers: [
+    { '@type': 'Offer', name: `${CAMPAIGN.freeUntil}’ye kadar tamamen ücretsiz kullanım`, price: '0', priceCurrency: 'TRY', priceValidUntil: CAMPAIGN.freeEndIso,
+      availability: 'https://schema.org/InStock', eligibleRegion: { '@type': 'Country', name: 'TR' }, url: SITE + CAMPAIGN_PATH,
+      description: `Bütün özellikler ${CAMPAIGN.freeUntil}’ye kadar ücretsiz. Kart bilgisi gerekmez, kurulum yok.` },
+    { '@type': 'Offer', name: `İlk ${CAMPAIGN.limit} kliniğe 3 ay hediye abonelik (${CAMPAIGN.giftMonths})`, price: '0', priceCurrency: 'TRY', priceValidUntil: CAMPAIGN.giftEndIso,
+      availability: LEFT > 0 ? 'https://schema.org/LimitedAvailability' : 'https://schema.org/SoldOut', eligibleRegion: { '@type': 'Country', name: 'TR' }, url: SITE + CAMPAIGN_PATH,
+      inventoryLevel: { '@type': 'QuantitativeValue', value: LEFT },
+      description: `Kaydolup kullanan ilk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} ücretsiz. ${ASOF} itibarıyla ${CAMPAIGN.clinics} klinik kayıtlı, ${LEFT} yer kaldı.` },
+  ],
   publisher: { '@id': ORG_ID }, provider: { '@id': ORG_ID },
 };
 // Kırıntı şeması: crumbLd('Özellikler', '/ozellikler') veya crumbLd([['Blog', '/blog'], ['Yazı', '/blog/yazi']])
@@ -308,7 +344,7 @@ export const pageHero = (crumb, h1, lede, extra = '') => {
     </section>`;
 };
 
-export const finalCta = (title = 'Kliniğinizi 30 gün ücretsiz deneyin.', text = 'Kurulum yok, kredi kartı yok. Beş dakikada ilk randevunuzu açın.') => `
+export const finalCta = (title = `${CAMPAIGN.freeUntil}’ye kadar tamamen ücretsiz.`, text = `Kart bilgisi yok, kurulum yok. ${LEFT > 0 ? `İlk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} de hediye: şu an ${LEFT} yer kaldı.` : 'Beş dakikada ilk randevunuzu açın.'}`) => `
     <section class="sec final" data-final>
       <div class="container">
         <span class="tag reveal">Hemen başlayın</span>
@@ -318,7 +354,8 @@ export const finalCta = (title = 'Kliniğinizi 30 gün ücretsiz deneyin.', text
           <a class="btn btn--primary" href="${URLS.register}">Ücretsiz başla ${arrow}</a>
           <a class="btn btn--wa" href="${WA}" target="_blank" rel="noopener">${waIcon} WhatsApp’tan sorun</a>
         </div>
-        <p class="note reveal d3"><span>Kart gerekmez</span><span>Kurulum yok</span><span><a href="${URLS.demo}" style="text-decoration:underline">Demoyu kayıtsız açın</a></span></p>
+        <p class="note reveal d3"><span>Kart gerekmez</span><span>Kurulum yok</span><span><a href="${CAMPAIGN_PATH}" style="text-decoration:underline">Kampanya detayları</a></span><span><a href="${URLS.demo}" style="text-decoration:underline">Demoyu kayıtsız açın</a></span></p>
+        <p class="asof reveal d3">Rakamlar ${ASOF} itibarıyla güncel bilgilerdir.</p>
       </div>
     </section>`;
 
@@ -382,6 +419,47 @@ const SCREENS = [
     </div>${appNav(0)}</div>`,
 ];
 
+// ───────── kampanya bileşenleri ─────────
+const pct = Math.min(100, Math.round((CAMPAIGN.clinics / CAMPAIGN.limit) * 100));
+export const campaignProgress = () => `<div class="camp-progress" role="img" aria-label="${CAMPAIGN.limit} kliniklik kontenjanın ${CAMPAIGN.clinics} tanesi doldu, ${LEFT} yer kaldı">
+            <div class="cp-top"><span><b>${CAMPAIGN.clinics}</b> / ${CAMPAIGN.limit} klinik</span><span class="cp-left">${LEFT > 0 ? `${LEFT} yer kaldı` : 'Kontenjan doldu'}</span></div>
+            <div class="cp-bar"><i style="width:${pct}%"></i></div>
+            <small>${ASOF} itibarıyla güncel bilgilerdir · ${CAMPAIGN.cities} şehirde ${CAMPAIGN.clinics} klinik VetApp kullanıyor</small>
+          </div>`;
+// Ana sayfada hero'nun hemen altı ve kampanya sayfası
+export const campaignBand = ({ heading = true } = {}) => `
+    <section class="camp" aria-labelledby="camp-h">
+      <div class="container">
+        ${heading ? `<div class="camp-head reveal">
+          <span class="tag">Kampanya · ${ASOF} itibarıyla</span>
+          <h2 id="camp-h">${CAMPAIGN.freeUntil}’ye kadar <span class="hl">tamamen ücretsiz.</span></h2>
+          <p class="lede">Bu kadar kısa sürede ${CAMPAIGN.cities} şehirde ${CAMPAIGN.clinics} kliniğe ulaşmamızın en büyük sebebi bu: VetApp şu an bütün özellikleriyle ücretsiz. Kart bilgisi yok, gizli ücret yok.</p>
+        </div>` : ''}
+        <div class="camp-grid">
+          <div class="camp-card reveal">
+            <span class="ic">${icon('check')}</span>
+            <h3>${CAMPAIGN.freeUntil}’ye kadar herkese ücretsiz</h3>
+            <p>Kaydolan her klinik ${CAMPAIGN.freeUntil}’ye kadar VetApp’in bütün özelliklerini ücretsiz kullanır. Kart bilgisi istenmez, hiçbir ödeme alınmaz.</p>
+          </div>
+          <div class="camp-card hot reveal d1">
+            <span class="ic">${icon('gift')}</span>
+            <h3>İlk ${CAMPAIGN.limit} kliniğe +3 ay hediye</h3>
+            <p>Kaydolup kullanmaya başlayan ilk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} aylarını kapsayan 3 aylık abonelik de hediye.</p>
+            ${campaignProgress()}
+          </div>
+        </div>
+        <div class="actions camp-actions reveal d2">
+          <a class="btn btn--primary" href="${URLS.register}">Ücretsiz kaydol ${arrow}</a>
+          ${heading ? `<a class="btn btn--ghost" href="${CAMPAIGN_PATH}">Kampanya detayları</a>` : `<a class="btn btn--wa" href="${WA}" target="_blank" rel="noopener">${waIcon} WhatsApp’tan sorun</a>`}
+        </div>
+      </div>
+    </section>`;
+// Çözüm sayfalarında başlığın altındaki kısa kampanya şeridi
+export const campaignStrip = () => `
+    <a class="camp-strip" href="${CAMPAIGN_PATH}">
+      <span class="container"><span class="gift" aria-hidden="true">${icon('gift')}</span><span><b>${FREE_LINE}, kart bilgisi yok.</b> ${GIFT_LINE}${LEFT > 0 ? ` (${LEFT} yer kaldı)` : ''}. <small>${ASOF} itibarıyla</small></span>${arrow}</span>
+    </a>`;
+
 // Ana sayfadaki "Blogdan" bölümü: en yeni üç yazı. Yazı yoksa bölüm hiç basılmaz.
 export const postCard = (p, cls = '') => `<a class="post-card${cls}" href="/blog/${p.slug}"><span class="meta">${p.category ? `${esc(p.category)} · ` : ''}<time datetime="${p.date}">${trDate(p.date)}</time></span><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p><span class="more">Okuyun ${arrow}</span></a>`;
 function blogTeaser() {
@@ -406,9 +484,9 @@ export const pages = [];
 // — Ana sayfa —
 pages.push({
   file: 'index.html', path: '/', changefreq: 'weekly', priority: '1.0',
-  title: 'VetApp: Veteriner Klinik Programı – Stok, Cari ve Aşı Takibi',
-  ogTitle: 'VetApp – Veteriner kliniğinizin bütün günü, tek uygulamada',
-  description: 'Veteriner klinikleri için program: ilaç stok takibi, veresiye ve cari takip, aşı ve randevu takibi, hızlı satış ve kasa. Web, Android ve iPhone. 30 gün ücretsiz deneyin.',
+  title: 'VetApp: Ücretsiz Veteriner Klinik Programı – Stok, Cari, Aşı',
+  ogTitle: `VetApp – ${CAMPAIGN.freeUntil}’ye kadar tamamen ücretsiz veteriner klinik programı`,
+  description: `${CAMPAIGN.freeUntil}’ye kadar tamamen ücretsiz veteriner klinik programı: ilaç stok, veresiye ve cari, aşı, randevu, satış ve kasa. ${CAMPAIGN.cities} şehirde ${CAMPAIGN.clinics} klinik kullanıyor.`,
   ld: [orgLd, siteLd, appLd, faqLd(HOME_FAQ)],
   body: () => `
     <section class="hero">
@@ -418,10 +496,10 @@ pages.push({
           <h1><span class="tag h1-kicker">Veteriner klinik programı</span>Kliniğinizin bütün günü, <span class="soft">tek uygulamada.</span></h1>
           <p class="lede">İlaç stoğu, veresiye ve cari, aşı, randevu, satış ve kasa. Telefonda, tablette, bilgisayarda.</p>
           <div class="actions" data-hero-cta>
-            <a class="btn btn--primary" href="${URLS.register}">30 gün ücretsiz başla ${arrow}</a>
+            <a class="btn btn--primary" href="${URLS.register}">Ücretsiz başla ${arrow}</a>
             <a class="btn btn--ghost" href="${URLS.demo}">${icon('play')} Demoyu aç</a>
           </div>
-          <p class="hero-note"><span>${icon('check')} Kart gerekmez</span><span>${icon('check')} Kurulum yok</span><span>${icon('check')} Türkçe destek</span></p>
+          <p class="hero-note"><span>${icon('check')} ${CAMPAIGN.freeUntil}’ye kadar ücretsiz</span><span>${icon('check')} Kart gerekmez</span><span>${icon('check')} Kurulum yok</span><span>${icon('check')} Türkçe destek</span></p>
         </div>
         <div class="hero-visual">
           ${phoneImg('m-dashboard', 'VetApp mobil uygulaması: günlük kasa, alacak ve randevu özeti', { eager: true })}
@@ -434,12 +512,13 @@ pages.push({
       </div>
       <div class="proof" aria-label="Rakamlarla VetApp">
         <div class="container">
-          <div class="it"><b data-count="${STATS.clinics}">${STATS.clinics}</b><span>klinik</span></div>
+          <div class="it"><b data-count="${STATS.clinics}">${STATS.clinics}</b><span>klinik kullanıyor</span></div>
           <div class="it"><b data-count="${STATS.cities}">${STATS.cities}</b><span>şehir</span></div>
           <div class="it"><b data-count="${STATS.drugs}">${STATS.drugs.toLocaleString('tr-TR')}</b><span>ilaç kataloğu</span></div>
         </div>
       </div>
     </section>
+${campaignBand()}
 
     <section class="story" id="bir-gun" data-story aria-labelledby="story-h">
       <div class="container story-intro">
@@ -591,7 +670,7 @@ pages.push({
   title: 'Özellikler – VetApp Veteriner Klinik Programı',
   description: 'VetApp veteriner programının özellikleri: hasta ve randevu takibi, SOAP muayene, aşı takibi, hızlı satış, kasa, SKT’li ilaç stok takibi, alım faturası, cari ve veresiye, gün sonu paneli.',
   ld: [crumbLd('Özellikler', '/ozellikler')],
-  body: () => `${pageHero('Özellikler', 'Bir kliniğin ihtiyacı olan her şey. <span class="soft">Tek uygulamada.</span>', 'Randevudan kasaya, VetApp’in bütün modülleri.')}
+  body: () => `${pageHero('Özellikler', 'Bir kliniğin ihtiyacı olan her şey. <span class="soft">Tek uygulamada.</span>', 'Randevudan kasaya, VetApp’in bütün modülleri.')}${campaignStrip()}
     <div class="light">
       <div class="container">
 ${MODULES.map((m) => `      <section class="module" id="${m.id}">
@@ -638,7 +717,7 @@ pages.push({
             <li>Klinikleriniz stok ve ödemelerini düzenli tutar.</li>
             <li>${STATS.drugs.toLocaleString('tr-TR')} ilaçlık katalog hazır; barkodla saniyeler içinde kart açılır.</li>
             <li>Hangi klinik sizin aracılığınızla geldi, kayıtta bellidir.</li>
-            <li>Kurulum yok; klinik 30 gün ücretsiz dener.</li>
+            <li>Kurulum yok; klinikler ${CAMPAIGN.freeUntil}’ye kadar tamamen ücretsiz kullanır, ilk ${CAMPAIGN.limit} kliniğe 3 ay da hediye.</li>
           </ul>
         </div>
         <div class="reveal d1">${frame('tedarikciler', 'VetApp tedarikçi cari ekranı', 'panel.vetapp.com.tr/#/accounts/suppliers')}</div>
@@ -663,9 +742,9 @@ pages.push({
 pages.push({
   file: 'sss.html', path: '/sss', changefreq: 'monthly', priority: '0.7',
   title: 'Sık Sorulan Sorular – VetApp Veteriner Programı',
-  description: 'Veteriner programı ve VetApp hakkında sık sorulan sorular: ücretsiz deneme, cihaz desteği, büyükbaş kullanımı, aşı takibi, stok SKT uyarıları, veresiye yönetimi ve veri güvenliği.',
+  description: 'Veteriner programı ve VetApp hakkında sık sorulan sorular: Ocak 2027’ye kadar ücretsiz kampanya, cihaz desteği, büyükbaş kullanımı, aşı takibi, stok SKT uyarıları, veresiye yönetimi ve veri güvenliği.',
   ld: [crumbLd('Sık sorulan sorular', '/sss'), faqLd(FAQ.flatMap((g) => g.items))],
-  body: () => `${pageHero('Sık sorulan sorular', 'Aklınıza takılanlar.', `Bulamadığınız bir cevap mı var? <a href="${WA}" target="_blank" rel="noopener" style="color:var(--blue2)">WhatsApp’tan sorun</a>.`)}
+  body: () => `${pageHero('Sık sorulan sorular', 'Aklınıza takılanlar.', `Bulamadığınız bir cevap mı var? <a href="${WA}" target="_blank" rel="noopener" style="color:var(--blue2)">WhatsApp’tan sorun</a>.`)}${campaignStrip()}
     <section class="sec light">
       <div class="container" style="max-width:860px">
 ${FAQ.map((g) => `        <section class="faq-group reveal"><h2>${esc(g.group)}</h2>${faqHtml(g.items)}</section>`).join('\n')}
