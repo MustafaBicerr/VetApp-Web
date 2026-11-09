@@ -1,0 +1,587 @@
+# VetApp
+
+> VetApp, Türkiye'deki veteriner klinikleri için geliştirilmiş bulut tabanlı bir veteriner klinik yönetim programıdır (veteriner programı / veteriner klinik yazılımı). İlaç ve sarf malzeme stok takibi, müşteri cari ve veresiye takibi, ilaç deposu (tedarikçi) borç takibi, aşı takibi, hasta ve randevu takibi, hızlı satış ve kasa yönetimini tek panelde toplar. Web (panel.vetapp.com.tr), Android ve iPhone'da aynı hesapla çalışır. 30 gün ücretsiz denenebilir; kredi kartı gerekmez. MB Yazılım (Kayseri) tarafından geliştirilmektedir.
+
+## Temel bilgiler
+
+- Ürün adı: VetApp (mobil uygulama adı: VetApp Mobil)
+- Kategori: Veteriner klinik yönetim yazılımı (SaaS, bulut tabanlı)
+- Kimler için: Veteriner klinikleri ve veteriner hekimler (küçük hayvan, büyükbaş/saha ve karma çalışan klinikler), Türkiye
+- Dil: Türkçe
+- Platformlar: Web tarayıcı (https://panel.vetapp.com.tr), iPhone (https://apps.apple.com/tr/app/vetapp-mobil/id6761138905), Android
+- Deneme: 30 gün ücretsiz, kredi kartı gerekmez, kurulum yok. Kayıtsız canlı demo: https://panel.vetapp.com.tr/#/demo
+- Kayıt: https://panel.vetapp.com.tr/#/register
+- İletişim: WhatsApp/telefon +90 535 226 54 08, info@vetapp.com.tr
+- Geliştirici: MB Yazılım (https://www.mbicer.com.tr)
+
+## Özellikler
+
+- Hasta (hayvan) kartı: tür, ırk, sahip, doğum tarihi, çip numarası, kilo
+- Randevu takvimi ve randevu durumları
+- SOAP muayene kaydı
+- Aşı takibi: tür bazlı aşı protokolleri, yaklaşan ve geciken aşılar
+- Hızlı satış ekranı ve barkodla satış
+- Nakit, kart, karma ve veresiye ödeme
+- Kasa hareketleri, masraf girişi ve gün sonu raporu
+- İlaç ve ürün stok takibi: parti, son kullanma tarihi (SKT), kritik stok uyarısı
+- 1.694 ilaçlık veteriner ilaç referans kataloğu
+- Alım faturası (mal kabul): iskonto, KDV, vade, mal fazlası
+- Müşteri cari ve veresiye takibi, kısmi tahsilat
+- Tedarikçi (ilaç deposu) cari ve borç takibi
+- Günlük özet paneli ve satış grafikleri
+- Çok kullanıcılı kullanım
+- Web, Android ve iOS’ta aynı hesap, anlık senkron
+
+## Bilinen sınırlar
+
+- Çalışmak için internet bağlantısı gerekir (çevrimdışı mod yok).
+- Müşterilere otomatik SMS veya WhatsApp aşı hatırlatması şu an yok; geciken ve yaklaşan aşılar klinik ekranında listelenir.
+- iOS'ta yeni klinik kaydı web panel üzerinden yapılır.
+
+## Çözüm sayfaları
+
+- [Veteriner programı](https://www.vetapp.com.tr/veteriner-programi): Veteriner klinikleri için program: hasta ve randevu, aşı takibi, ilaç stok takibi, veresiye ve cari, hızlı satış ve kasa. Web, Android, iPhone. 30 gün ücretsiz.
+- [Stok ve ilaç takibi](https://www.vetapp.com.tr/veteriner-stok-takip-programi): Veteriner kliniği için ilaç ve sarf malzeme stok takip programı: barkod, parti ve son kullanma tarihi (SKT), kritik stok uyarısı, alım faturası. 30 gün ücretsiz.
+- [Cari ve veresiye takibi](https://www.vetapp.com.tr/veteriner-cari-takip-programi): Veteriner klinikleri için cari takip programı: müşteri veresiyesi, kısmi tahsilat, vade, ilaç deposu (tedarikçi) borcu ve devreden bakiye. Web ve mobil. 30 gün ücretsiz.
+- [Aşı takibi](https://www.vetapp.com.tr/veteriner-asi-takip-programi): Veteriner klinikleri için aşı takip programı: tür bazlı aşı protokolleri, aşı takvimi, yaklaşan ve geciken aşı listesi, hasta geçmişi. Web ve mobil. 30 gün ücretsiz.
+- [Hasta ve randevu takibi](https://www.vetapp.com.tr/veteriner-hasta-takip-programi): Veteriner hasta takip programı: hayvan kartı, sahip bilgisi, çip no, randevu takvimi, SOAP muayene kaydı ve hasta zaman çizelgesi. Web, Android, iPhone. 30 gün ücretsiz.
+- [Veteriner mobil uygulaması](https://www.vetapp.com.tr/veteriner-mobil-uygulama): VetApp Mobil: veteriner klinikleri için iPhone ve Android uygulaması. Satış, veresiye, stok, aşı ve randevu işlemlerinin tamamı telefonda. Web paneliyle aynı hesap.
+- [Büyükbaş ve saha veterinerliği](https://www.vetapp.com.tr/buyukbas-veteriner-programi): Büyükbaş ağırlıklı çalışan veteriner klinikleri için program: çiftlikte mobilden kayıt, uzun vadeli veresiye, ilaç ve sarf malzeme stok takibi. 30 gün ücretsiz.
+
+## Sayfalar
+
+- [VetApp: Veteriner Klinik Programı – Stok, Cari ve Aşı Takibi](https://www.vetapp.com.tr/): Veteriner klinikleri için program: ilaç stok takibi, veresiye ve cari takip, aşı ve randevu takibi, hızlı satış ve kasa. Web, Android ve iPhone. 30 gün ücretsiz deneyin.
+- [Özellikler](https://www.vetapp.com.tr/ozellikler): VetApp veteriner programının özellikleri: hasta ve randevu takibi, SOAP muayene, aşı takibi, hızlı satış, kasa, SKT’li ilaç stok takibi, alım faturası, cari ve veresiye, gün sonu paneli.
+- [İlaç Depoları İçin İş Ortaklığı](https://www.vetapp.com.tr/depolar): Veteriner ilaç depoları için VetApp iş ortaklığı: deponuza özel referans koduyla katılan her klinik için komisyon kazanın, müşterilerinize modern bir klinik yazılımı sunun.
+- [Sık Sorulan Sorular](https://www.vetapp.com.tr/sss): Veteriner programı ve VetApp hakkında sık sorulan sorular: ücretsiz deneme, cihaz desteği, büyükbaş kullanımı, aşı takibi, stok SKT uyarıları, veresiye yönetimi ve veri güvenliği.
+- [İletişim ve Demo Talebi](https://www.vetapp.com.tr/iletisim): VetApp ile iletişime geçin: WhatsApp +90 535 226 54 08, info@vetapp.com.tr. Demo, destek ve iş ortaklığı için bize yazın.
+
+## Blog
+
+- [Veteriner Kliniğinde İlaç Stok Takibi Nasıl Yapılır? Adım Adım Rehber](https://www.vetapp.com.tr/blog/veteriner-klinigi-ilac-stok-takibi-nasil-yapilir): Veteriner kliniğinde ilaç ve sarf malzeme stok takibi: açılış sayımı, alım faturası, parti ve SKT takibi, kritik stok eşiği ve tedavide kullanılan ilacın stoktan düşülmesi.
+- [Veteriner Kliniklerinde Veresiye ve Cari Takibi: Alacak Kaybetmemenin 7 Yolu](https://www.vetapp.com.tr/blog/veteriner-klinigi-veresiye-ve-cari-takibi): Veteriner kliniğinde veresiye ve cari takibi: devreden bakiye, satır bazında veresiye, kısmi tahsilat, enflasyona karşı fiyat farkı ve ilaç deposu borç takibi.
+- [Veteriner Programı Seçerken Dikkat Edilmesi Gereken 10 Kriter](https://www.vetapp.com.tr/blog/veteriner-programi-secerken-dikkat-edilmesi-gerekenler): Veteriner klinik programı seçerken 10 kriter: bulut ve kurulum, mobil uygulama, ilaç stok ve SKT takibi, veresiye, tedarikçi borcu, aşı takibi, veri güvenliği, fiyat.
+- [Yeni Veteriner Kliniği Açanlar İçin İlk 30 Gün: Kayıt, Stok ve Kasa Düzeni](https://www.vetapp.com.tr/blog/yeni-veteriner-klinigi-acanlar-icin-ilk-30-gun): Yeni açılan veteriner klinikleri için ilk 30 gün rehberi: ilaç ve sarf malzeme stoğu, hasta ve müşteri kayıtları, veresiye kuralları, kasa kapanışı ve aşı takibi.
+
+## Optional
+
+- [Tüm içerik (llms-full.txt)](https://www.vetapp.com.tr/llms-full.txt)
+- [Gizlilik politikası](https://www.vetapp.com.tr/gizlilik)
+- [Kullanım şartları](https://www.vetapp.com.tr/kullanim-sartlari)
+
+---
+
+# Sık sorulan sorular
+
+## VetApp nedir?
+
+VetApp; veteriner klinikleri için hasta kaydı, randevu, aşı takibi, hızlı satış, kasa, stok ve cari hesap yönetimini tek panelde toplayan bir klinik yönetim yazılımıdır. Web’de, Android’de ve iOS’ta aynı hesapla çalışır.
+
+## Hangi cihazlarda çalışır?
+
+Web tarayıcısından (panel.vetapp.com.tr), Android ve iOS uygulamalarından. Tüm cihazlar aynı bulut hesabını kullanır; yaptığınız değişiklik her yerde günceldir. iOS’ta yeni klinik kaydı web panel üzerinden yapılır.
+
+## İnternet bağlantısı gerekir mi?
+
+Evet. VetApp bulut tabanlıdır; bu sayede kurulum, sunucu veya yedekleme derdiniz olmaz ama çalışmak için internet bağlantısı gerekir.
+
+## Birden fazla kullanıcı ekleyebilir miyim?
+
+Evet. Klinik yöneticisi, ekibindeki kişiler için kullanıcı hesabı oluşturabilir.
+
+## Veteriner programı (veteriner klinik yazılımı) ne işe yarar?
+
+Veteriner programı; kliniğin hasta kayıtlarını, randevularını, aşı takvimini, ilaç ve sarf malzeme stoğunu, satışlarını, kasasını ve müşteri/tedarikçi cari hesaplarını tek yerde tutan yazılımdır. Defter, Excel ve hafızaya dayalı takibin yerini alır; hangi ilacın azaldığını, kimin ne kadar borcu olduğunu ve hangi hastanın aşısının geldiğini tek ekranda gösterir.
+
+## Ücretsiz veteriner programı var mı?
+
+VetApp’i 30 gün boyunca tüm özellikleriyle ücretsiz kullanabilirsiniz; kredi kartı istenmez ve kurulum gerekmez. Kayıt olmadan incelemek isterseniz canlı demo da açıktır.
+
+## VetApp büyükbaş ve saha çalışmasına uygun mu?
+
+Evet. Mobil uygulama web panelindeki işlemlerin tamamını yapabildiği için çiftlikte, işin bittiği yerde satış, veresiye ve tedavi kaydı girilebilir; kliniğe dönüp bilgisayar başında tekrar yazmak gerekmez.
+
+## Yeni açılan bir klinik için uygun mu?
+
+Evet. Açılış stoğunuzu ve devreden müşteri/tedarikçi bakiyelerinizi ilk gün girersiniz; ilaç kartları 1.694 ilaçlık katalogdan barkodla dolar. Küçük ekipler için tasarlandı, eğitim gerektirmez.
+
+## Ücretsiz deneme nasıl işliyor?
+
+Kayıt olduğunuz günden itibaren 30 gün boyunca tüm özellikleri ücretsiz kullanırsınız; kredi kartı istenmez. Süre dolmadan önce uygulama içinde hatırlatırız.
+
+## Deneme sonrası ne kadar ödeyeceğim?
+
+Deneme sonrasında sade bir aylık abonelik uygulanır. Fiyat bilgisi yayına alındığında bu sitede ve kayıt ekranında açıkça gösterilecektir; sürpriz ücret yoktur.
+
+## Aşı hatırlatması nasıl çalışıyor?
+
+VetApp her hasta için aşı kaydını ve bir sonraki aşı tarihini tutar. Klinik ekranında vadesi yaklaşan ve geciken aşılar gündem olarak listelenir. Müşterilere otomatik SMS veya WhatsApp hatırlatması şu an bulunmuyor.
+
+## Stokta son kullanma tarihi takibi var mı?
+
+Evet. Ürünler parti ve son kullanma tarihi ile takip edilir; SKT’si yaklaşan ürünler ve kritik stok eşiğinin altındakiler panelde uyarı olarak görünür.
+
+## Barkod okutarak çalışabilir miyim?
+
+Evet. Telefon kamerasıyla veya bilgisayara bağlı barkod okuyucuyla ürün ekleyebilir, satış yapabilirsiniz. 1.694 ilaçlık referans katalogda barkodu bulunan ürünler otomatik tanınır.
+
+## Veresiye satış nasıl yönetiliyor?
+
+Satış satır bazında peşin veya veresiye olarak işaretlenir. Müşteri hesabında alacak, vade ve tahsilat geçmişi görünür; kısmi tahsilat alabilir, devreden bakiye girebilirsiniz.
+
+## Verilerim güvende mi?
+
+Her klinik kendi hesabında, kendi verisiyle çalışır. Bağlantılar HTTPS ile şifrelenir ve veritabanı her gün yedeklenir. Ayrıntılar için gizlilik politikamıza bakabilirsiniz.
+
+## Eski sistemimdeki verileri aktarabilir miyim?
+
+Excel veya CSV verileriniz için bizimle iletişime geçin; aktarım konusunda yardımcı olmaya çalışırız.
+
+---
+
+# Çözüm sayfalarından sorular
+
+## En iyi veteriner programı hangisi?
+
+Her kliniğin ihtiyacı farklıdır; en iyi program, sizin iş akışınıza uyan ve ekibinizin gerçekten kullandığı programdır. Bulut tabanlı olması, mobilde tam çalışması, ilaç stoğunu SKT ile tutması ve veresiyeyi yönetebilmesi temel ölçütlerdir. VetApp’i 30 gün ücretsiz deneyerek kendi işlerinizle karşılaştırabilirsiniz.
+
+## Ücretsiz veteriner programı var mı?
+
+VetApp’i 30 gün boyunca bütün özellikleriyle ücretsiz kullanabilirsiniz; kredi kartı istenmez. Kayıt olmadan incelemek için canlı demo da açıktır.
+
+## Veteriner programını kurmak gerekiyor mu?
+
+Hayır. VetApp bulut tabanlıdır; tarayıcıdan panel.vetapp.com.tr adresine girmeniz veya mobil uygulamayı indirmeniz yeterlidir. Yedekleme ve güncellemeler otomatik yapılır.
+
+## Birden fazla çalışan aynı anda kullanabilir mi?
+
+Evet. Klinik yöneticisi ekibindeki kişiler için kullanıcı hesabı açabilir; herkes aynı klinik verisi üzerinde çalışır.
+
+## Mevcut Excel kayıtlarımı aktarabilir miyim?
+
+Excel veya CSV verileriniz için bizimle iletişime geçin; aktarım konusunda yardımcı oluyoruz. Açılış stoğu ve devreden bakiyeler program içinden de kolayca girilebilir.
+
+## Veteriner ilaçları için hazır ürün listesi var mı?
+
+Evet. VetApp’te 1.694 ilaçlık bir veteriner ilaç referans kataloğu bulunur. İlacı arayıp kendi ürün kartınızı tek tıkla oluşturursunuz; barkodu bulunan ürünler okutulduğunda otomatik tanınır.
+
+## Son kullanma tarihi yaklaşan ilaçları nasıl görürüm?
+
+Her stok girişi parti ve son kullanma tarihiyle kaydedilir. SKT’si yaklaşan ürünler panelde uyarı olarak listelenir; satışta tarihi yakın olan parti önce kullanılır.
+
+## Sarf malzemeleri de takip edebilir miyim?
+
+Evet. Enjektör, eldiven, serum seti gibi sarf malzemeleri de ürün olarak tanımlanır ve aynı şekilde stokta izlenir.
+
+## Barkod okuyucu almam gerekiyor mu?
+
+Gerekmez. Telefonun kamerası barkod okuyucu olarak çalışır. Masada hızlı çalışmak isterseniz bilgisayara bağlı standart bir USB barkod okuyucu da kullanılabilir.
+
+## Veresiye satış nasıl yapılır?
+
+Satış ekranında müşteri seçilir ve ilgili satırlar veresiye olarak işaretlenir. Tutar müşterinin cari hesabına borç olarak yazılır; ödeme geldiğinde tahsilat kaydıyla kapatılır.
+
+## Müşteri borcunun bir kısmını ödeyebilir mi?
+
+Evet. Kısmi tahsilat alabilirsiniz; kalan borç müşteri hesabında açık kalır ve geçmiş hareketler listelenir.
+
+## Eski defterimdeki borçları nasıl aktarırım?
+
+Her müşteri ve tedarikçi için açılış bakiyesini “devreden bakiye” olarak girebilirsiniz. Bu kayıtlar ayrı etiketle tutulur, yeni satışlarla karışmaz.
+
+## Telefondan tahsilat girebilir miyim?
+
+Evet. iPhone ve Android uygulaması web panelindeki cari işlemlerin tamamını yapabilir; tahsilatı müşterinin yanında girersiniz.
+
+## Aşı hatırlatması nasıl çalışıyor?
+
+VetApp her hasta için aşı kaydını ve bir sonraki aşı tarihini tutar. Klinik ekranında vadesi yaklaşan ve geciken aşılar gündem olarak listelenir. Müşterilere otomatik SMS veya WhatsApp hatırlatması şu an bulunmuyor.
+
+## Farklı türler için farklı aşı takvimi tanımlanabilir mi?
+
+Evet. Aşı protokolleri tür bazında tanımlanır; kedi ve köpek gibi türler için ayrı takvimler kullanılır.
+
+## Hastanın geçmiş aşılarını görebilir miyim?
+
+Evet. Hasta zaman çizelgesinde yapılan bütün aşılar, muayeneler ve randevular tarih sırasıyla görünür.
+
+## Hasta kartında hangi bilgiler tutulur?
+
+Tür, ırk, sahibi, doğum tarihi, cinsiyet, kısırlaştırma durumu, renk, mikroçip numarası ve kilo. Muayene, aşı, randevu ve satış geçmişi de aynı kartta görünür.
+
+## Randevuları birden fazla hekim arasında bölebilir miyim?
+
+Evet. Randevuda personel, oda ve süre seçilir; gün listesi buna göre düzenlenir.
+
+## Gelmeyen randevuları takip edebilir miyim?
+
+Evet. Randevu durumları planlandı, geldi, tamamlandı, gelmedi ve iptal olarak tutulur.
+
+## VetApp Mobil hangi cihazlarda çalışır?
+
+iPhone (App Store) ve Android telefonlarda çalışır. Bilgisayardan ise tarayıcıyla panel.vetapp.com.tr adresinden kullanılır. Hepsi aynı hesabı kullanır.
+
+## Mobil uygulamada web panelindeki her şey var mı?
+
+Evet. Satış, veresiye, tahsilat, stok, hasta, aşı ve randevu işlemleri mobil uygulamada da yapılabilir.
+
+## İnternet olmadan çalışır mı?
+
+Hayır. VetApp bulut tabanlıdır ve çalışmak için internet bağlantısı gerekir. Bu sayede veriler her cihazda anında güncel olur.
+
+## iPhone’dan kayıt olabilir miyim?
+
+iOS’ta yeni klinik kaydı web panel (panel.vetapp.com.tr) üzerinden yapılır. Kayıttan sonra iPhone uygulamasına aynı bilgilerle giriş yapabilirsiniz.
+
+## Büyükbaş veteriner hekimleri VetApp’i nasıl kullanıyor?
+
+Sahada yapılan tedavi ve kullanılan ilaçlar mobil uygulamadan satış olarak girilir; tutar peşin ya da veresiye olarak yetiştiricinin hesabına yazılır. İlaç stoktan otomatik düşer, kliniğe dönünce tekrar kayıt yapmak gerekmez.
+
+## İnternetin zayıf olduğu çiftliklerde çalışır mı?
+
+VetApp çalışmak için internet bağlantısı gerektirir; mobil veri yeterlidir. Bağlantının hiç olmadığı yerlerde kaydı bağlantı geldiğinde girmeniz gerekir.
+
+## Yetiştirici bazında borç takibi yapılabilir mi?
+
+Evet. Her yetiştirici bir müşteri hesabıdır; yazılan veresiye, kısmi tahsilatlar ve kalan bakiye bu hesapta tutulur.
+
+---
+
+# Blog yazıları
+
+# Veteriner Kliniğinde İlaç Stok Takibi Nasıl Yapılır? Adım Adım Rehber
+
+Kaynak: https://www.vetapp.com.tr/blog/veteriner-klinigi-ilac-stok-takibi-nasil-yapilir · 2026-11-09
+
+Veteriner kliniklerinde stok, çoğu zaman fark edilmeden kaybolur. Muayenede kullanılan bir ampul, bir serum seti, birkaç enjektör… Tek tek küçük görünen bu kalemler, ay sonunda hem kayıp hem de “neden kasayla stok tutmuyor?” sorusu olarak geri döner. Bu rehberde, bir veteriner kliniğinde ilaç ve sarf malzeme stok takibinin nasıl kurulacağını adım adım anlatıyoruz.
+
+## Stok neden kaçar? En sık 4 sebep
+
+1. **Tedavide kullanılan ilaç kayda geçmez.** Muayene sırasında uygulanan ilaç satış olarak girilmezse stokta görünmeye devam eder.
+2. **Son kullanma tarihi takip edilmez.** Rafın arkasında kalan ürünün tarihi geçer, fark edildiğinde iş işten geçmiştir.
+3. **Alımlar sonradan girilir.** Depodan gelen faturanın stoğa işlenmesi ertelenir, arada yapılan satışlar eksi stoğa düşer.
+4. **Sayım yapılmaz.** Kayıtla raf arasındaki fark büyüdükçe kimse kayda güvenmez.
+
+## Adım 1: Açılış sayımı yapın
+
+Stok takibi doğru bir başlangıçla başlar. Raftaki bütün ilaç ve sarf malzemeleri sayın ve programa **ilk stok girişi** olarak kaydedin. Bu sırada her ürünün:
+
+- Adet bilgisini,
+- Parti numarasını (varsa),
+- Son kullanma tarihini,
+- Alış fiyatını
+
+girin. Barkod okutarak çalışırsanız bu iş çok hızlanır: VetApp gibi hazır veteriner ilaç kataloğu olan programlarda barkodu okunan ilaç otomatik tanınır, ürün kartını elle doldurmanız gerekmez.
+
+> **İpucu:** Sayımı kliniğin kapalı olduğu bir zamana, örneğin pazar sabahına planlayın. Sayım sırasında satış yapılırsa sayılar karışır.
+
+## Adım 2: Her alımı fatura ile girin
+
+İlaç deposundan gelen her teslimatı, faturası elinize geçtiği gün programa işleyin. İyi bir alım faturası ekranında şu alanlar bulunur:
+
+- Tedarikçi (ilaç deposu)
+- Ürünler, adetler ve alış fiyatları
+- İskontolar (çoklu iskonto olabilir)
+- KDV
+- Mal fazlası (bedelsiz gelen ürünler)
+- Vade tarihi
+
+Fatura girildiğinde iki şey aynı anda güncellenmelidir: **stok** ve **tedarikçiye olan borç**. Böylece hem rafı hem de depoya ödemeniz gereken tutarı tek kayıtla takip edersiniz.
+
+## Adım 3: Tedavide kullanılanı stoktan düşün
+
+En çok atlanan adım budur. Muayene ya da tedavi sırasında kullanılan ilaç ve sarf malzemeyi, işlem bittiği anda satışa ekleyin. Müşteri peşin ödemese bile satış veresiye olarak girilebilir; önemli olan ürünün stoktan düşmesidir.
+
+Pratik bir kural: **“Hayvana giren her şey sisteme de girer.”** Bunu ekip kuralı hâline getirdiğinizde stok farkları belirgin şekilde azalır.
+
+Mobil uygulama burada fark yaratır. İşlemi telefondan, hastanın başında ya da çiftlikte girebiliyorsanız gün sonunda hatırlamaya çalışmanız gerekmez.
+
+## Adım 4: Parti ve son kullanma tarihini takip edin
+
+Aynı ilacın farklı tarihlerde aldığınız partileri farklı SKT’lere sahiptir. Bu yüzden stok yalnızca “kaç adet var?” sorusuna değil, “hangi partiden kaç adet var ve ne zaman bitiyor?” sorusuna da cevap vermelidir.
+
+Doğru kurulmuş bir sistemde:
+
+- SKT’si yaklaşan ürünler uyarı listesinde görünür,
+- Satışta tarihi en yakın olan parti önce kullanılır (ilk giren değil, **ilk bozulan** önce çıkar),
+- Tarihi yaklaşan ürünler için depoyla iade veya değişim konuşmaya vakit kalır.
+
+## Adım 5: Kritik stok eşiği belirleyin
+
+Sık kullandığınız ürünler için bir alt sınır tanımlayın. Örneğin bir antibiyotik için “5 kutunun altına inerse uyar” gibi. Eşik altına inen ürünler panelde listelendiğinde sipariş vermeyi unutmazsınız ve “tam lazımken bitti” durumları azalır.
+
+Eşiği belirlerken şu iki bilgiyi kullanın:
+
+| Bilgi | Örnek |
+| --- | --- |
+| Haftalık ortalama kullanım | 4 kutu |
+| Depodan teslim süresi | 2 gün |
+| Önerilen eşik | 2 günlük kullanım + güvenlik payı ≈ 3–4 kutu |
+
+## Adım 6: Düzenli sayım yapın
+
+Ayda bir, en azından en çok kullanılan ve en pahalı ürünlerde kısa bir sayım yapın. Kayıtla raf arasındaki farkı görmek, hangi adımın aksadığını gösterir: fark hep aynı üründeyse muhtemelen tedavide kullanım girilmiyordur.
+
+## Sarf malzemeleri unutmayın
+
+Enjektör, iğne, eldiven, serum seti, sargı bezi gibi sarf malzemeler tek tek ucuzdur ama toplamda ciddi bir maliyet oluşturur. Bunları da ürün olarak tanımlayıp ilaçla aynı şekilde takip edin. Tedavi paketleri hazırlıyorsanız (örneğin “serum uygulaması”), kullandığınız malzemeleri satışa birlikte eklemeyi alışkanlık hâline getirin.
+
+## Özet kontrol listesi
+
+- [x] Açılış sayımı yapıldı, SKT’ler girildi
+- [x] Her alım faturası aynı gün işleniyor
+- [x] Tedavide kullanılan ilaç ve sarf malzeme satışa ekleniyor
+- [x] Kritik stok eşikleri tanımlı
+- [x] SKT uyarı listesi haftada bir kontrol ediliyor
+- [x] Ayda bir kısmi sayım yapılıyor
+
+## VetApp ile stok takibi
+
+VetApp’te 1.694 ilaçlık veteriner ilaç kataloğu, barkodla kayıt, parti ve SKT takibi, kritik stok uyarısı ve alım faturası hazır gelir. Ayrıntılar için [veteriner stok takip programı](/veteriner-stok-takip-programi) sayfamıza bakabilir ya da [30 gün ücretsiz deneyebilirsiniz](https://panel.vetapp.com.tr/#/register).
+
+---
+
+# Veteriner Kliniklerinde Veresiye ve Cari Takibi: Alacak Kaybetmemenin 7 Yolu
+
+Kaynak: https://www.vetapp.com.tr/blog/veteriner-klinigi-veresiye-ve-cari-takibi · 2026-11-09
+
+Veresiye, Türkiye’deki veteriner kliniklerinin gerçeğidir. Özellikle büyükbaş tarafında ödemeler süt parasına, hasat ya da satış dönemine kalır; küçük hayvan tarafında ise “ay sonu öderim” diyen müşteri az değildir. Sorun veresiyenin kendisi değil, **takibinin** zorlaşmasıdır. Müşteri sayısı arttıkça defter yetmez, alacaklar unutulur, kasa ile defter birbirini tutmaz.
+
+Bu yazıda, veteriner kliniğinde veresiye ve cari takibini düzene sokmanın 7 yolunu anlatıyoruz.
+
+## 1. Eski defteri “devreden bakiye” olarak bir kez aktarın
+
+Programa geçerken geçmişteki bütün satışları tek tek girmeye çalışmayın. Her müşterinin bugünkü toplam borcunu **devreden bakiye** olarak bir kez girin. Bu kayıt ayrı bir etiketle tutulur; yeni satışlarla karışmaz ve geçiş günü “sıfırdan ama eksiksiz” başlarsınız.
+
+Aynı yöntemi ilaç depolarına olan borçlarınız için de uygulayın.
+
+## 2. Veresiyeyi müşteriye bağlamadan yazmayın
+
+“Ahmet Bey’in hesabına yaz” demek kolaydır; ama Ahmet Bey’in hangi Ahmet Bey olduğu üç ay sonra tartışma konusu olabilir. Veresiye satış her zaman kayıtlı bir müşteri hesabına yapılmalı. Telefon numarası ve adres gibi bilgiler müşteri kartında durmalı.
+
+> **İpucu:** Veresiye satışta müşterinin kimliğini doğrulayan ve borçlu müşteri için uyarı veren bir sistem, yanlış hesaba yazılan borçların önüne geçer.
+
+## 3. Satır bazında veresiye kullanın
+
+Gerçek hayatta müşteri çoğu zaman bir kısmını peşin öder: “Mamayı şimdi ödüyorum, aşıyı hesabıma yazın.” Programınız aynı satışta bir kalemi peşin, diğerini veresiye yazabilmeli. Böylece kasa ve alacak doğru ayrışır.
+
+## 4. Tahsilatı anında girin, kısmi tahsilatı kabul edin
+
+Ödeme geldiği anda kaydı girin. Gün sonuna bırakılan tahsilatlar unutulur ya da yanlış müşteriye işlenir. Müşteri borcunun bir kısmını ödediğinde kısmi tahsilat alın; kalan bakiye otomatik güncellensin.
+
+Telefondan tahsilat girebiliyorsanız, sahada ya da müşterinin yanında işi bitirirsiniz.
+
+## 5. Enflasyona karşı açık veresiyeyi koruyun
+
+Fiyatların hızla değiştiği dönemlerde, üç ay önce yazılan veresiyenin bugünkü karşılığı azalır. Bunu yönetmenin yolları:
+
+- Uzun vadeli alacaklarda müşteriyle baştan anlaşmak,
+- Fiyat güncellemesini açık veresiye kalemlerine **fark olarak** yansıtabilen bir sistem kullanmak,
+- Vadesi uzayan müşterileri düzenli kontrol etmek.
+
+VetApp’te fiyat güncellemesi, açık veresiye kalemlere fark olarak yansıtılabilir.
+
+## 6. Alacak listesini haftalık kontrol edin
+
+Haftada bir, toplam alacağınıza ve en çok borcu olan müşterilere bakın. Şu soruları sorun:
+
+| Soru | Neden? |
+| --- | --- |
+| Toplam alacak geçen haftaya göre arttı mı? | Veresiyenin kontrol dışına çıkıp çıkmadığını gösterir |
+| 60 günden eski borcu olan kimler var? | Hatırlatma araması yapılacak liste |
+| Borcu olduğu hâlde yeni veresiye alan var mı? | Risk yönetimi |
+
+## 7. Tedarikçi (ilaç deposu) tarafını da aynı sistemde tutun
+
+Cari takip yalnızca müşteri alacağı değildir. İlaç depolarına olan borçlarınız, vadeleri ve ödemeleriniz de aynı sistemde olmalı. Alım faturasını girdiğinizde tedarikçi borcu otomatik oluşursa, “bu faturayı ödemiş miydik?” sorusu ortadan kalkar. Ödemeyi fatura bazında ya da toplam tutar üzerinden kısmi olarak yapabilmek de işinizi kolaylaştırır.
+
+## Defter mi, program mı?
+
+| | Veresiye defteri | Cari takip programı |
+| --- | --- | --- |
+| Toplam alacağı görmek | Sayfa sayfa toplama | Anında |
+| Kısmi ödeme | Üstü çizili rakamlar | Otomatik bakiye |
+| Müşteri geçmişi | Dağınık | Tek ekranda |
+| Kasa ile uyum | Elle kontrol | Tahsilat kasaya işlenir |
+| Telefondan erişim | Yok | Var |
+| Kaybolma / yıpranma riski | Var | Bulutta yedekli |
+
+## Sonuç
+
+Veresiye yönetimi disiplin ister, ama doğru araçla bu disiplin zahmetsiz hâle gelir. Devreden bakiyeyle temiz bir başlangıç yapın, her veresiyeyi bir müşteriye bağlayın, tahsilatı anında girin ve haftada bir alacak listesine bakın.
+
+VetApp’in [veteriner cari ve veresiye takibi](/veteriner-cari-takip-programi) özelliklerine göz atabilir, [30 gün ücretsiz deneyebilirsiniz](https://panel.vetapp.com.tr/#/register). Büyükbaş ağırlıklı çalışıyorsanız [büyükbaş veteriner programı](/buyukbas-veteriner-programi) sayfamız da ilginizi çekebilir.
+
+---
+
+# Veteriner Programı Seçerken Dikkat Edilmesi Gereken 10 Kriter
+
+Kaynak: https://www.vetapp.com.tr/blog/veteriner-programi-secerken-dikkat-edilmesi-gerekenler · 2026-11-09
+
+Bir veteriner kliniği açtığınızda ya da büyüdüğünüzde, er geç aynı soruyla karşılaşırsınız: **hangi veteriner programını kullanmalıyım?** Piyasada çok sayıda veteriner klinik yazılımı var ve hepsi “her şeyi yapıyor” gibi görünüyor. Bu rehberde, bir programı denemeden önce ve deneme süresince sormanız gereken 10 soruyu topladık.
+
+> **Kısa cevap:** En iyi veteriner programı, sizin iş akışınıza uyan ve ekibinizin her gün gerçekten kullandığı programdır. Bulut tabanlı olması, mobilde tam çalışması, ilaç stoğunu son kullanma tarihiyle tutması ve veresiyeyi yönetebilmesi temel ölçütlerdir.
+
+## 1. Kurulum gerektiriyor mu, bulut tabanlı mı?
+
+Bilgisayara kurulan (masaüstü) programlar o bilgisayara bağlıdır. Bilgisayar bozulduğunda, çalındığında ya da yedek alınmadığında veriler risk altındadır. Kliniğin dışından erişmek de genellikle zordur.
+
+Bulut tabanlı bir veteriner programı ise tarayıcıdan veya mobil uygulamadan açılır. Yedekleme ve güncellemeleri sağlayıcı yapar; siz yalnızca internet bağlantısına ihtiyaç duyarsınız.
+
+**Sorulacak soru:** Program kurulum istiyor mu? Yedeklemeyi kim yapıyor, ne sıklıkla?
+
+## 2. Mobil uygulama “gerçekten” çalışıyor mu?
+
+Birçok programın mobil uygulaması yalnızca rapor görüntüler. Oysa klinikte işler masa başında olmaz: muayene sırasında, telefonda müşteriyle konuşurken veya sahada. Özellikle büyükbaş ağırlıklı çalışan hekimler için işlemi **işin bittiği yerde** girebilmek, gün sonunda bilgisayar başında hatırlamaya çalışmaktan çok daha güvenilirdir.
+
+**Sorulacak soru:** Mobil uygulamadan satış yapabiliyor, veresiye yazabiliyor, stok girebiliyor muyum? iPhone ve Android’de var mı?
+
+## 3. İlaç stoğunu parti ve son kullanma tarihiyle tutuyor mu?
+
+Veteriner ilaçlarında yalnızca adet tutmak yetmez. Aynı ilacın farklı partileri farklı son kullanma tarihlerine (SKT) sahiptir. İyi bir stok modülü:
+
+- Her stok girişini parti ve SKT ile kaydetmeli,
+- SKT’si yaklaşan ürünleri uyarmalı,
+- Satışta tarihi yakın olan partiyi önce kullanmalı,
+- Kritik stok eşiğinin altına inen ürünleri listelemeli.
+
+Ayrıntılar için [veteriner kliniğinde ilaç stok takibi rehberimize](/blog/veteriner-klinigi-ilac-stok-takibi-nasil-yapilir) bakabilirsiniz.
+
+## 4. Hazır bir veteriner ilaç kataloğu var mı?
+
+Her ilacı tek tek elle tanımlamak, programa geçişin en yorucu kısmıdır. Resmî satışı olan veteriner ilaçlarından oluşan hazır bir katalog ve barkodla tanıma, ilk günkü kurulum süresini saatlerden dakikalara indirir.
+
+## 5. Veresiyeyi gerçekten yönetebiliyor mu?
+
+Türkiye’de kliniklerin önemli bir kısmı veresiye çalışır. Burada bakmanız gerekenler:
+
+- Aynı satışta bir kalemi peşin, diğerini veresiye yazabiliyor musunuz?
+- Kısmi tahsilat alınabiliyor mu?
+- Eski defterdeki borçları “devreden bakiye” olarak girebiliyor musunuz?
+- Fiyatlar arttığında açık veresiyeye fark yansıtabiliyor musunuz?
+
+Konuyu [veresiye ve cari takibi yazımızda](/blog/veteriner-klinigi-veresiye-ve-cari-takibi) ayrıntılı ele aldık.
+
+## 6. İlaç deposuna olan borcu takip ediyor mu?
+
+Alım faturasını girdiğinizde stokun **ve** tedarikçi borcunun birlikte güncellenmesi gerekir. Aksi hâlde aynı faturayı iki farklı yere yazarsınız. İskonto, KDV, vade ve mal fazlası alanları olan bir alım faturası ekranı arayın.
+
+## 7. Hasta, randevu ve aşı takibi ne kadar pratik?
+
+Hasta kartında tür, ırk, sahip, doğum tarihi, çip numarası ve kilo gibi temel bilgiler olmalı. Randevu listesi günü başlatmalı; aşı takvimi ise vadesi yaklaşan ve geciken aşıları kendiliğinden öne çıkarmalı. Muayene kaydı için SOAP gibi düzenli bir yapı, geçmişi okumayı kolaylaştırır.
+
+## 8. Veri güvenliği ve sahiplik
+
+Şunları mutlaka sorun:
+
+- Bağlantılar şifreli mi (HTTPS)?
+- Veritabanı ne sıklıkla yedekleniyor?
+- Her klinik yalnızca kendi verisini mi görüyor?
+- Verilerim kime ait; aboneliği bırakırsam ne oluyor?
+
+## 9. Öğrenmesi ne kadar kolay?
+
+Küçük ekiplerin eğitime ayıracak vakti yoktur. Bir programın kolay olup olmadığını anlamanın en iyi yolu, deneme süresinde **gerçek bir gününüzü** programa girmektir: sabah randevuları, öğlen satışlar, akşam kasa kapanışı.
+
+## 10. Fiyat ve deneme koşulları
+
+Fiyatın yanında şunlara bakın: kredi kartı istemeden deneme var mı, deneme süresi ne kadar, kullanıcı başına mı yoksa klinik başına mı ücretlendirme yapılıyor, sözleşme süresi var mı?
+
+## Karşılaştırma tablosu
+
+Değerlendirdiğiniz programları bu tabloyla karşılaştırabilirsiniz:
+
+| Kriter | Neden önemli? | VetApp |
+| --- | --- | --- |
+| Bulut tabanlı, kurulumsuz | Yedek ve sunucu derdi yok | Evet |
+| Mobilde tam işlem | Sahada ve muayenede anında kayıt | Evet (iPhone, Android) |
+| Parti ve SKT takibi | Süresi geçen ilaç kaybı | Evet |
+| Hazır ilaç kataloğu | Hızlı kurulum | 1.694 ilaç |
+| Satır bazında veresiye | Gerçek klinik işleyişi | Evet |
+| Tedarikçi borcu | Depo ödemelerini kaçırmamak | Evet |
+| Aşı gündemi | Kaçan aşı = kaçan ziyaret | Evet |
+| Ücretsiz deneme | Risksiz karar | 30 gün, kart yok |
+
+## Sonuç
+
+Bir veteriner programını broşürüne bakarak değil, kendi işlerinizle deneyerek seçin. Deneme süresinde stok girişini, bir veresiye satışı, bir tahsilatı ve bir gün sonu kapanışını mutlaka yapın. Program bu dört işi zahmetsiz yaptırıyorsa, kliniğinizde de yaşar.
+
+VetApp’i [30 gün ücretsiz deneyebilir](https://panel.vetapp.com.tr/#/register) ya da kayıt olmadan [canlı demoyu](https://panel.vetapp.com.tr/#/demo) açabilirsiniz. Tüm modüller için [veteriner programı](/veteriner-programi) sayfamıza göz atın.
+
+---
+
+# Yeni Veteriner Kliniği Açanlar İçin İlk 30 Gün: Kayıt, Stok ve Kasa Düzeni
+
+Kaynak: https://www.vetapp.com.tr/blog/yeni-veteriner-klinigi-acanlar-icin-ilk-30-gun · 2026-11-09
+
+Kliniği açtınız, tabelanız asıldı, ilk hastalar gelmeye başladı. Bu heyecanlı dönemde çoğu hekim kayıt düzenini “biraz oturunca” kurmayı düşünür. Sorun şu: müşteri ve veresiye arttıkça, başta kurulmayan düzeni sonradan kurmak çok daha zordur. Stok takibi zorlaşır, kimin ne kadar borcu olduğu karışır, hangi hayvana hangi dozla ne uygulandığı defter sayfalarında kaybolur.
+
+Bu rehber, kliniğin **işletme tarafını** ilk 30 günde nasıl düzene sokabileceğinizi anlatıyor. (Ruhsat ve izin süreçleri il/ilçe tarım müdürlüğü ve meslek odasıyla yürütülür; burada onlara değinmiyoruz.)
+
+## 1. Hafta: Temeli kurun
+
+### Ürün ve stok listenizi çıkarın
+
+Açılış için aldığınız ilaç ve sarf malzemelerin tamamını bir kez sayın ve kaydedin. Her ürün için adet, son kullanma tarihi ve alış fiyatı yeterlidir. Barkodlu ürünlerde barkod okutmak işi hızlandırır.
+
+Bu ilk kayıt, sonraki bütün stok takibinin temelidir. Atlanırsa “sistemde 3 görünüyor ama rafta 7 var” gibi farklar baştan başlar.
+
+### Tedarikçilerinizi tanımlayın
+
+Çalıştığınız ilaç depolarını tedarikçi olarak kaydedin. İlk alım faturalarınızı girdiğinizde stok ve depoya olan borcunuz birlikte oluşur.
+
+### Ekibinize kullanıcı açın
+
+Eşiniz, ortağınız ya da yardımcınız da sistemi kullanacaksa her birine ayrı kullanıcı açın. Kimin hangi işlemi yaptığı belli olur.
+
+## 2. Hafta: Hasta ve müşteri kayıtları
+
+Gelen her hasta için bir hayvan kartı açın: tür, ırk, doğum tarihi (yaklaşık bile olsa), cinsiyet, kısırlaştırma durumu, varsa çip numarası ve kilo. Sahibini müşteri olarak bağlayın.
+
+Bu, başlangıçta zaman alıyor gibi görünür; ama ikinci ziyarette hastanın geçmişini saniyeler içinde görmek, aşı takvimini takip edebilmek ve müşteriye “geçen sefer şu uygulanmıştı” diyebilmek kliniğinize profesyonellik katar.
+
+> **İpucu:** Muayene notlarını SOAP düzeninde (şikâyet, bulgular, değerlendirme, plan) tutmak, ileride geçmişi okumayı çok kolaylaştırır.
+
+## 3. Hafta: Uygulamaları ve veresiyeyi kurala bağlayın
+
+Yeni kliniklerde en sık yaşanan sorun, uygulanan ilaç ve sarf malzemenin kayda geçmemesidir. İki basit kural koyun:
+
+1. **Hayvana giren her şey sisteme de girer.** Uygulanan ilaç, aşı, serum, enjektör… İşlem biter bitmez satışa eklenir; peşin ödenmiyorsa veresiye yazılır. Böylece stok kendiliğinden düşer.
+2. **Veresiye yalnızca kayıtlı müşteriye yazılır.** İsimsiz “sonra yazarız” veresiyesi yoktur.
+
+Mobil uygulama kullanıyorsanız bu kuralları uygulamak çok kolaylaşır: işlemi muayene masasında ya da sahada, işin bittiği anda girersiniz.
+
+## 4. Hafta: Gün sonu ve haftalık kontrol alışkanlığı
+
+### Her akşam kasa kapanışı
+
+Gün sonunda nakit, kart ve veresiye toplamlarına bakın; gün içindeki masrafları girin. Kasadaki nakit ile sistemdeki nakit tutuyorsa gün doğru kapanmıştır. Tutmuyorsa farkı ertesi güne bırakmadan arayın; bir gün sonra bulmak çok daha zordur.
+
+### Haftalık 15 dakika
+
+Haftada bir şu dört listeye bakın:
+
+| Liste | Ne yapılır? |
+| --- | --- |
+| Kritik stok | Sipariş verilir |
+| SKT’si yaklaşan ürünler | Öne alınır veya depoyla konuşulur |
+| Toplam alacak ve borçlu müşteriler | Gerekirse hatırlatma araması |
+| Yaklaşan ve geciken aşılar | Müşteri aranır, randevu verilir |
+
+## İlk ayın sonunda neyi bilmelisiniz?
+
+30 günün sonunda şu soruların cevabı birkaç tıklama uzaklıkta olmalı:
+
+- Bu ay ne kadar satış yaptım, ne kadarı nakit, ne kadarı veresiye?
+- Toplam ne kadar alacağım var, kimlerden?
+- İlaç depolarına ne kadar borcum var, vadeleri ne zaman?
+- Hangi ürünler azalıyor, hangilerinin tarihi yaklaşıyor?
+- Gelecek hafta hangi hastaların aşısı var?
+
+Bunları biliyorsanız, kliniğinizin işletme tarafı ilk günden kontrol altında demektir.
+
+## VetApp ile ilk 30 gün
+
+VetApp, yeni açılan klinikler düşünülerek tasarlandı: açılış stoğu ve devreden bakiyeler ilk gün girilir, ilaç kartları 1.694 ilaçlık katalogdan barkodla dolar, mobil uygulama web panelindeki her işlemi yapar. Üstelik ilk 30 gün tamamen ücretsizdir.
+
+[Ücretsiz hesabınızı açın](https://panel.vetapp.com.tr/#/register) ya da önce [canlı demoyu](https://panel.vetapp.com.tr/#/demo) inceleyin. Seçim yapmadan önce [veteriner programı seçme rehberimizi](/blog/veteriner-programi-secerken-dikkat-edilmesi-gerekenler) de okuyabilirsiniz.

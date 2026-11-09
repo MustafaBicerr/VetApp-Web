@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VetApp Blog</title>
+    <link>https://www.vetapp.com.tr/blog</link>
+    <atom:link href="https://www.vetapp.com.tr/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Veteriner klinik yönetimi üzerine pratik rehberler.</description>
+    <language>tr-TR</language>
+    <lastBuildDate>Mon, 09 Nov 2026 06:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Veteriner Kliniğinde İlaç Stok Takibi Nasıl Yapılır? Adım Adım Rehber</title>
+      <link>https://www.vetapp.com.tr/blog/veteriner-klinigi-ilac-stok-takibi-nasil-yapilir</link>
+      <guid isPermaLink="true">https://www.vetapp.com.tr/blog/veteriner-klinigi-ilac-stok-takibi-nasil-yapilir</guid>
+      <pubDate>Mon, 09 Nov 2026 06:00:00 GMT</pubDate>
+      <description>Veteriner kliniğinde ilaç ve sarf malzeme stok takibi: açılış sayımı, alım faturası, parti ve SKT takibi, kritik stok eşiği ve tedavide kullanılan ilacın stoktan düşülmesi.</description>
+      <category>Stok yönetimi</category>
+    </item>
+    <item>
+      <title>Veteriner Kliniklerinde Veresiye ve Cari Takibi: Alacak Kaybetmemenin 7 Yolu</title>
+      <link>https://www.vetapp.com.tr/blog/veteriner-klinigi-veresiye-ve-cari-takibi</link>
+      <guid isPermaLink="true">https://www.vetapp.com.tr/blog/veteriner-klinigi-veresiye-ve-cari-takibi</guid>
+      <pubDate>Mon, 09 Nov 2026 06:00:00 GMT</pubDate>
+      <description>Veteriner kliniğinde veresiye ve cari takibi: devreden bakiye, satır bazında veresiye, kısmi tahsilat, enflasyona karşı fiyat farkı ve ilaç deposu borç takibi.</description>
+      <category>Cari ve veresiye</category>
+    </item>
+    <item>
+      <title>Veteriner Programı Seçerken Dikkat Edilmesi Gereken 10 Kriter</title>
+      <link>https://www.vetapp.com.tr/blog/veteriner-programi-secerken-dikkat-edilmesi-gerekenler</link>
+      <guid isPermaLink="true">https://www.vetapp.com.tr/blog/veteriner-programi-secerken-dikkat-edilmesi-gerekenler</guid>
+      <pubDate>Mon, 09 Nov 2026 06:00:00 GMT</pubDate>
+      <description>Veteriner klinik programı seçerken 10 kriter: bulut ve kurulum, mobil uygulama, ilaç stok ve SKT takibi, veresiye, tedarikçi borcu, aşı takibi, veri güvenliği, fiyat.</description>
+      <category>Rehber</category>
+    </item>
+    <item>
+      <title>Yeni Veteriner Kliniği Açanlar İçin İlk 30 Gün: Kayıt, Stok ve Kasa Düzeni</title>
+      <link>https://www.vetapp.com.tr/blog/yeni-veteriner-klinigi-acanlar-icin-ilk-30-gun</link>
+      <guid isPermaLink="true">https://www.vetapp.com.tr/blog/yeni-veteriner-klinigi-acanlar-icin-ilk-30-gun</guid>
+      <pubDate>Mon, 09 Nov 2026 06:00:00 GMT</pubDate>
+      <description>Yeni açılan veteriner klinikleri için ilk 30 gün rehberi: ilaç ve sarf malzeme stoğu, hasta ve müşteri kayıtları, veresiye kuralları, kasa kapanışı ve aşı takibi.</description>
+      <category>Klinik yönetimi</category>
+    </item>
+  </channel>
+</rss>

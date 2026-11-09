@@ -1,0 +1,70 @@
+# VetApp
+
+> VetApp, Türkiye'deki veteriner klinikleri için geliştirilmiş bulut tabanlı bir veteriner klinik yönetim programıdır (veteriner programı / veteriner klinik yazılımı). İlaç ve sarf malzeme stok takibi, müşteri cari ve veresiye takibi, ilaç deposu (tedarikçi) borç takibi, aşı takibi, hasta ve randevu takibi, hızlı satış ve kasa yönetimini tek panelde toplar. Web (panel.vetapp.com.tr), Android ve iPhone'da aynı hesapla çalışır. 30 gün ücretsiz denenebilir; kredi kartı gerekmez. MB Yazılım (Kayseri) tarafından geliştirilmektedir.
+
+## Temel bilgiler
+
+- Ürün adı: VetApp (mobil uygulama adı: VetApp Mobil)
+- Kategori: Veteriner klinik yönetim yazılımı (SaaS, bulut tabanlı)
+- Kimler için: Veteriner klinikleri ve veteriner hekimler (küçük hayvan, büyükbaş/saha ve karma çalışan klinikler), Türkiye
+- Dil: Türkçe
+- Platformlar: Web tarayıcı (https://panel.vetapp.com.tr), iPhone (https://apps.apple.com/tr/app/vetapp-mobil/id6761138905), Android
+- Deneme: 30 gün ücretsiz, kredi kartı gerekmez, kurulum yok. Kayıtsız canlı demo: https://panel.vetapp.com.tr/#/demo
+- Kayıt: https://panel.vetapp.com.tr/#/register
+- İletişim: WhatsApp/telefon +90 535 226 54 08, info@vetapp.com.tr
+- Geliştirici: MB Yazılım (https://www.mbicer.com.tr)
+
+## Özellikler
+
+- Hasta (hayvan) kartı: tür, ırk, sahip, doğum tarihi, çip numarası, kilo
+- Randevu takvimi ve randevu durumları
+- SOAP muayene kaydı
+- Aşı takibi: tür bazlı aşı protokolleri, yaklaşan ve geciken aşılar
+- Hızlı satış ekranı ve barkodla satış
+- Nakit, kart, karma ve veresiye ödeme
+- Kasa hareketleri, masraf girişi ve gün sonu raporu
+- İlaç ve ürün stok takibi: parti, son kullanma tarihi (SKT), kritik stok uyarısı
+- 1.694 ilaçlık veteriner ilaç referans kataloğu
+- Alım faturası (mal kabul): iskonto, KDV, vade, mal fazlası
+- Müşteri cari ve veresiye takibi, kısmi tahsilat
+- Tedarikçi (ilaç deposu) cari ve borç takibi
+- Günlük özet paneli ve satış grafikleri
+- Çok kullanıcılı kullanım
+- Web, Android ve iOS’ta aynı hesap, anlık senkron
+
+## Bilinen sınırlar
+
+- Çalışmak için internet bağlantısı gerekir (çevrimdışı mod yok).
+- Müşterilere otomatik SMS veya WhatsApp aşı hatırlatması şu an yok; geciken ve yaklaşan aşılar klinik ekranında listelenir.
+- iOS'ta yeni klinik kaydı web panel üzerinden yapılır.
+
+## Çözüm sayfaları
+
+- [Veteriner programı](https://www.vetapp.com.tr/veteriner-programi): Veteriner klinikleri için program: hasta ve randevu, aşı takibi, ilaç stok takibi, veresiye ve cari, hızlı satış ve kasa. Web, Android, iPhone. 30 gün ücretsiz.
+- [Stok ve ilaç takibi](https://www.vetapp.com.tr/veteriner-stok-takip-programi): Veteriner kliniği için ilaç ve sarf malzeme stok takip programı: barkod, parti ve son kullanma tarihi (SKT), kritik stok uyarısı, alım faturası. 30 gün ücretsiz.
+- [Cari ve veresiye takibi](https://www.vetapp.com.tr/veteriner-cari-takip-programi): Veteriner klinikleri için cari takip programı: müşteri veresiyesi, kısmi tahsilat, vade, ilaç deposu (tedarikçi) borcu ve devreden bakiye. Web ve mobil. 30 gün ücretsiz.
+- [Aşı takibi](https://www.vetapp.com.tr/veteriner-asi-takip-programi): Veteriner klinikleri için aşı takip programı: tür bazlı aşı protokolleri, aşı takvimi, yaklaşan ve geciken aşı listesi, hasta geçmişi. Web ve mobil. 30 gün ücretsiz.
+- [Hasta ve randevu takibi](https://www.vetapp.com.tr/veteriner-hasta-takip-programi): Veteriner hasta takip programı: hayvan kartı, sahip bilgisi, çip no, randevu takvimi, SOAP muayene kaydı ve hasta zaman çizelgesi. Web, Android, iPhone. 30 gün ücretsiz.
+- [Veteriner mobil uygulaması](https://www.vetapp.com.tr/veteriner-mobil-uygulama): VetApp Mobil: veteriner klinikleri için iPhone ve Android uygulaması. Satış, veresiye, stok, aşı ve randevu işlemlerinin tamamı telefonda. Web paneliyle aynı hesap.
+- [Büyükbaş ve saha veterinerliği](https://www.vetapp.com.tr/buyukbas-veteriner-programi): Büyükbaş ağırlıklı çalışan veteriner klinikleri için program: çiftlikte mobilden kayıt, uzun vadeli veresiye, ilaç ve sarf malzeme stok takibi. 30 gün ücretsiz.
+
+## Sayfalar
+
+- [VetApp: Veteriner Klinik Programı – Stok, Cari ve Aşı Takibi](https://www.vetapp.com.tr/): Veteriner klinikleri için program: ilaç stok takibi, veresiye ve cari takip, aşı ve randevu takibi, hızlı satış ve kasa. Web, Android ve iPhone. 30 gün ücretsiz deneyin.
+- [Özellikler](https://www.vetapp.com.tr/ozellikler): VetApp veteriner programının özellikleri: hasta ve randevu takibi, SOAP muayene, aşı takibi, hızlı satış, kasa, SKT’li ilaç stok takibi, alım faturası, cari ve veresiye, gün sonu paneli.
+- [İlaç Depoları İçin İş Ortaklığı](https://www.vetapp.com.tr/depolar): Veteriner ilaç depoları için VetApp iş ortaklığı: deponuza özel referans koduyla katılan her klinik için komisyon kazanın, müşterilerinize modern bir klinik yazılımı sunun.
+- [Sık Sorulan Sorular](https://www.vetapp.com.tr/sss): Veteriner programı ve VetApp hakkında sık sorulan sorular: ücretsiz deneme, cihaz desteği, büyükbaş kullanımı, aşı takibi, stok SKT uyarıları, veresiye yönetimi ve veri güvenliği.
+- [İletişim ve Demo Talebi](https://www.vetapp.com.tr/iletisim): VetApp ile iletişime geçin: WhatsApp +90 535 226 54 08, info@vetapp.com.tr. Demo, destek ve iş ortaklığı için bize yazın.
+
+## Blog
+
+- [Veteriner Kliniğinde İlaç Stok Takibi Nasıl Yapılır? Adım Adım Rehber](https://www.vetapp.com.tr/blog/veteriner-klinigi-ilac-stok-takibi-nasil-yapilir): Veteriner kliniğinde ilaç ve sarf malzeme stok takibi: açılış sayımı, alım faturası, parti ve SKT takibi, kritik stok eşiği ve tedavide kullanılan ilacın stoktan düşülmesi.
+- [Veteriner Kliniklerinde Veresiye ve Cari Takibi: Alacak Kaybetmemenin 7 Yolu](https://www.vetapp.com.tr/blog/veteriner-klinigi-veresiye-ve-cari-takibi): Veteriner kliniğinde veresiye ve cari takibi: devreden bakiye, satır bazında veresiye, kısmi tahsilat, enflasyona karşı fiyat farkı ve ilaç deposu borç takibi.
+- [Veteriner Programı Seçerken Dikkat Edilmesi Gereken 10 Kriter](https://www.vetapp.com.tr/blog/veteriner-programi-secerken-dikkat-edilmesi-gerekenler): Veteriner klinik programı seçerken 10 kriter: bulut ve kurulum, mobil uygulama, ilaç stok ve SKT takibi, veresiye, tedarikçi borcu, aşı takibi, veri güvenliği, fiyat.
+- [Yeni Veteriner Kliniği Açanlar İçin İlk 30 Gün: Kayıt, Stok ve Kasa Düzeni](https://www.vetapp.com.tr/blog/yeni-veteriner-klinigi-acanlar-icin-ilk-30-gun): Yeni açılan veteriner klinikleri için ilk 30 gün rehberi: ilaç ve sarf malzeme stoğu, hasta ve müşteri kayıtları, veresiye kuralları, kasa kapanışı ve aşı takibi.
+
+## Optional
+
+- [Tüm içerik (llms-full.txt)](https://www.vetapp.com.tr/llms-full.txt)
+- [Gizlilik politikası](https://www.vetapp.com.tr/gizlilik)
+- [Kullanım şartları](https://www.vetapp.com.tr/kullanim-sartlari)

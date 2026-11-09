@@ -1,6 +1,7 @@
 {
-  "name": "VetApp",
+  "name": "VetApp – Veteriner Klinik Programı",
   "short_name": "VetApp",
+  "description": "Veteriner klinikleri için stok, cari, aşı, randevu, satış ve kasa yönetimi.",
   "start_url": "/",
   "display": "browser",
   "background_color": "#0b0d10",

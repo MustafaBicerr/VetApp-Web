@@ -1,5 +1,6 @@
 // VetApp tanıtım sitesi — içerik ve şablonlar. `node build.mjs` ile statik HTML üretilir.
 // Tasarım dili MB Yazılım (mbicer.com.tr) ile ortaktır: IBM Plex, koyu zemin + açık bölümler, mavi vurgu.
+import { loadPosts, trDate } from './markdown.mjs';
 export const SITE = 'https://www.vetapp.com.tr';
 export const PANEL = 'https://panel.vetapp.com.tr';
 export const API = 'https://api.vetapp.com.tr/api';
@@ -12,9 +13,22 @@ export const MAKER = 'https://www.mbicer.com.tr';
 export const PHONE = '+90 535 226 54 08';
 export const WA = 'https://wa.me/905352265408?text=' + encodeURIComponent('Merhaba, VetApp hakkında bilgi almak istiyorum.');
 export const STATS = { clinics: 417, cities: 53, drugs: 1694 };
+// Mağaza bağlantıları. Play Store adresi bilindiğinde PLAY_STORE'a yazın; boşsa hiçbir yerde gösterilmez.
+export const APP_STORE = 'https://apps.apple.com/tr/app/vetapp-mobil/id6761138905';
+export const PLAY_STORE = '';
+// Anahtar kelime odaklı çözüm sayfaları (src/solutions.mjs). Menü, alt bilgi ve ana sayfa bu listeden beslenir.
+export const SOLUTIONS = [
+  { path: '/veteriner-programi', label: 'Veteriner programı', short: 'Klinik yönetimi tek yazılımda', icon: 'layers' },
+  { path: '/veteriner-stok-takip-programi', label: 'Stok ve ilaç takibi', short: 'Barkod, parti, SKT ve kritik stok', icon: 'box' },
+  { path: '/veteriner-cari-takip-programi', label: 'Cari ve veresiye takibi', short: 'Müşteri alacağı, tedarikçi borcu', icon: 'wallet' },
+  { path: '/veteriner-asi-takip-programi', label: 'Aşı takibi', short: 'Aşı takvimi ve geciken aşı listesi', icon: 'syringe' },
+  { path: '/veteriner-hasta-takip-programi', label: 'Hasta ve randevu takibi', short: 'Hasta kartı, muayene, randevu', icon: 'calendar' },
+  { path: '/veteriner-mobil-uygulama', label: 'Veteriner mobil uygulaması', short: 'iPhone ve Android’de tam panel', icon: 'mobile' },
+  { path: '/buyukbas-veteriner-programi', label: 'Büyükbaş ve saha veterinerliği', short: 'Çiftlikte, işin bittiği yerde kayıt', icon: 'globe' },
+];
 export const YEAR = new Date().getFullYear();
 
-const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 // ───────── ikonlar (satır içi SVG, 24px ızgara) ─────────
 const P = {
@@ -40,17 +54,17 @@ const P = {
   clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
   bell: '<path d="M6 16V11a6 6 0 1112 0v5l1.5 2h-15L6 16zM10 21h4"/>',
 };
-const icon = (n, cls = '') => `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]}</svg>`;
-const waIcon = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2z"/></svg>';
-const arrow = `<span class="arr" aria-hidden="true">${icon('arrow')}</span>`;
+export const icon = (n, cls = '') => `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]}</svg>`;
+export const waIcon = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2z"/></svg>';
+export const arrow = `<span class="arr" aria-hidden="true">${icon('arrow')}</span>`;
 
 // ───────── görsel yardımcıları ─────────
-const shot = (name, alt, { sizes = '(min-width: 960px) 640px, 100vw', eager = false } = {}) =>
+export const shot = (name, alt, { sizes = '(min-width: 960px) 640px, 100vw', eager = false } = {}) =>
   `<img src="/assets/img/${name}-1800.webp" srcset="/assets/img/${name}-900.webp 900w, /assets/img/${name}-1800.webp 1800w" sizes="${sizes}" width="1800" height="1125" alt="${esc(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
-const frame = (name, alt, url = 'panel.vetapp.com.tr', opts) =>
+export const frame = (name, alt, url = 'panel.vetapp.com.tr', opts) =>
   `<div class="frame"><div class="fbar"><i></i><i></i><i></i><span>${url}</span></div>${shot(name, alt, opts)}</div>`;
 const sbar = (time = '09:41') => `<div class="sbar"><span data-clock>${time}</span><span class="dots"><i></i><i></i><i></i><i></i></span></div>`;
-const phoneImg = (name, alt, { eager = false, time = '09:41' } = {}) =>
+export const phoneImg = (name, alt, { eager = false, time = '09:41' } = {}) =>
   `<div class="phone"><div class="screen">${sbar(time)}<div class="scr-area"><div class="scr on"><img src="/assets/img/${name}.webp" width="585" height="1266" alt="${esc(alt)}" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></div></div></div></div>`;
 
 // ───────── SSS verisi (ana sayfa + /sss + FAQPage şeması) ─────────
@@ -62,6 +76,15 @@ export const FAQ = [
       ['Hangi cihazlarda çalışır?', 'Web tarayıcısından (panel.vetapp.com.tr), Android ve iOS uygulamalarından. Tüm cihazlar aynı bulut hesabını kullanır; yaptığınız değişiklik her yerde günceldir. iOS’ta yeni klinik kaydı web panel üzerinden yapılır.'],
       ['İnternet bağlantısı gerekir mi?', 'Evet. VetApp bulut tabanlıdır; bu sayede kurulum, sunucu veya yedekleme derdiniz olmaz ama çalışmak için internet bağlantısı gerekir.'],
       ['Birden fazla kullanıcı ekleyebilir miyim?', 'Evet. Klinik yöneticisi, ekibindeki kişiler için kullanıcı hesabı oluşturabilir.'],
+    ],
+  },
+  {
+    group: 'Veteriner programı seçimi',
+    items: [
+      ['Veteriner programı (veteriner klinik yazılımı) ne işe yarar?', 'Veteriner programı; kliniğin hasta kayıtlarını, randevularını, aşı takvimini, ilaç ve sarf malzeme stoğunu, satışlarını, kasasını ve müşteri/tedarikçi cari hesaplarını tek yerde tutan yazılımdır. Defter, Excel ve hafızaya dayalı takibin yerini alır; hangi ilacın azaldığını, kimin ne kadar borcu olduğunu ve hangi hastanın aşısının geldiğini tek ekranda gösterir.'],
+      ['Ücretsiz veteriner programı var mı?', 'VetApp’i 30 gün boyunca tüm özellikleriyle ücretsiz kullanabilirsiniz; kredi kartı istenmez ve kurulum gerekmez. Kayıt olmadan incelemek isterseniz canlı demo da açıktır.'],
+      ['VetApp büyükbaş ve saha çalışmasına uygun mu?', 'Evet. Mobil uygulama web panelindeki işlemlerin tamamını yapabildiği için çiftlikte, işin bittiği yerde satış, veresiye ve tedavi kaydı girilebilir; kliniğe dönüp bilgisayar başında tekrar yazmak gerekmez.'],
+      ['Yeni açılan bir klinik için uygun mu?', 'Evet. Açılış stoğunuzu ve devreden müşteri/tedarikçi bakiyelerinizi ilk gün girersiniz; ilaç kartları 1.694 ilaçlık katalogdan barkodla dolar. Küçük ekipler için tasarlandı, eğitim gerektirmez.'],
     ],
   },
   {
@@ -88,14 +111,15 @@ export const FAQ = [
     ],
   },
 ];
-const HOME_FAQ = [FAQ[1].items[0], FAQ[0].items[1], FAQ[3].items[0], FAQ[3].items[1]];
-const faqHtml = (items) => `<div class="faq">${items.map(([q, a]) => `<details><summary>${esc(q)}</summary><div class="a"><p>${esc(a)}</p></div></details>`).join('')}</div>`;
-const faqLd = (items) => ({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: items.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) });
+const HOME_FAQ = [FAQ[1].items[0], FAQ[1].items[1], FAQ[0].items[1], FAQ[1].items[2], FAQ[3].items[1], FAQ[4].items[0]];
+export const faqHtml = (items) => `<div class="faq">${items.map(([q, a]) => `<details><summary>${esc(q)}</summary><div class="a"><p>${esc(a)}</p></div></details>`).join('')}</div>`;
+export const faqLd = (items) => ({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: items.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) });
 
 // ───────── düzen ─────────
 const NAV = [
   ['/ozellikler', 'Özellikler'],
-  ['/#bir-gun', 'Nasıl çalışır'],
+  ['/veteriner-programi', 'Çözümler'],
+  ['/blog', 'Blog'],
   ['/depolar', 'İlaç depoları'],
   ['/sss', 'SSS'],
   ['/iletisim', 'İletişim'],
@@ -104,7 +128,8 @@ const NAV = [
 export function layout(page, body) {
   const url = SITE + page.path;
   const ld = (page.ld || []).map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join('\n  ');
-  const nav = NAV.map(([href, label]) => `<a href="${href}"${page.path === href ? ' aria-current="page"' : ''}>${label}</a>`).join('');
+  const current = (href) => page.path === href || (href !== '/' && page.path.startsWith(href + '/'));
+  const nav = NAV.map(([href, label]) => `<a href="${href}"${current(href) ? ' aria-current="page"' : ''}>${label}</a>`).join('');
   const mnav = NAV.map(([href, label]) => `<a href="${href}">${label}</a>`).join('');
   return `<!doctype html>
 <html lang="tr">
@@ -119,7 +144,7 @@ export function layout(page, body) {
   <meta name="color-scheme" content="dark light">
   <link rel="alternate" hreflang="tr" href="${url}">
   <link rel="alternate" hreflang="x-default" href="${url}">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="${page.ogType || 'website'}">
   <meta property="og:site_name" content="VetApp">
   <meta property="og:locale" content="tr_TR">
   <meta property="og:title" content="${esc(page.ogTitle || page.title)}">
@@ -130,6 +155,13 @@ export function layout(page, body) {
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="VetApp — veteriner klinik yönetim yazılımı">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${esc(page.ogTitle || page.title)}">
+  <meta name="twitter:description" content="${esc(page.description)}">
+  <meta name="twitter:image" content="${SITE}/assets/img/og-image.png">
+  <meta name="author" content="${esc(page.author || 'VetApp')}">
+  <meta name="application-name" content="VetApp">
+  <meta name="apple-itunes-app" content="app-id=6761138905">
+  <link rel="alternate" type="application/rss+xml" title="VetApp Blog" href="${SITE}/feed.xml">${page.head ? '\n  ' + page.head : ''}
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/assets/img/favicon-64.png">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
@@ -168,11 +200,16 @@ ${body}
       <div class="foot-grid">
         <div>
           <img src="/assets/img/logo_white.png" width="103" height="26" alt="VetApp" loading="lazy">
-          <p>Veteriner klinikleri için randevu, aşı, satış, stok ve kasa yönetimi. Web, Android ve iOS.</p>
+          <p>VetApp, veteriner klinikleri için geliştirilmiş klinik yönetim programıdır: ilaç stok takibi, cari ve veresiye, aşı ve randevu takibi, hızlı satış ve kasa. Web, Android ve iOS.</p>
           <p>Bir <a href="${MAKER}" style="color:var(--ink)">MB Yazılım</a> ürünüdür. Kayseri, Türkiye.</p>
         </div>
+        <div><h4>Çözümler</h4><ul>
+          ${SOLUTIONS.map((s) => `<li><a href="${s.path}">${s.label}</a></li>`).join('\n          ')}
+        </ul></div>
         <div><h4>Ürün</h4><ul>
           <li><a href="/ozellikler">Özellikler</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="${APP_STORE}" target="_blank" rel="noopener">App Store (iPhone)</a></li>${PLAY_STORE ? `\n          <li><a href="${PLAY_STORE}" target="_blank" rel="noopener">Google Play (Android)</a></li>` : ''}
           <li><a href="${URLS.demo}">Canlı demo</a></li>
           <li><a href="${URLS.login}">Giriş yap</a></li>
           <li><a href="${URLS.register}">Ücretsiz başla</a></li>
@@ -207,31 +244,71 @@ export let BUILD_ID = '0';
 export const setBuildId = (v) => { BUILD_ID = v; };
 
 // ───────── JSON-LD ─────────
-const orgLd = { '@context': 'https://schema.org', '@type': 'Organization', name: 'VetApp', url: SITE + '/', logo: SITE + '/assets/img/logo.png', email: 'info@vetapp.com.tr', telephone: PHONE, parentOrganization: { '@type': 'Organization', name: 'MB Yazılım', url: MAKER + '/' } };
-const siteLd = { '@context': 'https://schema.org', '@type': 'WebSite', name: 'VetApp', alternateName: ['VetApp Veteriner Klinik Yazılımı', 'VetApp Panel'], url: SITE + '/', inLanguage: 'tr' };
-const appLd = {
-  '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'VetApp', applicationCategory: 'BusinessApplication',
-  operatingSystem: 'Web, Android, iOS', inLanguage: 'tr', url: SITE + '/',
-  description: 'Veteriner klinikleri için randevu, aşı takibi, hızlı satış, kasa, stok ve cari hesap yönetimi yazılımı.',
-  offers: { '@type': 'Offer', description: '30 gün ücretsiz deneme, kredi kartı gerekmez.' },
-  publisher: { '@type': 'Organization', name: 'MB Yazılım', url: MAKER + '/' },
+// Kuruluş ve ürün varlıkları: arama motorları ve yapay zekâ asistanları VetApp'i bu tanımlarla tanır.
+const ORG_ID = SITE + '/#organization';
+const APP_ID = SITE + '/#software';
+const sameAs = [APP_STORE, PLAY_STORE, MAKER + '/'].filter(Boolean);
+export const orgLd = {
+  '@context': 'https://schema.org', '@type': 'Organization', '@id': ORG_ID, name: 'VetApp', alternateName: ['VetApp Veteriner Klinik Programı', 'VetApp Mobil'],
+  url: SITE + '/', logo: { '@type': 'ImageObject', url: SITE + '/assets/img/logo.png' }, image: SITE + '/assets/img/og-image.png',
+  description: 'VetApp, Türkiye’deki veteriner klinikleri için geliştirilmiş bulut tabanlı klinik yönetim programıdır: ilaç stok takibi, cari ve veresiye takibi, aşı ve randevu takibi, hızlı satış ve kasa.',
+  email: 'info@vetapp.com.tr', telephone: PHONE, areaServed: { '@type': 'Country', name: 'Türkiye' },
+  address: { '@type': 'PostalAddress', addressLocality: 'Kayseri', addressCountry: 'TR' },
+  contactPoint: [{ '@type': 'ContactPoint', contactType: 'customer support', telephone: PHONE, email: 'destek@vetapp.com.tr', availableLanguage: ['tr'], areaServed: 'TR' }],
+  parentOrganization: { '@type': 'Organization', name: 'MB Yazılım', url: MAKER + '/' },
+  knowsAbout: ['veteriner klinik yönetimi', 'veteriner ilaç stok takibi', 'veteriner cari ve veresiye takibi', 'veteriner aşı takibi', 'veteriner hasta ve randevu takibi'],
+  sameAs,
 };
-const crumbLd = (name, path) => ({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
-  { '@type': 'ListItem', position: 1, name: 'VetApp', item: SITE + '/' },
-  { '@type': 'ListItem', position: 2, name, item: SITE + path },
-] });
+const siteLd = { '@context': 'https://schema.org', '@type': 'WebSite', '@id': SITE + '/#website', name: 'VetApp', alternateName: ['VetApp Veteriner Klinik Yazılımı', 'VetApp Veteriner Programı'], url: SITE + '/', inLanguage: 'tr-TR', publisher: { '@id': ORG_ID } };
+export const FEATURES = [
+  'Hasta (hayvan) kartı: tür, ırk, sahip, doğum tarihi, çip numarası, kilo',
+  'Randevu takvimi ve randevu durumları',
+  'SOAP muayene kaydı',
+  'Aşı takibi: tür bazlı aşı protokolleri, yaklaşan ve geciken aşılar',
+  'Hızlı satış ekranı ve barkodla satış',
+  'Nakit, kart, karma ve veresiye ödeme',
+  'Kasa hareketleri, masraf girişi ve gün sonu raporu',
+  'İlaç ve ürün stok takibi: parti, son kullanma tarihi (SKT), kritik stok uyarısı',
+  '1.694 ilaçlık veteriner ilaç referans kataloğu',
+  'Alım faturası (mal kabul): iskonto, KDV, vade, mal fazlası',
+  'Müşteri cari ve veresiye takibi, kısmi tahsilat',
+  'Tedarikçi (ilaç deposu) cari ve borç takibi',
+  'Günlük özet paneli ve satış grafikleri',
+  'Çok kullanıcılı kullanım',
+  'Web, Android ve iOS’ta aynı hesap, anlık senkron',
+];
+export const appLd = {
+  '@context': 'https://schema.org', '@type': 'SoftwareApplication', '@id': APP_ID, name: 'VetApp', alternateName: 'VetApp Veteriner Klinik Programı',
+  applicationCategory: 'BusinessApplication', applicationSubCategory: 'Veteriner klinik yönetim yazılımı',
+  operatingSystem: 'Web, Android, iOS', inLanguage: 'tr', url: SITE + '/', ...(APP_STORE ? { installUrl: APP_STORE } : {}),
+  description: 'Veteriner klinikleri için klinik yönetim programı: ilaç stok takibi, cari ve veresiye takibi, aşı ve randevu takibi, hasta kaydı, hızlı satış ve kasa. Web, Android ve iOS’ta aynı hesapla çalışır.',
+  featureList: FEATURES,
+  screenshot: ['dashboard', 'pos', 'urunler', 'musteriler', 'randevular'].map((n) => SITE + `/assets/img/${n}-1800.webp`),
+  audience: { '@type': 'BusinessAudience', audienceType: 'Veteriner klinikleri, veteriner hekimler, pet shop ve saha veterinerleri' },
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'TRY', description: '30 gün ücretsiz deneme, kredi kartı gerekmez.', url: URLS.register },
+  publisher: { '@id': ORG_ID }, provider: { '@id': ORG_ID },
+};
+// Kırıntı şeması: crumbLd('Özellikler', '/ozellikler') veya crumbLd([['Blog', '/blog'], ['Yazı', '/blog/yazi']])
+export const crumbLd = (name, path) => {
+  const trail = Array.isArray(name) ? name : [[name, path]];
+  return { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [['VetApp', '/'], ...trail].map(([n, p], i) => ({ '@type': 'ListItem', position: i + 1, name: n, item: SITE + p })) };
+};
 
-const pageHero = (crumb, h1, lede) => `
+// crumb: 'Özellikler' ya da [['Blog', '/blog'], 'Yazı başlığı'] (son öğe bağlantısız)
+export const pageHero = (crumb, h1, lede, extra = '') => {
+  const trail = (Array.isArray(crumb) ? crumb : [crumb]).map((c) => (Array.isArray(c) ? `<a href="${c[1]}">${esc(c[0])}</a>` : esc(c))).join(' / ');
+  return `
     <section class="page-hero">
       <div class="grid-fade grid-bg" aria-hidden="true"></div>
       <div class="container">
-        <p class="crumbs"><a href="/">VetApp</a> / ${esc(crumb)}</p>
+        <nav class="crumbs" aria-label="Sayfa yolu"><a href="/">VetApp</a> / ${trail}</nav>
         <h1>${h1}</h1>
-        ${lede ? `<p class="lede">${lede}</p>` : ''}
+        ${lede ? `<p class="lede">${lede}</p>` : ''}${extra}
       </div>
     </section>`;
+};
 
-const finalCta = (title = 'Kliniğinizi 30 gün ücretsiz deneyin.', text = 'Kurulum yok, kredi kartı yok. Beş dakikada ilk randevunuzu açın.') => `
+export const finalCta = (title = 'Kliniğinizi 30 gün ücretsiz deneyin.', text = 'Kurulum yok, kredi kartı yok. Beş dakikada ilk randevunuzu açın.') => `
     <section class="sec final" data-final>
       <div class="container">
         <span class="tag reveal">Hemen başlayın</span>
@@ -305,24 +382,41 @@ const SCREENS = [
     </div>${appNav(0)}</div>`,
 ];
 
+// Ana sayfadaki "Blogdan" bölümü: en yeni üç yazı. Yazı yoksa bölüm hiç basılmaz.
+export const postCard = (p, cls = '') => `<a class="post-card${cls}" href="/blog/${p.slug}"><span class="meta">${p.category ? `${esc(p.category)} · ` : ''}<time datetime="${p.date}">${trDate(p.date)}</time></span><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p><span class="more">Okuyun ${arrow}</span></a>`;
+function blogTeaser() {
+  const posts = loadPosts().slice(0, 3);
+  if (!posts.length) return '';
+  return `
+    <section class="sec light alt" aria-labelledby="blog-h">
+      <div class="container">
+        <div class="sec-head reveal">
+          <span class="tag">Blog</span>
+          <h2 id="blog-h">Klinik yönetimi üzerine <span class="soft">pratik rehberler.</span></h2>
+        </div>
+        <div class="post-grid">${posts.map((p, i) => postCard(p, ` reveal${i ? ` d${i}` : ''}`)).join('')}</div>
+        <p style="margin-top:28px"><a class="btn btn--ghost" href="/blog">Tüm yazılar ${arrow}</a></p>
+      </div>
+    </section>`;
+}
+
 // ───────── SAYFALAR ─────────
 export const pages = [];
 
 // — Ana sayfa —
 pages.push({
   file: 'index.html', path: '/', changefreq: 'weekly', priority: '1.0',
-  title: 'VetApp – Veteriner Klinik Yönetim Yazılımı | Randevu, Aşı, Stok, Kasa',
-  ogTitle: 'VetApp – Kliniğinizin bütün günü, tek uygulamada',
-  description: `Veteriner klinikleri için randevu, aşı takibi, hızlı satış, stok ve kasa tek uygulamada. ${STATS.clinics} klinik, ${STATS.cities} şehir. Web, Android ve iOS. 30 gün ücretsiz.`,
+  title: 'VetApp: Veteriner Klinik Programı – Stok, Cari ve Aşı Takibi',
+  ogTitle: 'VetApp – Veteriner kliniğinizin bütün günü, tek uygulamada',
+  description: 'Veteriner klinikleri için program: ilaç stok takibi, veresiye ve cari takip, aşı ve randevu takibi, hızlı satış ve kasa. Web, Android ve iPhone. 30 gün ücretsiz deneyin.',
   ld: [orgLd, siteLd, appLd, faqLd(HOME_FAQ)],
   body: () => `
     <section class="hero">
       <div class="grid-fade grid-bg" aria-hidden="true"></div>
       <div class="container">
         <div class="hero-copy">
-          <span class="tag">Veteriner klinik yazılımı</span>
-          <h1>Kliniğinizin bütün günü, <span class="soft">tek uygulamada.</span></h1>
-          <p class="lede">Randevu, aşı, satış, stok ve kasa. Telefonda, tablette, bilgisayarda.</p>
+          <h1><span class="tag h1-kicker">Veteriner klinik programı</span>Kliniğinizin bütün günü, <span class="soft">tek uygulamada.</span></h1>
+          <p class="lede">İlaç stoğu, veresiye ve cari, aşı, randevu, satış ve kasa. Telefonda, tablette, bilgisayarda.</p>
           <div class="actions" data-hero-cta>
             <a class="btn btn--primary" href="${URLS.register}">30 gün ücretsiz başla ${arrow}</a>
             <a class="btn btn--ghost" href="${URLS.demo}">${icon('play')} Demoyu aç</a>
@@ -402,6 +496,19 @@ pages.push({
       </div>
     </section>
 
+    <section class="sec light" aria-labelledby="sol-h">
+      <div class="container">
+        <div class="sec-head reveal">
+          <span class="tag">Veteriner klinikleri için</span>
+          <h2 id="sol-h">Tek program, <span class="soft">kliniğin bütün işleri.</span></h2>
+          <p class="lede">VetApp; veteriner kliniklerinde ilaç ve sarf malzeme stoğunu, müşteri veresiyesini, tedarikçi borcunu, aşı takvimini ve randevuları tek yerde tutan bir veteriner klinik programıdır. Hangi işiniz için aradığınızı seçin:</p>
+        </div>
+        <div class="sol-grid">
+          ${SOLUTIONS.map((x, i) => `<a class="sol reveal${i % 3 ? ` d${i % 3}` : ''}" href="${x.path}"><span class="ic">${icon(x.icon)}</span><span><b>${x.label}</b><small>${x.short}</small></span>${arrow}</a>`).join('\n          ')}
+        </div>
+      </div>
+    </section>
+${blogTeaser()}
     <section class="sec" aria-labelledby="trust-h">
       <div class="container">
         <div class="sec-head reveal">
@@ -437,7 +544,7 @@ ${finalCta()}`,
 
 // — Özellikler —
 const MODULES = [
-  { id: 'klinik', mob: 'm-klinik', kicker: 'Klinik', h: 'Hasta kayıtları, randevu ve aşı.', shot: 'hastalar', alt: 'VetApp hasta listesi', url: 'panel.vetapp.com.tr/#/clinic/patients', lede: 'Klinik iş akışının omurgası: hasta, randevu, muayene ve aşı bir arada.', caps: [
+  { id: 'klinik', more: ['/veteriner-hasta-takip-programi', 'Veteriner hasta ve randevu takibi'], more2: ['/veteriner-asi-takip-programi', 'Veteriner aşı takip programı'], mob: 'm-klinik', kicker: 'Klinik', h: 'Hasta kayıtları, randevu ve aşı.', shot: 'hastalar', alt: 'VetApp hasta listesi', url: 'panel.vetapp.com.tr/#/clinic/patients', lede: 'Klinik iş akışının omurgası: hasta, randevu, muayene ve aşı bir arada.', caps: [
     ['Hasta (hayvan) kartı', 'Tür ve ırk kataloğu, sahibi, doğum tarihi, cinsiyet, kısırlaştırma, renk, çip no ve kilo.'],
     ['Randevu takvimi', 'Gün bazlı liste; personel, oda ve süre; planlandı / geldi / tamamlandı / gelmedi / iptal durumları.'],
     ['SOAP muayene', 'Şikâyet, anamnez, klinik bulgular, tanı ve tedavi planı; kilo, ateş, nabız ve solunum.'],
@@ -445,7 +552,7 @@ const MODULES = [
     ['Hasta zaman çizelgesi', 'Muayeneler, randevular ve aşılar tek kronolojik akışta.'],
     ['Muayeneden satışa', 'Yapılan işlem tek tıkla satış ekranına taşınır; satış hasta ve muayeneyle ilişkilendirilir.'],
   ] },
-  { id: 'satis', mob: 'm-pos', kicker: 'Satış ve kasa', h: 'Hızlı satış ve net kasa.', shot: 'kasa', alt: 'VetApp kasa ve gider yönetimi', url: 'panel.vetapp.com.tr/#/sales/cash', lede: 'Sıra bekleyen müşteriye saniyeler içinde satış; gün sonunda kasayla birebir uyum.', caps: [
+  { id: 'satis', more: ['/veteriner-programi', 'Veteriner klinik programı'], mob: 'm-pos', kicker: 'Satış ve kasa', h: 'Hızlı satış ve net kasa.', shot: 'kasa', alt: 'VetApp kasa ve gider yönetimi', url: 'panel.vetapp.com.tr/#/sales/cash', lede: 'Sıra bekleyen müşteriye saniyeler içinde satış; gün sonunda kasayla birebir uyum.', caps: [
     ['Hızlı satış ekranı', 'Ürün arama, barkod okutma, müşteri seçimi ve ödeme tek ekranda.'],
     ['Ödeme yöntemleri', 'Nakit, kart, karma ve veresiye; aynı sepette satır bazında peşin/veresiye.'],
     ['Kasa hareketleri', 'Satış tahsilatları, veresiye tahsilatları ve masraflar tarih ve yönteme göre listelenir.'],
@@ -453,7 +560,7 @@ const MODULES = [
     ['Gün sonu', 'Nakit ve kart toplamları, günlük gider ve net kasa tek özet kartında.'],
     ['Satış geçmişi', 'Fiş detayları, indirimli ve veresiye satış filtreleri.'],
   ] },
-  { id: 'stok', kicker: 'Stok', h: 'İlaç ve ürün stoğu, SKT’ye kadar.', shot: 'stok-giris', alt: 'VetApp alım faturası ve stok girişi ekranı', url: 'panel.vetapp.com.tr/#/stock/entry', lede: 'Referans ilaç kataloğu ve barkodla hızlı kayıt; parti ve son kullanma tarihiyle güvenli takip.', caps: [
+  { id: 'stok', more: ['/veteriner-stok-takip-programi', 'Veteriner stok takip programı'], kicker: 'Stok', h: 'İlaç ve ürün stoğu, SKT’ye kadar.', shot: 'stok-giris', alt: 'VetApp alım faturası ve stok girişi ekranı', url: 'panel.vetapp.com.tr/#/stock/entry', lede: 'Referans ilaç kataloğu ve barkodla hızlı kayıt; parti ve son kullanma tarihiyle güvenli takip.', caps: [
     ['İlaç referans kataloğu', '1.694 ilaçlık kataloğu arayın; kendi ürün kartınızı tek tıkla oluşturun.'],
     ['Barkod', 'Kamerayla veya barkod okuyucuyla ürün bulun, barkodsuz ürüne barkod tanımlayın.'],
     ['Parti ve SKT', 'Her giriş parti ve son kullanma tarihiyle tutulur; satışta SKT’si yakın olan parti öne alınır.'],
@@ -461,7 +568,7 @@ const MODULES = [
     ['Alım faturası (mal kabul)', 'Çoklu iskonto, KDV, vade, mal fazlası; stok ve tedarikçi borcu otomatik güncellenir.'],
     ['İlk stok girişi', 'Açılış stoğunu bir seferde kaydedin; devreden bakiyeyle başlayın.'],
   ] },
-  { id: 'cari', kicker: 'Cari hesap', h: 'Müşteri ve tedarikçi hesapları.', shot: 'tedarikciler', alt: 'VetApp tedarikçi cari listesi', url: 'panel.vetapp.com.tr/#/accounts/suppliers', lede: 'Kime borçlusunuz, kimden alacağınız var — vade vade, fatura fatura.', caps: [
+  { id: 'cari', more: ['/veteriner-cari-takip-programi', 'Veteriner cari ve veresiye takibi'], kicker: 'Cari hesap', h: 'Müşteri ve tedarikçi hesapları.', shot: 'tedarikciler', alt: 'VetApp tedarikçi cari listesi', url: 'panel.vetapp.com.tr/#/accounts/suppliers', lede: 'Kime borçlusunuz, kimden alacağınız var — vade vade, fatura fatura.', caps: [
     ['Müşteri cari', 'Borç/alacak geçmişi, açık satışlar ve tahsilat kayıtları.'],
     ['Tedarikçi cari', 'Alım faturaları, vadeler ve ödemeler; fatura bazlı veya tutar bazlı kısmi ödeme.'],
     ['Resmî depo listesi', '300’den fazla veteriner ilaç deposu listesinden tedarikçi seçerek hızlı kayıt.'],
@@ -469,7 +576,7 @@ const MODULES = [
     ['Enflasyon korumalı veresiye', 'Fiyat güncellemesi, açık veresiye kalemlere fark olarak yansıtılabilir.'],
     ['Veresiye güvenliği', 'Veresiye satışta müşteri kimlik doğrulaması ve borçlu müşteri uyarısı.'],
   ] },
-  { id: 'panel', mob: 'm-dashboard', kicker: 'Panel ve raporlar', h: 'Güne özet kartlarıyla başlayın.', shot: 'dashboard', alt: 'VetApp genel bakış paneli', url: 'panel.vetapp.com.tr', lede: 'Kasa, alacak, borç, stok ve randevu — işletmenin nabzı tek ekranda.', caps: [
+  { id: 'panel', more: ['/veteriner-mobil-uygulama', 'Veteriner mobil uygulaması'], mob: 'm-dashboard', kicker: 'Panel ve raporlar', h: 'Güne özet kartlarıyla başlayın.', shot: 'dashboard', alt: 'VetApp genel bakış paneli', url: 'panel.vetapp.com.tr', lede: 'Kasa, alacak, borç, stok ve randevu — işletmenin nabzı tek ekranda.', caps: [
     ['Günlük özet', 'Günlük kasa, genel alacak, tedarikçi borçları, bugünkü randevular ve kritik stok.'],
     ['Saatlik satış grafiği', 'Satış hacmi, peşin kasa ve tahsilat; yoğun saatlerinizi görün.'],
     ['Ödeme akışı', 'Nakit ve kart payı, saat bazında dağılım.'],
@@ -478,11 +585,11 @@ const MODULES = [
     ['Detaya inme', 'Kartlara tıklayarak işlem ve fatura detaylarına geçin.'],
   ] },
 ];
-const ck = `<span class="ck">${icon('check')}</span>`;
+export const ck = `<span class="ck">${icon('check')}</span>`;
 pages.push({
   file: 'ozellikler.html', path: '/ozellikler', changefreq: 'monthly', priority: '0.9',
-  title: 'Özellikler – VetApp Veteriner Klinik Yazılımı',
-  description: 'VetApp özellikleri: hasta ve randevu, muayene, aşı takibi, hızlı satış, kasa, SKT’li stok takibi, alım faturası, cari hesap ve gün sonu paneli.',
+  title: 'Özellikler – VetApp Veteriner Klinik Programı',
+  description: 'VetApp veteriner programının özellikleri: hasta ve randevu takibi, SOAP muayene, aşı takibi, hızlı satış, kasa, SKT’li ilaç stok takibi, alım faturası, cari ve veresiye, gün sonu paneli.',
   ld: [crumbLd('Özellikler', '/ozellikler')],
   body: () => `${pageHero('Özellikler', 'Bir kliniğin ihtiyacı olan her şey. <span class="soft">Tek uygulamada.</span>', 'Randevudan kasaya, VetApp’in bütün modülleri.')}
     <div class="light">
@@ -493,6 +600,7 @@ ${MODULES.map((m) => `      <section class="module" id="${m.id}">
             <span class="tag">${m.kicker}</span>
             <h2>${m.h}</h2>
             <p class="lede">${m.lede}</p>
+            ${[m.more, m.more2].filter(Boolean).map(([h, t]) => `<a class="more-link" href="${h}">${t} ${arrow}</a>`).join('')}
           </div>
           <div class="reveal d1">${m.mob ? `<div class="mod-phone only-mob">${phoneImg(m.mob, m.alt)}</div><div class="only-desk">${frame(m.shot, m.alt, m.url)}</div>` : frame(m.shot, m.alt, m.url)}</div>
         </div>
@@ -554,8 +662,8 @@ pages.push({
 // — SSS —
 pages.push({
   file: 'sss.html', path: '/sss', changefreq: 'monthly', priority: '0.7',
-  title: 'Sık Sorulan Sorular – VetApp',
-  description: 'VetApp hakkında sık sorulan sorular: ücretsiz deneme, cihaz desteği, aşı takibi, stok SKT uyarıları, veresiye yönetimi ve veri güvenliği.',
+  title: 'Sık Sorulan Sorular – VetApp Veteriner Programı',
+  description: 'Veteriner programı ve VetApp hakkında sık sorulan sorular: ücretsiz deneme, cihaz desteği, büyükbaş kullanımı, aşı takibi, stok SKT uyarıları, veresiye yönetimi ve veri güvenliği.',
   ld: [crumbLd('Sık sorulan sorular', '/sss'), faqLd(FAQ.flatMap((g) => g.items))],
   body: () => `${pageHero('Sık sorulan sorular', 'Aklınıza takılanlar.', `Bulamadığınız bir cevap mı var? <a href="${WA}" target="_blank" rel="noopener" style="color:var(--blue2)">WhatsApp’tan sorun</a>.`)}
     <section class="sec light">
