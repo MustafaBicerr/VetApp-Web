@@ -1,0 +1,14 @@
+{
+  "name": "vetapp-web",
+  "private": true,
+  "description": "VetApp tanıtım sitesi (www.vetapp.com.tr): statik HTML, Cloudflare Workers statik varlıklar",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs && node scripts/stage.mjs",
+    "deploy": "npm run build && wrangler deploy",
+    "dev": "npm run build && wrangler dev"
+  },
+  "devDependencies": {
+    "wrangler": "4.158.0"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  // VetApp tanıtım sitesi (www.vetapp.com.tr) — Cloudflare Workers statik varlıklar.
+  // Kod (Worker betiği) yok: bütün istekler doğrudan statik dosyalardan sunulur, istek sınırına sayılmaz.
+  // Yayın: npm run deploy   (node build.mjs → scripts/stage.mjs → wrangler deploy)
+  // vetapp.com.tr (kök) DNS-only olarak sunucuda kalır; nginx oradan www'ye 301 yönlendirir. panel/api sunucuda.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "vetapp-web",
+  "compatibility_date": "2026-11-01",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [
+    { "pattern": "www.vetapp.com.tr/*", "zone_name": "vetapp.com.tr" }
+  ],
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}
