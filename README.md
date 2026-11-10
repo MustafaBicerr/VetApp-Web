@@ -12,7 +12,8 @@ node ../.../serve       # (yerel önizleme için herhangi bir statik sunucu; tem
 - Görseller: `assets/img/` — ürün ekran görüntüleri WebP; logo/ikon seti marka paketinden (`VetApp-Logos`).
 - İletişim/başvuru formları `POST https://api.vetapp.com.tr/api/public/contact` ucuna gider (tablo: `contact_messages`).
 - Dağıtım (Cloudflare, Worker `vetapp-web`, yalnız statik varlıklar): `npm install && npm run deploy` (`CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` ortam değişkenleriyle ya da `npx wrangler login` sonrası). `npm run deploy` önce `node build.mjs`, sonra `scripts/stage.mjs` ile `dist/` hazırlar.
-- DNS Cloudflare'de: `www` proxy'li (Worker rotası `www.vetapp.com.tr/*`); `@`, `panel`, `api`, `mail`, `ftp` DNS-only olarak sunucuda (46.62.248.74). Kök alan adı nginx'te www'ye 301 yönlenir.
+- DNS Cloudflare'de (10 Kasım 2026'dan beri): `www` proxy'li (Worker rotası `www.vetapp.com.tr/*`); kök `vetapp.com.tr` proxy'li ve Cloudflare yönlendirme kuralıyla www'ye 301 (yol ve sorgu korunur). `panel`, `api`, `mail`, `ftp` DNS-only, sunucuda (46.62.248.74). E-posta: MX `smtp.google.com` (Google Workspace), SPF `include:_spf.google.com`, Resend kayıtları `send` / `resend._domainkey`.
+- Ziyaretçi istatistikleri: Cloudflare Web Analytics (çerezsiz), `src/site.mjs` → `CF_BEACON`. Panel: Cloudflare → Analytics & Logs → Web Analytics → vetapp.com.tr.
 - Geri dönüş: Cloudflare → Workers Routes → `www.vetapp.com.tr/*` rotası silinirse www istekleri yeniden sunucuya gider (eski dağıtım: `ssh vetapp-prod 'bash /root/vetapp_production/backend/scripts/deploy-server.sh web'`).
 - SEO: her sayfada canonical, OG/Twitter, JSON-LD (Organization, WebSite, SoftwareApplication, FAQPage, BreadcrumbList); sitemap `build.mjs` ile üretilir.
 - Blog yazısı ekleme: `content/blog/README.md`. SEO yol haritası ve deploy sonrası yapılacaklar: `docs/SEO-PLAN.md`.

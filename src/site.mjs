@@ -48,6 +48,8 @@ export const SOLUTIONS = [
   { path: '/buyukbas-veteriner-programi', label: 'Büyükbaş ve saha veterinerliği', short: 'Çiftlikte, işin bittiği yerde kayıt', icon: 'globe' },
 ];
 export const YEAR = new Date().getFullYear();
+// Cloudflare Web Analytics (çerezsiz, kişisel veri tutmaz, robotları saymaz). Panel: Cloudflare → Analytics & Logs → Web Analytics
+export const CF_BEACON = '2ff9262840d24d52abc2e7150512d5e0';
 
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -262,6 +264,7 @@ ${body}
   </div>
   <a class="wa-float" href="${WA}" target="_blank" rel="noopener" aria-label="WhatsApp’tan yazın">${waIcon}</a>
   <script src="/assets/js/site.js?v=${BUILD_ID}" defer></script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "${CF_BEACON}"}'></script>
 </body>
 </html>
 `;
@@ -786,15 +789,16 @@ const legal = (file, path, title, h1, date, sections) => ({
 ${sections.map(([h, html]) => `      ${h ? `<h2>${h}</h2>\n      ` : ''}${html}`).join('\n')}
     </div></div></section>`,
 });
-pages.push(legal('gizlilik.html', '/gizlilik', 'Gizlilik Politikası', 'Gizlilik politikası', 'Ocak 2025', [
+pages.push(legal('gizlilik.html', '/gizlilik', 'Gizlilik Politikası', 'Gizlilik politikası', 'Kasım 2026', [
   ['', '<p>VetApp (“Şirket”, “biz”, “bizim”) olarak gizliliğinize önem veriyoruz. Bu Gizlilik Politikası, VetApp uygulamasını ve web sitesini (“Hizmet”) kullanırken kişisel verilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu açıklamaktadır.</p>'],
   ['1. Toplanan veriler', '<p>Hizmeti kullanırken aşağıdaki bilgileri toplayabiliriz:</p><ul><li>Ad, soyad ve iletişim bilgileri (e-posta, telefon)</li><li>Klinik bilgileri ve adres</li><li>Uygulama kullanım verileri ve log kayıtları</li><li>Ödeme bilgileri (güvenli ödeme sağlayıcıları aracılığıyla işlenir)</li></ul>'],
   ['2. Verilerin kullanımı', '<p>Topladığımız verileri şu amaçlarla kullanıyoruz:</p><ul><li>Hizmeti sağlamak ve iyileştirmek</li><li>Teknik destek sunmak</li><li>Hesabınızı yönetmek</li><li>Güvenlik ve dolandırıcılık önleme</li><li>Yasal yükümlülükleri yerine getirmek</li></ul>'],
   ['3. Veri güvenliği', '<p>Verilerinizi korumak için endüstri standardı güvenlik önlemleri alıyoruz:</p><ul><li>Tüm bağlantılar SSL/TLS şifrelemesi ile korunur</li><li>Her klinik için ayrı veri alanı sağlanır</li><li>Düzenli güvenlik yedeklemeleri yapılır</li><li>Erişim yetkilendirme sistemleri uygulanır</li></ul>'],
   ['4. Üçüncü taraf paylaşımı', '<p>Kişisel verilerinizi şu durumlar dışında üçüncü taraflarla paylaşmıyoruz:</p><ul><li>Açık rızanız bulunduğunda</li><li>Hizmet sağlayıcılarımızla (barındırma, ödeme işleme)</li><li>Yasal zorunluluk bulunduğunda</li></ul>'],
-  ['5. Veri saklama', '<p>Verilerinizi hesabınız aktif olduğu sürece saklarız. Hesabı silmeniz durumunda, verileriniz yasal yükümlülükler kapsamında belirli bir süre daha saklandıktan sonra silinir.</p>'],
-  ['6. Haklarınız', '<p>KVKK kapsamında aşağıdaki haklara sahipsiniz:</p><ul><li>Kişisel verilerinize erişim hakkı</li><li>Verilerinizin düzeltilmesini talep etme hakkı</li><li>Verilerinizin silinmesini talep etme hakkı</li><li>Veri işlemeye itiraz etme hakkı</li></ul><p>Bu haklarınızı kullanmak için <a href="/iletisim">iletişim sayfamız</a> üzerinden bize ulaşabilirsiniz.</p>'],
-  ['7. İletişim', '<p>Gizlilik politikamız hakkında sorularınız için: <a href="mailto:destek@vetapp.com.tr">destek@vetapp.com.tr</a></p>'],
+  ['5. Ziyaret istatistikleri', '<p>Bu web sitesi, ziyaret sayısını ve hangi sayfaların okunduğunu ölçmek için Cloudflare Web Analytics kullanır. Bu hizmet çerez kullanmaz, kişisel veri toplamaz ve ziyaretçiyi tanımlamaz; yalnızca anonim ve toplu istatistik üretir.</p>'],
+  ['6. Veri saklama', '<p>Verilerinizi hesabınız aktif olduğu sürece saklarız. Hesabı silmeniz durumunda, verileriniz yasal yükümlülükler kapsamında belirli bir süre daha saklandıktan sonra silinir.</p>'],
+  ['7. Haklarınız', '<p>KVKK kapsamında aşağıdaki haklara sahipsiniz:</p><ul><li>Kişisel verilerinize erişim hakkı</li><li>Verilerinizin düzeltilmesini talep etme hakkı</li><li>Verilerinizin silinmesini talep etme hakkı</li><li>Veri işlemeye itiraz etme hakkı</li></ul><p>Bu haklarınızı kullanmak için <a href="/iletisim">iletişim sayfamız</a> üzerinden bize ulaşabilirsiniz.</p>'],
+  ['8. İletişim', '<p>Gizlilik politikamız hakkında sorularınız için: <a href="mailto:destek@vetapp.com.tr">destek@vetapp.com.tr</a></p>'],
 ]));
 pages.push(legal('kullanim-sartlari.html', '/kullanim-sartlari', 'Kullanım Şartları', 'Kullanım şartları', 'Ocak 2025', [
   ['', '<p>Bu Kullanım Şartları, VetApp (“Hizmet”) kullanımını düzenleyen koşulları belirler. Hizmeti kullanarak bu şartları kabul etmiş sayılırsınız.</p>'],
