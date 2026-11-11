@@ -1,5 +1,5 @@
 // VetApp tanıtım sitesi — içerik ve şablonlar. `node build.mjs` ile statik HTML üretilir.
-// Tasarım dili MB Yazılım (mbicer.com.tr) ile ortaktır: IBM Plex, koyu zemin + açık bölümler, mavi vurgu.
+// Tasarım dili MBiCER Yazılım ve Mühendislik (mbicer.com.tr) ile ortaktır: IBM Plex, koyu zemin + açık bölümler, mavi vurgu.
 import { loadPosts, trDate } from './markdown.mjs';
 export const SITE = 'https://www.vetapp.com.tr';
 export const PANEL = 'https://panel.vetapp.com.tr';
@@ -9,7 +9,7 @@ export const URLS = {
   login: `${PANEL}/#/login`,
   demo: `${PANEL}/#/demo`,
 };
-export const MAKER = 'https://www.mbicer.com.tr';
+export const MAKER = 'https://mbicer.com.tr';
 export const PHONE = '+90 535 226 54 08';
 export const WA = 'https://wa.me/905352265408?text=' + encodeURIComponent('Merhaba, VetApp hakkında bilgi almak istiyorum.');
 // ───────── KAMPANYA ─────────
@@ -218,7 +218,7 @@ export function layout(page, body) {
     <a href="${URLS.login}">Giriş yap</a>
     <a class="btn btn--primary" href="${URLS.register}">Ücretsiz başla ${arrow}</a>
     <a class="btn btn--wa" href="${WA}" target="_blank" rel="noopener">${waIcon} WhatsApp’tan yazın</a>
-    <p class="mm-foot">Bir MB Yazılım ürünüdür</p>
+    <p class="mm-foot">Bir MBiCER Yazılım ve Mühendislik ürünüdür</p>
   </div>
   <main id="main">
 ${body}
@@ -229,7 +229,7 @@ ${body}
         <div>
           <img src="/assets/img/logo_white.png" width="103" height="26" alt="VetApp" loading="lazy">
           <p>VetApp, veteriner klinikleri için geliştirilmiş klinik yönetim programıdır: ilaç stok takibi, cari ve veresiye, aşı ve randevu takibi, hızlı satış ve kasa. Web, Android ve iOS.</p>
-          <p>Bir <a href="${MAKER}" style="color:var(--ink)">MB Yazılım</a> ürünüdür. Kayseri, Türkiye.</p>
+          <p>Bir <a href="${MAKER}" style="color:var(--ink)">MBiCER Yazılım ve Mühendislik</a> ürünüdür. Kayseri, Türkiye.</p>
         </div>
         <div><h4>Çözümler</h4><ul>
           ${SOLUTIONS.map((s) => `<li><a href="${s.path}">${s.label}</a></li>`).join('\n          ')}
@@ -255,7 +255,7 @@ ${body}
           <li><a href="mailto:destek@vetapp.com.tr">destek@vetapp.com.tr</a></li>
         </ul></div>
       </div>
-      <div class="foot-base"><span>© ${YEAR} VetApp · MB Yazılım</span><a href="tel:${PHONE.replace(/\s/g, '')}">${PHONE}</a></div>
+      <div class="foot-base"><span>© ${YEAR} VetApp · MBiCER Yazılım ve Mühendislik</span><a href="tel:${PHONE.replace(/\s/g, '')}">${PHONE}</a></div>
     </div>
   </footer>
   <div class="dock" aria-label="Hızlı işlemler">
@@ -285,7 +285,7 @@ export const orgLd = {
   foundingDate: '2026-05', email: 'info@vetapp.com.tr', telephone: PHONE, areaServed: { '@type': 'Country', name: 'Türkiye' },
   address: { '@type': 'PostalAddress', addressLocality: 'Kayseri', addressCountry: 'TR' },
   contactPoint: [{ '@type': 'ContactPoint', contactType: 'customer support', telephone: PHONE, email: 'destek@vetapp.com.tr', availableLanguage: ['tr'], areaServed: 'TR' }],
-  parentOrganization: { '@type': 'Organization', name: 'MB Yazılım', url: MAKER + '/' },
+  parentOrganization: { '@type': 'Organization', name: 'MBiCER Yazılım ve Mühendislik', url: MAKER + '/' },
   knowsAbout: ['veteriner klinik yönetimi', 'veteriner ilaç stok takibi', 'veteriner cari ve veresiye takibi', 'veteriner aşı takibi', 'veteriner hasta ve randevu takibi'],
   sameAs,
 };
@@ -605,7 +605,7 @@ ${blogTeaser()}
         </div>
         <div class="maker reveal">
           <img src="/assets/img/mb-mark.png" width="40" height="36" alt="" loading="lazy">
-          <p><b>MB Yazılım güvencesiyle.</b> VetApp’i geliştiren ekip, kurulumdan sonra da yanınızda.</p>
+          <p><b>MBiCER Yazılım ve Mühendislik güvencesiyle.</b> VetApp’i geliştiren ekip, kurulumdan sonra da yanınızda.</p>
           <a href="${MAKER}" target="_blank" rel="noopener">mbicer.com.tr ${arrow}</a>
         </div>
       </div>
