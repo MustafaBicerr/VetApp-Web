@@ -23,7 +23,7 @@
 3. **Google Search Console** (doğrulama dosyası zaten sitede): Site haritaları → `https://www.vetapp.com.tr/sitemap.xml` gönderin. URL denetimi ile yeni 7 çözüm sayfası ve 4 blog yazısı için "Dizine eklenmeyi iste".
 4. **Bing Webmaster Tools** (bing.com/webmasters): "Google Search Console'dan içe aktar" ile 1 dakikada ekleyin, sitemap'i gönderin. **ChatGPT arama ve Microsoft Copilot Bing dizinini kullanır**; bu adım yapay zekâda görünmek için kritik.
 5. `node scripts/indexnow.mjs` çalıştırın (Bing + Yandex'e bütün sayfaları bildirir).
-6. **Google İşletme Profili** (business.google.com): "VetApp – Veteriner Klinik Programı", kategori "Yazılım şirketi", Kayseri. Web sitesi, telefon, logo, ekran görüntüleri. Haritalar ve marka aramalarında güven sinyali.
+6. **Google İşletme Profili** (business.google.com): "VetApp – Veteriner Klinik Programı", kategori "Yazılım şirketi"; resmî adres olunca eklenir (şimdilik "hizmet bölgesi: Türkiye"). Web sitesi, telefon, logo, ekran görüntüleri. Haritalar ve marka aramalarında güven sinyali.
 7. **Play Store bağlantısı:** `src/site.mjs` içindeki `PLAY_STORE` sabitine Play Store adresini yazıp `node build.mjs` çalıştırın. Bağlantı alt bilgi, mobil uygulama sayfası, şema ve llms.txt'ye otomatik eklenir.
 
 ## 3. Site dışı (otorite) — sıralamayı asıl taşıyan kısım
@@ -37,7 +37,7 @@ Yeni bir alan adının "veteriner programı" gibi rekabetli bir kelimede yüksel
 - **Sektör kanalları**: Veteriner hekim odaları, VHD bültenleri, veteriner fakültesi mezun grupları, ilaç depolarının (depo iş ortaklığı) web siteleri ve bültenleri. Depolar sitelerinde sizi bağlantıyla anarsa çok değerli.
 - **YouTube**: 2–5 dakikalık "VetApp ile veresiye satış nasıl yapılır", "barkodla stok girişi" videoları. Başlıkta anahtar kelime, açıklamada site bağlantısı. YouTube hem Google'da hem yapay zekâ cevaplarında sık alıntılanır.
 - **Topluluklar**: Facebook/WhatsApp veteriner hekim grupları, Ekşi Sözlük/Reddit'te "veteriner programı önerisi" başlıkları — reklam gibi değil, gerçek soruya dürüst cevap olarak, ürünün yapımcısı olduğunuzu belirterek.
-- **Basın**: Yerel/teknoloji haber sitelerine "Kayserili geliştiriciden veteriner kliniklerine yerli yazılım" hikâyesi.
+- **Basın**: Yerel/teknoloji haber sitelerine "Yerli geliştiriciden veteriner kliniklerine yerli yazılım" hikâyesi.
 
 **Yapmayın:** Link satın alma, PBN, toplu dizin gönderimi, anahtar kelime doldurma, kopya içerik. Kısa vadede bile zarar verir.
 

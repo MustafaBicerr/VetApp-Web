@@ -229,7 +229,7 @@ ${body}
         <div>
           <img src="/assets/img/logo_white.png" width="103" height="26" alt="VetApp" loading="lazy">
           <p>VetApp, veteriner klinikleri için geliştirilmiş klinik yönetim programıdır: ilaç stok takibi, cari ve veresiye, aşı ve randevu takibi, hızlı satış ve kasa. Web, Android ve iOS.</p>
-          <p>Bir <a href="${MAKER}" style="color:var(--ink)">MBiCER Yazılım ve Mühendislik</a> ürünüdür. Kayseri, Türkiye.</p>
+          <p>Bir <a href="${MAKER}" style="color:var(--ink)">MBiCER Yazılım ve Mühendislik</a> ürünüdür.</p>
         </div>
         <div><h4>Çözümler</h4><ul>
           ${SOLUTIONS.map((s) => `<li><a href="${s.path}">${s.label}</a></li>`).join('\n          ')}
@@ -283,7 +283,6 @@ export const orgLd = {
   url: SITE + '/', logo: { '@type': 'ImageObject', url: SITE + '/assets/img/logo.png' }, image: SITE + '/assets/img/og-image.png',
   description: 'VetApp, Türkiye’deki veteriner klinikleri için geliştirilmiş bulut tabanlı klinik yönetim programıdır: ilaç stok takibi, cari ve veresiye takibi, aşı ve randevu takibi, hızlı satış ve kasa.',
   foundingDate: '2026-05', email: 'info@vetapp.com.tr', telephone: PHONE, areaServed: { '@type': 'Country', name: 'Türkiye' },
-  address: { '@type': 'PostalAddress', addressLocality: 'Kayseri', addressCountry: 'TR' },
   contactPoint: [{ '@type': 'ContactPoint', contactType: 'customer support', telephone: PHONE, email: 'destek@vetapp.com.tr', availableLanguage: ['tr'], areaServed: 'TR' }],
   parentOrganization: { '@type': 'Organization', name: 'MBiCER Yazılım ve Mühendislik', url: MAKER + '/' },
   knowsAbout: ['veteriner klinik yönetimi', 'veteriner ilaç stok takibi', 'veteriner cari ve veresiye takibi', 'veteriner aşı takibi', 'veteriner hasta ve randevu takibi'],

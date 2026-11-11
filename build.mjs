@@ -65,7 +65,7 @@ const desc = (p) => p.description.replace(/\s+/g, ' ');
 const core = corePages.filter((p) => !['/gizlilik', '/kullanim-sartlari'].includes(p.path));
 const llms = `# VetApp
 
-> VetApp, Türkiye'deki veteriner klinikleri için geliştirilmiş bulut tabanlı bir veteriner klinik yönetim programıdır (veteriner programı / veteriner klinik yazılımı). İlaç ve sarf malzeme stok takibi, müşteri cari ve veresiye takibi, ilaç deposu (tedarikçi) borç takibi, aşı takibi, hasta ve randevu takibi, hızlı satış ve kasa yönetimini tek panelde toplar. Web (panel.vetapp.com.tr), Android ve iPhone'da aynı hesapla çalışır. **${CAMPAIGN.freeUntil}'ye kadar tamamen ücretsizdir; kart bilgisi gerekmez.** Kaydolup kullanan ilk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} de hediye edilir. ${ASOF} itibarıyla ${CAMPAIGN.cities} şehirde ${CAMPAIGN.clinics} klinik VetApp kullanıyor. MBiCER Yazılım ve Mühendislik (Kayseri) tarafından geliştirilmektedir.
+> VetApp, Türkiye'deki veteriner klinikleri için geliştirilmiş bulut tabanlı bir veteriner klinik yönetim programıdır (veteriner programı / veteriner klinik yazılımı). İlaç ve sarf malzeme stok takibi, müşteri cari ve veresiye takibi, ilaç deposu (tedarikçi) borç takibi, aşı takibi, hasta ve randevu takibi, hızlı satış ve kasa yönetimini tek panelde toplar. Web (panel.vetapp.com.tr), Android ve iPhone'da aynı hesapla çalışır. **${CAMPAIGN.freeUntil}'ye kadar tamamen ücretsizdir; kart bilgisi gerekmez.** Kaydolup kullanan ilk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} de hediye edilir. ${ASOF} itibarıyla ${CAMPAIGN.cities} şehirde ${CAMPAIGN.clinics} klinik VetApp kullanıyor. MBiCER Yazılım ve Mühendislik tarafından geliştirilmektedir.
 
 ## Kampanya: ücretsiz veteriner programı (${ASOF} itibarıyla güncel)
 
