@@ -3,17 +3,14 @@
 // Yeni sayfa eklerken src/site.mjs içindeki SOLUTIONS listesine de ekleyin.
 import {
   SITE, URLS, WA, STATS, APP_STORE, PLAY_STORE, SOLUTIONS, esc, icon, arrow, ck,
-  frame, phoneImg, faqHtml, faqLd, crumbLd, pageHero, finalCta, postCard, campaignStrip, CAMPAIGN, LEFT, ASOF, FREE_LINE,
+  frame, phoneImg, faqHtml, faqLd, crumbLd, pageHero, finalCta, postCard, campaignStrip, storeBadges, CAMPAIGN, LEFT, ASOF, FREE_LINE,
 } from './site.mjs';
 import { loadPosts } from './markdown.mjs';
 
 const N = STATS.drugs.toLocaleString('tr-TR');
 
-const storeLinks = () => `<div class="stores">
-          <a class="store" href="${APP_STORE}" target="_blank" rel="noopener">${icon('mobile')}<span><small>iPhone için</small><b>App Store</b></span></a>
-          ${PLAY_STORE ? `<a class="store" href="${PLAY_STORE}" target="_blank" rel="noopener">${icon('mobile')}<span><small>Android için</small><b>Google Play</b></span></a>` : `<span class="store">${icon('mobile')}<span><small>Android için</small><b>Google Play</b></span></span>`}
-          <a class="store" href="${URLS.login}">${icon('laptop')}<span><small>Bilgisayardan</small><b>panel.vetapp.com.tr</b></span></a>
-        </div>`;
+const storeLinks = () => `${storeBadges()}
+        <p style="margin-top:14px"><a class="more-link" href="${URLS.login}">Bilgisayardan: panel.vetapp.com.tr ${arrow}</a></p>`;
 
 function solution(d) {
   const related = SOLUTIONS.filter((s) => s.path !== d.path);
@@ -93,7 +90,7 @@ export const solutionPages = [
     intro: `<h2>Veteriner programı nedir?</h2>
           <p><strong>Veteriner programı</strong> (veteriner klinik yazılımı ya da veteriner otomasyon programı olarak da bilinir); bir kliniğin hasta kayıtlarını, randevularını, aşı takvimini, ilaç ve sarf malzeme stoğunu, satışlarını, kasasını ve cari hesaplarını tek yerde tutan yazılımdır.</p>
           <p>Klinik büyüdükçe defter, Excel ve hafızayla yürüyen takip zorlaşır: hangi ilacın azaldığı, hangi müşterinin ne kadar veresiyesi olduğu, hangi hastanın aşısının geldiği gözden kaçar. VetApp bu bilgileri tek panelde toplar ve gününüzü özetler.</p>
-          <p>VetApp’i web tarayıcısından (<a href="${URLS.login}">panel.vetapp.com.tr</a>), <a href="${APP_STORE}" target="_blank" rel="noopener">iPhone</a> ve Android uygulamalarından kullanabilirsiniz.</p>`,
+          <p>VetApp’i web tarayıcısından (<a href="${URLS.login}">panel.vetapp.com.tr</a>), <a href="${APP_STORE}" target="_blank" rel="noopener">iPhone</a> ve <a href="${PLAY_STORE}" target="_blank" rel="noopener">Android</a> uygulamalarından kullanabilirsiniz.</p>`,
     capsH: 'Bir veteriner kliniğinin ihtiyaç duyduğu <span class="soft">bütün modüller.</span>',
     caps: [
       ['Hasta ve randevu takibi', 'Hayvan kartı, sahip bilgisi, randevu takvimi, SOAP muayene ve hasta zaman çizelgesi.'],
@@ -298,7 +295,7 @@ export const solutionPages = [
     shot: ['pos', 'VetApp veteriner mobil uygulaması hızlı satış ekranı', 'panel.vetapp.com.tr/#/sales/pos'], mob: 'm-pos',
     intro: `<h2>Bilgisayar başına dönmeden kayıt</h2>
           <p>Klinikte işler masa başında olmaz: muayene sırasında, telefonda müşteriyle konuşurken ya da sahada. İşlemi o an giremediğinizde gün sonunda hatırlamaya çalışırsınız ve bir kısmı kaybolur.</p>
-          <p><strong>VetApp Mobil</strong>, App Store’da ve Android’de yayında. Web panelindeki satış, veresiye, tahsilat, stok, hasta, aşı ve randevu işlemlerinin tamamı uygulamada var. Telefon kamerası barkod okuyucu olarak çalışır.</p>`,
+          <p><strong>VetApp Mobil</strong>, <a href="${APP_STORE}" target="_blank" rel="noopener">App Store’da</a> ve <a href="${PLAY_STORE}" target="_blank" rel="noopener">Google Play’de</a> yayında. Web panelindeki satış, veresiye, tahsilat, stok, hasta, aşı ve randevu işlemlerinin tamamı uygulamada var. Telefon kamerası barkod okuyucu olarak çalışır.</p>`,
     capsH: 'Telefondan yapabildikleriniz, <span class="soft">kısaltılmış sürüm değil.</span>',
     caps: [
       ['Hızlı satış', 'Kamerayla barkod okutun, ödemeyi alın; nakit, kart veya veresiye.'],

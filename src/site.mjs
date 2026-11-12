@@ -34,9 +34,16 @@ export const FREE_LINE = `${CAMPAIGN.freeUntil}’ye kadar tamamen ücretsiz`;
 export const GIFT_LINE = LEFT > 0
   ? `İlk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} de hediye`
   : `${CAMPAIGN.limit} kliniklik hediye kontenjanı doldu`;
-// Mağaza bağlantıları. Play Store adresi bilindiğinde PLAY_STORE'a yazın; boşsa hiçbir yerde gösterilmez.
+// Mağaza bağlantıları (VetApp Mobil): App Store ve Google Play'de yayında.
 export const APP_STORE = 'https://apps.apple.com/tr/app/vetapp-mobil/id6761138905';
-export const PLAY_STORE = '';
+export const PLAY_STORE = 'https://play.google.com/store/apps/details?id=tr.com.vetapp';
+const APPLE_LOGO = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>';
+const PLAY_LOGO = '<svg viewBox="0 0 100 100" aria-hidden="true"><path fill="#2196F3" d="M6 4 L6 96 Q6 100 9.5 98 L31 50 Z"/><path fill="#4CAF50" d="M9.5 2 Q6 0 6 4 L31 50 L66 32 Z"/><path fill="#FFC107" d="M66 32 L31 50 L66 68 L88 56 Q94 50 88 44 Z"/><path fill="#F44336" d="M9.5 98 Q6 100 6 96 L31 50 L66 68 Z"/></svg>';
+/** App Store + Google Play rozetleri (koyu, mağaza düğmesi görünümünde). */
+export const storeBadges = (cls = '') => `<div class="badges${cls ? ' ' + cls : ''}">
+          <a class="badge" href="${APP_STORE}" target="_blank" rel="noopener" aria-label="VetApp Mobil'i App Store'dan indirin">${APPLE_LOGO}<span><small>App Store'dan</small><b>indirin</b></span></a>
+          <a class="badge" href="${PLAY_STORE}" target="_blank" rel="noopener" aria-label="VetApp Mobil'i Google Play'den indirin">${PLAY_LOGO}<span><small>Google Play'den</small><b>edinin</b></span></a>
+        </div>`;
 // Anahtar kelime odaklı çözüm sayfaları (src/solutions.mjs). Menü, alt bilgi ve ana sayfa bu listeden beslenir.
 export const SOLUTIONS = [
   { path: '/veteriner-programi', label: 'Veteriner programı', short: 'Klinik yönetimi tek yazılımda', icon: 'layers' },
@@ -309,7 +316,7 @@ export const FEATURES = [
 export const appLd = {
   '@context': 'https://schema.org', '@type': 'SoftwareApplication', '@id': APP_ID, name: 'VetApp', alternateName: 'VetApp Veteriner Klinik Programı',
   applicationCategory: 'BusinessApplication', applicationSubCategory: 'Veteriner klinik yönetim yazılımı',
-  operatingSystem: 'Web, Android, iOS', inLanguage: 'tr', url: SITE + '/', ...(APP_STORE ? { installUrl: APP_STORE } : {}),
+  operatingSystem: 'Web, Android, iOS', inLanguage: 'tr', url: SITE + '/', installUrl: [APP_STORE, PLAY_STORE].filter(Boolean),
   description: 'Veteriner klinikleri için klinik yönetim programı: ilaç stok takibi, cari ve veresiye takibi, aşı ve randevu takibi, hasta kaydı, hızlı satış ve kasa. Web, Android ve iOS’ta aynı hesapla çalışır.',
   featureList: FEATURES,
   screenshot: ['dashboard', 'pos', 'urunler', 'musteriler', 'randevular'].map((n) => SITE + `/assets/img/${n}-1800.webp`),
@@ -357,6 +364,7 @@ export const finalCta = (title = `${CAMPAIGN.freeUntil}’ye kadar tamamen ücre
           <a class="btn btn--wa" href="${WA}" target="_blank" rel="noopener">${waIcon} WhatsApp’tan sorun</a>
         </div>
         <p class="note reveal d3"><span>Kart gerekmez</span><span>Kurulum yok</span><span><a href="${CAMPAIGN_PATH}" style="text-decoration:underline">Kampanya detayları</a></span><span><a href="${URLS.demo}" style="text-decoration:underline">Demoyu kayıtsız açın</a></span></p>
+        <div class="reveal d3">${storeBadges('center')}</div>
         <p class="asof reveal d3">Rakamlar ${ASOF} itibarıyla güncel bilgilerdir.</p>
       </div>
     </section>`;
@@ -560,6 +568,7 @@ ${campaignBand()}
         <div class="platforms reveal d2">
           <span>${icon('laptop')} Web paneli</span><span>${icon('mobile')} Android</span><span>${icon('mobile')} iPhone</span><span>${icon('cloud')} Tek hesap, anlık senkron</span>
         </div>
+        <div class="reveal d3" style="margin-top:22px">${storeBadges('center')}</div>
       </div>
     </section>
 

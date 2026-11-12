@@ -603,3 +603,14 @@ span.store { opacity: .55; }
   .js .reveal { opacity: 1; transform: none; }
   .js .toast { opacity: 1; transform: none; }
 }
+
+/* ───────── mağaza rozetleri (App Store / Google Play) ───────── */
+.badges { display: flex; flex-wrap: wrap; gap: 10px; }
+.badges.center { justify-content: center; }
+.badge { display: inline-flex; align-items: center; gap: 10px; min-width: 168px; height: 52px; padding: 0 18px 0 14px; border-radius: 12px; background: #000; color: #fff; border: 1px solid #3a3f47; transition: transform .2s var(--ease), border-color .2s, box-shadow .25s; }
+.badge:hover { transform: translateY(-1px); border-color: #8a929c; box-shadow: 0 10px 24px -14px rgba(0, 0, 0, .6); }
+.badge svg { width: 26px; height: 26px; flex: none; }
+.badge span { display: grid; line-height: 1.1; text-align: left; }
+.badge small { font-size: .7rem; color: #c9ced6; letter-spacing: .01em; }
+.badge b { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; }
+@media (max-width: 380px) { .badge { min-width: 0; flex: 1 1 140px; padding: 0 12px; } }

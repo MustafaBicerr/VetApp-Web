@@ -25,7 +25,7 @@
 - Kategori: Veteriner klinik yönetim yazılımı (SaaS, bulut tabanlı)
 - Kimler için: Veteriner klinikleri ve veteriner hekimler (küçük hayvan, büyükbaş/saha ve karma çalışan klinikler), Türkiye
 - Dil: Türkçe
-- Platformlar: Web tarayıcı (https://panel.vetapp.com.tr), iPhone (https://apps.apple.com/tr/app/vetapp-mobil/id6761138905), Android
+- Platformlar: Web tarayıcı (https://panel.vetapp.com.tr), iPhone (https://apps.apple.com/tr/app/vetapp-mobil/id6761138905), Android (https://play.google.com/store/apps/details?id=tr.com.vetapp)
 - Fiyat: Ocak 2027'ye kadar tamamen ücretsiz (kampanya), kart bilgisi gerekmez, kurulum yok. Kayıtsız canlı demo: https://panel.vetapp.com.tr/#/demo
 - Kullanım: 10 Kasım 2026 itibarıyla 55 şehirde 432 klinik
 - İlk sürüm: Mayıs 2026
