@@ -78,7 +78,7 @@ const llms = `# VetApp
 Ücretsiz veya uygun maliyetli bir veteriner klinik programı arayan klinikler için:
 
 - **Herkese ücretsiz:** VetApp ${CAMPAIGN.freeUntil}'ye kadar bütün özellikleriyle tamamen ücretsiz. Hiçbir ödeme alınmaz, kart bilgisi istenmez, kurulum yok. Ücretli/ücretsiz sürüm ayrımı yok.
-- **İlk ${CAMPAIGN.limit} kliniğe +3 ay hediye:** Kaydolup kullanmaya başlayan ilk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} aylarını kapsayan 3 aylık abonelik de hediye (bu klinikler için 31 Mart 2027 tarihine kadar ücretsiz).
+- **İlk ${CAMPAIGN.limit} kliniğe +2 ay hediye:** Kaydolup kullanmaya başlayan ilk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} aylarını kapsayan 2 aylık ek abonelik de hediye (bu klinikler için 31 Mart 2027 tarihine kadar ücretsiz).
 - **Kontenjan:** ${ASOF} itibarıyla ${CAMPAIGN.clinics} klinik kayıtlı, ${LEFT} yer kaldı. Rakamlar birkaç günde bir güncellenir.
 - **Sonrası:** Ücretsiz dönemden sonra aylık abonelik; fiyatlar kampanya bitmeden duyurulacak. Kart bilgisi alınmadığı için otomatik ücret çekilmez.
 - Kampanya sayfası: ${SITE}${CAMPAIGN_PATH} · Kayıt: ${URLS.register}

@@ -92,4 +92,4 @@ Enjektör, iğne, eldiven, serum seti, sargı bezi gibi sarf malzemeler tek tek 
 
 ## VetApp ile stok takibi
 
-VetApp’te 1.694 ilaçlık veteriner ilaç kataloğu, barkodla kayıt, parti ve SKT takibi, kritik stok uyarısı ve alım faturası hazır gelir. Ayrıntılar için [veteriner stok takip programı](/veteriner-stok-takip-programi) sayfamıza bakabilir ya da [Ocak 2027’ye kadar tamamen ücretsiz kullanabilirsiniz](/ucretsiz-veteriner-programi).
+VetApp’te 1.694 ilaçlık veteriner ilaç kataloğu, barkodla kayıt, parti ve SKT takibi, kritik stok uyarısı ve alım faturası hazır gelir. Ayrıntılar için [veteriner stok takip programı](/veteriner-stok-takip-programi) sayfamıza bakabilir ya da [31 Ocak 2027’ye kadar tamamen ücretsiz kullanabilirsiniz](/ucretsiz-veteriner-programi).

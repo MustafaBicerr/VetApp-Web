@@ -21,11 +21,11 @@ export const CAMPAIGN = {
   asOf: '2026-11-10',          // rakamların güncel olduğu gün (sitede "… itibarıyla" olarak yazılır)
   clinics: 432,                // VetApp'i kullanan klinik sayısı
   cities: 55,                  // bu kliniklerin bulunduğu şehir sayısı
-  limit: 500,                  // 3 ay hediye abonelik kontenjanı (ilk N klinik)
-  freeUntil: 'Ocak 2027',      // herkes için tamamen ücretsiz kullanım: bu aya kadar
-  freeEndIso: '2026-12-31',    // ücretsiz dönemin son günü (şema için)
-  giftMonths: 'Ocak, Şubat ve Mart 2027',
-  giftEndIso: '2027-03-31',    // hediye aboneliğin son günü
+  limit: 500,                  // ek hediye (Şubat–Mart 2027) kontenjanı (ilk N klinik)
+  freeUntil: '31 Ocak 2027',   // herkes için tamamen ücretsiz kullanım: bu tarihe kadar (karar 20 a)
+  freeEndIso: '2027-01-31',    // herkes için ücretsiz dönemin son günü (şema için)
+  giftMonths: 'Şubat ve Mart 2027',
+  giftEndIso: '2027-03-31',    // ilk N klinik için ücretsiz dönemin son günü
   launched: 'Mayıs 2026',
 };
 export const STATS = { clinics: CAMPAIGN.clinics, cities: CAMPAIGN.cities, drugs: 1694 };
@@ -115,7 +115,7 @@ export const FAQ = [
     group: 'Veteriner programı seçimi',
     items: [
       ['Veteriner programı (veteriner klinik yazılımı) ne işe yarar?', 'Veteriner programı; kliniğin hasta kayıtlarını, randevularını, aşı takvimini, ilaç ve sarf malzeme stoğunu, satışlarını, kasasını ve müşteri/tedarikçi cari hesaplarını tek yerde tutan yazılımdır. Defter, Excel ve hafızaya dayalı takibin yerini alır; hangi ilacın azaldığını, kimin ne kadar borcu olduğunu ve hangi hastanın aşısının geldiğini tek ekranda gösterir.'],
-      ['Ücretsiz veteriner programı var mı?', `Evet. VetApp ${CAMPAIGN.freeUntil}’ye kadar bütün özellikleriyle tamamen ücretsizdir; kart bilgisi istenmez, kurulum gerekmez. Ayrıca kaydolup kullanmaya başlayan ilk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} aylarını kapsayan 3 aylık abonelik hediye edilir (${ASOF} itibarıyla ${CAMPAIGN.clinics} klinik kayıtlı, ${LEFT} yer kaldı).`],
+      ['Ücretsiz veteriner programı var mı?', `Evet. VetApp ${CAMPAIGN.freeUntil}’ye kadar bütün özellikleriyle tamamen ücretsizdir; kart bilgisi istenmez, kurulum gerekmez. Ayrıca kaydolup kullanmaya başlayan ilk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} aylarını kapsayan 2 aylık ek abonelik hediye edilir (${ASOF} itibarıyla ${CAMPAIGN.clinics} klinik kayıtlı, ${LEFT} yer kaldı).`],
       ['VetApp büyükbaş ve saha çalışmasına uygun mu?', 'Evet. Mobil uygulama web panelindeki işlemlerin tamamını yapabildiği için çiftlikte, işin bittiği yerde satış, veresiye ve tedavi kaydı girilebilir; kliniğe dönüp bilgisayar başında tekrar yazmak gerekmez.'],
       ['Yeni açılan bir klinik için uygun mu?', 'Evet. Açılış stoğunuzu ve devreden müşteri/tedarikçi bakiyelerinizi ilk gün girersiniz; ilaç kartları 1.694 ilaçlık katalogdan barkodla dolar. Küçük ekipler için tasarlandı, eğitim gerektirmez.'],
     ],
@@ -124,7 +124,7 @@ export const FAQ = [
     group: 'Kampanya ve fiyat',
     items: [
       [`VetApp ne zamana kadar ücretsiz?`, `VetApp ${CAMPAIGN.freeUntil}’ye kadar herkes için tamamen ücretsizdir. Bu süre boyunca hiçbir ödeme alınmaz, kart bilgisi istenmez ve bütün özellikler açıktır.`],
-      [`İlk ${CAMPAIGN.limit} klinik kampanyası nedir?`, `VetApp’e kaydolup kullanmaya başlayan ilk ${CAMPAIGN.limit} kliniğe ücretsiz dönemin ardından ${CAMPAIGN.giftMonths} aylarını kapsayan 3 aylık abonelik hediye edilir. ${ASOF} itibarıyla ${CAMPAIGN.cities} şehirde ${CAMPAIGN.clinics} klinik VetApp kullanıyor; hediyeden yararlanabilecek ${LEFT} yer kaldı.`],
+      [`İlk ${CAMPAIGN.limit} klinik kampanyası nedir?`, `VetApp’e kaydolup kullanmaya başlayan ilk ${CAMPAIGN.limit} kliniğe ücretsiz dönemin ardından ${CAMPAIGN.giftMonths} aylarını kapsayan 2 aylık ek abonelik hediye edilir. ${ASOF} itibarıyla ${CAMPAIGN.cities} şehirde ${CAMPAIGN.clinics} klinik VetApp kullanıyor; hediyeden yararlanabilecek ${LEFT} yer kaldı.`],
       ['Kart bilgisi girmem gerekiyor mu?', 'Hayır. Kayıt için yalnızca klinik adı ve iletişim bilgileri yeterlidir; kredi kartı veya ödeme bilgisi istenmez.'],
       [`${CAMPAIGN.freeUntil}’den sonra ne olacak?`, 'Ücretsiz dönemden sonra sade bir aylık abonelik uygulanacak. Fiyatlar kampanya bitmeden önce bu sitede ve uygulamada açıkça duyurulacak. Kart bilgisi alınmadığı için hesabınızdan otomatik ücret çekilmez; devam edip etmemeye siz karar verirsiniz.'],
     ],
@@ -331,7 +331,7 @@ export const appLd = {
     { '@type': 'Offer', name: `${CAMPAIGN.freeUntil}’ye kadar tamamen ücretsiz kullanım`, price: '0', priceCurrency: 'TRY', priceValidUntil: CAMPAIGN.freeEndIso,
       availability: 'https://schema.org/InStock', eligibleRegion: { '@type': 'Country', name: 'TR' }, url: SITE + CAMPAIGN_PATH,
       description: `Bütün özellikler ${CAMPAIGN.freeUntil}’ye kadar ücretsiz. Kart bilgisi gerekmez, kurulum yok.` },
-    { '@type': 'Offer', name: `İlk ${CAMPAIGN.limit} kliniğe 3 ay hediye abonelik (${CAMPAIGN.giftMonths})`, price: '0', priceCurrency: 'TRY', priceValidUntil: CAMPAIGN.giftEndIso,
+    { '@type': 'Offer', name: `İlk ${CAMPAIGN.limit} kliniğe 2 ay ek hediye abonelik (${CAMPAIGN.giftMonths})`, price: '0', priceCurrency: 'TRY', priceValidUntil: CAMPAIGN.giftEndIso,
       availability: LEFT > 0 ? 'https://schema.org/LimitedAvailability' : 'https://schema.org/SoldOut', eligibleRegion: { '@type': 'Country', name: 'TR' }, url: SITE + CAMPAIGN_PATH,
       inventoryLevel: { '@type': 'QuantitativeValue', value: LEFT },
       description: `Kaydolup kullanan ilk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} ücretsiz. ${ASOF} itibarıyla ${CAMPAIGN.clinics} klinik kayıtlı, ${LEFT} yer kaldı.` },
@@ -458,8 +458,8 @@ export const campaignBand = ({ heading = true } = {}) => `
           </div>
           <div class="camp-card hot reveal d1">
             <span class="ic">${icon('gift')}</span>
-            <h3>İlk ${CAMPAIGN.limit} kliniğe +3 ay hediye</h3>
-            <p>Kaydolup kullanmaya başlayan ilk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} aylarını kapsayan 3 aylık abonelik de hediye.</p>
+            <h3>İlk ${CAMPAIGN.limit} kliniğe +2 ay hediye</h3>
+            <p>Kaydolup kullanmaya başlayan ilk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} aylarını kapsayan 2 aylık ek abonelik de hediye.</p>
             ${campaignProgress()}
           </div>
         </div>
@@ -733,7 +733,7 @@ pages.push({
             <li>Klinikleriniz stok ve ödemelerini düzenli tutar.</li>
             <li>${STATS.drugs.toLocaleString('tr-TR')} ilaçlık katalog hazır; barkodla saniyeler içinde kart açılır.</li>
             <li>Hangi klinik sizin aracılığınızla geldi, kayıtta bellidir.</li>
-            <li>Kurulum yok; klinikler ${CAMPAIGN.freeUntil}’ye kadar tamamen ücretsiz kullanır, ilk ${CAMPAIGN.limit} kliniğe 3 ay da hediye.</li>
+            <li>Kurulum yok; klinikler ${CAMPAIGN.freeUntil}’ye kadar tamamen ücretsiz kullanır, ilk ${CAMPAIGN.limit} kliniğe 2 ay (Şubat–Mart 2027) da hediye.</li>
           </ul>
         </div>
         <div class="reveal d1">${frame('tedarikciler', 'VetApp tedarikçi cari ekranı', 'panel.vetapp.com.tr/#/accounts/suppliers')}</div>
@@ -758,7 +758,7 @@ pages.push({
 pages.push({
   file: 'sss.html', path: '/sss', changefreq: 'monthly', priority: '0.7',
   title: 'Sık Sorulan Sorular – VetApp Veteriner Programı',
-  description: 'Veteriner programı ve VetApp hakkında sık sorulan sorular: Ocak 2027’ye kadar ücretsiz kampanya, cihaz desteği, büyükbaş kullanımı, aşı takibi, stok SKT uyarıları, veresiye yönetimi ve veri güvenliği.',
+  description: 'Veteriner programı ve VetApp hakkında sık sorulan sorular: 31 Ocak 2027’ye kadar ücretsiz kampanya, cihaz desteği, büyükbaş kullanımı, aşı takibi, stok SKT uyarıları, veresiye yönetimi ve veri güvenliği.',
   ld: [crumbLd('Sık sorulan sorular', '/sss'), faqLd(FAQ.flatMap((g) => g.items))],
   body: () => `${pageHero('Sık sorulan sorular', 'Aklınıza takılanlar.', `Bulamadığınız bir cevap mı var? <a href="${WA}" target="_blank" rel="noopener" style="color:var(--blue2)">WhatsApp’tan sorun</a>.`)}${campaignStrip()}
     <section class="sec light">
