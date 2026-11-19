@@ -4,10 +4,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { findPlaceholders, report } from './check-placeholders.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const out = path.join(root, 'dist');
 fs.rmSync(out, { recursive: true, force: true });
+// Yer tutuculu ('{{...}}') hukuk metni asla dist/'e (yani yayına) girmez; dist/ bu durumda hiç oluşturulmaz.
+const found = findPlaceholders(root);
+if (found.length) { report(found); process.exit(1); }
 fs.mkdirSync(out);
 const PUBLIC = /\.(html|xml|txt|webmanifest)$/;
 for (const f of fs.readdirSync(root)) {

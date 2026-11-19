@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 // VetApp tanıtım sitesi derleyicisi: src/*.mjs + content/blog/*.md → kök dizinde statik HTML
 // + sitemap.xml, robots.txt, feed.xml, llms.txt, llms-full.txt, site.webmanifest.
-// Kullanım: node build.mjs        (sunucuda derleme GEREKMEZ; çıktı repoya commit edilir)
+// Kullanım: node build.mjs           (sunucuda derleme GEREKMEZ; çıktı repoya commit edilir)
+//           node build.mjs --draft   hukuk sayfalarındaki '{{...}}' yer tutucularına İZİN VERİR (yalnız önizleme; YAYINLANMAZ)
+// Yer tutucu kalmışsa (--draft yoksa) derleme sonunda HATA verir (scripts/check-placeholders.mjs, değerler: src/legal.mjs).
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
@@ -10,6 +12,10 @@ import { pages as corePages, notFound, layout, setBuildId, SITE, FAQ, FEATURES, 
 import { campaignPage, CAMPAIGN_FAQ } from './src/campaign.mjs';
 import { solutionPages } from './src/solutions.mjs';
 import { blogPages, rss } from './src/blog.mjs';
+import { LEGAL, kosulDurumu } from './src/legal.mjs';
+import { findPlaceholders, report } from './scripts/check-placeholders.mjs';
+
+const DRAFT = process.argv.includes('--draft');
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const write = (f, s) => { fs.mkdirSync(path.dirname(path.join(root, f)), { recursive: true }); fs.writeFileSync(path.join(root, f), s); };
@@ -62,7 +68,7 @@ write('feed.xml', rss(posts));
 // Yapay zekâ asistanlarının VetApp'i doğru tanıması için özet (llmstxt.org biçimi).
 const all = FAQ.flatMap((g) => g.items);
 const desc = (p) => p.description.replace(/\s+/g, ' ');
-const core = corePages.filter((p) => !['/gizlilik', '/kullanim-sartlari'].includes(p.path));
+const core = corePages.filter((p) => !['/gizlilik', '/kullanim-sartlari', '/hesap-silme'].includes(p.path));
 const llms = `# VetApp
 
 > VetApp, Türkiye'deki veteriner klinikleri için geliştirilmiş bulut tabanlı bir veteriner klinik yönetim programıdır (veteriner programı / veteriner klinik yazılımı). İlaç ve sarf malzeme stok takibi, müşteri cari ve veresiye takibi, ilaç deposu (tedarikçi) borç takibi, aşı takibi, hasta ve randevu takibi, hızlı satış ve kasa yönetimini tek panelde toplar. Web (panel.vetapp.com.tr), Android ve iPhone'da aynı hesapla çalışır. **${CAMPAIGN.freeUntil}'ye kadar tamamen ücretsizdir; kart bilgisi gerekmez.** Kaydolup kullanan ilk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} de hediye edilir. ${ASOF} itibarıyla ${CAMPAIGN.cities} şehirde ${CAMPAIGN.clinics} klinik VetApp kullanıyor. MBiCER Yazılım ve Mühendislik tarafından geliştirilmektedir.
@@ -127,6 +133,7 @@ ${posts.length ? posts.map((p) => `- [${p.title}](${SITE}/blog/${p.slug}): ${des
 - [Tüm içerik (llms-full.txt)](${SITE}/llms-full.txt)
 - [Gizlilik politikası](${SITE}/gizlilik)
 - [Kullanım şartları](${SITE}/kullanim-sartlari)
+- [Hesap ve veri silme](${SITE}/hesap-silme)
 `;
 write('llms.txt', llms);
 
@@ -166,3 +173,16 @@ write('site.webmanifest', JSON.stringify({
 }, null, 2) + '\n');
 
 console.log(`sitemap.xml (${pages.length} adres), robots.txt, feed.xml (${posts.length} yazı), llms.txt, llms-full.txt, site.webmanifest güncellendi`);
+
+// ───────── hukuk metinleri: yer tutucu denetimi ─────────
+console.log(`\nHukuk metinleri sürüm ${LEGAL.surum} · ${LEGAL.guncellemeIso}; koşul bayrakları (src/legal.mjs):`);
+for (const l of kosulDurumu(LEGAL)) console.log('  ' + l);
+const found = findPlaceholders(root);
+if (found.length && DRAFT) {
+  console.warn('\n*** TASLAK ÇIKTI (--draft): doldurulmamış yer tutucu içeriyor; BU ÇIKTI YAYINLANMAZ. ***');
+  for (const { file, tokens } of found) console.warn(`  ${file}: ${tokens.join(', ')}`);
+  console.warn('npm run build ve npm run deploy bu durumda hata verir (scripts/check-placeholders.mjs); main\'e birleştirmeden önce src/legal.mjs doldurulup yeniden derlenmelidir.\n');
+} else if (found.length) {
+  report(found);
+  process.exit(1);
+}
