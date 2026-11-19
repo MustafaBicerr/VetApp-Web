@@ -89,3 +89,4 @@
 - [Tüm içerik (llms-full.txt)](https://www.vetapp.com.tr/llms-full.txt)
 - [Gizlilik politikası](https://www.vetapp.com.tr/gizlilik)
 - [Kullanım şartları](https://www.vetapp.com.tr/kullanim-sartlari)
+- [Hesap ve veri silme](https://www.vetapp.com.tr/hesap-silme)

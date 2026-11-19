@@ -89,6 +89,7 @@
 - [Tüm içerik (llms-full.txt)](https://www.vetapp.com.tr/llms-full.txt)
 - [Gizlilik politikası](https://www.vetapp.com.tr/gizlilik)
 - [Kullanım şartları](https://www.vetapp.com.tr/kullanim-sartlari)
+- [Hesap ve veri silme](https://www.vetapp.com.tr/hesap-silme)
 
 ---
 
@@ -160,7 +161,11 @@ Satış satır bazında peşin veya veresiye olarak işaretlenir. Müşteri hesa
 
 ## Verilerim güvende mi?
 
-Her klinik kendi hesabında, kendi verisiyle çalışır. Bağlantılar HTTPS ile şifrelenir ve veritabanı her gün yedeklenir. Ayrıntılar için gizlilik politikamıza bakabilirsiniz.
+Her klinik kendi hesabında, kendi verisiyle çalışır. Bağlantılar HTTPS ile şifrelenir. Verileriniz Finlandiya’daki sunucuda tutulur; her gece yedeklenir (günlük yedekler yaklaşık 14 gün, haftalık yedekler yaklaşık 56 gün). Ayrıntılar için gizlilik politikamıza bakabilirsiniz.
+
+## Hesabımı ve verilerimi nasıl silerim?
+
+Uygulamada Ayarlar › Hesabı sil adımlarıyla. Klinik yöneticisi klinik silme talebi başlatır: 30 gün beklenir, bu sürede talep iptal edilebilir; sonra kişisel veriler silinir ya da anonimleşir. Mali kayıt tutarları kişisel bilgiden arındırılarak yasal süre boyunca saklanır; silinen veri yedeklerde en çok yaklaşık 56 gün kalabilir. Uygulamaya erişemiyorsanız destek@vetapp.com.tr adresine yazın. Ayrıntılar için vetapp.com.tr/hesap-silme sayfasına bakın.
 
 ## Eski sistemimdeki verileri aktarabilir miyim?
 
