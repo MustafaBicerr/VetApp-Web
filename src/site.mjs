@@ -1,6 +1,8 @@
 // VetApp tanıtım sitesi — içerik ve şablonlar. `node build.mjs` ile statik HTML üretilir.
 // Tasarım dili MBiCER Yazılım ve Mühendislik (mbicer.com.tr) ile ortaktır: IBM Plex, koyu zemin + açık bölümler, mavi vurgu.
 import { loadPosts, trDate } from './markdown.mjs';
+import { LEGAL } from './legal.mjs';
+import { gizlilikSections, sartlarSections, hesapSilmeSections } from './legal-pages.mjs';
 export const SITE = 'https://www.vetapp.com.tr';
 export const PANEL = 'https://panel.vetapp.com.tr';
 export const API = 'https://api.vetapp.com.tr/api';
@@ -19,11 +21,11 @@ export const CAMPAIGN = {
   asOf: '2026-11-10',          // rakamların güncel olduğu gün (sitede "… itibarıyla" olarak yazılır)
   clinics: 432,                // VetApp'i kullanan klinik sayısı
   cities: 55,                  // bu kliniklerin bulunduğu şehir sayısı
-  limit: 500,                  // 3 ay hediye abonelik kontenjanı (ilk N klinik)
-  freeUntil: 'Ocak 2027',      // herkes için tamamen ücretsiz kullanım: bu aya kadar
-  freeEndIso: '2026-12-31',    // ücretsiz dönemin son günü (şema için)
-  giftMonths: 'Ocak, Şubat ve Mart 2027',
-  giftEndIso: '2027-03-31',    // hediye aboneliğin son günü
+  limit: 500,                  // ek hediye (Şubat–Mart 2027) kontenjanı (ilk N klinik)
+  freeUntil: '31 Ocak 2027',   // herkes için tamamen ücretsiz kullanım: bu tarihe kadar (karar 20 a)
+  freeEndIso: '2027-01-31',    // herkes için ücretsiz dönemin son günü (şema için)
+  giftMonths: 'Şubat ve Mart 2027',
+  giftEndIso: '2027-03-31',    // ilk N klinik için ücretsiz dönemin son günü
   launched: 'Mayıs 2026',
 };
 export const STATS = { clinics: CAMPAIGN.clinics, cities: CAMPAIGN.cities, drugs: 1779 };
@@ -116,7 +118,7 @@ export const FAQ = [
     group: 'Veteriner programı seçimi',
     items: [
       ['Veteriner programı (veteriner klinik yazılımı) ne işe yarar?', 'Veteriner programı; kliniğin hasta kayıtlarını, randevularını, aşı takvimini, ilaç ve sarf malzeme stoğunu, satışlarını, kasasını ve müşteri/tedarikçi cari hesaplarını tek yerde tutan yazılımdır. Defter, Excel ve hafızaya dayalı takibin yerini alır; hangi ilacın azaldığını, kimin ne kadar borcu olduğunu ve hangi hastanın aşısının geldiğini tek ekranda gösterir.'],
-      ['Ücretsiz veteriner programı var mı?', `Evet. VetApp ${CAMPAIGN.freeUntil}’ye kadar bütün özellikleriyle tamamen ücretsizdir; kart bilgisi istenmez, kurulum gerekmez. Ayrıca kaydolup kullanmaya başlayan ilk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} aylarını kapsayan 3 aylık abonelik hediye edilir (${ASOF} itibarıyla ${CAMPAIGN.clinics} klinik kayıtlı, ${LEFT} yer kaldı).`],
+      ['Ücretsiz veteriner programı var mı?', `Evet. VetApp ${CAMPAIGN.freeUntil}’ye kadar bütün özellikleriyle tamamen ücretsizdir; kart bilgisi istenmez, kurulum gerekmez. Ayrıca kaydolup kullanmaya başlayan ilk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} aylarını kapsayan 2 aylık ek abonelik hediye edilir (${ASOF} itibarıyla ${CAMPAIGN.clinics} klinik kayıtlı, ${LEFT} yer kaldı).`],
       ['VetApp büyükbaş ve saha çalışmasına uygun mu?', 'Evet. Mobil uygulama web panelindeki işlemlerin tamamını yapabildiği için çiftlikte, işin bittiği yerde satış, veresiye ve tedavi kaydı girilebilir; kliniğe dönüp bilgisayar başında tekrar yazmak gerekmez.'],
       ['Yeni açılan bir klinik için uygun mu?', 'Evet. Açılış stoğunuzu ve devreden müşteri/tedarikçi bakiyelerinizi ilk gün girersiniz; ilaç kartları 1.779 ilaçlık katalogdan barkodla dolar. Küçük ekipler için tasarlandı, eğitim gerektirmez.'],
     ],
@@ -125,7 +127,7 @@ export const FAQ = [
     group: 'Kampanya ve fiyat',
     items: [
       [`VetApp ne zamana kadar ücretsiz?`, `VetApp ${CAMPAIGN.freeUntil}’ye kadar herkes için tamamen ücretsizdir. Bu süre boyunca hiçbir ödeme alınmaz, kart bilgisi istenmez ve bütün özellikler açıktır.`],
-      [`İlk ${CAMPAIGN.limit} klinik kampanyası nedir?`, `VetApp’e kaydolup kullanmaya başlayan ilk ${CAMPAIGN.limit} kliniğe ücretsiz dönemin ardından ${CAMPAIGN.giftMonths} aylarını kapsayan 3 aylık abonelik hediye edilir. ${ASOF} itibarıyla ${CAMPAIGN.cities} şehirde ${CAMPAIGN.clinics} klinik VetApp kullanıyor; hediyeden yararlanabilecek ${LEFT} yer kaldı.`],
+      [`İlk ${CAMPAIGN.limit} klinik kampanyası nedir?`, `VetApp’e kaydolup kullanmaya başlayan ilk ${CAMPAIGN.limit} kliniğe ücretsiz dönemin ardından ${CAMPAIGN.giftMonths} aylarını kapsayan 2 aylık ek abonelik hediye edilir. ${ASOF} itibarıyla ${CAMPAIGN.cities} şehirde ${CAMPAIGN.clinics} klinik VetApp kullanıyor; hediyeden yararlanabilecek ${LEFT} yer kaldı.`],
       ['Kart bilgisi girmem gerekiyor mu?', 'Hayır. Kayıt için yalnızca klinik adı ve iletişim bilgileri yeterlidir; kredi kartı veya ödeme bilgisi istenmez.'],
       [`${CAMPAIGN.freeUntil}’den sonra ne olacak?`, 'Ücretsiz dönemden sonra sade bir aylık abonelik uygulanacak. Fiyatlar kampanya bitmeden önce bu sitede ve uygulamada açıkça duyurulacak. Kart bilgisi alınmadığı için hesabınızdan otomatik ücret çekilmez; devam edip etmemeye siz karar verirsiniz.'],
     ],
@@ -143,7 +145,8 @@ export const FAQ = [
   {
     group: 'Veri ve güvenlik',
     items: [
-      ['Verilerim güvende mi?', 'Her klinik kendi hesabında, kendi verisiyle çalışır. Bağlantılar HTTPS ile şifrelenir ve veritabanı her gün yedeklenir. Ayrıntılar için gizlilik politikamıza bakabilirsiniz.'],
+      ['Verilerim güvende mi?', `Her klinik kendi hesabında, kendi verisiyle çalışır. Bağlantılar HTTPS ile şifrelenir. Verileriniz Finlandiya’daki sunucuda tutulur; her gece yedeklenir (günlük yedekler yaklaşık 14 gün, haftalık yedekler yaklaşık 56 gün${LEGAL.kosul.r2 ? '; ayrıca şifreli sunucu dışı kopya' : ''}). Ayrıntılar için gizlilik politikamıza bakabilirsiniz.`],
+      ['Hesabımı ve verilerimi nasıl silerim?', 'Uygulamada Ayarlar › Hesabı sil adımlarıyla. Klinik yöneticisi klinik silme talebi başlatır: 30 gün beklenir, bu sürede talep iptal edilebilir; sonra kişisel veriler silinir ya da anonimleşir. Mali kayıt tutarları kişisel bilgiden arındırılarak yasal süre boyunca saklanır; silinen veri yedeklerde en çok yaklaşık 56 gün kalabilir. Uygulamaya erişemiyorsanız destek@vetapp.com.tr adresine yazın. Ayrıntılar için vetapp.com.tr/hesap-silme sayfasına bakın.'],
       ['Eski sistemimdeki verileri aktarabilir miyim?', 'Excel veya CSV verileriniz için bizimle iletişime geçin; aktarım konusunda yardımcı olmaya çalışırız.'],
     ],
   },
@@ -286,6 +289,8 @@ ${body}
         <div><h4>Yasal</h4><ul>
           <li><a href="/gizlilik">Gizlilik politikası</a></li>
           <li><a href="/kullanim-sartlari">Kullanım şartları</a></li>
+          <li><a href="/gizlilik#basvuru">KVKK başvurusu</a></li>
+          <li><a href="/hesap-silme">Hesap silme</a></li>
           <li><a href="mailto:destek@vetapp.com.tr">destek@vetapp.com.tr</a></li>
         </ul></div>
       </div>
@@ -353,7 +358,7 @@ export const appLd = {
     { '@type': 'Offer', name: `${CAMPAIGN.freeUntil}’ye kadar tamamen ücretsiz kullanım`, price: '0', priceCurrency: 'TRY', priceValidUntil: CAMPAIGN.freeEndIso,
       availability: 'https://schema.org/InStock', eligibleRegion: { '@type': 'Country', name: 'TR' }, url: SITE + CAMPAIGN_PATH,
       description: `Bütün özellikler ${CAMPAIGN.freeUntil}’ye kadar ücretsiz. Kart bilgisi gerekmez, kurulum yok.` },
-    { '@type': 'Offer', name: `İlk ${CAMPAIGN.limit} kliniğe 3 ay hediye abonelik (${CAMPAIGN.giftMonths})`, price: '0', priceCurrency: 'TRY', priceValidUntil: CAMPAIGN.giftEndIso,
+    { '@type': 'Offer', name: `İlk ${CAMPAIGN.limit} kliniğe 2 ay ek hediye abonelik (${CAMPAIGN.giftMonths})`, price: '0', priceCurrency: 'TRY', priceValidUntil: CAMPAIGN.giftEndIso,
       availability: LEFT > 0 ? 'https://schema.org/LimitedAvailability' : 'https://schema.org/SoldOut', eligibleRegion: { '@type': 'Country', name: 'TR' }, url: SITE + CAMPAIGN_PATH,
       inventoryLevel: { '@type': 'QuantitativeValue', value: LEFT },
       description: `Kaydolup kullanan ilk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} ücretsiz. ${ASOF} itibarıyla ${CAMPAIGN.clinics} klinik kayıtlı, ${LEFT} yer kaldı.` },
@@ -480,8 +485,8 @@ export const campaignBand = ({ heading = true } = {}) => `
           </div>
           <div class="camp-card hot reveal d1">
             <span class="ic">${icon('gift')}</span>
-            <h3>İlk ${CAMPAIGN.limit} kliniğe +3 ay hediye</h3>
-            <p>Kaydolup kullanmaya başlayan ilk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} aylarını kapsayan 3 aylık abonelik de hediye.</p>
+            <h3>İlk ${CAMPAIGN.limit} kliniğe +2 ay hediye</h3>
+            <p>Kaydolup kullanmaya başlayan ilk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} aylarını kapsayan 2 aylık ek abonelik de hediye.</p>
             ${campaignProgress()}
           </div>
         </div>
@@ -637,7 +642,7 @@ ${blogTeaser()}
           <div class="tcard reveal"><span class="ic green">${icon('cloud')}</span><h3>Her gün yedek</h3><p>Veritabanı her gece otomatik yedeklenir.</p><span class="meter" aria-hidden="true"><i></i></span></div>
           <div class="tcard reveal d1"><span class="ic blue">${icon('lock')}</span><h3>Şifreli bağlantı</h3><p>Tüm trafik HTTPS ile korunur.</p></div>
           <div class="tcard reveal d2"><span class="ic amber">${icon('layers')}</span><h3>Klinik başına ayrı alan</h3><p>Her klinik yalnızca kendi verisini görür.</p></div>
-          <div class="tcard reveal d3"><span class="ic blue">${icon('shield')}</span><h3>KVKK’ya uygun</h3><p>Verileriniz Türkiye’de, sizin kontrolünüzde.</p></div>
+          <div class="tcard reveal d3"><span class="ic blue">${icon('shield')}</span><h3>KVKK’ya uygun</h3><p>Verileriniz sizin kontrolünüzde; Finlandiya’daki sunucuda tutulur.</p></div>
         </div>
         <div class="maker reveal">
           <img src="/assets/img/mb-mark.png" width="40" height="36" alt="" loading="lazy">
@@ -756,7 +761,7 @@ pages.push({
             <li>Klinikleriniz stok ve ödemelerini düzenli tutar.</li>
             <li>${STATS.drugs.toLocaleString('tr-TR')} ilaçlık katalog hazır; barkodla saniyeler içinde kart açılır.</li>
             <li>Hangi klinik sizin aracılığınızla geldi, kayıtta bellidir.</li>
-            <li>Kurulum yok; klinikler ${CAMPAIGN.freeUntil}’ye kadar tamamen ücretsiz kullanır, ilk ${CAMPAIGN.limit} kliniğe 3 ay da hediye.</li>
+            <li>Kurulum yok; klinikler ${CAMPAIGN.freeUntil}’ye kadar tamamen ücretsiz kullanır, ilk ${CAMPAIGN.limit} kliniğe 2 ay (Şubat–Mart 2027) da hediye.</li>
           </ul>
         </div>
         <div class="reveal d1">${frame('tedarikciler', 'VetApp tedarikçi cari ekranı', 'panel.vetapp.com.tr/#/accounts/suppliers')}</div>
@@ -781,7 +786,7 @@ pages.push({
 pages.push({
   file: 'sss.html', path: '/sss', changefreq: 'monthly', priority: '0.7',
   title: 'Sık Sorulan Sorular – VetApp Veteriner Programı',
-  description: 'Veteriner programı ve VetApp hakkında sık sorulan sorular: Ocak 2027’ye kadar ücretsiz kampanya, cihaz desteği, büyükbaş kullanımı, aşı takibi, stok SKT uyarıları, veresiye yönetimi ve veri güvenliği.',
+  description: 'Veteriner programı ve VetApp hakkında sık sorulan sorular: 31 Ocak 2027’ye kadar ücretsiz kampanya, cihaz desteği, büyükbaş kullanımı, aşı takibi, stok SKT uyarıları, veresiye yönetimi ve veri güvenliği.',
   ld: [crumbLd('Sık sorulan sorular', '/sss'), faqLd(FAQ.flatMap((g) => g.items))],
   body: () => `${pageHero('Sık sorulan sorular', 'Aklınıza takılanlar.', `Bulamadığınız bir cevap mı var? <a href="${WA}" target="_blank" rel="noopener" style="color:var(--blue2)">WhatsApp’tan sorun</a>.`)}${campaignStrip()}
     <section class="sec light">
@@ -816,38 +821,33 @@ pages.push({
 });
 
 // — Yasal —
-const legal = (file, path, title, h1, date, sections) => ({
-  file, path, changefreq: 'yearly', priority: '0.4', title: `${title} – VetApp`, description: `VetApp ${title.toLowerCase()}: hizmetin kullanımı ve kişisel verilerin işlenmesine ilişkin koşullar.`,
+// Metinler src/legal-pages.mjs'de, değerler ve koşul bayrakları src/legal.mjs'de (tek yer). Yer tutucu kalırsa deploy durur.
+const legal = ({ file, path, title, h1, description, meta, sections }) => ({
+  file, path, changefreq: 'yearly', priority: '0.4', title: `${title} – VetApp`, description, lastmod: LEGAL.guncellemeIso,
   ld: [crumbLd(title, path)],
   body: () => `${pageHero('Yasal', h1)}
     <section class="sec white"><div class="container"><div class="prose">
-      <p style="color:var(--mute-d)">Son güncelleme: ${date}</p>
-${sections.map(([h, html]) => `      ${h ? `<h2>${h}</h2>\n      ` : ''}${html}`).join('\n')}
+      <p style="color:var(--mute-d)">${meta}</p>
+${sections().map(([h, html, id]) => `      ${h ? `<h2${id ? ` id="${id}"` : ''}>${h}</h2>\n      ` : ''}${html}`).join('\n')}
     </div></div></section>`,
 });
-pages.push(legal('gizlilik.html', '/gizlilik', 'Gizlilik Politikası', 'Gizlilik politikası', 'Kasım 2026', [
-  ['', '<p>VetApp (“Şirket”, “biz”, “bizim”) olarak gizliliğinize önem veriyoruz. Bu Gizlilik Politikası, VetApp uygulamasını ve web sitesini (“Hizmet”) kullanırken kişisel verilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu açıklamaktadır.</p>'],
-  ['1. Toplanan veriler', '<p>Hizmeti kullanırken aşağıdaki bilgileri toplayabiliriz:</p><ul><li>Ad, soyad ve iletişim bilgileri (e-posta, telefon)</li><li>Klinik bilgileri ve adres</li><li>Uygulama kullanım verileri ve log kayıtları</li><li>Ödeme bilgileri (güvenli ödeme sağlayıcıları aracılığıyla işlenir)</li></ul>'],
-  ['2. Verilerin kullanımı', '<p>Topladığımız verileri şu amaçlarla kullanıyoruz:</p><ul><li>Hizmeti sağlamak ve iyileştirmek</li><li>Teknik destek sunmak</li><li>Hesabınızı yönetmek</li><li>Güvenlik ve dolandırıcılık önleme</li><li>Yasal yükümlülükleri yerine getirmek</li></ul>'],
-  ['3. Veri güvenliği', '<p>Verilerinizi korumak için endüstri standardı güvenlik önlemleri alıyoruz:</p><ul><li>Tüm bağlantılar SSL/TLS şifrelemesi ile korunur</li><li>Her klinik için ayrı veri alanı sağlanır</li><li>Düzenli güvenlik yedeklemeleri yapılır</li><li>Erişim yetkilendirme sistemleri uygulanır</li></ul>'],
-  ['4. Üçüncü taraf paylaşımı', '<p>Kişisel verilerinizi şu durumlar dışında üçüncü taraflarla paylaşmıyoruz:</p><ul><li>Açık rızanız bulunduğunda</li><li>Hizmet sağlayıcılarımızla (barındırma, ödeme işleme)</li><li>Yasal zorunluluk bulunduğunda</li></ul>'],
-  ['5. Ziyaret istatistikleri', '<p>Bu web sitesi, ziyaret sayısını ve hangi sayfaların okunduğunu ölçmek için Cloudflare Web Analytics kullanır. Bu hizmet çerez kullanmaz, kişisel veri toplamaz ve ziyaretçiyi tanımlamaz; yalnızca anonim ve toplu istatistik üretir.</p>'],
-  ['6. Veri saklama', '<p>Verilerinizi hesabınız aktif olduğu sürece saklarız. Hesabı silmeniz durumunda, verileriniz yasal yükümlülükler kapsamında belirli bir süre daha saklandıktan sonra silinir.</p>'],
-  ['7. Haklarınız', '<p>KVKK kapsamında aşağıdaki haklara sahipsiniz:</p><ul><li>Kişisel verilerinize erişim hakkı</li><li>Verilerinizin düzeltilmesini talep etme hakkı</li><li>Verilerinizin silinmesini talep etme hakkı</li><li>Veri işlemeye itiraz etme hakkı</li></ul><p>Bu haklarınızı kullanmak için <a href="/iletisim">iletişim sayfamız</a> üzerinden bize ulaşabilirsiniz.</p>'],
-  ['8. İletişim', '<p>Gizlilik politikamız hakkında sorularınız için: <a href="mailto:destek@vetapp.com.tr">destek@vetapp.com.tr</a></p>'],
-]));
-pages.push(legal('kullanim-sartlari.html', '/kullanim-sartlari', 'Kullanım Şartları', 'Kullanım şartları', 'Ocak 2025', [
-  ['', '<p>Bu Kullanım Şartları, VetApp (“Hizmet”) kullanımını düzenleyen koşulları belirler. Hizmeti kullanarak bu şartları kabul etmiş sayılırsınız.</p>'],
-  ['1. Hizmetin kullanımı', '<p>VetApp’i yalnızca yasal amaçlar için ve bu şartlara uygun şekilde kullanabilirsiniz. Hizmeti kötüye kullanmak, yetkisiz erişim sağlamak veya sistemin güvenliğini tehdit etmek kesinlikle yasaktır.</p>'],
-  ['2. Hesap sorumluluğu', '<p>Hesabınızın güvenliğinden siz sorumlusunuz. Şifrenizi gizli tutun ve hesabınızdaki her türlü faaliyetten sorumlu olduğunuzu kabul edin.</p>'],
-  ['3. Veri sahipliği', '<p>Sisteme girdiğiniz tüm veriler (hasta kayıtları, satış verileri, stok bilgileri vb.) size aittir. VetApp bu verileri yalnızca hizmetin sunulması amacıyla kullanır.</p>'],
-  ['4. Hizmet sürekliliği', '<p>VetApp, hizmetin kesintisiz çalışması için gerekli önlemleri alır. Ancak bakım, güncellemeler veya teknik sorunlar nedeniyle kısa süreli kesintiler yaşanabilir. Bu durumlarda önceden bildirim yapılmaya çalışılır.</p>'],
-  ['5. Fiyatlandırma ve ödeme', '<p>Abonelik ücreti ve ödeme koşulları sözleşme esnasında belirlenir. Fiyat değişiklikleri en az 30 gün önceden bildirilir.</p>'],
-  ['6. Fesih', '<p>Hesabınızı istediğiniz zaman iptal edebilirsiniz. VetApp, şartlara aykırı davranış tespit edilmesi durumunda hesabı askıya alma veya feshetme hakkını saklı tutar.</p>'],
-  ['7. Sorumluluk sınırlaması', '<p>VetApp, hizmetin kullanımından kaynaklanan dolaylı zararlardan sorumlu tutulamaz. Sistemin doğru kullanımı ve veri yedeklemesi kullanıcının sorumluluğundadır.</p>'],
-  ['8. Uygulanacak hukuk', '<p>Bu şartlar Türkiye Cumhuriyeti hukukuna tabidir. Anlaşmazlıklarda İstanbul mahkemeleri yetkilidir.</p>'],
-  ['9. İletişim', '<p>Kullanım şartları hakkında sorularınız için: <a href="mailto:destek@vetapp.com.tr">destek@vetapp.com.tr</a></p>'],
-]));
+const LEGAL_DATE = trDate(LEGAL.guncellemeIso);
+pages.push(legal({
+  file: 'gizlilik.html', path: '/gizlilik', title: 'Gizlilik Politikası ve KVKK Aydınlatma Metni', h1: 'Gizlilik politikası ve KVKK aydınlatma metni',
+  description: 'VetApp gizlilik politikası ve KVKK aydınlatma metni: hangi kişisel veriler işlenir, kimlerle paylaşılır, saklama süreleri, yedekler, hesap silme, haklarınız ve başvuru yöntemi.',
+  meta: `Sürüm ${LEGAL.surum} · Son güncelleme: ${LEGAL_DATE}`, sections: () => gizlilikSections(LEGAL),
+}));
+pages.push(legal({
+  file: 'kullanim-sartlari.html', path: '/kullanim-sartlari', title: 'Kullanım Şartları', h1: 'Kullanım şartları',
+  description: 'VetApp kullanım şartları: hesap, kampanya ve abonelik, ödeme, veriler ve kişisel veriler, yedekleme, hesap silme, sorumluluk sınırı ve uyuşmazlık.',
+  meta: `Sürüm ${LEGAL.surum} · Son güncelleme: ${LEGAL_DATE}`, sections: () => sartlarSections(LEGAL),
+}));
+// Google Play “hesap silme web adresi”: https://www.vetapp.com.tr/hesap-silme (backend'deki yeni akış canlıya çıkınca doğru olur: README yayın sırası)
+pages.push(legal({
+  file: 'hesap-silme.html', path: '/hesap-silme', title: 'Hesap ve Veri Silme', h1: 'VetApp hesap ve veri silme',
+  description: 'VetApp hesabı nasıl silinir: uygulamada Ayarlar › Hesabı sil, klinik silme talebi (30 gün bekleme), silinen ve saklanan veriler, yedeklerde kalma süresi ve e-postayla talep yolu.',
+  meta: `Son güncelleme: ${LEGAL_DATE}`, sections: () => hesapSilmeSections(LEGAL),
+}));
 
 // — 404 —
 export const notFound = {

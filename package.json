@@ -4,8 +4,10 @@
   "description": "VetApp tanıtım sitesi (www.vetapp.com.tr): statik HTML, Cloudflare Workers statik varlıklar",
   "type": "module",
   "scripts": {
-    "build": "node build.mjs && node scripts/stage.mjs",
-    "deploy": "npm run build && wrangler deploy",
+    "check": "node scripts/check-placeholders.mjs",
+    "build": "node scripts/check-placeholders.mjs --source && node build.mjs && node scripts/check-placeholders.mjs && node scripts/stage.mjs",
+    "build:draft": "node build.mjs --draft",
+    "deploy": "node scripts/check-placeholders.mjs --source && npm run build && wrangler deploy",
     "dev": "npm run build && wrangler dev"
   },
   "devDependencies": {

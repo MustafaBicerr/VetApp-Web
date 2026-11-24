@@ -11,7 +11,7 @@ const C = CAMPAIGN;
 export const CAMPAIGN_FAQ = [
   ['VetApp gerçekten ücretsiz mi?', `Evet. VetApp ${C.freeUntil}’ye kadar herkes için tamamen ücretsizdir. Bu süre boyunca hiçbir ödeme alınmaz ve bütün özellikler (stok, cari ve veresiye, aşı, randevu, satış, kasa, mobil uygulama) açıktır.`],
   ['Kayıt olurken kart bilgisi istiyor musunuz?', 'Hayır. Kayıt için klinik adı ve iletişim bilgileri yeterlidir. Kredi kartı veya başka bir ödeme bilgisi istenmez.'],
-  [`İlk ${C.limit} klinik kampanyası nasıl işliyor?`, `VetApp’e kaydolup kullanmaya başlayan ilk ${C.limit} klinik, ücretsiz dönemin ardından ${C.giftMonths} aylarını kapsayan 3 aylık aboneliği de hediye olarak alır. Yani bu klinikler için VetApp ${trDate(C.giftEndIso)} tarihine kadar ücretsizdir.`],
+  [`İlk ${C.limit} klinik kampanyası nasıl işliyor?`, `VetApp’e kaydolup kullanmaya başlayan ilk ${C.limit} klinik, ücretsiz dönemin ardından ${C.giftMonths} aylarını kapsayan 2 aylık ek aboneliği de hediye olarak alır. Yani bu klinikler için VetApp ${trDate(C.giftEndIso)} tarihine kadar ücretsizdir.`],
   ['Kampanyada kaç yer kaldı?', `${ASOF} itibarıyla ${C.cities} şehirde ${C.clinics} klinik VetApp kullanıyor; ${C.limit} kliniklik hediye kontenjanında ${LEFT} yer kaldı. Bu rakamlar birkaç günde bir güncellenir.`],
   [`${C.freeUntil}’den sonra ne olacak?`, 'Ücretsiz dönemden sonra sade bir aylık abonelik uygulanacak. Fiyatlar kampanya bitmeden önce bu sitede ve uygulamada açıkça duyurulacak. Kart bilgisi alınmadığı için hesabınızdan otomatik ücret çekilmez; devam edip etmemeye siz karar verirsiniz.'],
   ['Ücretsiz sürümde eksik özellik var mı?', 'Hayır. Kampanya süresince VetApp’in bütün modülleri açıktır; ücretli ve ücretsiz sürüm ayrımı yoktur.'],
@@ -28,8 +28,8 @@ const TIMELINE = [
 export const campaignPage = {
   file: CAMPAIGN_PATH.slice(1) + '.html', path: CAMPAIGN_PATH, changefreq: 'daily', priority: '0.95', lastmod: C.asOf,
   title: `Ücretsiz Veteriner Programı – ${C.freeUntil}’ye Kadar | VetApp`,
-  ogTitle: `VetApp ${C.freeUntil}’ye kadar tamamen ücretsiz – ilk ${C.limit} kliniğe 3 ay hediye`,
-  description: `VetApp ${C.freeUntil}’ye kadar tamamen ücretsiz veteriner programı, kart gerekmez. İlk ${C.limit} kliniğe Ocak–Mart 2027 de hediye; ${ASOF} itibarıyla ${LEFT} yer kaldı.`,
+  ogTitle: `VetApp ${C.freeUntil}’ye kadar tamamen ücretsiz – ilk ${C.limit} kliniğe 2 ay hediye`,
+  description: `VetApp ${C.freeUntil}’ye kadar tamamen ücretsiz veteriner programı, kart gerekmez. İlk ${C.limit} kliniğe Şubat–Mart 2027 de hediye; ${ASOF} itibarıyla ${LEFT} yer kaldı.`,
   ld: [
     crumbLd('Ücretsiz kampanya', CAMPAIGN_PATH),
     faqLd(CAMPAIGN_FAQ),

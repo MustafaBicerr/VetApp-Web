@@ -1,13 +1,13 @@
 # VetApp
 
-> VetApp, Türkiye'deki veteriner klinikleri için geliştirilmiş bulut tabanlı bir veteriner klinik yönetim programıdır (veteriner programı / veteriner klinik yazılımı). İlaç ve sarf malzeme stok takibi, müşteri cari ve veresiye takibi, ilaç deposu (tedarikçi) borç takibi, aşı takibi, hasta ve randevu takibi, hızlı satış ve kasa yönetimini tek panelde toplar. Web (panel.vetapp.com.tr), Android ve iPhone'da aynı hesapla çalışır. **Ocak 2027'ye kadar tamamen ücretsizdir; kart bilgisi gerekmez.** Kaydolup kullanan ilk 500 kliniğe Ocak, Şubat ve Mart 2027 de hediye edilir. 10 Kasım 2026 itibarıyla 55 şehirde 432 klinik VetApp kullanıyor. MBiCER Yazılım ve Mühendislik tarafından geliştirilmektedir.
+> VetApp, Türkiye'deki veteriner klinikleri için geliştirilmiş bulut tabanlı bir veteriner klinik yönetim programıdır (veteriner programı / veteriner klinik yazılımı). İlaç ve sarf malzeme stok takibi, müşteri cari ve veresiye takibi, ilaç deposu (tedarikçi) borç takibi, aşı takibi, hasta ve randevu takibi, hızlı satış ve kasa yönetimini tek panelde toplar. Web (panel.vetapp.com.tr), Android ve iPhone'da aynı hesapla çalışır. **31 Ocak 2027'ye kadar tamamen ücretsizdir; kart bilgisi gerekmez.** Kaydolup kullanan ilk 500 kliniğe Şubat ve Mart 2027 de hediye edilir. 10 Kasım 2026 itibarıyla 55 şehirde 432 klinik VetApp kullanıyor. MBiCER Yazılım ve Mühendislik tarafından geliştirilmektedir.
 
 ## Kampanya: ücretsiz veteriner programı (10 Kasım 2026 itibarıyla güncel)
 
 Ücretsiz veya uygun maliyetli bir veteriner klinik programı arayan klinikler için:
 
-- **Herkese ücretsiz:** VetApp Ocak 2027'ye kadar bütün özellikleriyle tamamen ücretsiz. Hiçbir ödeme alınmaz, kart bilgisi istenmez, kurulum yok. Ücretli/ücretsiz sürüm ayrımı yok.
-- **İlk 500 kliniğe +3 ay hediye:** Kaydolup kullanmaya başlayan ilk 500 kliniğe Ocak, Şubat ve Mart 2027 aylarını kapsayan 3 aylık abonelik de hediye (bu klinikler için 31 Mart 2027 tarihine kadar ücretsiz).
+- **Herkese ücretsiz:** VetApp 31 Ocak 2027'ye kadar bütün özellikleriyle tamamen ücretsiz. Hiçbir ödeme alınmaz, kart bilgisi istenmez, kurulum yok. Ücretli/ücretsiz sürüm ayrımı yok.
+- **İlk 500 kliniğe +2 ay hediye:** Kaydolup kullanmaya başlayan ilk 500 kliniğe Şubat ve Mart 2027 aylarını kapsayan 2 aylık ek abonelik de hediye (bu klinikler için 31 Mart 2027 tarihine kadar ücretsiz).
 - **Kontenjan:** 10 Kasım 2026 itibarıyla 432 klinik kayıtlı, 68 yer kaldı. Rakamlar birkaç günde bir güncellenir.
 - **Sonrası:** Ücretsiz dönemden sonra aylık abonelik; fiyatlar kampanya bitmeden duyurulacak. Kart bilgisi alınmadığı için otomatik ücret çekilmez.
 - Kampanya sayfası: https://www.vetapp.com.tr/ucretsiz-veteriner-programi · Kayıt: https://panel.vetapp.com.tr/#/register
@@ -26,7 +26,7 @@
 - Kimler için: Veteriner klinikleri ve veteriner hekimler (küçük hayvan, büyükbaş/saha ve karma çalışan klinikler), Türkiye
 - Dil: Türkçe
 - Platformlar: Web tarayıcı (https://panel.vetapp.com.tr), iPhone (https://apps.apple.com/tr/app/vetapp-mobil/id6761138905), Android (https://play.google.com/store/apps/details?id=tr.com.vetapp)
-- Fiyat: Ocak 2027'ye kadar tamamen ücretsiz (kampanya), kart bilgisi gerekmez, kurulum yok. Kayıtsız canlı demo: https://panel.vetapp.com.tr/#/demo
+- Fiyat: 31 Ocak 2027'ye kadar tamamen ücretsiz (kampanya), kart bilgisi gerekmez, kurulum yok. Kayıtsız canlı demo: https://panel.vetapp.com.tr/#/demo
 - Kullanım: 10 Kasım 2026 itibarıyla 55 şehirde 432 klinik
 - İlk sürüm: Mayıs 2026
 - Kayıt: https://panel.vetapp.com.tr/#/register
@@ -59,22 +59,22 @@
 
 ## Çözüm sayfaları
 
-- [Ücretsiz veteriner programı kampanyası](https://www.vetapp.com.tr/ucretsiz-veteriner-programi): VetApp Ocak 2027’ye kadar tamamen ücretsiz veteriner programı, kart gerekmez. İlk 500 kliniğe Ocak–Mart 2027 de hediye; 10 Kasım 2026 itibarıyla 68 yer kaldı.
+- [Ücretsiz veteriner programı kampanyası](https://www.vetapp.com.tr/ucretsiz-veteriner-programi): VetApp 31 Ocak 2027’ye kadar tamamen ücretsiz veteriner programı, kart gerekmez. İlk 500 kliniğe Şubat–Mart 2027 de hediye; 10 Kasım 2026 itibarıyla 68 yer kaldı.
 
-- [Veteriner programı](https://www.vetapp.com.tr/veteriner-programi): Veteriner klinikleri için program: hasta ve randevu, aşı takibi, ilaç stok takibi, veresiye ve cari, hızlı satış ve kasa. Web, Android, iPhone. Ocak 2027’ye kadar ücretsiz.
-- [Stok ve ilaç takibi](https://www.vetapp.com.tr/veteriner-stok-takip-programi): Veteriner kliniği için ilaç ve sarf malzeme stok takip programı: barkod, parti ve son kullanma tarihi (SKT), kritik stok uyarısı, alım faturası. Ocak 2027’ye kadar ücretsiz.
-- [Cari ve veresiye takibi](https://www.vetapp.com.tr/veteriner-cari-takip-programi): Veteriner klinikleri için cari takip programı: müşteri veresiyesi, kısmi tahsilat, vade, ilaç deposu (tedarikçi) borcu ve devreden bakiye. Web ve mobil. Ocak 2027’ye kadar ücretsiz.
-- [Aşı takibi](https://www.vetapp.com.tr/veteriner-asi-takip-programi): Veteriner klinikleri için aşı takip programı: tür bazlı aşı protokolleri, aşı takvimi, yaklaşan ve geciken aşı listesi, hasta geçmişi. Web ve mobil. Ocak 2027’ye kadar ücretsiz.
-- [Hasta ve randevu takibi](https://www.vetapp.com.tr/veteriner-hasta-takip-programi): Veteriner hasta takip programı: hayvan kartı, sahip bilgisi, çip no, randevu takvimi, SOAP muayene kaydı ve hasta zaman çizelgesi. Web, Android, iPhone. Ocak 2027’ye kadar ücretsiz.
+- [Veteriner programı](https://www.vetapp.com.tr/veteriner-programi): Veteriner klinikleri için program: hasta ve randevu, aşı takibi, ilaç stok takibi, veresiye ve cari, hızlı satış ve kasa. Web, Android, iPhone. 31 Ocak 2027’ye kadar ücretsiz.
+- [Stok ve ilaç takibi](https://www.vetapp.com.tr/veteriner-stok-takip-programi): Veteriner kliniği için ilaç ve sarf malzeme stok takip programı: barkod, parti ve son kullanma tarihi (SKT), kritik stok uyarısı, alım faturası. 31 Ocak 2027’ye kadar ücretsiz.
+- [Cari ve veresiye takibi](https://www.vetapp.com.tr/veteriner-cari-takip-programi): Veteriner klinikleri için cari takip programı: müşteri veresiyesi, kısmi tahsilat, vade, ilaç deposu (tedarikçi) borcu ve devreden bakiye. Web ve mobil. 31 Ocak 2027’ye kadar ücretsiz.
+- [Aşı takibi](https://www.vetapp.com.tr/veteriner-asi-takip-programi): Veteriner klinikleri için aşı takip programı: tür bazlı aşı protokolleri, aşı takvimi, yaklaşan ve geciken aşı listesi, hasta geçmişi. Web ve mobil. 31 Ocak 2027’ye kadar ücretsiz.
+- [Hasta ve randevu takibi](https://www.vetapp.com.tr/veteriner-hasta-takip-programi): Veteriner hasta takip programı: hayvan kartı, sahip bilgisi, çip no, randevu takvimi, SOAP muayene kaydı ve hasta zaman çizelgesi. Web, Android, iPhone. 31 Ocak 2027’ye kadar ücretsiz.
 - [Veteriner mobil uygulaması](https://www.vetapp.com.tr/veteriner-mobil-uygulama): VetApp Mobil: veteriner klinikleri için iPhone ve Android uygulaması. Satış, veresiye, stok, aşı ve randevu işlemlerinin tamamı telefonda. Web paneliyle aynı hesap.
-- [Büyükbaş ve saha veterinerliği](https://www.vetapp.com.tr/buyukbas-veteriner-programi): Büyükbaş ağırlıklı çalışan veteriner klinikleri için program: çiftlikte mobilden kayıt, uzun vadeli veresiye, ilaç ve sarf malzeme stok takibi. Ocak 2027’ye kadar ücretsiz.
+- [Büyükbaş ve saha veterinerliği](https://www.vetapp.com.tr/buyukbas-veteriner-programi): Büyükbaş ağırlıklı çalışan veteriner klinikleri için program: çiftlikte mobilden kayıt, uzun vadeli veresiye, ilaç ve sarf malzeme stok takibi. 31 Ocak 2027’ye kadar ücretsiz.
 
 ## Sayfalar
 
-- [VetApp: Ücretsiz Veteriner Klinik Programı – Stok, Cari, Aşı](https://www.vetapp.com.tr/): Ocak 2027’ye kadar tamamen ücretsiz veteriner klinik programı: ilaç stok, veresiye ve cari, aşı, randevu, satış ve kasa. 55 şehirde 432 klinik kullanıyor.
+- [VetApp: Ücretsiz Veteriner Klinik Programı – Stok, Cari, Aşı](https://www.vetapp.com.tr/): 31 Ocak 2027’ye kadar tamamen ücretsiz veteriner klinik programı: ilaç stok, veresiye ve cari, aşı, randevu, satış ve kasa. 55 şehirde 432 klinik kullanıyor.
 - [Özellikler](https://www.vetapp.com.tr/ozellikler): VetApp veteriner programının özellikleri: hasta ve randevu takibi, SOAP muayene, aşı takibi, hızlı satış, kasa, SKT’li ilaç stok takibi, alım faturası, cari ve veresiye, gün sonu paneli.
 - [İlaç Depoları İçin İş Ortaklığı](https://www.vetapp.com.tr/depolar): Veteriner ilaç depoları için VetApp iş ortaklığı: deponuza özel referans koduyla katılan her klinik için komisyon kazanın, müşterilerinize modern bir klinik yazılımı sunun.
-- [Sık Sorulan Sorular](https://www.vetapp.com.tr/sss): Veteriner programı ve VetApp hakkında sık sorulan sorular: Ocak 2027’ye kadar ücretsiz kampanya, cihaz desteği, büyükbaş kullanımı, aşı takibi, stok SKT uyarıları, veresiye yönetimi ve veri güvenliği.
+- [Sık Sorulan Sorular](https://www.vetapp.com.tr/sss): Veteriner programı ve VetApp hakkında sık sorulan sorular: 31 Ocak 2027’ye kadar ücretsiz kampanya, cihaz desteği, büyükbaş kullanımı, aşı takibi, stok SKT uyarıları, veresiye yönetimi ve veri güvenliği.
 - [İletişim ve Demo Talebi](https://www.vetapp.com.tr/iletisim): VetApp ile iletişime geçin: WhatsApp +90 535 226 54 08, info@vetapp.com.tr. Demo, destek ve iş ortaklığı için bize yazın.
 
 ## Blog
@@ -89,6 +89,7 @@
 - [Tüm içerik (llms-full.txt)](https://www.vetapp.com.tr/llms-full.txt)
 - [Gizlilik politikası](https://www.vetapp.com.tr/gizlilik)
 - [Kullanım şartları](https://www.vetapp.com.tr/kullanim-sartlari)
+- [Hesap ve veri silme](https://www.vetapp.com.tr/hesap-silme)
 
 ---
 
@@ -116,7 +117,7 @@ Veteriner programı; kliniğin hasta kayıtlarını, randevularını, aşı takv
 
 ## Ücretsiz veteriner programı var mı?
 
-Evet. VetApp Ocak 2027’ye kadar bütün özellikleriyle tamamen ücretsizdir; kart bilgisi istenmez, kurulum gerekmez. Ayrıca kaydolup kullanmaya başlayan ilk 500 kliniğe Ocak, Şubat ve Mart 2027 aylarını kapsayan 3 aylık abonelik hediye edilir (10 Kasım 2026 itibarıyla 432 klinik kayıtlı, 68 yer kaldı).
+Evet. VetApp 31 Ocak 2027’ye kadar bütün özellikleriyle tamamen ücretsizdir; kart bilgisi istenmez, kurulum gerekmez. Ayrıca kaydolup kullanmaya başlayan ilk 500 kliniğe Şubat ve Mart 2027 aylarını kapsayan 2 aylık ek abonelik hediye edilir (10 Kasım 2026 itibarıyla 432 klinik kayıtlı, 68 yer kaldı).
 
 ## VetApp büyükbaş ve saha çalışmasına uygun mu?
 
@@ -128,17 +129,17 @@ Evet. Açılış stoğunuzu ve devreden müşteri/tedarikçi bakiyelerinizi ilk 
 
 ## VetApp ne zamana kadar ücretsiz?
 
-VetApp Ocak 2027’ye kadar herkes için tamamen ücretsizdir. Bu süre boyunca hiçbir ödeme alınmaz, kart bilgisi istenmez ve bütün özellikler açıktır.
+VetApp 31 Ocak 2027’ye kadar herkes için tamamen ücretsizdir. Bu süre boyunca hiçbir ödeme alınmaz, kart bilgisi istenmez ve bütün özellikler açıktır.
 
 ## İlk 500 klinik kampanyası nedir?
 
-VetApp’e kaydolup kullanmaya başlayan ilk 500 kliniğe ücretsiz dönemin ardından Ocak, Şubat ve Mart 2027 aylarını kapsayan 3 aylık abonelik hediye edilir. 10 Kasım 2026 itibarıyla 55 şehirde 432 klinik VetApp kullanıyor; hediyeden yararlanabilecek 68 yer kaldı.
+VetApp’e kaydolup kullanmaya başlayan ilk 500 kliniğe ücretsiz dönemin ardından Şubat ve Mart 2027 aylarını kapsayan 2 aylık ek abonelik hediye edilir. 10 Kasım 2026 itibarıyla 55 şehirde 432 klinik VetApp kullanıyor; hediyeden yararlanabilecek 68 yer kaldı.
 
 ## Kart bilgisi girmem gerekiyor mu?
 
 Hayır. Kayıt için yalnızca klinik adı ve iletişim bilgileri yeterlidir; kredi kartı veya ödeme bilgisi istenmez.
 
-## Ocak 2027’den sonra ne olacak?
+## 31 Ocak 2027’den sonra ne olacak?
 
 Ücretsiz dönemden sonra sade bir aylık abonelik uygulanacak. Fiyatlar kampanya bitmeden önce bu sitede ve uygulamada açıkça duyurulacak. Kart bilgisi alınmadığı için hesabınızdan otomatik ücret çekilmez; devam edip etmemeye siz karar verirsiniz.
 
@@ -164,7 +165,11 @@ Satış satır bazında peşin veya veresiye olarak işaretlenir. Müşteri hesa
 
 ## Verilerim güvende mi?
 
-Her klinik kendi hesabında, kendi verisiyle çalışır. Bağlantılar HTTPS ile şifrelenir ve veritabanı her gün yedeklenir. Ayrıntılar için gizlilik politikamıza bakabilirsiniz.
+Her klinik kendi hesabında, kendi verisiyle çalışır. Bağlantılar HTTPS ile şifrelenir. Verileriniz Finlandiya’daki sunucuda tutulur; her gece yedeklenir (günlük yedekler yaklaşık 14 gün, haftalık yedekler yaklaşık 56 gün; ayrıca şifreli sunucu dışı kopya). Ayrıntılar için gizlilik politikamıza bakabilirsiniz.
+
+## Hesabımı ve verilerimi nasıl silerim?
+
+Uygulamada Ayarlar › Hesabı sil adımlarıyla. Klinik yöneticisi klinik silme talebi başlatır: 30 gün beklenir, bu sürede talep iptal edilebilir; sonra kişisel veriler silinir ya da anonimleşir. Mali kayıt tutarları kişisel bilgiden arındırılarak yasal süre boyunca saklanır; silinen veri yedeklerde en çok yaklaşık 56 gün kalabilir. Uygulamaya erişemiyorsanız destek@vetapp.com.tr adresine yazın. Ayrıntılar için vetapp.com.tr/hesap-silme sayfasına bakın.
 
 ## Eski sistemimdeki verileri aktarabilir miyim?
 
@@ -176,7 +181,7 @@ Excel veya CSV verileriniz için bizimle iletişime geçin; aktarım konusunda y
 
 ## VetApp gerçekten ücretsiz mi?
 
-Evet. VetApp Ocak 2027’ye kadar herkes için tamamen ücretsizdir. Bu süre boyunca hiçbir ödeme alınmaz ve bütün özellikler (stok, cari ve veresiye, aşı, randevu, satış, kasa, mobil uygulama) açıktır.
+Evet. VetApp 31 Ocak 2027’ye kadar herkes için tamamen ücretsizdir. Bu süre boyunca hiçbir ödeme alınmaz ve bütün özellikler (stok, cari ve veresiye, aşı, randevu, satış, kasa, mobil uygulama) açıktır.
 
 ## Kayıt olurken kart bilgisi istiyor musunuz?
 
@@ -184,13 +189,13 @@ Hayır. Kayıt için klinik adı ve iletişim bilgileri yeterlidir. Kredi kartı
 
 ## İlk 500 klinik kampanyası nasıl işliyor?
 
-VetApp’e kaydolup kullanmaya başlayan ilk 500 klinik, ücretsiz dönemin ardından Ocak, Şubat ve Mart 2027 aylarını kapsayan 3 aylık aboneliği de hediye olarak alır. Yani bu klinikler için VetApp 31 Mart 2027 tarihine kadar ücretsizdir.
+VetApp’e kaydolup kullanmaya başlayan ilk 500 klinik, ücretsiz dönemin ardından Şubat ve Mart 2027 aylarını kapsayan 2 aylık ek aboneliği de hediye olarak alır. Yani bu klinikler için VetApp 31 Mart 2027 tarihine kadar ücretsizdir.
 
 ## Kampanyada kaç yer kaldı?
 
 10 Kasım 2026 itibarıyla 55 şehirde 432 klinik VetApp kullanıyor; 500 kliniklik hediye kontenjanında 68 yer kaldı. Bu rakamlar birkaç günde bir güncellenir.
 
-## Ocak 2027’den sonra ne olacak?
+## 31 Ocak 2027’den sonra ne olacak?
 
 Ücretsiz dönemden sonra sade bir aylık abonelik uygulanacak. Fiyatlar kampanya bitmeden önce bu sitede ve uygulamada açıkça duyurulacak. Kart bilgisi alınmadığı için hesabınızdan otomatik ücret çekilmez; devam edip etmemeye siz karar verirsiniz.
 
@@ -208,11 +213,11 @@ VetApp’in hedefi Türkiye’deki veteriner kliniklerinin ortak kullandığı m
 
 ## En iyi veteriner programı hangisi?
 
-Her kliniğin ihtiyacı farklıdır; en iyi program, sizin iş akışınıza uyan ve ekibinizin gerçekten kullandığı programdır. Bulut tabanlı olması, mobilde tam çalışması, ilaç stoğunu SKT ile tutması ve veresiyeyi yönetebilmesi temel ölçütlerdir. VetApp Ocak 2027’ye kadar tamamen ücretsiz olduğu için kendi işlerinizle risksiz karşılaştırabilirsiniz.
+Her kliniğin ihtiyacı farklıdır; en iyi program, sizin iş akışınıza uyan ve ekibinizin gerçekten kullandığı programdır. Bulut tabanlı olması, mobilde tam çalışması, ilaç stoğunu SKT ile tutması ve veresiyeyi yönetebilmesi temel ölçütlerdir. VetApp 31 Ocak 2027’ye kadar tamamen ücretsiz olduğu için kendi işlerinizle risksiz karşılaştırabilirsiniz.
 
 ## Ücretsiz veteriner programı var mı?
 
-Evet. VetApp Ocak 2027’ye kadar bütün özellikleriyle tamamen ücretsizdir; kart bilgisi istenmez. Kaydolup kullanan ilk 500 kliniğe Ocak, Şubat ve Mart 2027 de hediye edilir (10 Kasım 2026 itibarıyla 68 yer kaldı). Ayrıntılar: kampanya sayfası.
+Evet. VetApp 31 Ocak 2027’ye kadar bütün özellikleriyle tamamen ücretsizdir; kart bilgisi istenmez. Kaydolup kullanan ilk 500 kliniğe Şubat ve Mart 2027 de hediye edilir (10 Kasım 2026 itibarıyla 68 yer kaldı). Ayrıntılar: kampanya sayfası.
 
 ## Veteriner programını kurmak gerekiyor mu?
 
@@ -402,7 +407,7 @@ Enjektör, iğne, eldiven, serum seti, sargı bezi gibi sarf malzemeler tek tek 
 
 ## VetApp ile stok takibi
 
-VetApp’te 1.779 ilaçlık veteriner ilaç kataloğu, barkodla kayıt, parti ve SKT takibi, kritik stok uyarısı ve alım faturası hazır gelir. Ayrıntılar için [veteriner stok takip programı](/veteriner-stok-takip-programi) sayfamıza bakabilir ya da [Ocak 2027’ye kadar tamamen ücretsiz kullanabilirsiniz](/ucretsiz-veteriner-programi).
+VetApp’te 1.779 ilaçlık veteriner ilaç kataloğu, barkodla kayıt, parti ve SKT takibi, kritik stok uyarısı ve alım faturası hazır gelir. Ayrıntılar için [veteriner stok takip programı](/veteriner-stok-takip-programi) sayfamıza bakabilir ya da [31 Ocak 2027’ye kadar tamamen ücretsiz kullanabilirsiniz](/ucretsiz-veteriner-programi).
 
 ---
 
@@ -475,7 +480,7 @@ Cari takip yalnızca müşteri alacağı değildir. İlaç depolarına olan bor�
 
 Veresiye yönetimi disiplin ister, ama doğru araçla bu disiplin zahmetsiz hâle gelir. Devreden bakiyeyle temiz bir başlangıç yapın, her veresiyeyi bir müşteriye bağlayın, tahsilatı anında girin ve haftada bir alacak listesine bakın.
 
-VetApp’in [veteriner cari ve veresiye takibi](/veteriner-cari-takip-programi) özelliklerine göz atabilir, [Ocak 2027’ye kadar tamamen ücretsiz kullanabilirsiniz](/ucretsiz-veteriner-programi). Büyükbaş ağırlıklı çalışıyorsanız [büyükbaş veteriner programı](/buyukbas-veteriner-programi) sayfamız da ilginizi çekebilir.
+VetApp’in [veteriner cari ve veresiye takibi](/veteriner-cari-takip-programi) özelliklerine göz atabilir, [31 Ocak 2027’ye kadar tamamen ücretsiz kullanabilirsiniz](/ucretsiz-veteriner-programi). Büyükbaş ağırlıklı çalışıyorsanız [büyükbaş veteriner programı](/buyukbas-veteriner-programi) sayfamız da ilginizi çekebilir.
 
 ---
 
@@ -565,13 +570,13 @@ Değerlendirdiğiniz programları bu tabloyla karşılaştırabilirsiniz:
 | Satır bazında veresiye | Gerçek klinik işleyişi | Evet |
 | Tedarikçi borcu | Depo ödemelerini kaçırmamak | Evet |
 | Aşı gündemi | Kaçan aşı = kaçan ziyaret | Evet |
-| Ücretsiz kullanım | Risksiz karar | Ocak 2027’ye kadar tamamen ücretsiz, kart yok |
+| Ücretsiz kullanım | Risksiz karar | 31 Ocak 2027’ye kadar tamamen ücretsiz, kart yok |
 
 ## Sonuç
 
 Bir veteriner programını broşürüne bakarak değil, kendi işlerinizle deneyerek seçin. Deneme süresinde stok girişini, bir veresiye satışı, bir tahsilatı ve bir gün sonu kapanışını mutlaka yapın. Program bu dört işi zahmetsiz yaptırıyorsa, kliniğinizde de yaşar.
 
-VetApp’i [Ocak 2027’ye kadar tamamen ücretsiz kullanabilir](/ucretsiz-veteriner-programi) ya da kayıt olmadan [canlı demoyu](https://panel.vetapp.com.tr/#/demo) açabilirsiniz. Tüm modüller için [veteriner programı](/veteriner-programi) sayfamıza göz atın.
+VetApp’i [31 Ocak 2027’ye kadar tamamen ücretsiz kullanabilir](/ucretsiz-veteriner-programi) ya da kayıt olmadan [canlı demoyu](https://panel.vetapp.com.tr/#/demo) açabilirsiniz. Tüm modüller için [veteriner programı](/veteriner-programi) sayfamıza göz atın.
 
 ---
 
@@ -647,6 +652,6 @@ Bunları biliyorsanız, kliniğinizin işletme tarafı ilk günden kontrol altı
 
 ## VetApp ile ilk 30 gün
 
-VetApp, yeni açılan klinikler düşünülerek tasarlandı: açılış stoğu ve devreden bakiyeler ilk gün girilir, ilaç kartları 1.779 ilaçlık katalogdan barkodla dolar, mobil uygulama web panelindeki her işlemi yapar. Üstelik VetApp Ocak 2027’ye kadar tamamen ücretsizdir ve kart bilgisi istemez; kaydolup kullanan ilk 500 kliniğe Ocak, Şubat ve Mart 2027 de hediye edilir. Ayrıntılar [kampanya sayfasında](/ucretsiz-veteriner-programi).
+VetApp, yeni açılan klinikler düşünülerek tasarlandı: açılış stoğu ve devreden bakiyeler ilk gün girilir, ilaç kartları 1.779 ilaçlık katalogdan barkodla dolar, mobil uygulama web panelindeki her işlemi yapar. Üstelik VetApp 31 Ocak 2027’ye kadar tamamen ücretsizdir ve kart bilgisi istemez; kaydolup kullanan ilk 500 kliniğe Şubat ve Mart 2027 de hediye edilir. Ayrıntılar [kampanya sayfasında](/ucretsiz-veteriner-programi).
 
 [Ücretsiz hesabınızı açın](https://panel.vetapp.com.tr/#/register) ya da önce [canlı demoyu](https://panel.vetapp.com.tr/#/demo) inceleyin. Seçim yapmadan önce [veteriner programı seçme rehberimizi](/blog/veteriner-programi-secerken-dikkat-edilmesi-gerekenler) de okuyabilirsiniz.
