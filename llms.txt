@@ -43,7 +43,7 @@
 - Nakit, kart, karma ve veresiye ödeme
 - Kasa hareketleri, masraf girişi ve gün sonu raporu
 - İlaç ve ürün stok takibi: parti, son kullanma tarihi (SKT), kritik stok uyarısı
-- 1.694 ilaçlık veteriner ilaç referans kataloğu
+- 1.779 ilaçlık veteriner ilaç referans kataloğu (TARBİL listesiyle güncellenir)
 - Alım faturası (mal kabul): iskonto, KDV, vade, mal fazlası
 - Müşteri cari ve veresiye takibi, kısmi tahsilat
 - Tedarikçi (ilaç deposu) cari ve borç takibi
