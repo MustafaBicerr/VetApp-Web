@@ -26,7 +26,7 @@ export const CAMPAIGN = {
   giftEndIso: '2027-03-31',    // hediye aboneliğin son günü
   launched: 'Mayıs 2026',
 };
-export const STATS = { clinics: CAMPAIGN.clinics, cities: CAMPAIGN.cities, drugs: 1694 };
+export const STATS = { clinics: CAMPAIGN.clinics, cities: CAMPAIGN.cities, drugs: 1779 };
 export const LEFT = Math.max(0, CAMPAIGN.limit - CAMPAIGN.clinics);
 export const ASOF = trDate(CAMPAIGN.asOf);
 export const CAMPAIGN_PATH = '/ucretsiz-veteriner-programi';
@@ -84,6 +84,9 @@ const P = {
   clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
   gift: '<rect x="3.5" y="8" width="17" height="4" rx="1"/><path d="M5 12v8.5h14V12M12 8v12.5M12 8C10.5 5 7 4.5 7 6.5S10 8 12 8zM12 8c1.5-3 5-3.5 5-1.5S14 8 12 8z"/>',
   bell: '<path d="M6 16V11a6 6 0 1112 0v5l1.5 2h-15L6 16zM10 21h4"/>',
+  search: '<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/>',
+  refresh: '<path d="M20 11a8 8 0 00-14.3-4.6M4 5v4h4M4 13a8 8 0 0014.3 4.6M20 19v-4h-4"/>',
+  image: '<rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><circle cx="9" cy="10" r="1.6"/><path d="M4 17l5-4.5 3.5 3 3-2.5 4.5 4"/>',
 };
 export const icon = (n, cls = '') => `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[n]}</svg>`;
 export const waIcon = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2z"/></svg>';
@@ -115,7 +118,7 @@ export const FAQ = [
       ['Veteriner programı (veteriner klinik yazılımı) ne işe yarar?', 'Veteriner programı; kliniğin hasta kayıtlarını, randevularını, aşı takvimini, ilaç ve sarf malzeme stoğunu, satışlarını, kasasını ve müşteri/tedarikçi cari hesaplarını tek yerde tutan yazılımdır. Defter, Excel ve hafızaya dayalı takibin yerini alır; hangi ilacın azaldığını, kimin ne kadar borcu olduğunu ve hangi hastanın aşısının geldiğini tek ekranda gösterir.'],
       ['Ücretsiz veteriner programı var mı?', `Evet. VetApp ${CAMPAIGN.freeUntil}’ye kadar bütün özellikleriyle tamamen ücretsizdir; kart bilgisi istenmez, kurulum gerekmez. Ayrıca kaydolup kullanmaya başlayan ilk ${CAMPAIGN.limit} kliniğe ${CAMPAIGN.giftMonths} aylarını kapsayan 3 aylık abonelik hediye edilir (${ASOF} itibarıyla ${CAMPAIGN.clinics} klinik kayıtlı, ${LEFT} yer kaldı).`],
       ['VetApp büyükbaş ve saha çalışmasına uygun mu?', 'Evet. Mobil uygulama web panelindeki işlemlerin tamamını yapabildiği için çiftlikte, işin bittiği yerde satış, veresiye ve tedavi kaydı girilebilir; kliniğe dönüp bilgisayar başında tekrar yazmak gerekmez.'],
-      ['Yeni açılan bir klinik için uygun mu?', 'Evet. Açılış stoğunuzu ve devreden müşteri/tedarikçi bakiyelerinizi ilk gün girersiniz; ilaç kartları 1.694 ilaçlık katalogdan barkodla dolar. Küçük ekipler için tasarlandı, eğitim gerektirmez.'],
+      ['Yeni açılan bir klinik için uygun mu?', 'Evet. Açılış stoğunuzu ve devreden müşteri/tedarikçi bakiyelerinizi ilk gün girersiniz; ilaç kartları 1.779 ilaçlık katalogdan barkodla dolar. Küçük ekipler için tasarlandı, eğitim gerektirmez.'],
     ],
   },
   {
@@ -132,7 +135,8 @@ export const FAQ = [
     items: [
       ['Aşı hatırlatması nasıl çalışıyor?', 'VetApp her hasta için aşı kaydını ve bir sonraki aşı tarihini tutar. Klinik ekranında vadesi yaklaşan ve geciken aşılar gündem olarak listelenir. Müşterilere otomatik SMS veya WhatsApp hatırlatması şu an bulunmuyor.'],
       ['Stokta son kullanma tarihi takibi var mı?', 'Evet. Ürünler parti ve son kullanma tarihi ile takip edilir; SKT’si yaklaşan ürünler ve kritik stok eşiğinin altındakiler panelde uyarı olarak görünür.'],
-      ['Barkod okutarak çalışabilir miyim?', 'Evet. Telefon kamerasıyla veya bilgisayara bağlı barkod okuyucuyla ürün ekleyebilir, satış yapabilirsiniz. 1.694 ilaçlık referans katalogda barkodu bulunan ürünler otomatik tanınır.'],
+      ['İlaç kataloğu nereden geliyor, güncel mi?', `VetApp’in ilaç kataloğu, T.C. Tarım ve Orman Bakanlığı’nın TARBİL sisteminde yayımlanan ruhsatlı veteriner ilaç listesine dayanır ve bu listeyle güncellenir (son güncelleme: Kasım 2026, ${STATS.drugs.toLocaleString('tr-TR')} ilaç). Ürün adının birkaç harfini yazdığınızda ilaç, farmasötik şekli ve üreticisiyle listelenir; birçoğunda ambalaj fotoğrafı da bulunur. Katalogda olmayan bir ürünü kendiniz de tanımlayabilirsiniz.`],
+      ['Barkod okutarak çalışabilir miyim?', 'Evet. Telefon kamerasıyla veya bilgisayara bağlı barkod okuyucuyla ürün ekleyebilir, satış yapabilirsiniz. 1.779 ilaçlık referans katalogda barkodu bulunan ürünler otomatik tanınır.'],
       ['Veresiye satış nasıl yönetiliyor?', 'Satış satır bazında peşin veya veresiye olarak işaretlenir. Müşteri hesabında alacak, vade ve tahsilat geçmişi görünür; kısmi tahsilat alabilir, devreden bakiye girebilirsiniz.'],
     ],
   },
@@ -145,6 +149,29 @@ export const FAQ = [
   },
 ];
 const HOME_FAQ = [FAQ[2].items[0], FAQ[2].items[1], FAQ[2].items[3], FAQ[1].items[0], FAQ[0].items[1], FAQ[1].items[2], FAQ[4].items[0]];
+
+/** İlaç kataloğu bölümü (ana sayfa ve stok takip sayfası): TARBİL ile güncel katalog + panelde arama ekran görüntüleri. */
+export const catalogSection = ({ cls = 'sec light alt', id = 'ilac-katalogu' } = {}) => `
+    <section class="${cls}" id="${id}" aria-labelledby="${id}-h">
+      <div class="container">
+        <div class="sec-head center reveal">
+          <span class="tag">İlaç kataloğu</span>
+          <h2 id="${id}-h">${STATS.drugs.toLocaleString('tr-TR')} ilaç, yazmaya başlayın. <span class="soft">Kartı hazır gelsin.</span></h2>
+          <p class="lede">Katalog, Tarım ve Orman Bakanlığı’nın TARBİL ruhsatlı veteriner ilaç listesiyle güncellenir (son güncelleme: Kasım 2026). Ürünün birkaç harfini yazın; ilaç, fotoğrafı ve bilgileriyle listelensin.</p>
+        </div>
+        <div class="devices reveal d1">
+          <div class="laptop"><div class="lid">${shot('ilac-arama', 'VetApp web panelinde “cobactan” araması: fotoğraflı ilaç listesi', { sizes: '(min-width: 960px) 900px, 100vw' })}</div><div class="base"></div></div>
+          ${phoneImg('m-ilac-arama', 'VetApp mobilde “okz” yazınca Okzan ilacı fotoğrafıyla listeleniyor', { time: '10:20' })}
+        </div>
+        <div class="trust t3 reveal d2" style="margin-top:36px">
+          <div class="tcard"><span class="ic blue">${icon('search')}</span><h3>Birkaç harf yeter</h3><p>“okz” yazın, Okzan gelsin. “LA”, “LC” gibi ekler de aranır.</p></div>
+          <div class="tcard"><span class="ic green">${icon('refresh')}</span><h3>TARBİL ile güncel</h3><p>Yeni ruhsatlı ilaçlar kataloğa eklenir; elle tanımlamanız gerekmez.</p></div>
+          <div class="tcard"><span class="ic amber">${icon('image')}</span><h3>Fotoğraflı kartlar</h3><p>Birçok ilaç ambalaj fotoğrafıyla gelir; doğru ürünü bir bakışta seçersiniz.</p></div>
+        </div>
+        <p class="cat-try reveal d3">Deneyin: <b>okz</b> · <b>cobactan</b> · <b>onsior</b> · <b>bravecto</b> · <b>amoksi</b> <a href="${URLS.demo}">Demoyu açın ${arrow}</a></p>
+      </div>
+    </section>`;
+
 export const faqHtml = (items) => `<div class="faq">${items.map(([q, a]) => `<details><summary>${esc(q)}</summary><div class="a"><p>${esc(a)}</p></div></details>`).join('')}</div>`;
 export const faqLd = (items) => ({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: items.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) });
 
@@ -305,7 +332,7 @@ export const FEATURES = [
   'Nakit, kart, karma ve veresiye ödeme',
   'Kasa hareketleri, masraf girişi ve gün sonu raporu',
   'İlaç ve ürün stok takibi: parti, son kullanma tarihi (SKT), kritik stok uyarısı',
-  '1.694 ilaçlık veteriner ilaç referans kataloğu',
+  '1.779 ilaçlık veteriner ilaç referans kataloğu (TARBİL listesiyle güncellenir)',
   'Alım faturası (mal kabul): iskonto, KDV, vade, mal fazlası',
   'Müşteri cari ve veresiye takibi, kısmi tahsilat',
   'Tedarikçi (ilaç deposu) cari ve borç takibi',
@@ -572,6 +599,7 @@ ${campaignBand()}
       </div>
     </section>
 
+${catalogSection()}
     <section class="sec light alt" aria-labelledby="how-h">
       <div class="container">
         <div class="sec-head reveal">
@@ -651,7 +679,7 @@ const MODULES = [
     ['Satış geçmişi', 'Fiş detayları, indirimli ve veresiye satış filtreleri.'],
   ] },
   { id: 'stok', more: ['/veteriner-stok-takip-programi', 'Veteriner stok takip programı'], kicker: 'Stok', h: 'İlaç ve ürün stoğu, SKT’ye kadar.', shot: 'stok-giris', alt: 'VetApp alım faturası ve stok girişi ekranı', url: 'panel.vetapp.com.tr/#/stock/entry', lede: 'Referans ilaç kataloğu ve barkodla hızlı kayıt; parti ve son kullanma tarihiyle güvenli takip.', caps: [
-    ['İlaç referans kataloğu', '1.694 ilaçlık kataloğu arayın; kendi ürün kartınızı tek tıkla oluşturun.'],
+    ['İlaç referans kataloğu', '1.779 ilaçlık TARBİL kataloğunu adını yazarak arayın; fotoğraflı kartla kendi ürününüzü tek tıkla oluşturun.'],
     ['Barkod', 'Kamerayla veya barkod okuyucuyla ürün bulun, barkodsuz ürüne barkod tanımlayın.'],
     ['Parti ve SKT', 'Her giriş parti ve son kullanma tarihiyle tutulur; satışta SKT’si yakın olan parti öne alınır.'],
     ['Uyarılar', 'Kritik stok eşiği ve SKT yaklaşan ürünler panelde görünür.'],

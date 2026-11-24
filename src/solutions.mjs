@@ -2,7 +2,7 @@
 // ("veteriner programı", "veteriner stok takip programı" …) ve FAQPage + BreadcrumbList şeması taşır.
 // Yeni sayfa eklerken src/site.mjs içindeki SOLUTIONS listesine de ekleyin.
 import {
-  SITE, URLS, WA, STATS, APP_STORE, PLAY_STORE, SOLUTIONS, esc, icon, arrow, ck,
+  SITE, URLS, WA, STATS, APP_STORE, PLAY_STORE, SOLUTIONS, esc, icon, arrow, ck, catalogSection,
   frame, phoneImg, faqHtml, faqLd, crumbLd, pageHero, finalCta, postCard, campaignStrip, storeBadges, CAMPAIGN, LEFT, ASOF, FREE_LINE,
 } from './site.mjs';
 import { loadPosts } from './markdown.mjs';
@@ -37,7 +37,7 @@ function solution(d) {
         <div class="reveal d1">${d.mob ? `<div class="mod-phone only-mob">${phoneImg(d.mob, d.shot[1])}</div><div class="only-desk">${frame(d.shot[0], d.shot[1], d.shot[2])}</div>` : frame(d.shot[0], d.shot[1], d.shot[2])}</div>
       </div>
     </section>
-    <section class="sec light alt" aria-labelledby="caps-h">
+${d.extra || ''}    <section class="sec light alt" aria-labelledby="caps-h">
       <div class="container">
         <div class="sec-head reveal"><span class="tag">${esc(d.capsTag || 'Neler yapabilirsiniz')}</span><h2 id="caps-h">${d.capsH}</h2></div>
         <div class="caps">${d.caps.map(([t, x]) => `<div class="cap reveal">${ck}<div><h3>${t}</h3><p>${x}</p></div></div>`).join('')}</div>
@@ -137,6 +137,7 @@ export const solutionPages = [
     h1: 'Veteriner stok takip programı: <span class="soft">ilaç stoğu, SKT’ye kadar.</span>',
     lede: `İlaç ve sarf malzemelerinizi barkodla kaydedin, parti ve son kullanma tarihiyle izleyin. Azalan ve SKT’si yaklaşan ürünler kendiliğinden uyarı verir.`,
     shot: ['stok-giris', 'VetApp veteriner stok takip ekranı: alım faturası ve stok girişi', 'panel.vetapp.com.tr/#/stock/entry'], mob: 'm-stok',
+    extra: catalogSection({ cls: 'sec white', id: 'ilac-katalogu' }),
     intro: `<h2>Klinikte ilaç stoğu neden kaçar?</h2>
           <p>Veteriner kliniklerinde stok, iki yerden sessizce eksilir: muayenede kullanılan ilaç ve sarf malzemesi kayda geçmez, son kullanma tarihi geçen ürünler fark edilmeden rafta bekler. Müşteri ve veresiye arttıkça defterle bu takibi sürdürmek zorlaşır.</p>
           <p>VetApp’te ürün satışa ya da tedaviye aktarıldığında stoktan düşer; her giriş parti ve <strong>son kullanma tarihi (SKT)</strong> ile tutulur. Kritik eşiğin altına inen ve SKT’si yaklaşan ürünler panelde uyarı olarak görünür.</p>`,
