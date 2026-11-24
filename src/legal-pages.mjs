@@ -15,13 +15,14 @@ const table = (head, rows) => `<div class="table-wrap"><table><thead><tr>${head.
 const kv = (rows) => `<div class="table-wrap"><table><tbody>${rows.map(([k, v]) => `<tr><th scope="row">${k}</th><td>${v}</td></tr>`).join('')}</tbody></table></div>`;
 const mail = (a) => `<a href="mailto:${e(a)}">${e(a)}</a>`;
 const SUPPORT = 'destek@vetapp.com.tr';
+const has = (v) => v !== null && v !== undefined && String(v).trim() !== '';
 const section = (h, html, id) => [h, typo(html), id];
 
 // ───────────────────────── Gizlilik politikası ve KVKK aydınlatma metni ─────────────────────────
 export function gizlilikSections(L = LEGAL) {
   const k = L.kosul;
   const kvkk = mail(L.kvkkBasvuruEposta);
-  const kep = L.kepAdresi !== null && L.kepAdresi !== undefined && L.kepAdresi !== '';
+  const kep = has(L.kepAdresi);
 
   // 9a: kimlik tutarlılığı kaydı. Düzeltme canlıda değilse ŞU ANDA canlıdaki davranış anlatılır (docs/hukuk Bulgu 1, [KOŞUL-KIMLIK-HAVUZU]).
   const kimlik9a = k.kimlikHavuzuDuzeltmeCanli
@@ -39,8 +40,8 @@ export function gizlilikSections(L = LEGAL) {
 
   const s1 = kv([
       ['Unvan', `${e(L.unvan)} (ürün adı: VetApp)`],
-      ['Adres', e(L.adres)],
-      ['Vergi dairesi / vergi no veya T.C. kimlik no', `${e(L.vergiDairesi)} / ${e(L.vknVeyaTckn)}`],
+      ...(has(L.adres) ? [['Adres', e(L.adres)]] : []),
+      ...(has(L.vknVeyaTckn) ? [['Vergi dairesi / vergi no veya T.C. kimlik no', [L.vergiDairesi, L.vknVeyaTckn].filter(has).map(e).join(' / ')]] : []),
       ['KVKK başvuru e-postası', kvkk],
       ...(kep ? [['KEP adresi', e(L.kepAdresi)]] : []),
       ['Destek', mail(SUPPORT)],
@@ -163,9 +164,9 @@ export function gizlilikSections(L = LEGAL) {
   const kanallar = [
     `${kvkk} adresine, <strong>VetApp’te kayıtlı e-posta adresinizden</strong> göndererek`,
     ...(kep ? [`${e(L.kepAdresi)} KEP adresine veya güvenli/mobil elektronik imzayla`] : []),
-    `${e(L.adres)} adresine yazılı ve imzalı olarak`,
+    ...(has(L.adres) ? [`${e(L.adres)} adresine yazılı ve imzalı olarak`] : []),
   ];
-  const kanalMetni = kanallar.length === 3 ? `(1) ${kanallar[0]}, (2) ${kanallar[1]}, ya da (3) ${kanallar[2]}` : `(1) ${kanallar[0]}, ya da (2) ${kanallar[1]}`;
+  const kanalMetni = kanallar.length === 1 ? kanallar[0] : kanallar.length === 2 ? `(1) ${kanallar[0]}, ya da (2) ${kanallar[1]}` : `(1) ${kanallar[0]}, (2) ${kanallar[1]}, ya da (3) ${kanallar[2]}`;
   const s15 = p('Veri sorumlusu olarak bize başvurarak şunları talep edebilirsiniz: (a) kişisel verinizin işlenip işlenmediğini öğrenme; (b) işlenmişse buna ilişkin bilgi talep etme; (c) işlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme; (ç) yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri bilme; (d) eksik veya yanlış işlenmişse düzeltilmesini isteme; (e) KVKK md. 7 çerçevesinde silinmesini veya yok edilmesini isteme; (f) (d) ve (e) kapsamındaki işlemlerin aktarıldığı üçüncü kişilere bildirilmesini isteme; (g) işlenen verinin münhasıran otomatik sistemlerle analiziyle aleyhinize bir sonuç çıkmasına itiraz etme; (ğ) kanuna aykırı işlenmesi nedeniyle zarara uğrarsanız zararın giderilmesini talep etme.') +
     p(`<strong>Nasıl başvurulur:</strong> Başvurunuzu Türkçe olarak, adınız soyadınız ve talebinizle birlikte ${kanalMetni} yapabilirsiniz. Talebinizi en geç <strong>30 gün içinde</strong> ücretsiz sonuçlandırırız; işlem ayrıca maliyet gerektiriyorsa Kurul’un belirlediği tarifeye göre ücret istenebilir. Yanıtı yetersiz bulursanız ya da yanıt alamazsanız, öğrenmenizden itibaren 30, her hâlükârda başvurunuzdan itibaren 60 gün içinde Kişisel Verileri Koruma Kurulu’na şikâyet edebilirsiniz.`) +
     p('Klinik verisiyle ilgili (hayvan sahibi olarak) taleplerinizi ilgili kliniğe yapın; kliniğe yardımcı oluruz.');
@@ -205,7 +206,7 @@ export function sartlarSections(L = LEGAL) {
     : `Yönetici dışındaki kullanıcılar kendi kullanıcı kaydının silinmesini ${mail(SUPPORT)} adresinden talep edebilir.`;
 
   return [
-    section('1. Taraflar ve kapsam', p(`Bu Kullanım Şartları, ${e(L.unvan)} (${e(L.adres)}; vergi no/T.C. kimlik no: ${e(L.vknVeyaTckn)}; “VetApp”, “biz”) ile VetApp’e bir işletme (veteriner kliniği veya benzeri) adına kaydolan kişi ve işletme (“Müşteri”, “siz”) arasındadır. VetApp; web paneli (panel.vetapp.com.tr), Android ve iOS uygulamaları ve tanıtım sitesinden oluşan bulut tabanlı bir klinik yönetim yazılımıdır (“Hizmet”). Hizmet işletmelere yöneliktir; tüketici olarak kayıt yapılmaz. Hizmeti kullanarak veya kaydı tamamlayarak bu şartları ve <a href="/gizlilik">Gizlilik Politikası</a>’nı kabul etmiş olursunuz. Kayıt sırasında onayınızın zamanı kaydedilir.`)),
+    section('1. Taraflar ve kapsam', p(`Bu Kullanım Şartları, ${e(L.unvan)} (${[has(L.adres) ? e(L.adres) : '', has(L.vknVeyaTckn) ? `vergi no/T.C. kimlik no: ${e(L.vknVeyaTckn)}` : '', '“VetApp”, “biz”'].filter(Boolean).join('; ')}) ile VetApp’e bir işletme (veteriner kliniği veya benzeri) adına kaydolan kişi ve işletme (“Müşteri”, “siz”) arasındadır. VetApp; web paneli (panel.vetapp.com.tr), Android ve iOS uygulamaları ve tanıtım sitesinden oluşan bulut tabanlı bir klinik yönetim yazılımıdır (“Hizmet”). Hizmet işletmelere yöneliktir; tüketici olarak kayıt yapılmaz. Hizmeti kullanarak veya kaydı tamamlayarak bu şartları ve <a href="/gizlilik">Gizlilik Politikası</a>’nı kabul etmiş olursunuz. Kayıt sırasında onayınızın zamanı kaydedilir.`)),
     section('2. Hesap', ul([
       'Kayıt sırasında verdiğiniz bilgilerin doğru ve güncel olması gerekir; işletmeyi bağlama yetkiniz olmalıdır.',
       `Hesabın güvenliğinden (parola, Google/Apple hesabı, cihazlar) ve hesabınızda yapılan işlemlerden siz sorumlusunuz. Kullanıcı eklerken her kişiye rolüne uygun yetki verin; yetkisiz erişim şüphesini hemen ${mail(SUPPORT)} adresine bildirin.`,
@@ -236,7 +237,7 @@ export function sartlarSections(L = LEGAL) {
     section('11. Fikri mülkiyet', p('Yazılım, marka, tasarım ve ortak ilaç kataloğunun derlemesi VetApp’e (veya lisans verenlerine) aittir. Size, abonelik/kampanya süresince Hizmeti kendi işletmeniz için kullanmak üzere münhasır olmayan, devredilemez bir kullanım hakkı verilir. Verileriniz bu hükümden etkilenmez.')),
     section('12. Sorumluluğun sınırı', p('Hizmet “olduğu gibi” ve makul özenle sunulur. Kanunen sınırlanamayan sorumluluk (kasıt ve ağır kusur dahil) saklıdır. Bunun dışında, dolaylı zararlardan (kâr kaybı, itibar kaybı, iş durması, üçüncü kişilere ödenen tazminatlar vb.) sorumlu değiliz; doğrudan zararlar için sorumluluğumuz, olayın gerçekleştiği tarihten önceki 12 ayda VetApp’e ödediğiniz abonelik bedeliyle sınırlıdır. Veri girişinin, stok/finans hesaplarının ve mevzuata uygun belge düzeninin doğruluğu, klinik kararları ve ilaç/doz seçimleri sizin sorumluluğunuzdadır; Hizmet hukuki, mali veya tıbbi danışmanlık yerine geçmez. Üçüncü taraf hizmetlerdeki (barındırma, e-posta, Google/Apple, mağazalar) kesintilerden kaynaklanan zararlarda sorumluluğumuz bu Bölüm’deki sınırlarla sınırlıdır.')),
     section('13. Değişiklikler', p('Şartları değiştirebiliriz. Yeni sürüm ve tarih ile yayımlanır; önemli değişiklikleri uygulama içinden veya e-postayla önceden bildiririz. Değişiklikten sonra Hizmeti kullanmaya devam etmeniz yeni şartları kabul ettiğiniz anlamına gelir; kabul etmezseniz hesabınızı kapatabilirsiniz.')),
-    section('14. Uygulanacak hukuk ve uyuşmazlık', p(`Bu şartlara Türkiye Cumhuriyeti hukuku uygulanır. Uyuşmazlıklarda ${e(L.yetkiliMahkeme)} mahkemeleri ve icra daireleri yetkilidir.`)),
+    section('14. Uygulanacak hukuk ve uyuşmazlık', p(`Bu şartlara Türkiye Cumhuriyeti hukuku uygulanır. Uyuşmazlıklarda ${has(L.yetkiliMahkeme) ? e(L.yetkiliMahkeme) : 'Türkiye Cumhuriyeti'} mahkemeleri ve icra daireleri yetkilidir.`)),
     section('15. İletişim', p(`Şartlar hakkında: ${mail(SUPPORT)} · Kişisel veri başvuruları: ${kvkk}`) +
       p(`<strong>Sürüm geçmişi:</strong> ${e(L.surum)} (${e(trDate(L.guncellemeIso))}): kodla çapraz doğrulama düzeltmeleri; 2.0 (17 Kasım 2026): yedekleme sorumluluğu çelişkisi düzeltildi; kampanya, abonelik/ödeme, hesap silme, barkod katkısı, kullanım kuralları, sorumluluk sınırı (kasıt/ağır kusur hariç) ve uyuşmazlık maddeleri eklendi; 1.0 (Ocak 2025): ilk metin.`)),
   ];

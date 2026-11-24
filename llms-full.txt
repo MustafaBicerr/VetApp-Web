@@ -165,7 +165,7 @@ Satış satır bazında peşin veya veresiye olarak işaretlenir. Müşteri hesa
 
 ## Verilerim güvende mi?
 
-Her klinik kendi hesabında, kendi verisiyle çalışır. Bağlantılar HTTPS ile şifrelenir. Verileriniz Finlandiya’daki sunucuda tutulur; her gece yedeklenir (günlük yedekler yaklaşık 14 gün, haftalık yedekler yaklaşık 56 gün). Ayrıntılar için gizlilik politikamıza bakabilirsiniz.
+Her klinik kendi hesabında, kendi verisiyle çalışır. Bağlantılar HTTPS ile şifrelenir. Verileriniz Finlandiya’daki sunucuda tutulur; her gece yedeklenir (günlük yedekler yaklaşık 14 gün, haftalık yedekler yaklaşık 56 gün; ayrıca şifreli sunucu dışı kopya). Ayrıntılar için gizlilik politikamıza bakabilirsiniz.
 
 ## Hesabımı ve verilerimi nasıl silerim?
 

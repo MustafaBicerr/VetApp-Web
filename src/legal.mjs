@@ -23,32 +23,32 @@ export const YURT_DISI_GUVENCE = {
 export const LEGAL = {
   // ───────── sürüm ─────────
   surum: '2.0.1',
-  guncellemeIso: '2026-11-19', // "Son güncelleme" tarihi: yayın günü güncelleyin (sitemap lastmod da buradan gelir)
+  guncellemeIso: '2026-11-24', // "Son güncelleme" tarihi: yayın günü güncelleyin (sitemap lastmod da buradan gelir)
 
   // ───────── VetApp kimliği (karar 3 a: mevcut işletmenin unvanı, adresi, vergi numarası) · SAHİP VERECEK ─────────
-  unvan: '{{UNVAN}}',                       // Tam unvan (öneri: alt bilgideki "MBiCER Yazılım ve Mühendislik"; vergi levhasıyla doğrulayın)
-  adres: '{{ADRES}}',                       // Tebligat adresi (KVKK başvurusunun posta adresi olur)
-  vergiDairesi: '{{VERGI_DAIRESI}}',
-  vknVeyaTckn: '{{VKN_VEYA_TCKN}}',         // Şirketse vergi kimlik no, şahıs işletmesiyse T.C. kimlik no
-  kvkkBasvuruEposta: '{{KVKK_BASVURU_EPOSTA}}', // KVKK başvurularını gerçekten okuyan TEK adres
-  kepAdresi: '{{KEP_ADRESI}}',              // KEP adresi yoksa `null` yapın: KEP seçeneği metinden çıkar
-  yetkiliMahkeme: '{{YETKILI_MAHKEME}}',    // Örn. "İstanbul" (kullanım şartları md. 14)
+  unvan: 'MBiCER Yazılım ve Mühendislik',                       // Tam unvan (öneri: alt bilgideki "MBiCER Yazılım ve Mühendislik"; vergi levhasıyla doğrulayın)
+  adres: null,                              // SAHİPTEN BEKLENİYOR: tebligat adresi. null iken metinde adres satırı/posta kanalı YOK                       // Tebligat adresi (KVKK başvurusunun posta adresi olur)
+  vergiDairesi: null,                       // SAHİPTEN BEKLENİYOR (vknVeyaTckn ile birlikte gösterilir)
+  vknVeyaTckn: null,                        // SAHİPTEN BEKLENİYOR: null iken vergi satırı metinde YOK         // Şirketse vergi kimlik no, şahıs işletmesiyse T.C. kimlik no
+  kvkkBasvuruEposta: 'destek@vetapp.com.tr', // KVKK başvurularını gerçekten okuyan TEK adres
+  kepAdresi: null,              // KEP adresi yoksa `null` yapın: KEP seçeneği metinden çıkar
+  yetkiliMahkeme: null,                     // null iken 'Türkiye Cumhuriyeti mahkemeleri ve icra daireleri' yazılır    // Örn. "İstanbul" (kullanım şartları md. 14)
 
   // ───────── sahibin vereceği karar / doğrulamalar ─────────
   // Yurt dışı aktarım güvencesi: YURT_DISI_GUVENCE.A (yalnız iş bittiyse) ya da YURT_DISI_GUVENCE.B
-  yurtDisiGuvence: '{{YURT_DISI_GUVENCE_DURUMU}}',
-  faturaNotu: '{{FATURA_NOTU}}',            // Fatura/e-belge düzenleme notu (şartlar 3.3); söylenecek bir şey yoksa '' (boş) yapın
+  yurtDisiGuvence: YURT_DISI_GUVENCE.B,
+  faturaNotu: '',            // Fatura/e-belge düzenleme notu (şartlar 3.3); söylenecek bir şey yoksa '' (boş) yapın
   // Aşağıdakiler yalnız ilgili koşul bayrağı `true` olunca metne girer (bayrak kapalıyken doldurmak gerekmez):
-  r2Konumu: '{{R2_KONUMU}}',                // kosul.r2: Cloudflare R2 kova konumu (panelden doğrulayın; garanti verilmeyen "konum ipucu" ise öyle yazın)
-  sentryBolgesi: '{{SENTRY_BOLGESI}}',      // kosul.sentry: Sentry hesabının bölgesi (öneri: AB)
-  etiketliYedekSuresi: '{{ETIKETLI_YEDEK_SURESI}}', // kosul.etiketliYedekSilmeTaahhudu: örn. "56 gün"
+  r2Konumu: 'Konum ipucu: Doğu Avrupa (EEUR); AB yargı bölgesi seçilmedi, konum garantisi verilmez. Yedekler yüklenmeden önce VetApp sunucusunda şifrelenir',                // kosul.r2: Cloudflare R2 kova konumu (panelden doğrulayın; garanti verilmeyen "konum ipucu" ise öyle yazın)
+  sentryBolgesi: '',      // kosul.sentry: Sentry hesabının bölgesi (öneri: AB)
+  etiketliYedekSuresi: '', // kosul.etiketliYedekSilmeTaahhudu: örn. "56 gün"
 
   // ───────── koşul bayrakları ([KOŞUL-…] paragrafları) ─────────
   // Varsayılan = hukuk belgelerindeki (docs/hukuk, 17-19 Kasım 2026) GÜNCEL GERÇEK: hiçbiri canlıda/yürürlükte değil.
   kosul: {
     // [KOŞUL-R2] Sunucu dışı şifreli yedek (Cloudflare R2) sunucuda GERÇEKTEN çalışıyor
     // (/var/lib/vetapp/backup.status → "offsite":"ok"). Kapalıyken R2 satırları/cümleleri metinde yok.
-    r2: false,
+    r2: true,      // 20 Kasım 2026: backup.status offsite=ok (rclone 1.76.0 + R2, şifreli)
     // [KOŞUL-SENTRY] Sentry hata izleme bağlı (SENTRY_DSN API, panel ve mobilde girilmiş). Kapalıyken Sentry satırı yok.
     sentry: false,
     // [KOŞUL-KISISEL-HESAP-SILME] Yeni hesap silme akışı CANLIDA: backend dağıtıldı (kişisel hesap silme) ve
@@ -59,7 +59,7 @@ export const LEGAL = {
     appleJetonIptali: false,
     // [KOŞUL-KIMLIK-HAVUZU] Kimlik havuzu düzeltmesi (hukuk Bulgu 1: ortak tabloya yalnız bayrak açık + klinik rızalıyken yazılır)
     // CANLIYA DAĞITILDI. Dağıtılmadıysa (false) gizlilik 9a'nın ESKİ (şu anda canlıdaki) davranışı anlatılır.
-    kimlikHavuzuDuzeltmeCanli: false,
+    kimlikHavuzuDuzeltmeCanli: true,   // backend e0875d1 ile 19 Kasım 2026'da dağıtıldı
     // Düzeltmeden ÖNCE yazılmış person_identities satırları temizlendi (docs/hukuk/dogrulama-raporu.md bölüm 10). Temizlenmediyse
     // (false) 9a'ya "eski kayıtlar tabloda kalabilir" cümlesi eklenir. Yalnız kimlikHavuzuDuzeltmeCanli=true iken anlamlıdır.
     kimlikEskiSatirlarTemizlendi: false,
