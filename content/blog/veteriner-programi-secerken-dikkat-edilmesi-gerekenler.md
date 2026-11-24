@@ -86,7 +86,7 @@ Değerlendirdiğiniz programları bu tabloyla karşılaştırabilirsiniz:
 | Bulut tabanlı, kurulumsuz | Yedek ve sunucu derdi yok | Evet |
 | Mobilde tam işlem | Sahada ve muayenede anında kayıt | Evet (iPhone, Android) |
 | Parti ve SKT takibi | Süresi geçen ilaç kaybı | Evet |
-| Hazır ilaç kataloğu | Hızlı kurulum | 1.694 ilaç |
+| Hazır ilaç kataloğu | Hızlı kurulum | 1.779 ilaç |
 | Satır bazında veresiye | Gerçek klinik işleyişi | Evet |
 | Tedarikçi borcu | Depo ödemelerini kaçırmamak | Evet |
 | Aşı gündemi | Kaçan aşı = kaçan ziyaret | Evet |

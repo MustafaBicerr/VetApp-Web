@@ -614,3 +614,14 @@ span.store { opacity: .55; }
 .badge small { font-size: .7rem; color: #c9ced6; letter-spacing: .01em; }
 .badge b { font-size: 1.12rem; font-weight: 600; letter-spacing: -.01em; }
 @media (max-width: 380px) { .badge { min-width: 0; flex: 1 1 140px; padding: 0 12px; } }
+
+/* ilaç kataloğu bölümü (açık zeminli bölümlerde kartlar ve etiketler) */
+.light .tcard, .white .tcard { background: #fff; border-color: var(--line-d); color: var(--ink-d); }
+.light .tcard p, .white .tcard p { color: var(--mute-d); }
+.light .tcard h3, .white .tcard h3 { color: var(--ink-d); }
+.trust.t3 { grid-template-columns: 1fr; }
+@media (min-width: 768px) { .trust.t3 { grid-template-columns: repeat(3, 1fr); } }
+.cat-try { margin-top: 22px; text-align: center; color: var(--mute-d); font-size: .95rem; }
+.cat-try b { color: var(--ink-d); font-weight: 600; padding: 2px 9px; border: 1px solid var(--line-d); border-radius: 99px; background: #fff; margin: 0 2px; }
+.cat-try a { display: inline-flex; align-items: center; gap: 6px; margin-left: 10px; color: var(--blue); font-weight: 600; }
+.cat-try a svg { width: 16px; height: 16px; }
