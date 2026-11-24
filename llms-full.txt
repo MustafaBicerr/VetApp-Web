@@ -43,7 +43,7 @@
 - Nakit, kart, karma ve veresiye ödeme
 - Kasa hareketleri, masraf girişi ve gün sonu raporu
 - İlaç ve ürün stok takibi: parti, son kullanma tarihi (SKT), kritik stok uyarısı
-- 1.694 ilaçlık veteriner ilaç referans kataloğu
+- 1.779 ilaçlık veteriner ilaç referans kataloğu (TARBİL listesiyle güncellenir)
 - Alım faturası (mal kabul): iskonto, KDV, vade, mal fazlası
 - Müşteri cari ve veresiye takibi, kısmi tahsilat
 - Tedarikçi (ilaç deposu) cari ve borç takibi
@@ -125,7 +125,7 @@ Evet. Mobil uygulama web panelindeki işlemlerin tamamını yapabildiği için �
 
 ## Yeni açılan bir klinik için uygun mu?
 
-Evet. Açılış stoğunuzu ve devreden müşteri/tedarikçi bakiyelerinizi ilk gün girersiniz; ilaç kartları 1.694 ilaçlık katalogdan barkodla dolar. Küçük ekipler için tasarlandı, eğitim gerektirmez.
+Evet. Açılış stoğunuzu ve devreden müşteri/tedarikçi bakiyelerinizi ilk gün girersiniz; ilaç kartları 1.779 ilaçlık katalogdan barkodla dolar. Küçük ekipler için tasarlandı, eğitim gerektirmez.
 
 ## VetApp ne zamana kadar ücretsiz?
 
@@ -151,9 +151,13 @@ VetApp her hasta için aşı kaydını ve bir sonraki aşı tarihini tutar. Klin
 
 Evet. Ürünler parti ve son kullanma tarihi ile takip edilir; SKT’si yaklaşan ürünler ve kritik stok eşiğinin altındakiler panelde uyarı olarak görünür.
 
+## İlaç kataloğu nereden geliyor, güncel mi?
+
+VetApp’in ilaç kataloğu, T.C. Tarım ve Orman Bakanlığı’nın TARBİL sisteminde yayımlanan ruhsatlı veteriner ilaç listesine dayanır ve bu listeyle güncellenir (son güncelleme: Kasım 2026, 1.779 ilaç). Ürün adının birkaç harfini yazdığınızda ilaç, farmasötik şekli ve üreticisiyle listelenir; birçoğunda ambalaj fotoğrafı da bulunur. Katalogda olmayan bir ürünü kendiniz de tanımlayabilirsiniz.
+
 ## Barkod okutarak çalışabilir miyim?
 
-Evet. Telefon kamerasıyla veya bilgisayara bağlı barkod okuyucuyla ürün ekleyebilir, satış yapabilirsiniz. 1.694 ilaçlık referans katalogda barkodu bulunan ürünler otomatik tanınır.
+Evet. Telefon kamerasıyla veya bilgisayara bağlı barkod okuyucuyla ürün ekleyebilir, satış yapabilirsiniz. 1.779 ilaçlık referans katalogda barkodu bulunan ürünler otomatik tanınır.
 
 ## Veresiye satış nasıl yönetiliyor?
 
@@ -229,7 +233,7 @@ Excel veya CSV verileriniz için bizimle iletişime geçin; aktarım konusunda y
 
 ## Veteriner ilaçları için hazır ürün listesi var mı?
 
-Evet. VetApp’te 1.694 ilaçlık bir veteriner ilaç referans kataloğu bulunur. İlacı arayıp kendi ürün kartınızı tek tıkla oluşturursunuz; barkodu bulunan ürünler okutulduğunda otomatik tanınır.
+Evet. VetApp’te 1.779 ilaçlık bir veteriner ilaç referans kataloğu bulunur. İlacı arayıp kendi ürün kartınızı tek tıkla oluşturursunuz; barkodu bulunan ürünler okutulduğunda otomatik tanınır.
 
 ## Son kullanma tarihi yaklaşan ilaçları nasıl görürüm?
 
@@ -403,7 +407,7 @@ Enjektör, iğne, eldiven, serum seti, sargı bezi gibi sarf malzemeler tek tek 
 
 ## VetApp ile stok takibi
 
-VetApp’te 1.694 ilaçlık veteriner ilaç kataloğu, barkodla kayıt, parti ve SKT takibi, kritik stok uyarısı ve alım faturası hazır gelir. Ayrıntılar için [veteriner stok takip programı](/veteriner-stok-takip-programi) sayfamıza bakabilir ya da [31 Ocak 2027’ye kadar tamamen ücretsiz kullanabilirsiniz](/ucretsiz-veteriner-programi).
+VetApp’te 1.779 ilaçlık veteriner ilaç kataloğu, barkodla kayıt, parti ve SKT takibi, kritik stok uyarısı ve alım faturası hazır gelir. Ayrıntılar için [veteriner stok takip programı](/veteriner-stok-takip-programi) sayfamıza bakabilir ya da [31 Ocak 2027’ye kadar tamamen ücretsiz kullanabilirsiniz](/ucretsiz-veteriner-programi).
 
 ---
 
@@ -562,7 +566,7 @@ Değerlendirdiğiniz programları bu tabloyla karşılaştırabilirsiniz:
 | Bulut tabanlı, kurulumsuz | Yedek ve sunucu derdi yok | Evet |
 | Mobilde tam işlem | Sahada ve muayenede anında kayıt | Evet (iPhone, Android) |
 | Parti ve SKT takibi | Süresi geçen ilaç kaybı | Evet |
-| Hazır ilaç kataloğu | Hızlı kurulum | 1.694 ilaç |
+| Hazır ilaç kataloğu | Hızlı kurulum | 1.779 ilaç |
 | Satır bazında veresiye | Gerçek klinik işleyişi | Evet |
 | Tedarikçi borcu | Depo ödemelerini kaçırmamak | Evet |
 | Aşı gündemi | Kaçan aşı = kaçan ziyaret | Evet |
@@ -648,6 +652,6 @@ Bunları biliyorsanız, kliniğinizin işletme tarafı ilk günden kontrol altı
 
 ## VetApp ile ilk 30 gün
 
-VetApp, yeni açılan klinikler düşünülerek tasarlandı: açılış stoğu ve devreden bakiyeler ilk gün girilir, ilaç kartları 1.694 ilaçlık katalogdan barkodla dolar, mobil uygulama web panelindeki her işlemi yapar. Üstelik VetApp 31 Ocak 2027’ye kadar tamamen ücretsizdir ve kart bilgisi istemez; kaydolup kullanan ilk 500 kliniğe Şubat ve Mart 2027 de hediye edilir. Ayrıntılar [kampanya sayfasında](/ucretsiz-veteriner-programi).
+VetApp, yeni açılan klinikler düşünülerek tasarlandı: açılış stoğu ve devreden bakiyeler ilk gün girilir, ilaç kartları 1.779 ilaçlık katalogdan barkodla dolar, mobil uygulama web panelindeki her işlemi yapar. Üstelik VetApp 31 Ocak 2027’ye kadar tamamen ücretsizdir ve kart bilgisi istemez; kaydolup kullanan ilk 500 kliniğe Şubat ve Mart 2027 de hediye edilir. Ayrıntılar [kampanya sayfasında](/ucretsiz-veteriner-programi).
 
 [Ücretsiz hesabınızı açın](https://panel.vetapp.com.tr/#/register) ya da önce [canlı demoyu](https://panel.vetapp.com.tr/#/demo) inceleyin. Seçim yapmadan önce [veteriner programı seçme rehberimizi](/blog/veteriner-programi-secerken-dikkat-edilmesi-gerekenler) de okuyabilirsiniz.
